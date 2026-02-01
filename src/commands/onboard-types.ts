@@ -32,6 +32,8 @@ export type AuthChoice =
   | "opencode-zen"
   | "nvidia-api-key"
   | "siliconflow-api-key"
+  | "deepseek-api-key"
+  | "groq-api-key"
   | "github-copilot"
   | "copilot-proxy"
   | "qwen-portal"
@@ -84,6 +86,8 @@ export type OnboardOptions = {
   opencodeZenApiKey?: string;
   nvidiaApiKey?: string;
   siliconflowApiKey?: string;
+  deepseekApiKey?: string;
+  groqApiKey?: string;
   gatewayPort?: number;
   gatewayBind?: GatewayBind;
   gatewayAuth?: GatewayAuthChoice;

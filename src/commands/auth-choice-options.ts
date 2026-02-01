@@ -20,6 +20,8 @@ export type AuthChoiceGroupId =
   | "opencode-zen"
   | "nvidia"
   | "siliconflow"
+  | "deepseek"
+  | "groq"
   | "minimax"
   | "synthetic"
   | "venice"
@@ -134,6 +136,18 @@ const AUTH_CHOICE_GROUP_DEFS: {
     hint: "DeepSeek, GLM, Qwen, Llama",
     choices: ["siliconflow-api-key"],
   },
+  {
+    value: "deepseek",
+    label: "DeepSeek",
+    hint: "Official API (V3.2 Chat + Reasoner)",
+    choices: ["deepseek-api-key"],
+  },
+  {
+    value: "groq",
+    label: "Groq",
+    hint: "Ultra-fast inference (Llama, Mixtral, DeepSeek)",
+    choices: ["groq-api-key"],
+  },
 ];
 
 export function buildAuthChoiceOptions(params: {
@@ -216,6 +230,16 @@ export function buildAuthChoiceOptions(params: {
     value: "siliconflow-api-key",
     label: "SiliconFlow 硅基流动 (multi-model)",
     hint: "DeepSeek, GLM, Qwen, Llama via siliconflow.cn",
+  });
+  options.push({
+    value: "deepseek-api-key",
+    label: "DeepSeek Official API",
+    hint: "V3.2 Chat + Reasoner via api.deepseek.com",
+  });
+  options.push({
+    value: "groq-api-key",
+    label: "Groq (ultra-fast inference)",
+    hint: "Llama, Mixtral, DeepSeek via api.groq.com",
   });
   options.push({ value: "minimax-api", label: "MiniMax M2.1" });
   options.push({

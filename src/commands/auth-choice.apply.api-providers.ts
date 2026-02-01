@@ -13,6 +13,10 @@ import {
 } from "./google-gemini-model-default.js";
 import {
   applyAuthProfileConfig,
+  applyDeepSeekConfig,
+  applyDeepSeekProviderConfig,
+  applyGroqConfig,
+  applyGroqProviderConfig,
   applyKimiCodeConfig,
   applyKimiCodeProviderConfig,
   applyMoonshotConfig,
@@ -34,6 +38,8 @@ import {
   applyXiaomiConfig,
   applyXiaomiProviderConfig,
   applyZaiConfig,
+  DEEPSEEK_DEFAULT_MODEL_REF,
+  GROQ_DEFAULT_MODEL_REF,
   KIMI_CODING_MODEL_REF,
   MOONSHOT_DEFAULT_MODEL_REF,
   NVIDIA_DEFAULT_MODEL_REF,
@@ -43,7 +49,9 @@ import {
   VENICE_DEFAULT_MODEL_REF,
   VERCEL_AI_GATEWAY_DEFAULT_MODEL_REF,
   XIAOMI_DEFAULT_MODEL_REF,
+  setDeepSeekApiKey,
   setGeminiApiKey,
+  setGroqApiKey,
   setKimiCodingApiKey,
   setMoonshotApiKey,
   setNvidiaApiKey,
@@ -108,6 +116,10 @@ export async function applyAuthChoiceApiProviders(
       authChoice = "nvidia-api-key";
     } else if (params.opts.tokenProvider === "siliconflow") {
       authChoice = "siliconflow-api-key";
+    } else if (params.opts.tokenProvider === "deepseek") {
+      authChoice = "deepseek-api-key";
+    } else if (params.opts.tokenProvider === "groq") {
+      authChoice = "groq-api-key";
     }
   }
 
@@ -766,6 +778,124 @@ export async function applyAuthChoiceApiProviders(
         applyDefaultConfig: applySiliconFlowConfig,
         applyProviderConfig: applySiliconFlowProviderConfig,
         noteDefault: SILICONFLOW_DEFAULT_MODEL_REF,
+        noteAgentModel,
+        prompter: params.prompter,
+      });
+      nextConfig = applied.config;
+      agentModelOverride = applied.agentModelOverride ?? agentModelOverride;
+    }
+    return { config: nextConfig, agentModelOverride };
+  }
+
+  if (authChoice === "deepseek-api-key") {
+    let hasCredential = false;
+    if (!hasCredential && params.opts?.token && params.opts?.tokenProvider === "deepseek") {
+      await setDeepSeekApiKey(normalizeApiKeyInput(params.opts.token), params.agentDir);
+      hasCredential = true;
+    }
+
+    if (!hasCredential) {
+      await params.prompter.note(
+        [
+          "DeepSeek provides official access to DeepSeek V3.2 models:",
+          "  deepseek-chat: V3.2 Chat (non-thinking mode)",
+          "  deepseek-reasoner: V3.2 Reasoner (thinking mode)",
+          "",
+          "Get your API key at: https://platform.deepseek.com/api_keys",
+        ].join("\n"),
+        "DeepSeek Official API",
+      );
+    }
+    const envKey = resolveEnvApiKey("deepseek");
+    if (envKey) {
+      const useExisting = await params.prompter.confirm({
+        message: `Use existing DEEPSEEK_API_KEY (${envKey.source}, ${formatApiKeyPreview(envKey.apiKey)})?`,
+        initialValue: true,
+      });
+      if (useExisting) {
+        await setDeepSeekApiKey(envKey.apiKey, params.agentDir);
+        hasCredential = true;
+      }
+    }
+    if (!hasCredential) {
+      const key = await params.prompter.text({
+        message: "Enter DeepSeek API key",
+        validate: validateApiKeyInput,
+      });
+      await setDeepSeekApiKey(normalizeApiKeyInput(String(key)), params.agentDir);
+    }
+    nextConfig = applyAuthProfileConfig(nextConfig, {
+      profileId: "deepseek:default",
+      provider: "deepseek",
+      mode: "api_key",
+    });
+    {
+      const applied = await applyDefaultModelChoice({
+        config: nextConfig,
+        setDefaultModel: params.setDefaultModel,
+        defaultModel: DEEPSEEK_DEFAULT_MODEL_REF,
+        applyDefaultConfig: applyDeepSeekConfig,
+        applyProviderConfig: applyDeepSeekProviderConfig,
+        noteDefault: DEEPSEEK_DEFAULT_MODEL_REF,
+        noteAgentModel,
+        prompter: params.prompter,
+      });
+      nextConfig = applied.config;
+      agentModelOverride = applied.agentModelOverride ?? agentModelOverride;
+    }
+    return { config: nextConfig, agentModelOverride };
+  }
+
+  if (authChoice === "groq-api-key") {
+    let hasCredential = false;
+    if (!hasCredential && params.opts?.token && params.opts?.tokenProvider === "groq") {
+      await setGroqApiKey(normalizeApiKeyInput(params.opts.token), params.agentDir);
+      hasCredential = true;
+    }
+
+    if (!hasCredential) {
+      await params.prompter.note(
+        [
+          "Groq provides ultra-fast inference for open-source models:",
+          "  Llama 3.3 70B, Llama 3.1 8B, Mixtral 8x7B",
+          "  DeepSeek R1 Distill, Gemma 2, Qwen QwQ",
+          "",
+          "Get your API key at: https://console.groq.com/keys",
+        ].join("\n"),
+        "Groq",
+      );
+    }
+    const envKey = resolveEnvApiKey("groq");
+    if (envKey) {
+      const useExisting = await params.prompter.confirm({
+        message: `Use existing GROQ_API_KEY (${envKey.source}, ${formatApiKeyPreview(envKey.apiKey)})?`,
+        initialValue: true,
+      });
+      if (useExisting) {
+        await setGroqApiKey(envKey.apiKey, params.agentDir);
+        hasCredential = true;
+      }
+    }
+    if (!hasCredential) {
+      const key = await params.prompter.text({
+        message: "Enter Groq API key",
+        validate: validateApiKeyInput,
+      });
+      await setGroqApiKey(normalizeApiKeyInput(String(key)), params.agentDir);
+    }
+    nextConfig = applyAuthProfileConfig(nextConfig, {
+      profileId: "groq:default",
+      provider: "groq",
+      mode: "api_key",
+    });
+    {
+      const applied = await applyDefaultModelChoice({
+        config: nextConfig,
+        setDefaultModel: params.setDefaultModel,
+        defaultModel: GROQ_DEFAULT_MODEL_REF,
+        applyDefaultConfig: applyGroqConfig,
+        applyProviderConfig: applyGroqProviderConfig,
+        noteDefault: GROQ_DEFAULT_MODEL_REF,
         noteAgentModel,
         prompter: params.prompter,
       });

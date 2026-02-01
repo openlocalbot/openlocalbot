@@ -1,7 +1,7 @@
-# 🦞 OpenClaw — Personal AI Assistant
+# 🦞 OpenClaw — パーソナル AI アシスタント
 
 <p align="center">
-  <a href="README_zh.md">🇨🇳 简体中文</a> · <a href="README_zh-TW.md">🇹🇼 繁體中文</a> · <a href="README_ja.md">🇯🇵 日本語</a>
+  <a href="README.md">🇺🇸 English</a> · <a href="README_zh.md">🇨🇳 简体中文</a> · <a href="README_zh-TW.md">🇹🇼 繁體中文</a>
 </p>
 
 <p align="center">
@@ -16,336 +16,336 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/openclaw/openclaw/actions/workflows/ci.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/openclaw/openclaw/ci.yml?branch=main&style=for-the-badge" alt="CI status"></a>
-  <a href="https://github.com/openclaw/openclaw/releases"><img src="https://img.shields.io/github/v/release/openclaw/openclaw?include_prereleases&style=for-the-badge" alt="GitHub release"></a>
+  <a href="https://github.com/openclaw/openclaw/actions/workflows/ci.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/openclaw/openclaw/ci.yml?branch=main&style=for-the-badge" alt="CI ステータス"></a>
+  <a href="https://github.com/openclaw/openclaw/releases"><img src="https://img.shields.io/github/v/release/openclaw/openclaw?include_prereleases&style=for-the-badge" alt="GitHub リリース"></a>
   <a href="https://discord.gg/clawd"><img src="https://img.shields.io/discord/1456350064065904867?label=Discord&logo=discord&logoColor=white&color=5865F2&style=for-the-badge" alt="Discord"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT ライセンス"></a>
 </p>
 
-**OpenClaw** is a _personal AI assistant_ you run on your own devices.
-It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, Microsoft Teams, WebChat), plus extension channels like BlueBubbles, Matrix, Zalo, and Zalo Personal. It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.
+**OpenClaw** は、あなた自身のデバイスで動作する*パーソナル AI アシスタント*です。
+普段使っているメッセージングチャンネル（WhatsApp、Telegram、Slack、Discord、Google Chat、Signal、iMessage、Microsoft Teams、WebChat）で応答し、BlueBubbles、Matrix、Zalo、Zalo Personal などの拡張チャンネルもサポートしています。macOS/iOS/Android で音声対話が可能で、制御可能なライブ Canvas をレンダリングできます。Gateway はコントロールプレーンに過ぎません — 製品はアシスタントそのものです。
 
-If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
+ローカル感覚で、高速で、常にオンラインな個人用シングルユーザーアシスタントが欲しいなら、これがそれです。
 
-[Website](https://openclaw.ai) · [Docs](https://docs.openclaw.ai) · [DeepWiki](https://deepwiki.com/openclaw/openclaw) · [Getting Started](https://docs.openclaw.ai/start/getting-started) · [Updating](https://docs.openclaw.ai/install/updating) · [Showcase](https://docs.openclaw.ai/start/showcase) · [FAQ](https://docs.openclaw.ai/start/faq) · [Wizard](https://docs.openclaw.ai/start/wizard) · [Nix](https://github.com/openclaw/nix-clawdbot) · [Docker](https://docs.openclaw.ai/install/docker) · [Discord](https://discord.gg/clawd)
+[ウェブサイト](https://openclaw.ai) · [ドキュメント](https://docs.openclaw.ai) · [DeepWiki](https://deepwiki.com/openclaw/openclaw) · [はじめに](https://docs.openclaw.ai/start/getting-started) · [アップデート](https://docs.openclaw.ai/install/updating) · [ショーケース](https://docs.openclaw.ai/start/showcase) · [FAQ](https://docs.openclaw.ai/start/faq) · [ウィザード](https://docs.openclaw.ai/start/wizard) · [Nix](https://github.com/openclaw/nix-clawdbot) · [Docker](https://docs.openclaw.ai/install/docker) · [Discord](https://discord.gg/clawd)
 
-Preferred setup: run the onboarding wizard (`openclaw onboard`). It walks through gateway, workspace, channels, and skills. The CLI wizard is the recommended path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**.
+推奨セットアップ：オンボーディングウィザードを実行（`openclaw onboard`）。ゲートウェイ、ワークスペース、チャンネル、スキルの設定をガイドします。CLI ウィザードが推奨パスで、**macOS、Linux、Windows（WSL2 経由；強く推奨）**で動作します。
 
-**New: Web-based onboarding UI** - For a graphical setup experience, use `openclaw onboard --web`. This launches a bilingual (English/中文) web interface on port 9887.
+**新機能：Web セットアップ UI** - グラフィカルなセットアップ体験には `openclaw onboard --web` を使用してください。ポート 9887 でバイリンガル（English/中文）Web インターフェースが起動します。
 
-Works with npm, pnpm, or bun.
-New install? Start here: [Getting started](https://docs.openclaw.ai/start/getting-started)
+npm、pnpm、または bun で動作します。
+新規インストール？こちらから開始：[はじめに](https://docs.openclaw.ai/start/getting-started)
 
-**Subscriptions (OAuth):**
+**サブスクリプション (OAuth):**
 
 - **[Anthropic](https://www.anthropic.com/)** (Claude Pro/Max)
 - **[OpenAI](https://openai.com/)** (ChatGPT/Codex)
 
-**API Key Providers:**
+**API キープロバイダー:**
 
-- **[DeepSeek](https://platform.deepseek.com/)** — Official DeepSeek V3.2 API (Chat + Reasoner modes)
-- **[Groq](https://console.groq.com/)** — Ultra-fast inference (Llama 4, Kimi K2, Qwen 3, GPT-OSS)
-- **[OpenCode Zen](https://opencode.ai/)** — Multi-model proxy (Claude, GPT, Gemini, GLM, Kimi)
-- **[SiliconFlow 硅基流动](https://cloud.siliconflow.cn/)** — DeepSeek, GLM, Qwen, Llama
-- **[NVIDIA NIM](https://build.nvidia.com/)** — Llama, DeepSeek, Qwen, Mistral
+- **[DeepSeek](https://platform.deepseek.com/)** — DeepSeek V3.2 公式 API（Chat + Reasoner モード）
+- **[Groq](https://console.groq.com/)** — 超高速推論（Llama 4、Kimi K2、Qwen 3、GPT-OSS）
+- **[OpenCode Zen](https://opencode.ai/)** — マルチモデルプロキシ（Claude、GPT、Gemini、GLM、Kimi）
+- **[SiliconFlow](https://cloud.siliconflow.cn/)** — DeepSeek、GLM、Qwen、Llama
+- **[NVIDIA NIM](https://build.nvidia.com/)** — Llama、DeepSeek、Qwen、Mistral
 
-Model note: while any model is supported, I strongly recommend **Anthropic Pro/Max (100/200) + Opus 4.5** for long‑context strength and better prompt‑injection resistance. See [Onboarding](https://docs.openclaw.ai/start/onboarding).
+モデルについて：どのモデルでもサポートされていますが、長文コンテキスト強度とプロンプトインジェクション耐性のために **Anthropic Pro/Max (100/200) + Opus 4.5** を強くお勧めします。[オンボーディング](https://docs.openclaw.ai/start/onboarding) を参照してください。
 
-## Models (selection + auth)
+## モデル（選択 + 認証）
 
-- Models config + CLI: [Models](https://docs.openclaw.ai/concepts/models)
-- Auth profile rotation (OAuth vs API keys) + fallbacks: [Model failover](https://docs.openclaw.ai/concepts/model-failover)
+- モデル設定 + CLI：[モデル](https://docs.openclaw.ai/concepts/models)
+- 認証プロファイルローテーション（OAuth vs API キー）+ フェイルオーバー：[モデルフェイルオーバー](https://docs.openclaw.ai/concepts/model-failover)
 
-## Install (recommended)
+## インストール（推奨）
 
-Runtime: **Node ≥22**.
+ランタイム：**Node ≥22**
 
 ```bash
 npm install -g openclaw@latest
-# or: pnpm add -g openclaw@latest
+# または: pnpm add -g openclaw@latest
 
 openclaw onboard --install-daemon
 ```
 
-The wizard installs the Gateway daemon (launchd/systemd user service) so it stays running.
+ウィザードが Gateway デーモン（launchd/systemd ユーザーサービス）をインストールし、実行を継続させます。
 
-### Web-based onboarding (alternative)
+### Web セットアップ UI（オプション）
 
-For a graphical setup experience with bilingual support (English/中文):
+バイリンガルサポート（English/中文）付きのグラフィカルなセットアップ体験：
 
 ```bash
 openclaw onboard --web
-# Or specify a custom port:
+# またはカスタムポートを指定：
 openclaw onboard --web --web-port 9887
 ```
 
-This launches a modern web UI at `http://127.0.0.1:9887` that guides you through:
+これにより `http://127.0.0.1:9887` でモダンな Web UI が起動し、以下をガイドします：
 
-- Model provider selection (Anthropic, OpenAI, Google, SiliconFlow, OpenCode Zen, DeepSeek, Groq, etc.)
-- API key configuration
-- Gateway settings
-- Channel setup
+- モデルプロバイダー選択（Anthropic、OpenAI、Google、SiliconFlow、OpenCode Zen、DeepSeek、Groq など）
+- API キー設定
+- ゲートウェイ設定
+- チャンネル設定
 
-The web UI automatically opens in your browser. All configuration is saved locally.
+Web UI はブラウザで自動的に開きます。すべての設定はローカルに保存されます。
 
-## Quick start (TL;DR)
+## クイックスタート（TL;DR）
 
-Runtime: **Node ≥22**.
+ランタイム：**Node ≥22**
 
-Full beginner guide (auth, pairing, channels): [Getting started](https://docs.openclaw.ai/start/getting-started)
+完全な初心者ガイド（認証、ペアリング、チャンネル）：[はじめに](https://docs.openclaw.ai/start/getting-started)
 
 ```bash
 openclaw onboard --install-daemon
 
 openclaw gateway --port 18789 --verbose
 
-# Send a message
-openclaw message send --to +1234567890 --message "Hello from OpenClaw"
+# メッセージを送信
+openclaw message send --to +1234567890 --message "OpenClaw からこんにちは"
 
-# Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/BlueBubbles/Microsoft Teams/Matrix/Zalo/Zalo Personal/WebChat)
-openclaw agent --message "Ship checklist" --thinking high
+# アシスタントと会話（オプションで接続されたチャンネルに返信を送信：WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/BlueBubbles/Microsoft Teams/Matrix/Zalo/Zalo Personal/WebChat）
+openclaw agent --message "チェックリスト" --thinking high
 ```
 
-Upgrading? [Updating guide](https://docs.openclaw.ai/install/updating) (and run `openclaw doctor`).
+アップグレード？[アップデートガイド](https://docs.openclaw.ai/install/updating)（`openclaw doctor` も実行）。
 
-## Development channels
+## 開発チャンネル
 
-- **stable**: tagged releases (`vYYYY.M.D` or `vYYYY.M.D-<patch>`), npm dist-tag `latest`.
-- **beta**: prerelease tags (`vYYYY.M.D-beta.N`), npm dist-tag `beta` (macOS app may be missing).
-- **dev**: moving head of `main`, npm dist-tag `dev` (when published).
+- **stable**：タグリリース（`vYYYY.M.D` または `vYYYY.M.D-<patch>`）、npm dist-tag `latest`。
+- **beta**：プレリリースタグ（`vYYYY.M.D-beta.N`）、npm dist-tag `beta`（macOS アプリが欠落している場合あり）。
+- **dev**：`main` のムービングヘッド、npm dist-tag `dev`（公開時）。
 
-Switch channels (git + npm): `openclaw update --channel stable|beta|dev`.
-Details: [Development channels](https://docs.openclaw.ai/install/development-channels).
+チャンネル切り替え（git + npm）：`openclaw update --channel stable|beta|dev`。
+詳細：[開発チャンネル](https://docs.openclaw.ai/install/development-channels)。
 
-## From source (development)
+## ソースからビルド（開発）
 
-Prefer `pnpm` for builds from source. Bun is optional for running TypeScript directly.
+ソースからのビルドには `pnpm` を推奨。Bun は TypeScript を直接実行するためのオプションです。
 
 ```bash
 git clone https://github.com/openclaw/openclaw.git
 cd openclaw
 
 pnpm install
-pnpm ui:build # auto-installs UI deps on first run
+pnpm ui:build # 初回実行時に UI 依存関係を自動インストール
 pnpm build
 
 pnpm openclaw onboard --install-daemon
 
-# Dev loop (auto-reload on TS changes)
+# 開発ループ（TypeScript の変更で自動リロード）
 pnpm gateway:watch
 ```
 
-Note: `pnpm openclaw ...` runs TypeScript directly (via `tsx`). `pnpm build` produces `dist/` for running via Node / the packaged `openclaw` binary.
+注：`pnpm openclaw ...` は TypeScript を直接実行します（`tsx` 経由）。`pnpm build` は Node / パッケージ化された `openclaw` バイナリで実行するための `dist/` を生成します。
 
-## Security defaults (DM access)
+## セキュリティデフォルト（DM アクセス）
 
-OpenClaw connects to real messaging surfaces. Treat inbound DMs as **untrusted input**.
+OpenClaw は実際のメッセージングサービスに接続します。受信 DM を**信頼できない入力**として扱ってください。
 
-Full security guide: [Security](https://docs.openclaw.ai/gateway/security)
+完全なセキュリティガイド：[セキュリティ](https://docs.openclaw.ai/gateway/security)
 
-Default behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack:
+Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack でのデフォルト動作：
 
-- **DM pairing** (`dmPolicy="pairing"` / `channels.discord.dm.policy="pairing"` / `channels.slack.dm.policy="pairing"`): unknown senders receive a short pairing code and the bot does not process their message.
-- Approve with: `openclaw pairing approve <channel> <code>` (then the sender is added to a local allowlist store).
-- Public inbound DMs require an explicit opt-in: set `dmPolicy="open"` and include `"*"` in the channel allowlist (`allowFrom` / `channels.discord.dm.allowFrom` / `channels.slack.dm.allowFrom`).
+- **DM ペアリング**（`dmPolicy="pairing"` / `channels.discord.dm.policy="pairing"` / `channels.slack.dm.policy="pairing"`）：不明な送信者には短いペアリングコードが送られ、ボットはそのメッセージを処理しません。
+- 承認コマンド：`openclaw pairing approve <channel> <code>`（その後、送信者はローカル許可リストストアに追加されます）。
+- 公開受信 DM には明示的なオプトインが必要：`dmPolicy="open"` を設定し、チャンネル許可リストに `"*"` を含めます（`allowFrom` / `channels.discord.dm.allowFrom` / `channels.slack.dm.allowFrom`）。
 
-Run `openclaw doctor` to surface risky/misconfigured DM policies.
+リスクのある/誤設定された DM ポリシーを表示するには `openclaw doctor` を実行します。
 
-## Highlights
+## ハイライト
 
-- **[Local-first Gateway](https://docs.openclaw.ai/gateway)** — single control plane for sessions, channels, tools, and events.
-- **[Multi-channel inbox](https://docs.openclaw.ai/channels)** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, BlueBubbles, Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.
-- **[Multi-agent routing](https://docs.openclaw.ai/gateway/configuration)** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).
-- **[Voice Wake](https://docs.openclaw.ai/nodes/voicewake) + [Talk Mode](https://docs.openclaw.ai/nodes/talk)** — always-on speech for macOS/iOS/Android with ElevenLabs.
-- **[Live Canvas](https://docs.openclaw.ai/platforms/mac/canvas)** — agent-driven visual workspace with [A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui).
-- **[First-class tools](https://docs.openclaw.ai/tools)** — browser, canvas, nodes, cron, sessions, and Discord/Slack actions.
-- **[Companion apps](https://docs.openclaw.ai/platforms/macos)** — macOS menu bar app + iOS/Android [nodes](https://docs.openclaw.ai/nodes).
-- **[Onboarding](https://docs.openclaw.ai/start/wizard) + [skills](https://docs.openclaw.ai/tools/skills)** — wizard-driven setup with bundled/managed/workspace skills.
+- **[ローカルファースト Gateway](https://docs.openclaw.ai/gateway)** — セッション、チャンネル、ツール、イベント用の単一コントロールプレーン。
+- **[マルチチャンネル受信箱](https://docs.openclaw.ai/channels)** — WhatsApp、Telegram、Slack、Discord、Google Chat、Signal、iMessage、BlueBubbles、Microsoft Teams、Matrix、Zalo、Zalo Personal、WebChat、macOS、iOS/Android。
+- **[マルチエージェントルーティング](https://docs.openclaw.ai/gateway/configuration)** — 受信チャンネル/アカウント/ピアを分離されたエージェントにルーティング（ワークスペース + エージェントごとのセッション）。
+- **[Voice Wake](https://docs.openclaw.ai/nodes/voicewake) + [Talk Mode](https://docs.openclaw.ai/nodes/talk)** — macOS/iOS/Android での常時オン音声、ElevenLabs 使用。
+- **[ライブ Canvas](https://docs.openclaw.ai/platforms/mac/canvas)** — [A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui) を備えたエージェント駆動のビジュアルワークスペース。
+- **[ファーストクラスツール](https://docs.openclaw.ai/tools)** — ブラウザ、canvas、ノード、cron、セッション、Discord/Slack アクション。
+- **[コンパニオンアプリ](https://docs.openclaw.ai/platforms/macos)** — macOS メニューバーアプリ + iOS/Android [ノード](https://docs.openclaw.ai/nodes)。
+- **[オンボーディング](https://docs.openclaw.ai/start/wizard) + [スキル](https://docs.openclaw.ai/tools/skills)** — バンドル/マネージド/ワークスペーススキルを備えたウィザード駆動セットアップ。
 
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=openclaw/openclaw&type=date&legend=top-left)](https://www.star-history.com/#openclaw/openclaw&type=date&legend=top-left)
 
-## Everything we built so far
+## これまでに構築したすべて
 
-### Core platform
+### コアプラットフォーム
 
-- [Gateway WS control plane](https://docs.openclaw.ai/gateway) with sessions, presence, config, cron, webhooks, [Control UI](https://docs.openclaw.ai/web), and [Canvas host](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui).
-- [CLI surface](https://docs.openclaw.ai/tools/agent-send): gateway, agent, send, [wizard](https://docs.openclaw.ai/start/wizard), and [doctor](https://docs.openclaw.ai/gateway/doctor).
-- [Pi agent runtime](https://docs.openclaw.ai/concepts/agent) in RPC mode with tool streaming and block streaming.
-- [Session model](https://docs.openclaw.ai/concepts/session): `main` for direct chats, group isolation, activation modes, queue modes, reply-back. Group rules: [Groups](https://docs.openclaw.ai/concepts/groups).
-- [Media pipeline](https://docs.openclaw.ai/nodes/images): images/audio/video, transcription hooks, size caps, temp file lifecycle. Audio details: [Audio](https://docs.openclaw.ai/nodes/audio).
+- [Gateway WS コントロールプレーン](https://docs.openclaw.ai/gateway) セッション、プレゼンス、設定、cron、webhooks、[Control UI](https://docs.openclaw.ai/web)、[Canvas ホスト](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui) を含む。
+- [CLI サーフェス](https://docs.openclaw.ai/tools/agent-send)：gateway、agent、send、[ウィザード](https://docs.openclaw.ai/start/wizard)、[doctor](https://docs.openclaw.ai/gateway/doctor)。
+- [Pi エージェントランタイム](https://docs.openclaw.ai/concepts/agent) RPC モードでツールストリーミングとブロックストリーミング対応。
+- [セッションモデル](https://docs.openclaw.ai/concepts/session)：ダイレクトチャット用の `main`、グループ分離、アクティベーションモード、キューモード、リプライバック。グループルール：[グループ](https://docs.openclaw.ai/concepts/groups)。
+- [メディアパイプライン](https://docs.openclaw.ai/nodes/images)：画像/音声/動画、トランスクリプションフック、サイズ制限、一時ファイルライフサイクル。音声詳細：[音声](https://docs.openclaw.ai/nodes/audio)。
 
-### Channels
+### チャンネル
 
-- [Channels](https://docs.openclaw.ai/channels): [WhatsApp](https://docs.openclaw.ai/channels/whatsapp) (Baileys), [Telegram](https://docs.openclaw.ai/channels/telegram) (grammY), [Slack](https://docs.openclaw.ai/channels/slack) (Bolt), [Discord](https://docs.openclaw.ai/channels/discord) (discord.js), [Google Chat](https://docs.openclaw.ai/channels/googlechat) (Chat API), [Signal](https://docs.openclaw.ai/channels/signal) (signal-cli), [iMessage](https://docs.openclaw.ai/channels/imessage) (imsg), [BlueBubbles](https://docs.openclaw.ai/channels/bluebubbles) (extension), [Microsoft Teams](https://docs.openclaw.ai/channels/msteams) (extension), [Matrix](https://docs.openclaw.ai/channels/matrix) (extension), [Zalo](https://docs.openclaw.ai/channels/zalo) (extension), [Zalo Personal](https://docs.openclaw.ai/channels/zalouser) (extension), [WebChat](https://docs.openclaw.ai/web/webchat).
-- [Group routing](https://docs.openclaw.ai/concepts/group-messages): mention gating, reply tags, per-channel chunking and routing. Channel rules: [Channels](https://docs.openclaw.ai/channels).
+- [チャンネル](https://docs.openclaw.ai/channels)：[WhatsApp](https://docs.openclaw.ai/channels/whatsapp) (Baileys)、[Telegram](https://docs.openclaw.ai/channels/telegram) (grammY)、[Slack](https://docs.openclaw.ai/channels/slack) (Bolt)、[Discord](https://docs.openclaw.ai/channels/discord) (discord.js)、[Google Chat](https://docs.openclaw.ai/channels/googlechat) (Chat API)、[Signal](https://docs.openclaw.ai/channels/signal) (signal-cli)、[iMessage](https://docs.openclaw.ai/channels/imessage) (imsg)、[BlueBubbles](https://docs.openclaw.ai/channels/bluebubbles) (拡張)、[Microsoft Teams](https://docs.openclaw.ai/channels/msteams) (拡張)、[Matrix](https://docs.openclaw.ai/channels/matrix) (拡張)、[Zalo](https://docs.openclaw.ai/channels/zalo) (拡張)、[Zalo Personal](https://docs.openclaw.ai/channels/zalouser) (拡張)、[WebChat](https://docs.openclaw.ai/web/webchat)。
+- [グループルーティング](https://docs.openclaw.ai/concepts/group-messages)：メンションゲーティング、リプライタグ、チャンネルごとのチャンキングとルーティング。チャンネルルール：[チャンネル](https://docs.openclaw.ai/channels)。
 
-### Apps + nodes
+### アプリ + ノード
 
-- [macOS app](https://docs.openclaw.ai/platforms/macos): menu bar control plane, [Voice Wake](https://docs.openclaw.ai/nodes/voicewake)/PTT, [Talk Mode](https://docs.openclaw.ai/nodes/talk) overlay, [WebChat](https://docs.openclaw.ai/web/webchat), debug tools, [remote gateway](https://docs.openclaw.ai/gateway/remote) control.
-- [iOS node](https://docs.openclaw.ai/platforms/ios): [Canvas](https://docs.openclaw.ai/platforms/mac/canvas), [Voice Wake](https://docs.openclaw.ai/nodes/voicewake), [Talk Mode](https://docs.openclaw.ai/nodes/talk), camera, screen recording, Bonjour pairing.
-- [Android node](https://docs.openclaw.ai/platforms/android): [Canvas](https://docs.openclaw.ai/platforms/mac/canvas), [Talk Mode](https://docs.openclaw.ai/nodes/talk), camera, screen recording, optional SMS.
-- [macOS node mode](https://docs.openclaw.ai/nodes): system.run/notify + canvas/camera exposure.
+- [macOS アプリ](https://docs.openclaw.ai/platforms/macos)：メニューバーコントロールプレーン、[Voice Wake](https://docs.openclaw.ai/nodes/voicewake)/PTT、[Talk Mode](https://docs.openclaw.ai/nodes/talk) オーバーレイ、[WebChat](https://docs.openclaw.ai/web/webchat)、デバッグツール、[リモートゲートウェイ](https://docs.openclaw.ai/gateway/remote) コントロール。
+- [iOS ノード](https://docs.openclaw.ai/platforms/ios)：[Canvas](https://docs.openclaw.ai/platforms/mac/canvas)、[Voice Wake](https://docs.openclaw.ai/nodes/voicewake)、[Talk Mode](https://docs.openclaw.ai/nodes/talk)、カメラ、画面録画、Bonjour ペアリング。
+- [Android ノード](https://docs.openclaw.ai/platforms/android)：[Canvas](https://docs.openclaw.ai/platforms/mac/canvas)、[Talk Mode](https://docs.openclaw.ai/nodes/talk)、カメラ、画面録画、オプション SMS。
+- [macOS ノードモード](https://docs.openclaw.ai/nodes)：system.run/notify + canvas/camera エクスポーズ。
 
-### Tools + automation
+### ツール + オートメーション
 
-- [Browser control](https://docs.openclaw.ai/tools/browser): dedicated openclaw Chrome/Chromium, snapshots, actions, uploads, profiles.
-- [Canvas](https://docs.openclaw.ai/platforms/mac/canvas): [A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui) push/reset, eval, snapshot.
-- [Nodes](https://docs.openclaw.ai/nodes): camera snap/clip, screen record, [location.get](https://docs.openclaw.ai/nodes/location-command), notifications.
-- [Cron + wakeups](https://docs.openclaw.ai/automation/cron-jobs); [webhooks](https://docs.openclaw.ai/automation/webhook); [Gmail Pub/Sub](https://docs.openclaw.ai/automation/gmail-pubsub).
-- [Skills platform](https://docs.openclaw.ai/tools/skills): bundled, managed, and workspace skills with install gating + UI.
+- [ブラウザコントロール](https://docs.openclaw.ai/tools/browser)：専用 openclaw Chrome/Chromium、スナップショット、アクション、アップロード、プロファイル。
+- [Canvas](https://docs.openclaw.ai/platforms/mac/canvas)：[A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui) プッシュ/リセット、eval、スナップショット。
+- [ノード](https://docs.openclaw.ai/nodes)：カメラスナップ/クリップ、画面録画、[location.get](https://docs.openclaw.ai/nodes/location-command)、通知。
+- [Cron + ウェイクアップ](https://docs.openclaw.ai/automation/cron-jobs)；[webhooks](https://docs.openclaw.ai/automation/webhook)；[Gmail Pub/Sub](https://docs.openclaw.ai/automation/gmail-pubsub)。
+- [スキルプラットフォーム](https://docs.openclaw.ai/tools/skills)：バンドル、マネージド、ワークスペーススキル、インストールゲーティング + UI 付き。
 
-### Runtime + safety
+### ランタイム + セーフティ
 
-- [Channel routing](https://docs.openclaw.ai/concepts/channel-routing), [retry policy](https://docs.openclaw.ai/concepts/retry), and [streaming/chunking](https://docs.openclaw.ai/concepts/streaming).
-- [Presence](https://docs.openclaw.ai/concepts/presence), [typing indicators](https://docs.openclaw.ai/concepts/typing-indicators), and [usage tracking](https://docs.openclaw.ai/concepts/usage-tracking).
-- [Models](https://docs.openclaw.ai/concepts/models), [model failover](https://docs.openclaw.ai/concepts/model-failover), and [session pruning](https://docs.openclaw.ai/concepts/session-pruning).
-- [Security](https://docs.openclaw.ai/gateway/security) and [troubleshooting](https://docs.openclaw.ai/channels/troubleshooting).
+- [チャンネルルーティング](https://docs.openclaw.ai/concepts/channel-routing)、[リトライポリシー](https://docs.openclaw.ai/concepts/retry)、[ストリーミング/チャンキング](https://docs.openclaw.ai/concepts/streaming)。
+- [プレゼンス](https://docs.openclaw.ai/concepts/presence)、[タイピングインジケータ](https://docs.openclaw.ai/concepts/typing-indicators)、[使用量トラッキング](https://docs.openclaw.ai/concepts/usage-tracking)。
+- [モデル](https://docs.openclaw.ai/concepts/models)、[モデルフェイルオーバー](https://docs.openclaw.ai/concepts/model-failover)、[セッションプルーニング](https://docs.openclaw.ai/concepts/session-pruning)。
+- [セキュリティ](https://docs.openclaw.ai/gateway/security) と [トラブルシューティング](https://docs.openclaw.ai/channels/troubleshooting)。
 
-### Ops + packaging
+### 運用 + パッケージング
 
-- [Control UI](https://docs.openclaw.ai/web) + [WebChat](https://docs.openclaw.ai/web/webchat) served directly from the Gateway.
-- [Tailscale Serve/Funnel](https://docs.openclaw.ai/gateway/tailscale) or [SSH tunnels](https://docs.openclaw.ai/gateway/remote) with token/password auth.
-- [Nix mode](https://docs.openclaw.ai/install/nix) for declarative config; [Docker](https://docs.openclaw.ai/install/docker)-based installs.
-- [Doctor](https://docs.openclaw.ai/gateway/doctor) migrations, [logging](https://docs.openclaw.ai/logging).
+- [Control UI](https://docs.openclaw.ai/web) + [WebChat](https://docs.openclaw.ai/web/webchat) Gateway から直接提供。
+- [Tailscale Serve/Funnel](https://docs.openclaw.ai/gateway/tailscale) または [SSH トンネル](https://docs.openclaw.ai/gateway/remote) トークン/パスワード認証付き。
+- [Nix モード](https://docs.openclaw.ai/install/nix) 宣言的設定用；[Docker](https://docs.openclaw.ai/install/docker) ベースインストール。
+- [Doctor](https://docs.openclaw.ai/gateway/doctor) マイグレーション、[ロギング](https://docs.openclaw.ai/logging)。
 
-## How it works (short)
+## 動作原理（概要）
 
 ```
 WhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBubbles / Microsoft Teams / Matrix / Zalo / Zalo Personal / WebChat
                │
                ▼
 ┌───────────────────────────────┐
-│            Gateway            │
-│       (control plane)         │
+│          ゲートウェイ           │
+│       (コントロールプレーン)     │
 │     ws://127.0.0.1:18789      │
 └──────────────┬────────────────┘
                │
-               ├─ Pi agent (RPC)
+               ├─ Pi エージェント (RPC)
                ├─ CLI (openclaw …)
                ├─ WebChat UI
-               ├─ macOS app
-               └─ iOS / Android nodes
+               ├─ macOS アプリ
+               └─ iOS / Android ノード
 ```
 
-## Key subsystems
+## 主要サブシステム
 
-- **[Gateway WebSocket network](https://docs.openclaw.ai/concepts/architecture)** — single WS control plane for clients, tools, and events (plus ops: [Gateway runbook](https://docs.openclaw.ai/gateway)).
-- **[Tailscale exposure](https://docs.openclaw.ai/gateway/tailscale)** — Serve/Funnel for the Gateway dashboard + WS (remote access: [Remote](https://docs.openclaw.ai/gateway/remote)).
-- **[Browser control](https://docs.openclaw.ai/tools/browser)** — openclaw‑managed Chrome/Chromium with CDP control.
-- **[Canvas + A2UI](https://docs.openclaw.ai/platforms/mac/canvas)** — agent‑driven visual workspace (A2UI host: [Canvas/A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui)).
-- **[Voice Wake](https://docs.openclaw.ai/nodes/voicewake) + [Talk Mode](https://docs.openclaw.ai/nodes/talk)** — always‑on speech and continuous conversation.
-- **[Nodes](https://docs.openclaw.ai/nodes)** — Canvas, camera snap/clip, screen record, `location.get`, notifications, plus macOS‑only `system.run`/`system.notify`.
+- **[Gateway WebSocket ネットワーク](https://docs.openclaw.ai/concepts/architecture)** — クライアント、ツール、イベント用の単一 WS コントロールプレーン（運用：[Gateway ランブック](https://docs.openclaw.ai/gateway)）。
+- **[Tailscale エクスポーズ](https://docs.openclaw.ai/gateway/tailscale)** — Gateway ダッシュボード + WS 用の Serve/Funnel（リモートアクセス：[リモート](https://docs.openclaw.ai/gateway/remote)）。
+- **[ブラウザコントロール](https://docs.openclaw.ai/tools/browser)** — CDP コントロール付きの openclaw 管理 Chrome/Chromium。
+- **[Canvas + A2UI](https://docs.openclaw.ai/platforms/mac/canvas)** — エージェント駆動のビジュアルワークスペース（A2UI ホスト：[Canvas/A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui)）。
+- **[Voice Wake](https://docs.openclaw.ai/nodes/voicewake) + [Talk Mode](https://docs.openclaw.ai/nodes/talk)** — 常時オン音声と継続的会話。
+- **[ノード](https://docs.openclaw.ai/nodes)** — Canvas、カメラスナップ/クリップ、画面録画、`location.get`、通知、macOS 限定の `system.run`/`system.notify`。
 
-## Tailscale access (Gateway dashboard)
+## Tailscale アクセス（Gateway ダッシュボード）
 
-OpenClaw can auto-configure Tailscale **Serve** (tailnet-only) or **Funnel** (public) while the Gateway stays bound to loopback. Configure `gateway.tailscale.mode`:
+OpenClaw は Gateway がループバックにバインドされたまま、Tailscale **Serve**（tailnet 限定）または **Funnel**（パブリック）を自動設定できます。`gateway.tailscale.mode` を設定：
 
-- `off`: no Tailscale automation (default).
-- `serve`: tailnet-only HTTPS via `tailscale serve` (uses Tailscale identity headers by default).
-- `funnel`: public HTTPS via `tailscale funnel` (requires shared password auth).
+- `off`：Tailscale 自動化なし（デフォルト）。
+- `serve`：`tailscale serve` 経由の tailnet 限定 HTTPS（デフォルトで Tailscale アイデンティティヘッダー使用）。
+- `funnel`：`tailscale funnel` 経由のパブリック HTTPS（共有パスワード認証が必要）。
 
-Notes:
+注意：
 
-- `gateway.bind` must stay `loopback` when Serve/Funnel is enabled (OpenClaw enforces this).
-- Serve can be forced to require a password by setting `gateway.auth.mode: "password"` or `gateway.auth.allowTailscale: false`.
-- Funnel refuses to start unless `gateway.auth.mode: "password"` is set.
-- Optional: `gateway.tailscale.resetOnExit` to undo Serve/Funnel on shutdown.
+- Serve/Funnel が有効な場合、`gateway.bind` は `loopback` のままである必要があります（OpenClaw が強制）。
+- Serve は `gateway.auth.mode: "password"` または `gateway.auth.allowTailscale: false` を設定することでパスワードを強制できます。
+- `gateway.auth.mode: "password"` が設定されていない限り、Funnel は起動を拒否します。
+- オプション：シャットダウン時に Serve/Funnel を取り消す `gateway.tailscale.resetOnExit`。
 
-Details: [Tailscale guide](https://docs.openclaw.ai/gateway/tailscale) · [Web surfaces](https://docs.openclaw.ai/web)
+詳細：[Tailscale ガイド](https://docs.openclaw.ai/gateway/tailscale) · [Web サーフェス](https://docs.openclaw.ai/web)
 
-## Remote Gateway (Linux is great)
+## リモート Gateway（Linux が最高）
 
-It’s perfectly fine to run the Gateway on a small Linux instance. Clients (macOS app, CLI, WebChat) can connect over **Tailscale Serve/Funnel** or **SSH tunnels**, and you can still pair device nodes (macOS/iOS/Android) to execute device‑local actions when needed.
+小規模な Linux インスタンスで Gateway を実行しても全く問題ありません。クライアント（macOS アプリ、CLI、WebChat）は **Tailscale Serve/Funnel** または **SSH トンネル** 経由で接続でき、必要に応じてデバイスローカルアクションを実行するためにデバイスノード（macOS/iOS/Android）をペアリングできます。
 
-- **Gateway host** runs the exec tool and channel connections by default.
-- **Device nodes** run device‑local actions (`system.run`, camera, screen recording, notifications) via `node.invoke`.
-  In short: exec runs where the Gateway lives; device actions run where the device lives.
+- **Gateway ホスト** はデフォルトで exec ツールとチャンネル接続を実行。
+- **デバイスノード** は `node.invoke` 経由でデバイスローカルアクション（`system.run`、カメラ、画面録画、通知）を実行。
+  要するに：exec は Gateway がある場所で実行；デバイスアクションはデバイスがある場所で実行。
 
-Details: [Remote access](https://docs.openclaw.ai/gateway/remote) · [Nodes](https://docs.openclaw.ai/nodes) · [Security](https://docs.openclaw.ai/gateway/security)
+詳細：[リモートアクセス](https://docs.openclaw.ai/gateway/remote) · [ノード](https://docs.openclaw.ai/nodes) · [セキュリティ](https://docs.openclaw.ai/gateway/security)
 
-## macOS permissions via the Gateway protocol
+## Gateway プロトコル経由の macOS 権限
 
-The macOS app can run in **node mode** and advertises its capabilities + permission map over the Gateway WebSocket (`node.list` / `node.describe`). Clients can then execute local actions via `node.invoke`:
+macOS アプリは **ノードモード** で実行でき、Gateway WebSocket 経由でその機能 + 権限マップをアドバタイズします（`node.list` / `node.describe`）。クライアントは `node.invoke` 経由でローカルアクションを実行できます：
 
-- `system.run` runs a local command and returns stdout/stderr/exit code; set `needsScreenRecording: true` to require screen-recording permission (otherwise you’ll get `PERMISSION_MISSING`).
-- `system.notify` posts a user notification and fails if notifications are denied.
-- `canvas.*`, `camera.*`, `screen.record`, and `location.get` are also routed via `node.invoke` and follow TCC permission status.
+- `system.run` はローカルコマンドを実行し stdout/stderr/終了コードを返します；画面録画権限が必要な場合は `needsScreenRecording: true` を設定（そうでなければ `PERMISSION_MISSING` が返されます）。
+- `system.notify` はユーザー通知を投稿し、通知が拒否されると失敗します。
+- `canvas.*`、`camera.*`、`screen.record`、`location.get` も `node.invoke` 経由でルーティングされ、TCC 権限ステータスに従います。
 
-Elevated bash (host permissions) is separate from macOS TCC:
+昇格 bash（ホスト権限）は macOS TCC とは別：
 
-- Use `/elevated on|off` to toggle per‑session elevated access when enabled + allowlisted.
-- Gateway persists the per‑session toggle via `sessions.patch` (WS method) alongside `thinkingLevel`, `verboseLevel`, `model`, `sendPolicy`, and `groupActivation`.
+- `/elevated on|off` を使用して、有効 + 許可リスト時にセッションごとの昇格アクセスを切り替えます。
+- Gateway は `sessions.patch`（WS メソッド）経由でセッションごとのトグルを永続化し、`thinkingLevel`、`verboseLevel`、`model`、`sendPolicy`、`groupActivation` と一緒に保存します。
 
-Details: [Nodes](https://docs.openclaw.ai/nodes) · [macOS app](https://docs.openclaw.ai/platforms/macos) · [Gateway protocol](https://docs.openclaw.ai/concepts/architecture)
+詳細：[ノード](https://docs.openclaw.ai/nodes) · [macOS アプリ](https://docs.openclaw.ai/platforms/macos) · [Gateway プロトコル](https://docs.openclaw.ai/concepts/architecture)
 
-## Agent to Agent (sessions\_\* tools)
+## エージェント間（sessions\_\* ツール）
 
-- Use these to coordinate work across sessions without jumping between chat surfaces.
-- `sessions_list` — discover active sessions (agents) and their metadata.
-- `sessions_history` — fetch transcript logs for a session.
-- `sessions_send` — message another session; optional reply‑back ping‑pong + announce step (`REPLY_SKIP`, `ANNOUNCE_SKIP`).
+- これらを使用してチャットサーフェス間を移動せずにセッション間で作業を調整します。
+- `sessions_list` — アクティブなセッション（エージェント）とそのメタデータを検出。
+- `sessions_history` — セッションのトランスクリプトログを取得。
+- `sessions_send` — 別のセッションにメッセージを送信；オプションのリプライバックピンポン + アナウンスステップ（`REPLY_SKIP`、`ANNOUNCE_SKIP`）。
 
-Details: [Session tools](https://docs.openclaw.ai/concepts/session-tool)
+詳細：[セッションツール](https://docs.openclaw.ai/concepts/session-tool)
 
-## Skills registry (ClawHub)
+## スキルレジストリ（ClawHub）
 
-ClawHub is a minimal skill registry. With ClawHub enabled, the agent can search for skills automatically and pull in new ones as needed.
+ClawHub は最小限のスキルレジストリです。ClawHub を有効にすると、エージェントは自動的にスキルを検索し、必要に応じて新しいスキルを取り込むことができます。
 
 [ClawHub](https://clawhub.com)
 
-## Chat commands
+## チャットコマンド
 
-Send these in WhatsApp/Telegram/Slack/Google Chat/Microsoft Teams/WebChat (group commands are owner-only):
+WhatsApp/Telegram/Slack/Google Chat/Microsoft Teams/WebChat でこれらを送信（グループコマンドはオーナーのみ）：
 
-- `/status` — compact session status (model + tokens, cost when available)
-- `/new` or `/reset` — reset the session
-- `/compact` — compact session context (summary)
-- `/think <level>` — off|minimal|low|medium|high|xhigh (GPT-5.2 + Codex models only)
+- `/status` — コンパクトなセッションステータス（モデル + トークン、利用可能な場合はコスト）
+- `/new` または `/reset` — セッションをリセット
+- `/compact` — セッションコンテキストを圧縮（要約）
+- `/think <level>` — off|minimal|low|medium|high|xhigh（GPT-5.2 + Codex モデルのみ）
 - `/verbose on|off`
-- `/usage off|tokens|full` — per-response usage footer
-- `/restart` — restart the gateway (owner-only in groups)
-- `/activation mention|always` — group activation toggle (groups only)
+- `/usage off|tokens|full` — レスポンスごとの使用量フッター
+- `/restart` — ゲートウェイを再起動（グループではオーナーのみ）
+- `/activation mention|always` — グループアクティベーション切り替え（グループのみ）
 
-## Apps (optional)
+## アプリ（オプション）
 
-The Gateway alone delivers a great experience. All apps are optional and add extra features.
+Gateway だけで素晴らしい体験が得られます。すべてのアプリはオプションで、追加機能を提供します。
 
-If you plan to build/run companion apps, follow the platform runbooks below.
+コンパニオンアプリをビルド/実行する予定がある場合は、以下のプラットフォームランブックに従ってください。
 
-### macOS (OpenClaw.app) (optional)
+### macOS (OpenClaw.app)（オプション）
 
-- Menu bar control for the Gateway and health.
-- Voice Wake + push-to-talk overlay.
-- WebChat + debug tools.
-- Remote gateway control over SSH.
+- Gateway と健康状態のメニューバーコントロール。
+- Voice Wake + プッシュトゥトークオーバーレイ。
+- WebChat + デバッグツール。
+- SSH 経由のリモートゲートウェイコントロール。
 
-Note: signed builds required for macOS permissions to stick across rebuilds (see `docs/mac/permissions.md`).
+注：macOS 権限はリビルド後も維持するために署名ビルドが必要です（`docs/mac/permissions.md` 参照）。
 
-### iOS node (optional)
+### iOS ノード（オプション）
 
-- Pairs as a node via the Bridge.
-- Voice trigger forwarding + Canvas surface.
-- Controlled via `openclaw nodes …`.
+- Bridge 経由でノードとしてペアリング。
+- 音声トリガー転送 + Canvas サーフェス。
+- `openclaw nodes …` 経由でコントロール。
 
-Runbook: [iOS connect](https://docs.openclaw.ai/platforms/ios).
+ランブック：[iOS 接続](https://docs.openclaw.ai/platforms/ios)。
 
-### Android node (optional)
+### Android ノード（オプション）
 
-- Pairs via the same Bridge + pairing flow as iOS.
-- Exposes Canvas, Camera, and Screen capture commands.
-- Runbook: [Android connect](https://docs.openclaw.ai/platforms/android).
+- iOS と同じ Bridge + ペアリングフロー経由でペアリング。
+- Canvas、カメラ、画面キャプチャコマンドをエクスポーズ。
+- ランブック：[Android 接続](https://docs.openclaw.ai/platforms/android)。
 
-## Agent workspace + skills
+## エージェントワークスペース + スキル
 
-- Workspace root: `~/.openclaw/workspace` (configurable via `agents.defaults.workspace`).
-- Injected prompt files: `AGENTS.md`, `SOUL.md`, `TOOLS.md`.
-- Skills: `~/.openclaw/workspace/skills/<skill>/SKILL.md`.
+- ワークスペースルート：`~/.openclaw/workspace`（`agents.defaults.workspace` 経由で設定可能）。
+- 注入されるプロンプトファイル：`AGENTS.md`、`SOUL.md`、`TOOLS.md`。
+- スキル：`~/.openclaw/workspace/skills/<skill>/SKILL.md`。
 
-## Configuration
+## 設定
 
-Minimal `~/.openclaw/openclaw.json` (model + defaults):
+最小設定 `~/.openclaw/openclaw.json`（モデル + デフォルト）：
 
 ```json5
 {
@@ -355,26 +355,26 @@ Minimal `~/.openclaw/openclaw.json` (model + defaults):
 }
 ```
 
-[Full configuration reference (all keys + examples).](https://docs.openclaw.ai/gateway/configuration)
+[完全な設定リファレンス（すべてのキー + 例）](https://docs.openclaw.ai/gateway/configuration)
 
-## Security model (important)
+## セキュリティモデル（重要）
 
-- **Default:** tools run on the host for the **main** session, so the agent has full access when it’s just you.
-- **Group/channel safety:** set `agents.defaults.sandbox.mode: "non-main"` to run **non‑main sessions** (groups/channels) inside per‑session Docker sandboxes; bash then runs in Docker for those sessions.
-- **Sandbox defaults:** allowlist `bash`, `process`, `read`, `write`, `edit`, `sessions_list`, `sessions_history`, `sessions_send`, `sessions_spawn`; denylist `browser`, `canvas`, `nodes`, `cron`, `discord`, `gateway`.
+- **デフォルト：**ツールは **main** セッションのホストで実行されるため、あなただけの場合エージェントはフルアクセス権を持ちます。
+- **グループ/チャンネルセーフティ：**`agents.defaults.sandbox.mode: "non-main"` を設定して **非 main セッション**（グループ/チャンネル）をセッションごとの Docker サンドボックスで実行；その場合 bash はそれらのセッションで Docker 内で実行されます。
+- **サンドボックスデフォルト：**許可リスト `bash`、`process`、`read`、`write`、`edit`、`sessions_list`、`sessions_history`、`sessions_send`、`sessions_spawn`；拒否リスト `browser`、`canvas`、`nodes`、`cron`、`discord`、`gateway`。
 
-Details: [Security guide](https://docs.openclaw.ai/gateway/security) · [Docker + sandboxing](https://docs.openclaw.ai/install/docker) · [Sandbox config](https://docs.openclaw.ai/gateway/configuration)
+詳細：[セキュリティガイド](https://docs.openclaw.ai/gateway/security) · [Docker + サンドボックス](https://docs.openclaw.ai/install/docker) · [サンドボックス設定](https://docs.openclaw.ai/gateway/configuration)
 
 ### [WhatsApp](https://docs.openclaw.ai/channels/whatsapp)
 
-- Link the device: `pnpm openclaw channels login` (stores creds in `~/.openclaw/credentials`).
-- Allowlist who can talk to the assistant via `channels.whatsapp.allowFrom`.
-- If `channels.whatsapp.groups` is set, it becomes a group allowlist; include `"*"` to allow all.
+- デバイスをリンク：`pnpm openclaw channels login`（資格情報は `~/.openclaw/credentials` に保存）。
+- `channels.whatsapp.allowFrom` 経由でアシスタントと会話できる人を許可リスト化。
+- `channels.whatsapp.groups` が設定されている場合、グループ許可リストになります；すべてを許可するには `"*"` を含めます。
 
 ### [Telegram](https://docs.openclaw.ai/channels/telegram)
 
-- Set `TELEGRAM_BOT_TOKEN` or `channels.telegram.botToken` (env wins).
-- Optional: set `channels.telegram.groups` (with `channels.telegram.groups."*".requireMention`); when set, it is a group allowlist (include `"*"` to allow all). Also `channels.telegram.allowFrom` or `channels.telegram.webhookUrl` as needed.
+- `TELEGRAM_BOT_TOKEN` または `channels.telegram.botToken` を設定（env が優先）。
+- オプション：`channels.telegram.groups`（`channels.telegram.groups."*".requireMention` 付き）を設定；設定するとグループ許可リストになります（すべてを許可するには `"*"` を含める）。必要に応じて `channels.telegram.allowFrom` または `channels.telegram.webhookUrl` も設定。
 
 ```json5
 {
@@ -388,12 +388,12 @@ Details: [Security guide](https://docs.openclaw.ai/gateway/security) · [Docker 
 
 ### [Slack](https://docs.openclaw.ai/channels/slack)
 
-- Set `SLACK_BOT_TOKEN` + `SLACK_APP_TOKEN` (or `channels.slack.botToken` + `channels.slack.appToken`).
+- `SLACK_BOT_TOKEN` + `SLACK_APP_TOKEN`（または `channels.slack.botToken` + `channels.slack.appToken`）を設定。
 
 ### [Discord](https://docs.openclaw.ai/channels/discord)
 
-- Set `DISCORD_BOT_TOKEN` or `channels.discord.token` (env wins).
-- Optional: set `commands.native`, `commands.text`, or `commands.useAccessGroups`, plus `channels.discord.dm.allowFrom`, `channels.discord.guilds`, or `channels.discord.mediaMaxMb` as needed.
+- `DISCORD_BOT_TOKEN` または `channels.discord.token` を設定（env が優先）。
+- オプション：`commands.native`、`commands.text`、または `commands.useAccessGroups`、および `channels.discord.dm.allowFrom`、`channels.discord.guilds`、または `channels.discord.mediaMaxMb` を設定。
 
 ```json5
 {
@@ -407,23 +407,23 @@ Details: [Security guide](https://docs.openclaw.ai/gateway/security) · [Docker 
 
 ### [Signal](https://docs.openclaw.ai/channels/signal)
 
-- Requires `signal-cli` and a `channels.signal` config section.
+- `signal-cli` と `channels.signal` 設定セクションが必要。
 
 ### [iMessage](https://docs.openclaw.ai/channels/imessage)
 
-- macOS only; Messages must be signed in.
-- If `channels.imessage.groups` is set, it becomes a group allowlist; include `"*"` to allow all.
+- macOS のみ；Messages がサインインしている必要があります。
+- `channels.imessage.groups` が設定されている場合、グループ許可リストになります；すべてを許可するには `"*"` を含めます。
 
 ### [Microsoft Teams](https://docs.openclaw.ai/channels/msteams)
 
-- Configure a Teams app + Bot Framework, then add a `msteams` config section.
-- Allowlist who can talk via `msteams.allowFrom`; group access via `msteams.groupAllowFrom` or `msteams.groupPolicy: "open"`.
+- Teams アプリ + Bot Framework を設定し、`msteams` 設定セクションを追加。
+- `msteams.allowFrom` 経由で会話できる人を許可リスト化；グループアクセスは `msteams.groupAllowFrom` または `msteams.groupPolicy: "open"` 経由。
 
 ### [WebChat](https://docs.openclaw.ai/web/webchat)
 
-- Uses the Gateway WebSocket; no separate WebChat port/config.
+- Gateway WebSocket を使用；別の WebChat ポート/設定は不要。
 
-Browser control (optional):
+ブラウザコントロール（オプション）：
 
 ```json5
 {
@@ -434,94 +434,93 @@ Browser control (optional):
 }
 ```
 
-## Docs
+## ドキュメント
 
-Use these when you’re past the onboarding flow and want the deeper reference.
+オンボーディングフローを完了し、より深いリファレンスが必要な場合にこれらを使用してください。
 
-- [Start with the docs index for navigation and “what’s where.”](https://docs.openclaw.ai)
-- [Read the architecture overview for the gateway + protocol model.](https://docs.openclaw.ai/concepts/architecture)
-- [Use the full configuration reference when you need every key and example.](https://docs.openclaw.ai/gateway/configuration)
-- [Run the Gateway by the book with the operational runbook.](https://docs.openclaw.ai/gateway)
-- [Learn how the Control UI/Web surfaces work and how to expose them safely.](https://docs.openclaw.ai/web)
-- [Understand remote access over SSH tunnels or tailnets.](https://docs.openclaw.ai/gateway/remote)
-- [Follow the onboarding wizard flow for a guided setup.](https://docs.openclaw.ai/start/wizard)
-- [Wire external triggers via the webhook surface.](https://docs.openclaw.ai/automation/webhook)
-- [Set up Gmail Pub/Sub triggers.](https://docs.openclaw.ai/automation/gmail-pubsub)
-- [Learn the macOS menu bar companion details.](https://docs.openclaw.ai/platforms/mac/menu-bar)
-- [Platform guides: Windows (WSL2)](https://docs.openclaw.ai/platforms/windows), [Linux](https://docs.openclaw.ai/platforms/linux), [macOS](https://docs.openclaw.ai/platforms/macos), [iOS](https://docs.openclaw.ai/platforms/ios), [Android](https://docs.openclaw.ai/platforms/android)
-- [Debug common failures with the troubleshooting guide.](https://docs.openclaw.ai/channels/troubleshooting)
-- [Review security guidance before exposing anything.](https://docs.openclaw.ai/gateway/security)
+- [ドキュメントインデックスからナビゲーションと「何がどこにあるか」を開始。](https://docs.openclaw.ai)
+- [ゲートウェイ + プロトコルモデルについてアーキテクチャ概要を読む。](https://docs.openclaw.ai/concepts/architecture)
+- [すべてのキーと例が必要な場合は完全な設定リファレンスを使用。](https://docs.openclaw.ai/gateway/configuration)
+- [運用ランブックでゲートウェイをマニュアル通りに実行。](https://docs.openclaw.ai/gateway)
+- [Control UI/Web サーフェスの動作と安全なエクスポーズ方法を学ぶ。](https://docs.openclaw.ai/web)
+- [SSH トンネルまたは tailnet 経由のリモートアクセスを理解。](https://docs.openclaw.ai/gateway/remote)
+- [ガイド付きセットアップのオンボーディングウィザードフローに従う。](https://docs.openclaw.ai/start/wizard)
+- [webhook サーフェス経由で外部トリガーを接続。](https://docs.openclaw.ai/automation/webhook)
+- [Gmail Pub/Sub トリガーを設定。](https://docs.openclaw.ai/automation/gmail-pubsub)
+- [macOS メニューバーコンパニオンの詳細を学ぶ。](https://docs.openclaw.ai/platforms/mac/menu-bar)
+- [プラットフォームガイド：Windows (WSL2)](https://docs.openclaw.ai/platforms/windows)、[Linux](https://docs.openclaw.ai/platforms/linux)、[macOS](https://docs.openclaw.ai/platforms/macos)、[iOS](https://docs.openclaw.ai/platforms/ios)、[Android](https://docs.openclaw.ai/platforms/android)
+- [トラブルシューティングガイドで一般的な障害をデバッグ。](https://docs.openclaw.ai/channels/troubleshooting)
+- [何かをエクスポーズする前にセキュリティガイダンスを確認。](https://docs.openclaw.ai/gateway/security)
 
-## Advanced docs (discovery + control)
+## 高度なドキュメント（ディスカバリー + コントロール）
 
-- [Discovery + transports](https://docs.openclaw.ai/gateway/discovery)
+- [ディスカバリー + トランスポート](https://docs.openclaw.ai/gateway/discovery)
 - [Bonjour/mDNS](https://docs.openclaw.ai/gateway/bonjour)
-- [Gateway pairing](https://docs.openclaw.ai/gateway/pairing)
-- [Remote gateway README](https://docs.openclaw.ai/gateway/remote-gateway-readme)
+- [Gateway ペアリング](https://docs.openclaw.ai/gateway/pairing)
+- [リモートゲートウェイ README](https://docs.openclaw.ai/gateway/remote-gateway-readme)
 - [Control UI](https://docs.openclaw.ai/web/control-ui)
-- [Dashboard](https://docs.openclaw.ai/web/dashboard)
+- [ダッシュボード](https://docs.openclaw.ai/web/dashboard)
 
-## Operations & troubleshooting
+## 運用とトラブルシューティング
 
-- [Health checks](https://docs.openclaw.ai/gateway/health)
-- [Gateway lock](https://docs.openclaw.ai/gateway/gateway-lock)
-- [Background process](https://docs.openclaw.ai/gateway/background-process)
-- [Browser troubleshooting (Linux)](https://docs.openclaw.ai/tools/browser-linux-troubleshooting)
-- [Logging](https://docs.openclaw.ai/logging)
+- [ヘルスチェック](https://docs.openclaw.ai/gateway/health)
+- [Gateway ロック](https://docs.openclaw.ai/gateway/gateway-lock)
+- [バックグラウンドプロセス](https://docs.openclaw.ai/gateway/background-process)
+- [ブラウザトラブルシューティング (Linux)](https://docs.openclaw.ai/tools/browser-linux-troubleshooting)
+- [ロギング](https://docs.openclaw.ai/logging)
 
-## Deep dives
+## ディープダイブ
 
-- [Agent loop](https://docs.openclaw.ai/concepts/agent-loop)
-- [Presence](https://docs.openclaw.ai/concepts/presence)
-- [TypeBox schemas](https://docs.openclaw.ai/concepts/typebox)
-- [RPC adapters](https://docs.openclaw.ai/reference/rpc)
-- [Queue](https://docs.openclaw.ai/concepts/queue)
+- [エージェントループ](https://docs.openclaw.ai/concepts/agent-loop)
+- [プレゼンス](https://docs.openclaw.ai/concepts/presence)
+- [TypeBox スキーマ](https://docs.openclaw.ai/concepts/typebox)
+- [RPC アダプター](https://docs.openclaw.ai/reference/rpc)
+- [キュー](https://docs.openclaw.ai/concepts/queue)
 
-## Workspace & skills
+## ワークスペースとスキル
 
-- [Skills config](https://docs.openclaw.ai/tools/skills-config)
-- [Default AGENTS](https://docs.openclaw.ai/reference/AGENTS.default)
-- [Templates: AGENTS](https://docs.openclaw.ai/reference/templates/AGENTS)
-- [Templates: BOOTSTRAP](https://docs.openclaw.ai/reference/templates/BOOTSTRAP)
-- [Templates: IDENTITY](https://docs.openclaw.ai/reference/templates/IDENTITY)
-- [Templates: SOUL](https://docs.openclaw.ai/reference/templates/SOUL)
-- [Templates: TOOLS](https://docs.openclaw.ai/reference/templates/TOOLS)
-- [Templates: USER](https://docs.openclaw.ai/reference/templates/USER)
+- [スキル設定](https://docs.openclaw.ai/tools/skills-config)
+- [デフォルト AGENTS](https://docs.openclaw.ai/reference/AGENTS.default)
+- [テンプレート：AGENTS](https://docs.openclaw.ai/reference/templates/AGENTS)
+- [テンプレート：BOOTSTRAP](https://docs.openclaw.ai/reference/templates/BOOTSTRAP)
+- [テンプレート：IDENTITY](https://docs.openclaw.ai/reference/templates/IDENTITY)
+- [テンプレート：SOUL](https://docs.openclaw.ai/reference/templates/SOUL)
+- [テンプレート：TOOLS](https://docs.openclaw.ai/reference/templates/TOOLS)
+- [テンプレート：USER](https://docs.openclaw.ai/reference/templates/USER)
 
-## Platform internals
+## プラットフォーム内部
 
-- [macOS dev setup](https://docs.openclaw.ai/platforms/mac/dev-setup)
-- [macOS menu bar](https://docs.openclaw.ai/platforms/mac/menu-bar)
-- [macOS voice wake](https://docs.openclaw.ai/platforms/mac/voicewake)
-- [iOS node](https://docs.openclaw.ai/platforms/ios)
-- [Android node](https://docs.openclaw.ai/platforms/android)
+- [macOS 開発セットアップ](https://docs.openclaw.ai/platforms/mac/dev-setup)
+- [macOS メニューバー](https://docs.openclaw.ai/platforms/mac/menu-bar)
+- [macOS Voice Wake](https://docs.openclaw.ai/platforms/mac/voicewake)
+- [iOS ノード](https://docs.openclaw.ai/platforms/ios)
+- [Android ノード](https://docs.openclaw.ai/platforms/android)
 - [Windows (WSL2)](https://docs.openclaw.ai/platforms/windows)
-- [Linux app](https://docs.openclaw.ai/platforms/linux)
+- [Linux アプリ](https://docs.openclaw.ai/platforms/linux)
 
-## Email hooks (Gmail)
+## メールフック (Gmail)
 
 - [docs.openclaw.ai/gmail-pubsub](https://docs.openclaw.ai/automation/gmail-pubsub)
 
 ## Molty
 
-OpenClaw was built for **Molty**, a space lobster AI assistant. 🦞
-by Peter Steinberger and the community.
+OpenClaw は **Molty** のために構築されました。宇宙ロブスター AI アシスタントです。🦞
+Peter Steinberger とコミュニティによって開発。
 
 - [openclaw.ai](https://openclaw.ai)
 - [soul.md](https://soul.md)
 - [steipete.me](https://steipete.me)
 - [@openclaw](https://x.com/openclaw)
 
-## Community
+## コミュニティ
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines, maintainers, and how to submit PRs.
-AI/vibe-coded PRs welcome! 🤖
+ガイドライン、メンテナー、PR の提出方法については [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
+AI/vibe-coded PR 歓迎！🤖
 
-Special thanks to [Mario Zechner](https://mariozechner.at/) for his support and for
-[pi-mono](https://github.com/badlogic/pi-mono).
-Special thanks to Adam Doppelt for lobster.bot.
+[Mario Zechner](https://mariozechner.at/) のサポートと [pi-mono](https://github.com/badlogic/pi-mono) に特別な感謝を。
+Adam Doppelt の lobster.bot にも特別な感謝を。
 
-Thanks to all clawtributors:
+すべての clawtributor に感謝：
 
 <p align="left">
   <a href="https://github.com/steipete"><img src="https://avatars.githubusercontent.com/u/58493?v=4&s=48" width="48" height="48" alt="steipete" title="steipete"/></a> <a href="https://github.com/cpojer"><img src="https://avatars.githubusercontent.com/u/13352?v=4&s=48" width="48" height="48" alt="cpojer" title="cpojer"/></a> <a href="https://github.com/plum-dawg"><img src="https://avatars.githubusercontent.com/u/5909950?v=4&s=48" width="48" height="48" alt="plum-dawg" title="plum-dawg"/></a> <a href="https://github.com/bohdanpodvirnyi"><img src="https://avatars.githubusercontent.com/u/31819391?v=4&s=48" width="48" height="48" alt="bohdanpodvirnyi" title="bohdanpodvirnyi"/></a> <a href="https://github.com/iHildy"><img src="https://avatars.githubusercontent.com/u/25069719?v=4&s=48" width="48" height="48" alt="iHildy" title="iHildy"/></a> <a href="https://github.com/jaydenfyi"><img src="https://avatars.githubusercontent.com/u/213395523?v=4&s=48" width="48" height="48" alt="jaydenfyi" title="jaydenfyi"/></a> <a href="https://github.com/joaohlisboa"><img src="https://avatars.githubusercontent.com/u/8200873?v=4&s=48" width="48" height="48" alt="joaohlisboa" title="joaohlisboa"/></a> <a href="https://github.com/mneves75"><img src="https://avatars.githubusercontent.com/u/2423436?v=4&s=48" width="48" height="48" alt="mneves75" title="mneves75"/></a> <a href="https://github.com/MatthieuBizien"><img src="https://avatars.githubusercontent.com/u/173090?v=4&s=48" width="48" height="48" alt="MatthieuBizien" title="MatthieuBizien"/></a> <a href="https://github.com/MaudeBot"><img src="https://avatars.githubusercontent.com/u/255777700?v=4&s=48" width="48" height="48" alt="MaudeBot" title="MaudeBot"/></a>

@@ -46,6 +46,19 @@ export {
   applySiliconFlowProviderConfig,
   SILICONFLOW_DEFAULT_MODEL_REF,
 } from "./onboard-auth.config-siliconflow.js";
+
+export {
+  applyDeepSeekConfig,
+  applyDeepSeekProviderConfig,
+  DEEPSEEK_DEFAULT_MODEL_REF,
+} from "./onboard-auth.config-deepseek.js";
+
+export {
+  applyGroqConfig,
+  applyGroqProviderConfig,
+  GROQ_DEFAULT_MODEL_REF,
+} from "./onboard-auth.config-groq.js";
+
 export {
   OPENROUTER_DEFAULT_MODEL_REF,
   setAnthropicApiKey,
@@ -57,6 +70,8 @@ export {
   setOpencodeZenApiKey,
   setOpenrouterApiKey,
   setSiliconflowApiKey,
+  setDeepSeekApiKey,
+  setGroqApiKey,
   setSyntheticApiKey,
   setVeniceApiKey,
   setVercelAiGatewayApiKey,

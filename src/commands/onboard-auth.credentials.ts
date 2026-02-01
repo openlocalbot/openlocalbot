@@ -202,3 +202,27 @@ export async function setSiliconflowApiKey(key: string, agentDir?: string) {
     agentDir: resolveAuthAgentDir(agentDir),
   });
 }
+
+export async function setDeepSeekApiKey(key: string, agentDir?: string) {
+  upsertAuthProfile({
+    profileId: "deepseek:default",
+    credential: {
+      type: "api_key",
+      provider: "deepseek",
+      key,
+    },
+    agentDir: resolveAuthAgentDir(agentDir),
+  });
+}
+
+export async function setGroqApiKey(key: string, agentDir?: string) {
+  upsertAuthProfile({
+    profileId: "groq:default",
+    credential: {
+      type: "api_key",
+      provider: "groq",
+      key,
+    },
+    agentDir: resolveAuthAgentDir(agentDir),
+  });
+}
