@@ -1,18 +1,18 @@
-import OpenClawKit
-import OpenClawProtocol
+import openlocalbotKit
+import openlocalbotProtocol
 import Foundation
 import Observation
 import OSLog
 import SwiftUI
 
-private let onboardingWizardLogger = Logger(subsystem: "ai.openclaw", category: "onboarding.wizard")
+private let onboardingWizardLogger = Logger(subsystem: "ai.openlocalbot", category: "onboarding.wizard")
 
 // MARK: - Swift 6 AnyCodable Bridging Helpers
 
-// Bridge between OpenClawProtocol.AnyCodable and the local module to avoid
+// Bridge between openlocalbotProtocol.AnyCodable and the local module to avoid
 // Swift 6 strict concurrency type conflicts.
 
-private typealias ProtocolAnyCodable = OpenClawProtocol.AnyCodable
+private typealias ProtocolAnyCodable = openlocalbotProtocol.AnyCodable
 
 private func bridgeToLocal(_ value: ProtocolAnyCodable) -> AnyCodable {
     if let data = try? JSONEncoder().encode(value),
@@ -187,7 +187,7 @@ final class OnboardingWizardModel {
     }
 
     private func shouldSkipWizard() -> Bool {
-        let root = OpenClawConfigFile.loadDict()
+        let root = openlocalbotConfigFile.loadDict()
         if let wizard = root["wizard"] as? [String: Any], !wizard.isEmpty {
             return true
         }

@@ -1,5 +1,5 @@
 import Testing
-@testable import OpenClaw
+@testable import openlocalbot
 
 struct VoiceWakeHelpersTests {
     @Test func sanitizeTriggersTrimsAndDropsEmpty() {

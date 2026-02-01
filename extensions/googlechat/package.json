@@ -1,18 +1,18 @@
 {
-  "name": "@openclaw/googlechat",
+  "name": "@openlocalbot/googlechat",
   "version": "2026.1.30",
-  "description": "OpenClaw Google Chat channel plugin",
+  "description": "openlocalbot Google Chat channel plugin",
   "type": "module",
   "dependencies": {
     "google-auth-library": "^10.5.0"
   },
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "openlocalbot": "workspace:*"
   },
   "peerDependencies": {
-    "openclaw": ">=2026.1.26"
+    "openlocalbot": ">=2026.1.26"
   },
-  "openclaw": {
+  "openlocalbot": {
     "extensions": [
       "./index.ts"
     ],
@@ -31,7 +31,7 @@
       "order": 55
     },
     "install": {
-      "npmSpec": "@openclaw/googlechat",
+      "npmSpec": "@openlocalbot/googlechat",
       "localPath": "extensions/googlechat",
       "defaultChoice": "npm"
     }

@@ -1,12 +1,12 @@
 {
-  "name": "@openclaw/minimax-portal-auth",
+  "name": "@openlocalbot/minimax-portal-auth",
   "version": "2026.1.30",
-  "description": "OpenClaw MiniMax Portal OAuth provider plugin",
+  "description": "openlocalbot MiniMax Portal OAuth provider plugin",
   "type": "module",
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "openlocalbot": "workspace:*"
   },
-  "openclaw": {
+  "openlocalbot": {
     "extensions": [
       "./index.ts"
     ]

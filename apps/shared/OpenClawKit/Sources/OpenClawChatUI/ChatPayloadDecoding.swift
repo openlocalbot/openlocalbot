@@ -1,4 +1,4 @@
-import OpenClawKit
+import openlocalbotKit
 import Foundation
 
 enum ChatPayloadDecoding {

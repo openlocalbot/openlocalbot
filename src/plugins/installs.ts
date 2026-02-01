@@ -1,12 +1,12 @@
-import type { OpenClawConfig } from "../config/config.js";
+import type { openlocalbotConfig } from "../config/config.js";
 import type { PluginInstallRecord } from "../config/types.plugins.js";
 
 export type PluginInstallUpdate = PluginInstallRecord & { pluginId: string };
 
 export function recordPluginInstall(
-  cfg: OpenClawConfig,
+  cfg: openlocalbotConfig,
   update: PluginInstallUpdate,
-): OpenClawConfig {
+): openlocalbotConfig {
   const { pluginId, ...record } = update;
   const installs = {
     ...cfg.plugins?.installs,

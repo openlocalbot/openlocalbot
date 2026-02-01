@@ -1,16 +1,16 @@
 import type { ChannelId, ChannelSetupInput } from "../../channels/plugins/types.js";
-import type { OpenClawConfig } from "../../config/config.js";
+import type { openlocalbotConfig } from "../../config/config.js";
 import { getChannelPlugin } from "../../channels/plugins/index.js";
 import { normalizeAccountId } from "../../routing/session-key.js";
 
 type ChatChannel = ChannelId;
 
 export function applyAccountName(params: {
-  cfg: OpenClawConfig;
+  cfg: openlocalbotConfig;
   channel: ChatChannel;
   accountId: string;
   name?: string;
-}): OpenClawConfig {
+}): openlocalbotConfig {
   const accountId = normalizeAccountId(params.accountId);
   const plugin = getChannelPlugin(params.channel);
   const apply = plugin?.setup?.applyAccountName;
@@ -18,7 +18,7 @@ export function applyAccountName(params: {
 }
 
 export function applyChannelAccountConfig(params: {
-  cfg: OpenClawConfig;
+  cfg: openlocalbotConfig;
   channel: ChatChannel;
   accountId: string;
   name?: string;
@@ -52,7 +52,7 @@ export function applyChannelAccountConfig(params: {
   groupChannels?: string[];
   dmAllowlist?: string[];
   autoDiscoverChannels?: boolean;
-}): OpenClawConfig {
+}): openlocalbotConfig {
   const accountId = normalizeAccountId(params.accountId);
   const plugin = getChannelPlugin(params.channel);
   const apply = plugin?.setup?.applyAccountConfig;

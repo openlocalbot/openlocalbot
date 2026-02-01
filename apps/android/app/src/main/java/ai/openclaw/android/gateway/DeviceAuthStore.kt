@@ -1,6 +1,6 @@
-package ai.openclaw.android.gateway
+package ai.openlocalbot.android.gateway
 
-import ai.openclaw.android.SecurePrefs
+import ai.openlocalbot.android.SecurePrefs
 
 class DeviceAuthStore(private val prefs: SecurePrefs) {
   fun loadToken(deviceId: String, role: String): String? {

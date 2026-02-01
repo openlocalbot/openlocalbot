@@ -1,6 +1,6 @@
 import AVFAudio
-import OpenClawKit
-import OpenClawProtocol
+import openlocalbotKit
+import openlocalbotProtocol
 import Foundation
 import Observation
 import OSLog

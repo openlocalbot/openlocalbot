@@ -1,4 +1,4 @@
-import OpenClawProtocol
+import openlocalbotProtocol
 
 /// Server-push messages from the gateway websocket.
 ///

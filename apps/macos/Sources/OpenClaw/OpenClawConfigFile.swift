@@ -1,19 +1,19 @@
-import OpenClawProtocol
+import openlocalbotProtocol
 import Foundation
 
-enum OpenClawConfigFile {
-    private static let logger = Logger(subsystem: "ai.openclaw", category: "config")
+enum openlocalbotConfigFile {
+    private static let logger = Logger(subsystem: "ai.openlocalbot", category: "config")
 
     static func url() -> URL {
-        OpenClawPaths.configURL
+        openlocalbotPaths.configURL
     }
 
     static func stateDirURL() -> URL {
-        OpenClawPaths.stateDirURL
+        openlocalbotPaths.stateDirURL
     }
 
     static func defaultWorkspaceURL() -> URL {
-        OpenClawPaths.workspaceURL
+        openlocalbotPaths.workspaceURL
     }
 
     static func loadDict() -> [String: Any] {

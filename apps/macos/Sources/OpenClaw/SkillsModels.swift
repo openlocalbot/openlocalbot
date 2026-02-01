@@ -1,4 +1,4 @@
-import OpenClawProtocol
+import openlocalbotProtocol
 import Foundation
 
 struct SkillsStatusReport: Codable {

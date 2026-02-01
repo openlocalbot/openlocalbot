@@ -1,5 +1,5 @@
-import OpenClawKit
-import OpenClawProtocol
+import openlocalbotKit
+import openlocalbotProtocol
 
-typealias ProtoAnyCodable = OpenClawProtocol.AnyCodable
-typealias KitAnyCodable = OpenClawKit.AnyCodable
+typealias ProtoAnyCodable = openlocalbotProtocol.AnyCodable
+typealias KitAnyCodable = openlocalbotKit.AnyCodable

@@ -1,12 +1,12 @@
 {
-  "name": "@openclaw/google-gemini-cli-auth",
+  "name": "@openlocalbot/google-gemini-cli-auth",
   "version": "2026.1.30",
-  "description": "OpenClaw Gemini CLI OAuth provider plugin",
+  "description": "openlocalbot Gemini CLI OAuth provider plugin",
   "type": "module",
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "openlocalbot": "workspace:*"
   },
-  "openclaw": {
+  "openlocalbot": {
     "extensions": [
       "./index.ts"
     ]

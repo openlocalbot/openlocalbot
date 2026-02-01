@@ -1,4 +1,4 @@
-import OpenClawProtocol
+import openlocalbotProtocol
 import Foundation
 import SwiftUI
 

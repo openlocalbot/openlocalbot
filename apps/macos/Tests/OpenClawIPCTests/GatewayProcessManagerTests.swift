@@ -1,8 +1,8 @@
-import OpenClawKit
+import openlocalbotKit
 import Foundation
 import os
 import Testing
-@testable import OpenClaw
+@testable import openlocalbot
 
 @Suite(.serialized)
 @MainActor

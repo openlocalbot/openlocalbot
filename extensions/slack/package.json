@@ -1,12 +1,12 @@
 {
-  "name": "@openclaw/slack",
+  "name": "@openlocalbot/slack",
   "version": "2026.1.30",
-  "description": "OpenClaw Slack channel plugin",
+  "description": "openlocalbot Slack channel plugin",
   "type": "module",
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "openlocalbot": "workspace:*"
   },
-  "openclaw": {
+  "openlocalbot": {
     "extensions": [
       "./index.ts"
     ]

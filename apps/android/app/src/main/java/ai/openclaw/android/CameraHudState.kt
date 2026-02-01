@@ -1,4 +1,4 @@
-package ai.openclaw.android
+package ai.openlocalbot.android
 
 enum class CameraHudKind {
   Photo,

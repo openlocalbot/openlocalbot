@@ -1,15 +1,15 @@
 {
-  "name": "@openclaw/memory-core",
+  "name": "@openlocalbot/memory-core",
   "version": "2026.1.30",
-  "description": "OpenClaw core memory search plugin",
+  "description": "openlocalbot core memory search plugin",
   "type": "module",
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "openlocalbot": "workspace:*"
   },
   "peerDependencies": {
-    "openclaw": ">=2026.1.26"
+    "openlocalbot": ">=2026.1.26"
   },
-  "openclaw": {
+  "openlocalbot": {
     "extensions": [
       "./index.ts"
     ]

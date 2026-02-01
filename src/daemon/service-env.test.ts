@@ -223,25 +223,25 @@ describe("buildServiceEnvironment", () => {
     } else {
       expect(env.PATH).toContain("/usr/bin");
     }
-    expect(env.OPENCLAW_GATEWAY_PORT).toBe("18789");
-    expect(env.OPENCLAW_GATEWAY_TOKEN).toBe("secret");
-    expect(env.OPENCLAW_SERVICE_MARKER).toBe("openclaw");
-    expect(env.OPENCLAW_SERVICE_KIND).toBe("gateway");
-    expect(typeof env.OPENCLAW_SERVICE_VERSION).toBe("string");
-    expect(env.OPENCLAW_SYSTEMD_UNIT).toBe("openclaw-gateway.service");
+    expect(env.openlocalbot_GATEWAY_PORT).toBe("18789");
+    expect(env.openlocalbot_GATEWAY_TOKEN).toBe("secret");
+    expect(env.openlocalbot_SERVICE_MARKER).toBe("openlocalbot");
+    expect(env.openlocalbot_SERVICE_KIND).toBe("gateway");
+    expect(typeof env.openlocalbot_SERVICE_VERSION).toBe("string");
+    expect(env.openlocalbot_SYSTEMD_UNIT).toBe("openlocalbot-gateway.service");
     if (process.platform === "darwin") {
-      expect(env.OPENCLAW_LAUNCHD_LABEL).toBe("ai.openclaw.gateway");
+      expect(env.openlocalbot_LAUNCHD_LABEL).toBe("ai.openlocalbot.gateway");
     }
   });
 
   it("uses profile-specific unit and label", () => {
     const env = buildServiceEnvironment({
-      env: { HOME: "/home/user", OPENCLAW_PROFILE: "work" },
+      env: { HOME: "/home/user", openlocalbot_PROFILE: "work" },
       port: 18789,
     });
-    expect(env.OPENCLAW_SYSTEMD_UNIT).toBe("openclaw-gateway-work.service");
+    expect(env.openlocalbot_SYSTEMD_UNIT).toBe("openlocalbot-gateway-work.service");
     if (process.platform === "darwin") {
-      expect(env.OPENCLAW_LAUNCHD_LABEL).toBe("ai.openclaw.work");
+      expect(env.openlocalbot_LAUNCHD_LABEL).toBe("ai.openlocalbot.work");
     }
   });
 });

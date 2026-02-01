@@ -1,12 +1,12 @@
 {
-  "name": "@openclaw/line",
+  "name": "@openlocalbot/line",
   "version": "2026.1.30",
-  "description": "OpenClaw LINE channel plugin",
+  "description": "openlocalbot LINE channel plugin",
   "type": "module",
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "openlocalbot": "workspace:*"
   },
-  "openclaw": {
+  "openlocalbot": {
     "extensions": [
       "./index.ts"
     ],
@@ -21,7 +21,7 @@
       "quickstartAllowFrom": true
     },
     "install": {
-      "npmSpec": "@openclaw/line",
+      "npmSpec": "@openlocalbot/line",
       "localPath": "extensions/line",
       "defaultChoice": "npm"
     }

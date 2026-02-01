@@ -1,9 +1,9 @@
-import OpenClawProtocol
+import openlocalbotProtocol
 import SwiftUI
 import Testing
-@testable import OpenClaw
+@testable import openlocalbot
 
-private typealias ProtoAnyCodable = OpenClawProtocol.AnyCodable
+private typealias ProtoAnyCodable = openlocalbotProtocol.AnyCodable
 
 @Suite(.serialized)
 @MainActor

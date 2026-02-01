@@ -1,4 +1,4 @@
-package ai.openclaw.android.node
+package ai.openlocalbot.android.node
 
 import kotlin.math.max
 import kotlin.math.min

@@ -1,11 +1,11 @@
-import OpenClawKit
+import openlocalbotKit
 import Testing
 
 @Suite struct CanvasA2UITests {
     @Test func commandStringsAreStable() {
-        #expect(OpenClawCanvasA2UICommand.push.rawValue == "canvas.a2ui.push")
-        #expect(OpenClawCanvasA2UICommand.pushJSONL.rawValue == "canvas.a2ui.pushJSONL")
-        #expect(OpenClawCanvasA2UICommand.reset.rawValue == "canvas.a2ui.reset")
+        #expect(openlocalbotCanvasA2UICommand.push.rawValue == "canvas.a2ui.push")
+        #expect(openlocalbotCanvasA2UICommand.pushJSONL.rawValue == "canvas.a2ui.pushJSONL")
+        #expect(openlocalbotCanvasA2UICommand.reset.rawValue == "canvas.a2ui.reset")
     }
 
     @Test func jsonlDecodesAndValidatesV0_8() throws {
@@ -16,7 +16,7 @@ import Testing
         {"deleteSurface":{"surfaceId":"main"}}
         """
 
-        let messages = try OpenClawCanvasA2UIJSONL.decodeMessagesFromJSONL(jsonl)
+        let messages = try openlocalbotCanvasA2UIJSONL.decodeMessagesFromJSONL(jsonl)
         #expect(messages.count == 4)
     }
 
@@ -26,7 +26,7 @@ import Testing
         """
 
         #expect(throws: Error.self) {
-            _ = try OpenClawCanvasA2UIJSONL.decodeMessagesFromJSONL(jsonl)
+            _ = try openlocalbotCanvasA2UIJSONL.decodeMessagesFromJSONL(jsonl)
         }
     }
 
@@ -36,7 +36,7 @@ import Testing
         """
 
         #expect(throws: Error.self) {
-            _ = try OpenClawCanvasA2UIJSONL.decodeMessagesFromJSONL(jsonl)
+            _ = try openlocalbotCanvasA2UIJSONL.decodeMessagesFromJSONL(jsonl)
         }
     }
 }

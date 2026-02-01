@@ -49,7 +49,7 @@ const runtime: RuntimeEnv = {
 };
 
 const baseSnapshot = {
-  path: "/tmp/openclaw.json",
+  path: "/tmp/openlocalbot.json",
   exists: true,
   raw: "{}",
   parsed: {},
@@ -369,7 +369,7 @@ describe("channels command", () => {
     });
     expect(lines.join("\n")).toMatch(/Warnings:/);
     expect(lines.join("\n")).toMatch(/Message Content Intent is disabled/i);
-    expect(lines.join("\n")).toMatch(/Run: (?:openclaw|openclaw)( --profile isolated)? doctor/);
+    expect(lines.join("\n")).toMatch(/Run: (?:openlocalbot|openlocalbot)( --profile isolated)? doctor/);
   });
 
   it("surfaces Discord permission audit issues in channels status output", () => {
@@ -424,12 +424,12 @@ describe("channels command", () => {
             accountId: "default",
             enabled: true,
             configured: true,
-            probe: { ok: true, bot: { username: "openclaw_bot" } },
+            probe: { ok: true, bot: { username: "openlocalbot_bot" } },
           },
         ],
       },
     });
-    expect(lines.join("\n")).toMatch(/bot:@openclaw_bot/);
+    expect(lines.join("\n")).toMatch(/bot:@openlocalbot_bot/);
   });
 
   it("surfaces Telegram group membership audit issues in channels status output", () => {
