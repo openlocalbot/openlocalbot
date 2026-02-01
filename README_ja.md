@@ -1,4 +1,4 @@
-# 🦞 OpenClaw — パーソナル AI アシスタント
+# 🤖 OpenLocalBot — パーソナル AI アシスタント
 
 <p align="center">
   <a href="README.md">🇺🇸 English</a> · <a href="README_zh.md">🇨🇳 简体中文</a> · <a href="README_zh-TW.md">🇹🇼 繁體中文</a>

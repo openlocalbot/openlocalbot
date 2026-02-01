@@ -1,12 +1,12 @@
 {
-  "name": "openclaw",
-  "version": "2026.1.30",
-  "description": "WhatsApp gateway CLI (Baileys web) with Pi RPC agent",
-  "keywords": [],
+  "name": "openlocalbot",
+  "version": "1.0.0",
+  "description": "Personal AI assistant with multi-channel support (WhatsApp, Telegram, Discord, etc.)",
+  "keywords": ["ai", "assistant", "chatbot", "whatsapp", "telegram", "discord", "openai", "anthropic"],
   "license": "MIT",
-  "author": "",
+  "author": "violettoolssite",
   "bin": {
-    "openclaw": "openclaw.mjs"
+    "openlocalbot": "openlocalbot.mjs"
   },
   "files": [
     "dist/acp/**",
@@ -51,7 +51,7 @@
     "docs/**",
     "extensions/**",
     "assets/**",
-    "openclaw.mjs",
+    "openlocalbot.mjs",
     "skills/**",
     "patches/**",
     "README.md",
@@ -79,7 +79,7 @@
     ".": "./dist/index.js",
     "./plugin-sdk": "./dist/plugin-sdk/index.js",
     "./plugin-sdk/*": "./dist/plugin-sdk/*",
-    "./cli-entry": "./openclaw.mjs"
+    "./cli-entry": "./openlocalbot.mjs"
   },
   "scripts": {
     "android:assemble": "cd apps/android && ./gradlew :app:assembleDebug",
@@ -116,8 +116,8 @@
     "onboard-ui:build": "cd ui-onboard && pnpm build",
     "onboard-ui:dev": "cd ui-onboard && pnpm dev",
     "onboard-ui:install": "cd ui-onboard && pnpm install",
-    "openclaw": "node scripts/run-node.mjs",
-    "openclaw:rpc": "node scripts/run-node.mjs agent --mode rpc --json",
+    "openlocalbot": "node scripts/run-node.mjs",
+    "openlocalbot:rpc": "node scripts/run-node.mjs agent --mode rpc --json",
     "plugins:sync": "node --import tsx scripts/sync-plugin-versions.ts",
     "postinstall": "node scripts/postinstall.js",
     "prepack": "pnpm build && pnpm ui:build && pnpm onboard-ui:build",
