@@ -4,7 +4,7 @@ import type {
   ChannelDock,
   ChannelGroupContext,
   ChannelPlugin,
-  openlocalbotConfig,
+  OpenLocalBotConfig,
   GroupToolPolicyConfig,
 } from "openlocalbot/plugin-sdk";
 import {
@@ -257,7 +257,7 @@ export const zalouserPlugin: ChannelPlugin<ResolvedZalouserAccount> = {
               enabled: true,
             },
           },
-        } as openlocalbotConfig;
+        } as OpenLocalBotConfig;
       }
       return {
         ...next,
@@ -275,7 +275,7 @@ export const zalouserPlugin: ChannelPlugin<ResolvedZalouserAccount> = {
             },
           },
         },
-      } as openlocalbotConfig;
+      } as OpenLocalBotConfig;
     },
   },
   messaging: {

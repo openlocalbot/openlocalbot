@@ -44,7 +44,7 @@ enum ConfigStore {
         if let gateway = await self.loadFromGateway() {
             return gateway
         }
-        return openlocalbotConfigFile.loadDict()
+        return OpenLocalBotConfigFile.loadDict()
     }
 
     @MainActor
@@ -63,7 +63,7 @@ enum ConfigStore {
                 do {
                     try await self.saveToGateway(root)
                 } catch {
-                    openlocalbotConfigFile.saveDict(root)
+                    OpenLocalBotConfigFile.saveDict(root)
                 }
             }
         }

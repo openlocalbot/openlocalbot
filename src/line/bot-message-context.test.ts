@@ -3,14 +3,14 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { ResolvedLineAccount } from "./types.js";
 import { buildLineMessageContext, buildLinePostbackContext } from "./bot-message-context.js";
 
 describe("buildLineMessageContext", () => {
   let tmpDir: string;
   let storePath: string;
-  let cfg: openlocalbotConfig;
+  let cfg: OpenLocalBotConfig;
   const account: ResolvedLineAccount = {
     accountId: "default",
     enabled: true,

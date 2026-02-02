@@ -1,5 +1,5 @@
 import chokidar from "chokidar";
-import type { openlocalbotConfig, ConfigFileSnapshot, GatewayReloadMode } from "../config/config.js";
+import type { OpenLocalBotConfig, ConfigFileSnapshot, GatewayReloadMode } from "../config/config.js";
 import { type ChannelId, listChannelPlugins } from "../channels/plugins/index.js";
 import { getActivePluginRegistry } from "../plugins/runtime.js";
 
@@ -164,7 +164,7 @@ export function diffConfigPaths(prev: unknown, next: unknown, prefix = ""): stri
   return [prefix || "<root>"];
 }
 
-export function resolveGatewayReloadSettings(cfg: openlocalbotConfig): GatewayReloadSettings {
+export function resolveGatewayReloadSettings(cfg: OpenLocalBotConfig): GatewayReloadSettings {
   const rawMode = cfg.gateway?.reload?.mode;
   const mode =
     rawMode === "off" || rawMode === "restart" || rawMode === "hot" || rawMode === "hybrid"
@@ -254,10 +254,10 @@ export type GatewayConfigReloader = {
 };
 
 export function startGatewayConfigReloader(opts: {
-  initialConfig: openlocalbotConfig;
+  initialConfig: OpenLocalBotConfig;
   readSnapshot: () => Promise<ConfigFileSnapshot>;
-  onHotReload: (plan: GatewayReloadPlan, nextConfig: openlocalbotConfig) => Promise<void>;
-  onRestart: (plan: GatewayReloadPlan, nextConfig: openlocalbotConfig) => void;
+  onHotReload: (plan: GatewayReloadPlan, nextConfig: OpenLocalBotConfig) => Promise<void>;
+  onRestart: (plan: GatewayReloadPlan, nextConfig: OpenLocalBotConfig) => void;
   log: {
     info: (msg: string) => void;
     warn: (msg: string) => void;

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import {
   computeBackoff,
   DEFAULT_HEARTBEAT_SECONDS,
@@ -10,7 +10,7 @@ import {
 } from "./reconnect.js";
 
 describe("web reconnect helpers", () => {
-  const cfg: openlocalbotConfig = {};
+  const cfg: OpenLocalBotConfig = {};
 
   it("resolves sane reconnect defaults with clamps", () => {
     const policy = resolveReconnectPolicy(cfg, {

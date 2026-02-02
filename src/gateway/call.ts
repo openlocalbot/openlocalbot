@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import {
   loadConfig,
   resolveConfigPath,
@@ -23,7 +23,7 @@ export type CallGatewayOptions = {
   token?: string;
   password?: string;
   tlsFingerprint?: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   method: string;
   params?: unknown;
   expectFinal?: boolean;
@@ -52,7 +52,7 @@ export type GatewayConnectionDetails = {
 };
 
 export function buildGatewayConnectionDetails(
-  options: { config?: openlocalbotConfig; url?: string; configPath?: string } = {},
+  options: { config?: OpenLocalBotConfig; url?: string; configPath?: string } = {},
 ): GatewayConnectionDetails {
   const config = options.config ?? loadConfig();
   const configPath =

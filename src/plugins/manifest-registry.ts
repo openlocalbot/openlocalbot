@@ -1,5 +1,5 @@
 import fs from "node:fs";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { PluginConfigUiHint, PluginDiagnostic, PluginKind, PluginOrigin } from "./types.js";
 import { resolveUserPath } from "../utils.js";
 import { normalizePluginsConfig, type NormalizedPluginsConfig } from "./config-state.js";
@@ -107,7 +107,7 @@ function buildRecord(params: {
 }
 
 export function loadPluginManifestRegistry(params: {
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   workspaceDir?: string;
   cache?: boolean;
   env?: NodeJS.ProcessEnv;

@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import { RefreshingAuthProvider, StaticAuthProvider } from "@twurple/auth";
 import { ChatClient, LogLevel } from "@twurple/chat";
 import type { ChannelLogSink, TwitchAccountConfig, TwitchChatMessage } from "./types.js";
@@ -76,7 +76,7 @@ export class TwitchClientManager {
    */
   async getClient(
     account: TwitchAccountConfig,
-    cfg?: openlocalbotConfig,
+    cfg?: OpenLocalBotConfig,
     accountId?: string,
   ): Promise<ChatClient> {
     const key = this.getAccountKey(account);
@@ -236,7 +236,7 @@ export class TwitchClientManager {
     account: TwitchAccountConfig,
     channel: string,
     message: string,
-    cfg?: openlocalbotConfig,
+    cfg?: OpenLocalBotConfig,
     accountId?: string,
   ): Promise<{ ok: boolean; error?: string; messageId?: string }> {
     try {

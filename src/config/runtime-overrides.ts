@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "./types.js";
+import type { OpenLocalBotConfig } from "./types.js";
 import { parseConfigPath, setConfigValueAtPath, unsetConfigValueAtPath } from "./config-paths.js";
 
 type OverrideTree = Record<string, unknown>;
@@ -68,9 +68,9 @@ export function unsetConfigOverride(pathRaw: string): {
   return { ok: true, removed };
 }
 
-export function applyConfigOverrides(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyConfigOverrides(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   if (!overrides || Object.keys(overrides).length === 0) {
     return cfg;
   }
-  return mergeOverrides(cfg, overrides) as openlocalbotConfig;
+  return mergeOverrides(cfg, overrides) as OpenLocalBotConfig;
 }

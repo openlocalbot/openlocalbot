@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import type { ZaloFetch } from "./api.js";
 import { resolveZaloAccount } from "./accounts.js";
 import { sendMessage, sendPhoto } from "./api.js";
@@ -8,7 +8,7 @@ import { resolveZaloToken } from "./token.js";
 export type ZaloSendOptions = {
   token?: string;
   accountId?: string;
-  cfg?: openlocalbotConfig;
+  cfg?: OpenLocalBotConfig;
   mediaUrl?: string;
   caption?: string;
   verbose?: boolean;

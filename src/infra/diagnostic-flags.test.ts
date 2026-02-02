@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { isDiagnosticFlagEnabled, resolveDiagnosticFlags } from "./diagnostic-flags.js";
 
 describe("diagnostic flags", () => {
   it("merges config + env flags", () => {
     const cfg = {
       diagnostics: { flags: ["telegram.http", "cache.*"] },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
     const env = {
       openlocalbot_DIAGNOSTICS: "foo,bar",
     } as NodeJS.ProcessEnv;

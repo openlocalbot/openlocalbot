@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import {
   estimateUsageCost,
   formatTokenCount,
@@ -35,7 +35,7 @@ describe("usage-format", () => {
           },
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
 
     const cost = resolveModelCostConfig({
       provider: "test",

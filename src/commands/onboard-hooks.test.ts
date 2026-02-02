@@ -1,5 +1,5 @@
 import { describe, expect, it, vi, beforeEach } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { HookStatusReport } from "../hooks/hooks-status.js";
 import type { RuntimeEnv } from "../runtime.js";
 import type { WizardPrompter } from "../wizard/prompts.js";
@@ -118,7 +118,7 @@ describe("onboard-hooks", () => {
       const { buildWorkspaceHookStatus } = await import("../hooks/hooks-status.js");
       vi.mocked(buildWorkspaceHookStatus).mockReturnValue(createMockHookReport());
 
-      const cfg: openlocalbotConfig = {};
+      const cfg: OpenLocalBotConfig = {};
       const prompter = createMockPrompter(["session-memory"]);
       const runtime = createMockRuntime();
 
@@ -151,7 +151,7 @@ describe("onboard-hooks", () => {
       const { buildWorkspaceHookStatus } = await import("../hooks/hooks-status.js");
       vi.mocked(buildWorkspaceHookStatus).mockReturnValue(createMockHookReport());
 
-      const cfg: openlocalbotConfig = {};
+      const cfg: OpenLocalBotConfig = {};
       const prompter = createMockPrompter(["__skip__"]);
       const runtime = createMockRuntime();
 
@@ -165,7 +165,7 @@ describe("onboard-hooks", () => {
       const { buildWorkspaceHookStatus } = await import("../hooks/hooks-status.js");
       vi.mocked(buildWorkspaceHookStatus).mockReturnValue(createMockHookReport(false));
 
-      const cfg: openlocalbotConfig = {};
+      const cfg: OpenLocalBotConfig = {};
       const prompter = createMockPrompter([]);
       const runtime = createMockRuntime();
 
@@ -183,7 +183,7 @@ describe("onboard-hooks", () => {
       const { buildWorkspaceHookStatus } = await import("../hooks/hooks-status.js");
       vi.mocked(buildWorkspaceHookStatus).mockReturnValue(createMockHookReport());
 
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         hooks: {
           enabled: true,
           path: "/webhook",
@@ -208,7 +208,7 @@ describe("onboard-hooks", () => {
       const { buildWorkspaceHookStatus } = await import("../hooks/hooks-status.js");
       vi.mocked(buildWorkspaceHookStatus).mockReturnValue(createMockHookReport());
 
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         agents: { defaults: { workspace: "/workspace" } },
       };
       const prompter = createMockPrompter(["__skip__"]);
@@ -224,7 +224,7 @@ describe("onboard-hooks", () => {
       const { buildWorkspaceHookStatus } = await import("../hooks/hooks-status.js");
       vi.mocked(buildWorkspaceHookStatus).mockReturnValue(createMockHookReport());
 
-      const cfg: openlocalbotConfig = {};
+      const cfg: OpenLocalBotConfig = {};
       const prompter = createMockPrompter(["session-memory"]);
       const runtime = createMockRuntime();
 

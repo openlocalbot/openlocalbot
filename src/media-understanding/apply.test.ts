@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { MsgContext } from "../auto-reply/templating.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { resolveApiKeyForProvider } from "../agents/model-auth.js";
 import { fetchRemoteMedia } from "../media/fetch.js";
 
@@ -58,7 +58,7 @@ describe("applyMediaUnderstanding", () => {
       MediaPath: audioPath,
       MediaType: "audio/ogg",
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           audio: {
@@ -101,7 +101,7 @@ describe("applyMediaUnderstanding", () => {
       MediaPath: audioPath,
       MediaType: "audio/ogg",
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           audio: {
@@ -140,7 +140,7 @@ describe("applyMediaUnderstanding", () => {
       MediaType: "audio/ogg",
       ChatType: "dm",
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           audio: {
@@ -184,7 +184,7 @@ describe("applyMediaUnderstanding", () => {
       MediaType: "audio/wav",
     };
     const transcribeAudio = vi.fn(async () => ({ text: "should-not-run" }));
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           audio: {
@@ -218,7 +218,7 @@ describe("applyMediaUnderstanding", () => {
       MediaPath: audioPath,
       MediaType: "audio/ogg",
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           audio: {
@@ -271,7 +271,7 @@ describe("applyMediaUnderstanding", () => {
       MediaPath: imagePath,
       MediaType: "image/jpeg",
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           image: {
@@ -318,7 +318,7 @@ describe("applyMediaUnderstanding", () => {
       MediaPath: imagePath,
       MediaType: "image/jpeg",
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           models: [
@@ -359,7 +359,7 @@ describe("applyMediaUnderstanding", () => {
       MediaPath: audioPath,
       MediaType: "audio/ogg",
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           audio: {
@@ -398,7 +398,7 @@ describe("applyMediaUnderstanding", () => {
       MediaPaths: [audioPathA, audioPathB],
       MediaTypes: ["audio/ogg", "audio/ogg"],
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           audio: {
@@ -443,7 +443,7 @@ describe("applyMediaUnderstanding", () => {
       MediaPaths: [imagePath, audioPath, videoPath],
       MediaTypes: ["image/jpeg", "audio/ogg", "video/mp4"],
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           image: { enabled: true, models: [{ provider: "openai", model: "gpt-5.2" }] },
@@ -501,7 +501,7 @@ describe("applyMediaUnderstanding", () => {
       MediaPath: csvPath,
       MediaType: "audio/mpeg",
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           audio: { enabled: false },
@@ -530,7 +530,7 @@ describe("applyMediaUnderstanding", () => {
       MediaPath: tsvPath,
       MediaType: "audio/mpeg",
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           audio: { enabled: false },
@@ -562,7 +562,7 @@ describe("applyMediaUnderstanding", () => {
       MediaPath: filePath,
       MediaType: "text/plain",
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           audio: { enabled: false },
@@ -593,7 +593,7 @@ describe("applyMediaUnderstanding", () => {
       // Attempt to inject via MIME type with quotes - normalization should strip this
       MediaType: 'text/plain" onclick="alert(1)',
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           audio: { enabled: false },
@@ -625,7 +625,7 @@ describe("applyMediaUnderstanding", () => {
       MediaPath: filePath,
       MediaType: "text/plain",
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           audio: { enabled: false },
@@ -655,7 +655,7 @@ describe("applyMediaUnderstanding", () => {
       MediaPath: filePath,
       MediaType: "text/plain",
     };
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         media: {
           audio: { enabled: false },

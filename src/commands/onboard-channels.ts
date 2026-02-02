@@ -1,5 +1,5 @@
 import type { ChannelMeta } from "../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { DmPolicy } from "../config/types.js";
 import type { RuntimeEnv } from "../runtime.js";
 import type { WizardPrompter, WizardSelectOption } from "../wizard/prompts.js";
@@ -82,7 +82,7 @@ async function promptConfiguredAction(params: {
 }
 
 async function promptRemovalAccountId(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   prompter: WizardPrompter;
   label: string;
   channel: ChannelChoice;
@@ -109,7 +109,7 @@ async function promptRemovalAccountId(params: {
 }
 
 async function collectChannelStatus(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   options?: SetupChannelsOptions;
   accountOverrides: Partial<Record<ChannelChoice, string>>;
 }): Promise<ChannelStatusSummary> {
@@ -161,7 +161,7 @@ async function collectChannelStatus(params: {
 }
 
 export async function noteChannelStatus(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   prompter: WizardPrompter;
   options?: SetupChannelsOptions;
   accountOverrides?: Partial<Record<ChannelChoice, string>>;
@@ -219,11 +219,11 @@ function resolveQuickstartDefault(
 }
 
 async function maybeConfigureDmPolicies(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   selection: ChannelChoice[];
   prompter: WizardPrompter;
   accountIdsByChannel?: Map<ChannelChoice, string>;
-}): Promise<openlocalbotConfig> {
+}): Promise<OpenLocalBotConfig> {
   const { selection, prompter, accountIdsByChannel } = params;
   const dmPolicies = selection
     .map((channel) => getChannelOnboardingAdapter(channel)?.dmPolicy)
@@ -285,11 +285,11 @@ async function maybeConfigureDmPolicies(params: {
 // Channel-specific prompts moved into onboarding adapters.
 
 export async function setupChannels(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   runtime: RuntimeEnv,
   prompter: WizardPrompter,
   options?: SetupChannelsOptions,
-): Promise<openlocalbotConfig> {
+): Promise<OpenLocalBotConfig> {
   let next = cfg;
   const forceAllowFromChannels = new Set(options?.forceAllowFromChannels ?? []);
   const accountOverrides: Partial<Record<ChannelChoice, string>> = {

@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 
 export type TlonResolvedAccount = {
   accountId: string;
@@ -15,7 +15,7 @@ export type TlonResolvedAccount = {
 };
 
 export function resolveTlonAccount(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   accountId?: string | null,
 ): TlonResolvedAccount {
   const base = cfg.channels?.tlon as
@@ -80,7 +80,7 @@ export function resolveTlonAccount(
   };
 }
 
-export function listTlonAccountIds(cfg: openlocalbotConfig): string[] {
+export function listTlonAccountIds(cfg: OpenLocalBotConfig): string[] {
   const base = cfg.channels?.tlon as
     | { ship?: string; accounts?: Record<string, Record<string, unknown>> }
     | undefined;

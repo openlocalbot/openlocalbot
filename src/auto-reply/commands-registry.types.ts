@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/types.js";
+import type { OpenLocalBotConfig } from "../config/types.js";
 
 export type CommandScope = "text" | "native" | "both";
 
@@ -14,7 +14,7 @@ export type CommandCategory =
 export type CommandArgType = "string" | "number" | "boolean";
 
 export type CommandArgChoiceContext = {
-  cfg?: openlocalbotConfig;
+  cfg?: OpenLocalBotConfig;
   provider?: string;
   model?: string;
   command: ChatCommandDefinition;
@@ -80,7 +80,7 @@ export type CommandDetection = {
 };
 
 export type ShouldHandleTextCommandsParams = {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   surface: string;
   commandSource?: "text" | "native";
 };

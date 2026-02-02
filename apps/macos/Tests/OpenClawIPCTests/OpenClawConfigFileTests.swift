@@ -3,7 +3,7 @@ import Testing
 @testable import openlocalbot
 
 @Suite(.serialized)
-struct openlocalbotConfigFileTests {
+struct OpenLocalBotConfigFileTests {
     @Test
     func configPathRespectsEnvOverride() async {
         let override = FileManager().temporaryDirectory
@@ -12,7 +12,7 @@ struct openlocalbotConfigFileTests {
             .path
 
         await TestIsolation.withEnvValues(["openlocalbot_CONFIG_PATH": override]) {
-            #expect(openlocalbotConfigFile.url().path == override)
+            #expect(OpenLocalBotConfigFile.url().path == override)
         }
     }
 
@@ -25,17 +25,17 @@ struct openlocalbotConfigFileTests {
             .path
 
         await TestIsolation.withEnvValues(["openlocalbot_CONFIG_PATH": override]) {
-            openlocalbotConfigFile.saveDict([
+            OpenLocalBotConfigFile.saveDict([
                 "gateway": [
                     "remote": [
                         "url": "ws://gateway.ts.net:19999",
                     ],
                 ],
             ])
-            #expect(openlocalbotConfigFile.remoteGatewayPort() == 19999)
-            #expect(openlocalbotConfigFile.remoteGatewayPort(matchingHost: "gateway.ts.net") == 19999)
-            #expect(openlocalbotConfigFile.remoteGatewayPort(matchingHost: "gateway") == 19999)
-            #expect(openlocalbotConfigFile.remoteGatewayPort(matchingHost: "other.ts.net") == nil)
+            #expect(OpenLocalBotConfigFile.remoteGatewayPort() == 19999)
+            #expect(OpenLocalBotConfigFile.remoteGatewayPort(matchingHost: "gateway.ts.net") == 19999)
+            #expect(OpenLocalBotConfigFile.remoteGatewayPort(matchingHost: "gateway") == 19999)
+            #expect(OpenLocalBotConfigFile.remoteGatewayPort(matchingHost: "other.ts.net") == nil)
         }
     }
 
@@ -48,15 +48,15 @@ struct openlocalbotConfigFileTests {
             .path
 
         await TestIsolation.withEnvValues(["openlocalbot_CONFIG_PATH": override]) {
-            openlocalbotConfigFile.saveDict([
+            OpenLocalBotConfigFile.saveDict([
                 "gateway": [
                     "remote": [
                         "url": "wss://old-host:111",
                     ],
                 ],
             ])
-            openlocalbotConfigFile.setRemoteGatewayUrl(host: "new-host", port: 2222)
-            let root = openlocalbotConfigFile.loadDict()
+            OpenLocalBotConfigFile.setRemoteGatewayUrl(host: "new-host", port: 2222)
+            let root = OpenLocalBotConfigFile.loadDict()
             let url = ((root["gateway"] as? [String: Any])?["remote"] as? [String: Any])?["url"] as? String
             #expect(url == "wss://new-host:2222")
         }
@@ -72,8 +72,8 @@ struct openlocalbotConfigFileTests {
             "openlocalbot_CONFIG_PATH": nil,
             "openlocalbot_STATE_DIR": dir,
         ]) {
-            #expect(openlocalbotConfigFile.stateDirURL().path == dir)
-            #expect(openlocalbotConfigFile.url().path == "\(dir)/openlocalbot.json")
+            #expect(OpenLocalBotConfigFile.stateDirURL().path == dir)
+            #expect(OpenLocalBotConfigFile.url().path == "\(dir)/openlocalbot.json")
         }
     }
 }

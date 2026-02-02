@@ -35,7 +35,7 @@ extension OnboardingView {
                 user: user,
                 host: host,
                 port: gateway.sshPort)
-            openlocalbotConfigFile.setRemoteGatewayUrl(host: host, port: gateway.gatewayPort)
+            OpenLocalBotConfigFile.setRemoteGatewayUrl(host: host, port: gateway.gatewayPort)
         }
         self.state.remoteCliPath = gateway.cliPath ?? ""
 

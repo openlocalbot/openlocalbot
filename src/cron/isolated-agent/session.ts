@@ -1,9 +1,9 @@
 import crypto from "node:crypto";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import { loadSessionStore, resolveStorePath, type SessionEntry } from "../../config/sessions.js";
 
 export function resolveCronSession(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   sessionKey: string;
   nowMs: number;
   agentId: string;

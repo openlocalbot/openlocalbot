@@ -1,5 +1,5 @@
 import { Type } from "@sinclair/typebox";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { AnyAgentTool } from "./common.js";
 import { BLUEBUBBLES_GROUP_ACTIONS } from "../../channels/plugins/bluebubbles-actions.js";
 import {
@@ -246,7 +246,7 @@ const MessageToolSchema = buildMessageToolSchemaFromActions(AllMessageActions, {
 type MessageToolOptions = {
   agentAccountId?: string;
   agentSessionKey?: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   currentChannelId?: string;
   currentChannelProvider?: string;
   currentThreadTs?: string;
@@ -254,7 +254,7 @@ type MessageToolOptions = {
   hasRepliedRef?: { value: boolean };
 };
 
-function buildMessageToolSchema(cfg: openlocalbotConfig) {
+function buildMessageToolSchema(cfg: OpenLocalBotConfig) {
   const actions = listChannelMessageActions(cfg);
   const includeButtons = supportsChannelMessageButtons(cfg);
   const includeCards = supportsChannelMessageCards(cfg);
@@ -300,7 +300,7 @@ function filterActionsForContext(params: {
 }
 
 function buildMessageToolDescription(options?: {
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   currentChannel?: string;
   currentChannelId?: string;
 }): string {

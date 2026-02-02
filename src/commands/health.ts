@@ -1,5 +1,5 @@
 import type { ChannelAccountSnapshot } from "../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import { resolveDefaultAgentId } from "../agents/agent-scope.js";
 import { resolveChannelDefaultAccountId } from "../channels/plugins/helpers.js";
@@ -560,7 +560,7 @@ export async function getHealthSnapshot(params?: {
 }
 
 export async function healthCommand(
-  opts: { json?: boolean; timeoutMs?: number; verbose?: boolean; config?: openlocalbotConfig },
+  opts: { json?: boolean; timeoutMs?: number; verbose?: boolean; config?: OpenLocalBotConfig },
   runtime: RuntimeEnv,
 ) {
   const cfg = opts.config ?? loadConfig();

@@ -1,5 +1,5 @@
 import type { SkillCommandSpec } from "../../agents/skills.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { SessionEntry } from "../../config/sessions.js";
 import type { MsgContext, TemplateContext } from "../templating.js";
 import type { ElevatedLevel, ReasoningLevel, ThinkLevel, VerboseLevel } from "../thinking.js";
@@ -56,7 +56,7 @@ function extractTextFromToolResult(result: any): string | null {
 export async function handleInlineActions(params: {
   ctx: MsgContext;
   sessionCtx: TemplateContext;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   agentId: string;
   agentDir?: string;
   sessionEntry?: SessionEntry;

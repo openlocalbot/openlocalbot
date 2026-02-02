@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { ChannelPlugin } from "../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { setActivePluginRegistry } from "../plugins/runtime.js";
 import { defaultRuntime } from "../runtime.js";
 import { createTestRegistry } from "../test-utils/channel-plugins.js";
@@ -42,7 +42,7 @@ describe("channel tools", () => {
   });
 
   it("skips crashing plugins and logs once", () => {
-    const cfg = {} as openlocalbotConfig;
+    const cfg = {} as OpenLocalBotConfig;
     expect(listAllChannelSupportedActions({ cfg })).toEqual([]);
     expect(errorSpy).toHaveBeenCalledTimes(1);
 

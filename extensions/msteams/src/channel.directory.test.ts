@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import { describe, expect, it } from "vitest";
 import { msteamsPlugin } from "./channel.js";
 
@@ -19,7 +19,7 @@ describe("msteams directory", () => {
           },
         },
       },
-    } as unknown as openlocalbotConfig;
+    } as unknown as OpenLocalBotConfig;
 
     expect(msteamsPlugin.directory).toBeTruthy();
     expect(msteamsPlugin.directory?.listPeers).toBeTruthy();

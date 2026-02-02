@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import type { WizardPrompter } from "../wizard/prompts.js";
 import { discordPlugin } from "../../extensions/discord/src/channel.js";
@@ -75,7 +75,7 @@ describe("setupChannels", () => {
       }),
     };
 
-    await setupChannels({} as openlocalbotConfig, runtime, prompter, {
+    await setupChannels({} as OpenLocalBotConfig, runtime, prompter, {
       skipConfirm: true,
       quickstartDefaults: true,
       forceAllowFromChannels: ["whatsapp"],
@@ -130,7 +130,7 @@ describe("setupChannels", () => {
             botToken: "token",
           },
         },
-      } as openlocalbotConfig,
+      } as OpenLocalBotConfig,
       runtime,
       prompter,
       {
@@ -194,7 +194,7 @@ describe("setupChannels", () => {
             enabled: false,
           },
         },
-      } as openlocalbotConfig,
+      } as OpenLocalBotConfig,
       runtime,
       prompter,
       {

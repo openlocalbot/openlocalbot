@@ -1,5 +1,5 @@
 import { Type } from "@sinclair/typebox";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import { loadConfig, resolveConfigSnapshotHash } from "../../config/io.js";
 import { loadSessionStore, resolveStorePath } from "../../config/sessions.js";
 import {
@@ -61,7 +61,7 @@ const GatewayToolSchema = Type.Object({
 
 export function createGatewayTool(opts?: {
   agentSessionKey?: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
 }): AnyAgentTool {
   return {
     label: "Gateway",

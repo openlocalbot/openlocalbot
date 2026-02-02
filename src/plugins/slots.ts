@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { PluginSlotsConfig } from "../config/types.plugins.js";
 import type { PluginKind } from "./types.js";
 
@@ -29,13 +29,13 @@ export function defaultSlotIdForKey(slotKey: PluginSlotKey): string {
 }
 
 export type SlotSelectionResult = {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   warnings: string[];
   changed: boolean;
 };
 
 export function applyExclusiveSlotSelection(params: {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   selectedId: string;
   selectedKind?: PluginKind;
   registry?: { plugins: SlotPluginRecord[] };

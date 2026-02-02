@@ -2,7 +2,7 @@
  * Twitch onboarding adapter for CLI setup wizard.
  */
 
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import {
   formatDocsLink,
   promptChannelAccessConfig,
@@ -20,9 +20,9 @@ const channel = "twitch" as const;
  * Set Twitch account configuration
  */
 function setTwitchAccount(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   account: Partial<TwitchAccountConfig>,
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   const existing = getAccountConfig(cfg, DEFAULT_ACCOUNT_ID);
   const merged: TwitchAccountConfig = {
     username: account.username ?? existing?.username ?? "",
@@ -207,13 +207,13 @@ async function promptRefreshTokenSetup(
  * Configure with env token path (returns early if user chooses env token).
  */
 async function configureWithEnvToken(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   prompter: WizardPrompter,
   account: TwitchAccountConfig | null,
   envToken: string,
   forceAllowFrom: boolean,
   dmPolicy: ChannelOnboardingDmPolicy,
-): Promise<{ cfg: openlocalbotConfig } | null> {
+): Promise<{ cfg: OpenLocalBotConfig } | null> {
   const useEnv = await prompter.confirm({
     message: "Twitch env var openlocalbot_TWITCH_ACCESS_TOKEN detected. Use env token?",
     initialValue: true,
@@ -243,10 +243,10 @@ async function configureWithEnvToken(
  * Set Twitch access control (role-based)
  */
 function setTwitchAccessControl(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   allowedRoles: TwitchRole[],
   requireMention: boolean,
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   const account = getAccountConfig(cfg, DEFAULT_ACCOUNT_ID);
   if (!account) {
     return cfg;

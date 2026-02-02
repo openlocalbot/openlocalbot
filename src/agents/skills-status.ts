@@ -1,5 +1,5 @@
 import path from "node:path";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { CONFIG_DIR } from "../utils.js";
 import {
   hasBinary,
@@ -164,7 +164,7 @@ function normalizeInstallOptions(
 
 function buildSkillStatus(
   entry: SkillEntry,
-  config?: openlocalbotConfig,
+  config?: OpenLocalBotConfig,
   prefs?: SkillsInstallPreferences,
   eligibility?: SkillEligibilityContext,
 ): SkillStatusEntry {
@@ -282,7 +282,7 @@ function buildSkillStatus(
 export function buildWorkspaceSkillStatus(
   workspaceDir: string,
   opts?: {
-    config?: openlocalbotConfig;
+    config?: OpenLocalBotConfig;
     managedSkillsDir?: string;
     entries?: SkillEntry[];
     eligibility?: SkillEligibilityContext;

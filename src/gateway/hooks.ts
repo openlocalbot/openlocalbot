@@ -1,7 +1,7 @@
 import type { IncomingMessage } from "node:http";
 import { randomUUID } from "node:crypto";
 import type { ChannelId } from "../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { listChannelPlugins } from "../channels/plugins/index.js";
 import { normalizeMessageChannel } from "../utils/message-channel.js";
 import { type HookMappingResolved, resolveHookMappings } from "./hooks-mapping.js";
@@ -16,7 +16,7 @@ export type HooksConfigResolved = {
   mappings: HookMappingResolved[];
 };
 
-export function resolveHooksConfig(cfg: openlocalbotConfig): HooksConfigResolved | null {
+export function resolveHooksConfig(cfg: OpenLocalBotConfig): HooksConfigResolved | null {
   if (cfg.hooks?.enabled !== true) {
     return null;
   }

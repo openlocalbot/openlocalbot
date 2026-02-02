@@ -7,7 +7,7 @@
 
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { InternalHookHandler } from "./internal-hooks.js";
 import { resolveHookConfig } from "./config.js";
 import { shouldIncludeHook } from "./config.js";
@@ -34,7 +34,7 @@ import { loadWorkspaceHookEntries } from "./workspace.js";
  * ```
  */
 export async function loadInternalHooks(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   workspaceDir: string,
 ): Promise<number> {
   // Check if hooks are enabled

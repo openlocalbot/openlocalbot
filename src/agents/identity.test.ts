@@ -1,15 +1,15 @@
 import { describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { resolveHumanDelayConfig } from "./identity.js";
 
 describe("resolveHumanDelayConfig", () => {
   it("returns undefined when no humanDelay config is set", () => {
-    const cfg: openlocalbotConfig = {};
+    const cfg: OpenLocalBotConfig = {};
     expect(resolveHumanDelayConfig(cfg, "main")).toBeUndefined();
   });
 
   it("merges defaults with per-agent overrides", () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: {
         defaults: {
           humanDelay: { mode: "natural", minMs: 800, maxMs: 1800 },

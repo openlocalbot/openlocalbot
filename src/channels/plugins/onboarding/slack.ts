@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../../config/config.js";
+import type { OpenLocalBotConfig } from "../../../config/config.js";
 import type { DmPolicy } from "../../../config/types.js";
 import type { WizardPrompter } from "../../../wizard/prompts.js";
 import type { ChannelOnboardingAdapter, ChannelOnboardingDmPolicy } from "../onboarding-types.js";
@@ -16,7 +16,7 @@ import { addWildcardAllowFrom, promptAccountId } from "./helpers.js";
 
 const channel = "slack" as const;
 
-function setSlackDmPolicy(cfg: openlocalbotConfig, dmPolicy: DmPolicy) {
+function setSlackDmPolicy(cfg: OpenLocalBotConfig, dmPolicy: DmPolicy) {
   const allowFrom =
     dmPolicy === "open" ? addWildcardAllowFrom(cfg.channels?.slack?.dm?.allowFrom) : undefined;
   return {
@@ -125,10 +125,10 @@ async function noteSlackTokenHelp(prompter: WizardPrompter, botName: string): Pr
 }
 
 function setSlackGroupPolicy(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   accountId: string,
   groupPolicy: "open" | "allowlist" | "disabled",
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   if (accountId === DEFAULT_ACCOUNT_ID) {
     return {
       ...cfg,
@@ -163,10 +163,10 @@ function setSlackGroupPolicy(
 }
 
 function setSlackChannelAllowlist(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   accountId: string,
   channelKeys: string[],
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   const channels = Object.fromEntries(channelKeys.map((key) => [key, { allow: true }]));
   if (accountId === DEFAULT_ACCOUNT_ID) {
     return {
@@ -201,7 +201,7 @@ function setSlackChannelAllowlist(
   };
 }
 
-function setSlackAllowFrom(cfg: openlocalbotConfig, allowFrom: string[]): openlocalbotConfig {
+function setSlackAllowFrom(cfg: OpenLocalBotConfig, allowFrom: string[]): OpenLocalBotConfig {
   return {
     ...cfg,
     channels: {
@@ -226,10 +226,10 @@ function parseSlackAllowFromInput(raw: string): string[] {
 }
 
 async function promptSlackAllowFrom(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   prompter: WizardPrompter;
   accountId?: string;
-}): Promise<openlocalbotConfig> {
+}): Promise<OpenLocalBotConfig> {
   const accountId =
     params.accountId && normalizeAccountId(params.accountId)
       ? (normalizeAccountId(params.accountId) ?? DEFAULT_ACCOUNT_ID)

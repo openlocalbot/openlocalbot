@@ -11,7 +11,7 @@ vi.mock("./agent.js", () => ({
   agentCommand: vi.fn(),
 }));
 
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import * as configModule from "../config/config.js";
 import { callGateway } from "../gateway/call.js";
@@ -26,7 +26,7 @@ const runtime: RuntimeEnv = {
 
 const configSpy = vi.spyOn(configModule, "loadConfig");
 
-function mockConfig(storePath: string, overrides?: Partial<openlocalbotConfig>) {
+function mockConfig(storePath: string, overrides?: Partial<OpenLocalBotConfig>) {
   configSpy.mockReturnValue({
     agents: {
       defaults: {

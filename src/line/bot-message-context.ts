@@ -1,5 +1,5 @@
 import type { MessageEvent, StickerEventMessage, EventSource, PostbackEvent } from "@line/bot-sdk";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { ResolvedLineAccount } from "./types.js";
 import { formatInboundEnvelope, resolveEnvelopeFormatOptions } from "../auto-reply/envelope.js";
 import { finalizeInboundContext } from "../auto-reply/reply/inbound-context.js";
@@ -22,7 +22,7 @@ interface MediaRef {
 interface BuildLineMessageContextParams {
   event: MessageEvent;
   allMedia: MediaRef[];
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   account: ResolvedLineAccount;
 }
 
@@ -308,7 +308,7 @@ export async function buildLineMessageContext(params: BuildLineMessageContextPar
 
 export async function buildLinePostbackContext(params: {
   event: PostbackEvent;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   account: ResolvedLineAccount;
 }) {
   const { event, cfg, account } = params;

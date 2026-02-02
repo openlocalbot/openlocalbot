@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { WizardPrompter, WizardSelectOption } from "../wizard/prompts.js";
 import { ensureAuthProfileStore, listProfilesForProvider } from "../agents/auth-profiles.js";
 import { DEFAULT_MODEL, DEFAULT_PROVIDER } from "../agents/defaults.js";
@@ -23,7 +23,7 @@ const PROVIDER_FILTER_THRESHOLD = 30;
 const HIDDEN_ROUTER_MODELS = new Set(["openrouter/auto"]);
 
 type PromptDefaultModelParams = {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   prompter: WizardPrompter;
   allowKeep?: boolean;
   includeManual?: boolean;
@@ -38,7 +38,7 @@ type PromptModelAllowlistResult = { models?: string[] };
 
 function hasAuthForProvider(
   provider: string,
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   store: ReturnType<typeof ensureAuthProfileStore>,
 ) {
   if (listProfilesForProvider(store, provider).length > 0) {
@@ -53,7 +53,7 @@ function hasAuthForProvider(
   return false;
 }
 
-function resolveConfiguredModelRaw(cfg: openlocalbotConfig): string {
+function resolveConfiguredModelRaw(cfg: OpenLocalBotConfig): string {
   const raw = cfg.agents?.defaults?.model as { primary?: string } | string | undefined;
   if (typeof raw === "string") {
     return raw.trim();
@@ -61,7 +61,7 @@ function resolveConfiguredModelRaw(cfg: openlocalbotConfig): string {
   return raw?.primary?.trim() ?? "";
 }
 
-function resolveConfiguredModelKeys(cfg: openlocalbotConfig): string[] {
+function resolveConfiguredModelKeys(cfg: OpenLocalBotConfig): string[] {
   const models = cfg.agents?.defaults?.models ?? {};
   return Object.keys(models)
     .map((key) => String(key ?? "").trim())
@@ -298,7 +298,7 @@ export async function promptDefaultModel(
 }
 
 export async function promptModelAllowlist(params: {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   prompter: WizardPrompter;
   message?: string;
   agentDir?: string;
@@ -449,7 +449,7 @@ export async function promptModelAllowlist(params: {
   return { models: [] };
 }
 
-export function applyPrimaryModel(cfg: openlocalbotConfig, model: string): openlocalbotConfig {
+export function applyPrimaryModel(cfg: OpenLocalBotConfig, model: string): OpenLocalBotConfig {
   const defaults = cfg.agents?.defaults;
   const existingModel = defaults?.model;
   const existingModels = defaults?.models;
@@ -476,7 +476,7 @@ export function applyPrimaryModel(cfg: openlocalbotConfig, model: string): openl
   };
 }
 
-export function applyModelAllowlist(cfg: openlocalbotConfig, models: string[]): openlocalbotConfig {
+export function applyModelAllowlist(cfg: OpenLocalBotConfig, models: string[]): OpenLocalBotConfig {
   const defaults = cfg.agents?.defaults;
   const normalized = normalizeModelKeys(models);
   if (normalized.length === 0) {
@@ -512,9 +512,9 @@ export function applyModelAllowlist(cfg: openlocalbotConfig, models: string[]): 
 }
 
 export function applyModelFallbacksFromSelection(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   selection: string[],
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   const normalized = normalizeModelKeys(selection);
   if (normalized.length <= 1) {
     return cfg;

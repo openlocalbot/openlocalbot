@@ -2,7 +2,7 @@ import type {
   ChannelOutboundAdapter,
   ChannelPlugin,
   ChannelSetupInput,
-  openlocalbotConfig,
+  OpenLocalBotConfig,
 } from "openlocalbot/plugin-sdk";
 import {
   applyAccountNameToChannelSection,
@@ -29,10 +29,10 @@ type TlonSetupInput = ChannelSetupInput & {
 };
 
 function applyTlonSetupConfig(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   accountId: string;
   input: TlonSetupInput;
-}): openlocalbotConfig {
+}): OpenLocalBotConfig {
   const { cfg, accountId, input } = params;
   const useDefault = accountId === DEFAULT_ACCOUNT_ID;
   const namedConfig = applyAccountNameToChannelSection({
@@ -202,7 +202,7 @@ export const tlonPlugin: ChannelPlugin = {
               enabled,
             },
           },
-        } as openlocalbotConfig;
+        } as OpenLocalBotConfig;
       }
       return {
         ...cfg,
@@ -219,7 +219,7 @@ export const tlonPlugin: ChannelPlugin = {
             },
           },
         },
-      } as openlocalbotConfig;
+      } as OpenLocalBotConfig;
     },
     deleteAccount: ({ cfg, accountId }) => {
       const useDefault = !accountId || accountId === "default";
@@ -233,7 +233,7 @@ export const tlonPlugin: ChannelPlugin = {
             ...cfg.channels,
             tlon: rest,
           },
-        } as openlocalbotConfig;
+        } as OpenLocalBotConfig;
       }
       // @ts-expect-error
       // oxlint-disable-next-line no-unused-vars
@@ -247,7 +247,7 @@ export const tlonPlugin: ChannelPlugin = {
             accounts: remainingAccounts,
           },
         },
-      } as openlocalbotConfig;
+      } as OpenLocalBotConfig;
     },
     isConfigured: (account) => account.configured,
     describeAccount: (account) => ({

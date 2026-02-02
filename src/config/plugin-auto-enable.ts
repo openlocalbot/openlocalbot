@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "./config.js";
+import type { OpenLocalBotConfig } from "./config.js";
 import { normalizeProviderId } from "../agents/model-selection.js";
 import {
   getChannelPluginCatalogEntry,
@@ -17,7 +17,7 @@ type PluginEnableChange = {
 };
 
 export type PluginAutoEnableResult = {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   changes: string[];
 };
 
@@ -66,7 +66,7 @@ function accountsHaveKeys(value: unknown, keys: string[]): boolean {
 }
 
 function resolveChannelConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   channelId: string,
 ): Record<string, unknown> | null {
   const channels = cfg.channels as Record<string, unknown> | undefined;
@@ -74,7 +74,7 @@ function resolveChannelConfig(
   return isRecord(entry) ? entry : null;
 }
 
-function isTelegramConfigured(cfg: openlocalbotConfig, env: NodeJS.ProcessEnv): boolean {
+function isTelegramConfigured(cfg: OpenLocalBotConfig, env: NodeJS.ProcessEnv): boolean {
   if (hasNonEmptyString(env.TELEGRAM_BOT_TOKEN)) {
     return true;
   }
@@ -91,7 +91,7 @@ function isTelegramConfigured(cfg: openlocalbotConfig, env: NodeJS.ProcessEnv): 
   return recordHasKeys(entry);
 }
 
-function isDiscordConfigured(cfg: openlocalbotConfig, env: NodeJS.ProcessEnv): boolean {
+function isDiscordConfigured(cfg: OpenLocalBotConfig, env: NodeJS.ProcessEnv): boolean {
   if (hasNonEmptyString(env.DISCORD_BOT_TOKEN)) {
     return true;
   }
@@ -108,7 +108,7 @@ function isDiscordConfigured(cfg: openlocalbotConfig, env: NodeJS.ProcessEnv): b
   return recordHasKeys(entry);
 }
 
-function isSlackConfigured(cfg: openlocalbotConfig, env: NodeJS.ProcessEnv): boolean {
+function isSlackConfigured(cfg: OpenLocalBotConfig, env: NodeJS.ProcessEnv): boolean {
   if (
     hasNonEmptyString(env.SLACK_BOT_TOKEN) ||
     hasNonEmptyString(env.SLACK_APP_TOKEN) ||
@@ -133,7 +133,7 @@ function isSlackConfigured(cfg: openlocalbotConfig, env: NodeJS.ProcessEnv): boo
   return recordHasKeys(entry);
 }
 
-function isSignalConfigured(cfg: openlocalbotConfig): boolean {
+function isSignalConfigured(cfg: OpenLocalBotConfig): boolean {
   const entry = resolveChannelConfig(cfg, "signal");
   if (!entry) {
     return false;
@@ -153,7 +153,7 @@ function isSignalConfigured(cfg: openlocalbotConfig): boolean {
   return recordHasKeys(entry);
 }
 
-function isIMessageConfigured(cfg: openlocalbotConfig): boolean {
+function isIMessageConfigured(cfg: OpenLocalBotConfig): boolean {
   const entry = resolveChannelConfig(cfg, "imessage");
   if (!entry) {
     return false;
@@ -164,7 +164,7 @@ function isIMessageConfigured(cfg: openlocalbotConfig): boolean {
   return recordHasKeys(entry);
 }
 
-function isWhatsAppConfigured(cfg: openlocalbotConfig): boolean {
+function isWhatsAppConfigured(cfg: OpenLocalBotConfig): boolean {
   if (hasAnyWhatsAppAuth(cfg)) {
     return true;
   }
@@ -175,13 +175,13 @@ function isWhatsAppConfigured(cfg: openlocalbotConfig): boolean {
   return recordHasKeys(entry);
 }
 
-function isGenericChannelConfigured(cfg: openlocalbotConfig, channelId: string): boolean {
+function isGenericChannelConfigured(cfg: OpenLocalBotConfig, channelId: string): boolean {
   const entry = resolveChannelConfig(cfg, channelId);
   return recordHasKeys(entry);
 }
 
 export function isChannelConfigured(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   channelId: string,
   env: NodeJS.ProcessEnv = process.env,
 ): boolean {
@@ -203,7 +203,7 @@ export function isChannelConfigured(
   }
 }
 
-function collectModelRefs(cfg: openlocalbotConfig): string[] {
+function collectModelRefs(cfg: OpenLocalBotConfig): string[] {
   const refs: string[] = [];
   const pushModelRef = (value: unknown) => {
     if (typeof value === "string" && value.trim()) {
@@ -257,7 +257,7 @@ function extractProviderFromModelRef(value: string): string | null {
   return normalizeProviderId(trimmed.slice(0, slash));
 }
 
-function isProviderConfigured(cfg: openlocalbotConfig, providerId: string): boolean {
+function isProviderConfigured(cfg: OpenLocalBotConfig, providerId: string): boolean {
   const normalized = normalizeProviderId(providerId);
 
   const profiles = cfg.auth?.profiles;
@@ -294,7 +294,7 @@ function isProviderConfigured(cfg: openlocalbotConfig, providerId: string): bool
 }
 
 function resolveConfiguredPlugins(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   env: NodeJS.ProcessEnv,
 ): PluginEnableChange[] {
   const changes: PluginEnableChange[] = [];
@@ -330,12 +330,12 @@ function resolveConfiguredPlugins(
   return changes;
 }
 
-function isPluginExplicitlyDisabled(cfg: openlocalbotConfig, pluginId: string): boolean {
+function isPluginExplicitlyDisabled(cfg: OpenLocalBotConfig, pluginId: string): boolean {
   const entry = cfg.plugins?.entries?.[pluginId];
   return entry?.enabled === false;
 }
 
-function isPluginDenied(cfg: openlocalbotConfig, pluginId: string): boolean {
+function isPluginDenied(cfg: OpenLocalBotConfig, pluginId: string): boolean {
   const deny = cfg.plugins?.deny;
   return Array.isArray(deny) && deny.includes(pluginId);
 }
@@ -350,7 +350,7 @@ function resolvePreferredOverIds(pluginId: string): string[] {
 }
 
 function shouldSkipPreferredPluginAutoEnable(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   entry: PluginEnableChange,
   configured: PluginEnableChange[],
 ): boolean {
@@ -372,7 +372,7 @@ function shouldSkipPreferredPluginAutoEnable(
   return false;
 }
 
-function ensureAllowlisted(cfg: openlocalbotConfig, pluginId: string): openlocalbotConfig {
+function ensureAllowlisted(cfg: OpenLocalBotConfig, pluginId: string): OpenLocalBotConfig {
   const allow = cfg.plugins?.allow;
   if (!Array.isArray(allow) || allow.includes(pluginId)) {
     return cfg;
@@ -386,7 +386,7 @@ function ensureAllowlisted(cfg: openlocalbotConfig, pluginId: string): openlocal
   };
 }
 
-function enablePluginEntry(cfg: openlocalbotConfig, pluginId: string): openlocalbotConfig {
+function enablePluginEntry(cfg: OpenLocalBotConfig, pluginId: string): OpenLocalBotConfig {
   const entries = {
     ...cfg.plugins?.entries,
     [pluginId]: {
@@ -415,7 +415,7 @@ function formatAutoEnableChange(entry: PluginEnableChange): string {
 }
 
 export function applyPluginAutoEnable(params: {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   env?: NodeJS.ProcessEnv;
 }): PluginAutoEnableResult {
   const env = params.env ?? process.env;

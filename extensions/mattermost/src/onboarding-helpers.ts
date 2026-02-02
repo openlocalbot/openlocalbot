@@ -1,12 +1,12 @@
-import type { openlocalbotConfig, WizardPrompter } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig, WizardPrompter } from "openlocalbot/plugin-sdk";
 import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "openlocalbot/plugin-sdk";
 
 type PromptAccountIdParams = {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   prompter: WizardPrompter;
   label: string;
   currentId?: string;
-  listAccountIds: (cfg: openlocalbotConfig) => string[];
+  listAccountIds: (cfg: OpenLocalBotConfig) => string[];
   defaultAccountId: string;
 };
 

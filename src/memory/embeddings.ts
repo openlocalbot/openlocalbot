@@ -1,6 +1,6 @@
 import type { Llama, LlamaEmbeddingContext, LlamaModel } from "node-llama-cpp";
 import fsSync from "node:fs";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { resolveUserPath } from "../utils.js";
 import { createGeminiEmbeddingProvider, type GeminiEmbeddingClient } from "./embeddings-gemini.js";
 import { createOpenAiEmbeddingProvider, type OpenAiEmbeddingClient } from "./embeddings-openai.js";
@@ -26,7 +26,7 @@ export type EmbeddingProviderResult = {
 };
 
 export type EmbeddingProviderOptions = {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   agentDir?: string;
   provider: "openai" | "local" | "gemini" | "auto";
   remote?: {

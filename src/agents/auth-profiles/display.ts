@@ -1,8 +1,8 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { AuthProfileStore } from "./types.js";
 
 export function resolveAuthProfileDisplayLabel(params: {
-  cfg?: openlocalbotConfig;
+  cfg?: OpenLocalBotConfig;
   store: AuthProfileStore;
   profileId: string;
 }): string {

@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import { describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "./types.js";
+import type { OpenLocalBotConfig } from "./types.js";
 import { withTempHome } from "./test-helpers.js";
 
 describe("config backup rotation", () => {
@@ -8,10 +8,10 @@ describe("config backup rotation", () => {
     await withTempHome(async () => {
       const { resolveConfigPath, writeConfigFile } = await import("./config.js");
       const configPath = resolveConfigPath();
-      const buildConfig = (version: number): openlocalbotConfig =>
+      const buildConfig = (version: number): OpenLocalBotConfig =>
         ({
           agents: { list: [{ id: `v${version}` }] },
-        }) as openlocalbotConfig;
+        }) as OpenLocalBotConfig;
 
       for (let version = 0; version <= 6; version += 1) {
         await writeConfigFile(buildConfig(version));

@@ -5,8 +5,8 @@ import { createServer } from "node:net";
 import os from "node:os";
 import path from "node:path";
 import { describe, it } from "vitest";
-import type { openlocalbotConfig, ModelProviderConfig } from "../config/types.js";
-import { resolveopenlocalbotAgentDir } from "../agents/agent-paths.js";
+import type { OpenLocalBotConfig, ModelProviderConfig } from "../config/types.js";
+import { resolveOpenLocalBotAgentDir } from "../agents/agent-paths.js";
 import { resolveAgentWorkspaceDir } from "../agents/agent-scope.js";
 import {
   type AuthProfileStore,
@@ -372,7 +372,7 @@ async function connectClient(params: { url: string; token: string }) {
 
 type GatewayModelSuiteParams = {
   label: string;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   candidates: Array<Model<Api>>;
   extraToolProbes: boolean;
   extraImageProbes: boolean;
@@ -381,10 +381,10 @@ type GatewayModelSuiteParams = {
 };
 
 function buildLiveGatewayConfig(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   candidates: Array<Model<Api>>;
   providerOverrides?: Record<string, ModelProviderConfig>;
-}): openlocalbotConfig {
+}): OpenLocalBotConfig {
   const providerOverrides = params.providerOverrides ?? {};
   const lmstudioProvider = params.cfg.models?.providers?.lmstudio;
   const baseProviders = params.cfg.models?.providers ?? {};
@@ -423,9 +423,9 @@ function buildLiveGatewayConfig(params: {
 }
 
 function sanitizeAuthConfig(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   agentDir: string;
-}): openlocalbotConfig["auth"] | undefined {
+}): OpenLocalBotConfig["auth"] | undefined {
   const auth = params.cfg.auth;
   if (!auth) {
     return auth;
@@ -434,7 +434,7 @@ function sanitizeAuthConfig(params: {
     allowKeychainPrompt: false,
   });
 
-  let profiles: NonNullable<openlocalbotConfig["auth"]>["profiles"] | undefined;
+  let profiles: NonNullable<OpenLocalBotConfig["auth"]>["profiles"] | undefined;
   if (auth.profiles) {
     profiles = {};
     for (const [profileId, profile] of Object.entries(auth.profiles)) {
@@ -474,7 +474,7 @@ function sanitizeAuthConfig(params: {
 }
 
 function buildMinimaxProviderOverride(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   api: "openai-completions" | "anthropic-messages";
   baseUrl: string;
 }): ModelProviderConfig | null {
@@ -513,7 +513,7 @@ async function runGatewayModelSuite(params: GatewayModelSuiteParams) {
   process.env.openlocalbot_GATEWAY_TOKEN = token;
   const agentId = "dev";
 
-  const hostAgentDir = resolveopenlocalbotAgentDir();
+  const hostAgentDir = resolveOpenLocalBotAgentDir();
   const hostStore = ensureAuthProfileStore(hostAgentDir, {
     allowKeychainPrompt: false,
   });
@@ -544,8 +544,8 @@ async function runGatewayModelSuite(params: GatewayModelSuiteParams) {
   const toolProbePath = path.join(workspaceDir, `.openlocalbot-live-tool-probe.${nonceA}.txt`);
   await fs.writeFile(toolProbePath, `nonceA=${nonceA}\nnonceB=${nonceB}\n`);
 
-  const agentDir = resolveopenlocalbotAgentDir();
-  const sanitizedCfg: openlocalbotConfig = {
+  const agentDir = resolveOpenLocalBotAgentDir();
+  const sanitizedCfg: OpenLocalBotConfig = {
     ...params.cfg,
     auth: sanitizeAuthConfig({ cfg: params.cfg, agentDir }),
   };
@@ -1016,7 +1016,7 @@ describeLive("gateway live (dev agent, profile keys)", () => {
       const cfg = loadConfig();
       await ensureopenlocalbotModelsJson(cfg);
 
-      const agentDir = resolveopenlocalbotAgentDir();
+      const agentDir = resolveOpenLocalBotAgentDir();
       const authStore = ensureAuthProfileStore(agentDir, {
         allowKeychainPrompt: false,
       });
@@ -1124,7 +1124,7 @@ describeLive("gateway live (dev agent, profile keys)", () => {
     const cfg = loadConfig();
     await ensureopenlocalbotModelsJson(cfg);
 
-    const agentDir = resolveopenlocalbotAgentDir();
+    const agentDir = resolveOpenLocalBotAgentDir();
     const authStorage = discoverAuthStorage(agentDir);
     const modelRegistry = discoverModels(authStorage, agentDir);
     const anthropic = modelRegistry.find("anthropic", "claude-opus-4-5") as Model<Api> | null;

@@ -7,7 +7,7 @@ import {
   normalizeAccountId,
   setAccountEnabledInConfigSection,
   type ChannelPlugin,
-  type openlocalbotConfig,
+  type OpenLocalBotConfig,
   type ChannelSetupInput,
 } from "openlocalbot/plugin-sdk";
 import type { CoreConfig } from "./types.js";
@@ -222,7 +222,7 @@ export const nextcloudTalkPlugin: ChannelPlugin<ResolvedNextcloudTalkAccount> = 
                     : {}),
             },
           },
-        } as openlocalbotConfig;
+        } as OpenLocalBotConfig;
       }
       return {
         ...namedConfig,
@@ -246,7 +246,7 @@ export const nextcloudTalkPlugin: ChannelPlugin<ResolvedNextcloudTalkAccount> = 
             },
           },
         },
-      } as openlocalbotConfig;
+      } as OpenLocalBotConfig;
     },
   },
   outbound: {
@@ -328,7 +328,7 @@ export const nextcloudTalkPlugin: ChannelPlugin<ResolvedNextcloudTalkAccount> = 
       return { stop };
     },
     logoutAccount: async ({ accountId, cfg }) => {
-      const nextCfg = { ...cfg } as openlocalbotConfig;
+      const nextCfg = { ...cfg } as OpenLocalBotConfig;
       const nextSection = cfg.channels?.["nextcloud-talk"]
         ? { ...cfg.channels["nextcloud-talk"] }
         : undefined;
@@ -382,7 +382,7 @@ export const nextcloudTalkPlugin: ChannelPlugin<ResolvedNextcloudTalkAccount> = 
           const nextChannels = { ...nextCfg.channels } as Record<string, unknown>;
           delete nextChannels["nextcloud-talk"];
           if (Object.keys(nextChannels).length > 0) {
-            nextCfg.channels = nextChannels as openlocalbotConfig["channels"];
+            nextCfg.channels = nextChannels as OpenLocalBotConfig["channels"];
           } else {
             delete nextCfg.channels;
           }

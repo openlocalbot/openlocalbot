@@ -1,10 +1,10 @@
-import type { openlocalbotConfig } from "../../../config/config.js";
+import type { OpenLocalBotConfig } from "../../../config/config.js";
 import type { OnboardOptions } from "../../onboard-types.js";
 import { resolveUserPath } from "../../../utils.js";
 
 export function resolveNonInteractiveWorkspaceDir(params: {
   opts: OnboardOptions;
-  baseConfig: openlocalbotConfig;
+  baseConfig: OpenLocalBotConfig;
   defaultWorkspaceDir: string;
 }) {
   const raw = (

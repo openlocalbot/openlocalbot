@@ -3,13 +3,13 @@ import {
   DEEPSEEK_API_BASE_URL,
   DEEPSEEK_DEFAULT_MODEL_REF,
 } from "../agents/deepseek-models.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 
 /**
  * Apply DeepSeek provider configuration without changing the default model.
  * Registers DeepSeek models and sets up the provider, but preserves existing model selection.
  */
-export function applyDeepSeekProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyDeepSeekProviderConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const models = { ...cfg.agents?.defaults?.models };
   models[DEEPSEEK_DEFAULT_MODEL_REF] = {
     ...models[DEEPSEEK_DEFAULT_MODEL_REF],
@@ -63,7 +63,7 @@ export function applyDeepSeekProviderConfig(cfg: OpenClawConfig): OpenClawConfig
  * Apply DeepSeek provider configuration AND set DeepSeek as the default model.
  * Use this when DeepSeek is the primary provider choice during onboarding.
  */
-export function applyDeepSeekConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyDeepSeekConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const next = applyDeepSeekProviderConfig(cfg);
   const existingModel = next.agents?.defaults?.model;
   return {

@@ -18,7 +18,7 @@ vi.mock("../../plugins/loader.js", () => ({
 
 import fs from "node:fs";
 import type { ChannelPluginCatalogEntry } from "../../channels/plugins/catalog.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { WizardPrompter } from "../../wizard/prompts.js";
 import { makePrompter, makeRuntime } from "./__tests__/test-utils.js";
 import { ensureOnboardingPluginInstalled } from "./plugin-install.js";
@@ -49,7 +49,7 @@ describe("ensureOnboardingPluginInstalled", () => {
     const prompter = makePrompter({
       select: vi.fn(async () => "npm") as WizardPrompter["select"],
     });
-    const cfg: openlocalbotConfig = { plugins: { allow: ["other"] } };
+    const cfg: OpenLocalBotConfig = { plugins: { allow: ["other"] } };
     vi.mocked(fs.existsSync).mockReturnValue(false);
     installPluginFromNpmSpec.mockResolvedValue({
       ok: true,
@@ -81,7 +81,7 @@ describe("ensureOnboardingPluginInstalled", () => {
     const prompter = makePrompter({
       select: vi.fn(async () => "local") as WizardPrompter["select"],
     });
-    const cfg: openlocalbotConfig = {};
+    const cfg: OpenLocalBotConfig = {};
     vi.mocked(fs.existsSync).mockImplementation((value) => {
       const raw = String(value);
       return (
@@ -106,7 +106,7 @@ describe("ensureOnboardingPluginInstalled", () => {
     const runtime = makeRuntime();
     const select = vi.fn(async () => "skip") as WizardPrompter["select"];
     const prompter = makePrompter({ select });
-    const cfg: openlocalbotConfig = { update: { channel: "dev" } };
+    const cfg: OpenLocalBotConfig = { update: { channel: "dev" } };
     vi.mocked(fs.existsSync).mockImplementation((value) => {
       const raw = String(value);
       return (
@@ -129,7 +129,7 @@ describe("ensureOnboardingPluginInstalled", () => {
     const runtime = makeRuntime();
     const select = vi.fn(async () => "skip") as WizardPrompter["select"];
     const prompter = makePrompter({ select });
-    const cfg: openlocalbotConfig = { update: { channel: "beta" } };
+    const cfg: OpenLocalBotConfig = { update: { channel: "beta" } };
     vi.mocked(fs.existsSync).mockImplementation((value) => {
       const raw = String(value);
       return (
@@ -157,7 +157,7 @@ describe("ensureOnboardingPluginInstalled", () => {
       note,
       confirm,
     });
-    const cfg: openlocalbotConfig = {};
+    const cfg: OpenLocalBotConfig = {};
     vi.mocked(fs.existsSync).mockImplementation((value) => {
       const raw = String(value);
       return (

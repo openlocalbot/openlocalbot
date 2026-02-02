@@ -1,5 +1,5 @@
 import type { ChannelId } from "../channels/plugins/types.js";
-import type { openlocalbotConfig, GatewayBindMode } from "../config/config.js";
+import type { OpenLocalBotConfig, GatewayBindMode } from "../config/config.js";
 import { resolveChannelDefaultAccountId } from "../channels/plugins/helpers.js";
 import { listChannelPlugins } from "../channels/plugins/index.js";
 import { formatCliCommand } from "../cli/command-format.js";
@@ -8,7 +8,7 @@ import { isLoopbackHost, resolveGatewayBindHost } from "../gateway/net.js";
 import { readChannelAllowFromStore } from "../pairing/pairing-store.js";
 import { note } from "../terminal/note.js";
 
-export async function noteSecurityWarnings(cfg: openlocalbotConfig) {
+export async function noteSecurityWarnings(cfg: OpenLocalBotConfig) {
   const warnings: string[] = [];
   const auditHint = `- Run: ${formatCliCommand("openlocalbot security audit --deep")}`;
 

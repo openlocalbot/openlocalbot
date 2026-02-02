@@ -8,7 +8,7 @@ import {
 import fs from "node:fs/promises";
 import os from "node:os";
 import type { ReasoningLevel, ThinkLevel } from "../../auto-reply/thinking.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { ExecElevatedDefaults } from "../bash-tools.js";
 import type { EmbeddedPiCompactResult } from "./types.js";
 import { resolveHeartbeatPrompt } from "../../auto-reply/heartbeat.js";
@@ -23,7 +23,7 @@ import { buildTtsSystemPromptHint } from "../../tts/tts.js";
 import { resolveUserPath } from "../../utils.js";
 import { normalizeMessageChannel } from "../../utils/message-channel.js";
 import { isReasoningTagProvider } from "../../utils/provider-utils.js";
-import { resolveopenlocalbotAgentDir } from "../agent-paths.js";
+import { resolveOpenLocalBotAgentDir } from "../agent-paths.js";
 import { resolveSessionAgentIds } from "../agent-scope.js";
 import { makeBootstrapWarn, resolveBootstrapContextForRun } from "../bootstrap-files.js";
 import { listChannelSupportedActions, resolveChannelMessageToolHints } from "../channel-tools.js";
@@ -87,7 +87,7 @@ export type CompactEmbeddedPiSessionParams = {
   sessionFile: string;
   workspaceDir: string;
   agentDir?: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   skillsSnapshot?: SkillSnapshot;
   provider?: string;
   model?: string;
@@ -113,7 +113,7 @@ export async function compactEmbeddedPiSessionDirect(
 
   const provider = (params.provider ?? DEFAULT_PROVIDER).trim() || DEFAULT_PROVIDER;
   const modelId = (params.model ?? DEFAULT_MODEL).trim() || DEFAULT_MODEL;
-  const agentDir = params.agentDir ?? resolveopenlocalbotAgentDir();
+  const agentDir = params.agentDir ?? resolveOpenLocalBotAgentDir();
   await ensureopenlocalbotModelsJson(params.config, agentDir);
   const { model, error, authStorage, modelRegistry } = resolveModel(
     provider,

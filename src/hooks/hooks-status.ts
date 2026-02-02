@@ -1,5 +1,5 @@
 import path from "node:path";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { HookEligibilityContext, HookEntry, HookInstallSpec } from "./types.js";
 import { CONFIG_DIR } from "../utils.js";
 import { hasBinary, isConfigPathTruthy, resolveConfigPath, resolveHookConfig } from "./config.js";
@@ -92,7 +92,7 @@ function normalizeInstallOptions(entry: HookEntry): HookInstallOption[] {
 
 function buildHookStatus(
   entry: HookEntry,
-  config?: openlocalbotConfig,
+  config?: OpenLocalBotConfig,
   eligibility?: HookEligibilityContext,
 ): HookStatusEntry {
   const hookKey = resolveHookKey(entry);
@@ -211,7 +211,7 @@ function buildHookStatus(
 export function buildWorkspaceHookStatus(
   workspaceDir: string,
   opts?: {
-    config?: openlocalbotConfig;
+    config?: OpenLocalBotConfig;
     managedHooksDir?: string;
     entries?: HookEntry[];
     eligibility?: HookEligibilityContext;

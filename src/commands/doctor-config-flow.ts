@@ -1,7 +1,7 @@
 import type { ZodIssue } from "zod";
 import fs from "node:fs/promises";
 import path from "node:path";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { DoctorOptions } from "./doctor-prompter.js";
 import { formatCliCommand } from "../cli/command-format.js";
 import {
@@ -73,8 +73,8 @@ function resolvePathTarget(root: unknown, path: Array<string | number>): unknown
   return current;
 }
 
-function stripUnknownConfigKeys(config: openlocalbotConfig): {
-  config: openlocalbotConfig;
+function stripUnknownConfigKeys(config: OpenLocalBotConfig): {
+  config: OpenLocalBotConfig;
   removed: string[];
 } {
   const parsed = openlocalbotSchema.safeParse(config);
@@ -109,7 +109,7 @@ function stripUnknownConfigKeys(config: openlocalbotConfig): {
   return { config: next, removed };
 }
 
-function noteOpencodeProviderOverrides(cfg: openlocalbotConfig) {
+function noteOpencodeProviderOverrides(cfg: OpenLocalBotConfig) {
   const providers = cfg.models?.providers;
   if (!providers) {
     return;
@@ -213,7 +213,7 @@ export async function loadAndMaybeMigrateDoctorConfig(params: {
 
   let snapshot = await readConfigFileSnapshot();
   const baseCfg = snapshot.config ?? {};
-  let cfg: openlocalbotConfig = baseCfg;
+  let cfg: OpenLocalBotConfig = baseCfg;
   let candidate = structuredClone(baseCfg);
   let pendingChanges = false;
   let shouldWriteConfig = false;

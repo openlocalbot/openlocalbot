@@ -21,7 +21,7 @@ describe("resolveApiKeyForProfile fallback to main agent", () => {
     await fs.mkdir(mainAgentDir, { recursive: true });
     await fs.mkdir(secondaryAgentDir, { recursive: true });
 
-    // Set environment variables so resolveopenlocalbotAgentDir() returns mainAgentDir
+    // Set environment variables so resolveOpenLocalBotAgentDir() returns mainAgentDir
     process.env.openlocalbot_STATE_DIR = tmpDir;
     process.env.openlocalbot_AGENT_DIR = mainAgentDir;
     process.env.PI_CODING_AGENT_DIR = mainAgentDir;

@@ -3,13 +3,13 @@ import {
   GROQ_API_BASE_URL,
   GROQ_DEFAULT_MODEL_REF,
 } from "../agents/groq-models.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 
 /**
  * Apply Groq provider configuration without changing the default model.
  * Registers Groq models and sets up the provider, but preserves existing model selection.
  */
-export function applyGroqProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyGroqProviderConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const models = { ...cfg.agents?.defaults?.models };
   models[GROQ_DEFAULT_MODEL_REF] = {
     ...models[GROQ_DEFAULT_MODEL_REF],
@@ -61,7 +61,7 @@ export function applyGroqProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
  * Apply Groq provider configuration AND set Groq as the default model.
  * Use this when Groq is the primary provider choice during onboarding.
  */
-export function applyGroqConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyGroqConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const next = applyGroqProviderConfig(cfg);
   const existingModel = next.agents?.defaults?.model;
   return {

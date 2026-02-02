@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import { handleWhatsAppAction } from "./whatsapp-actions.js";
 
 const sendReactionWhatsApp = vi.fn(async () => undefined);
@@ -12,7 +12,7 @@ vi.mock("../../web/outbound.js", () => ({
 
 const enabledConfig = {
   channels: { whatsapp: { actions: { reactions: true } } },
-} as openlocalbotConfig;
+} as OpenLocalBotConfig;
 
 describe("handleWhatsAppAction", () => {
   it("adds reactions", async () => {
@@ -94,7 +94,7 @@ describe("handleWhatsAppAction", () => {
   it("respects reaction gating", async () => {
     const cfg = {
       channels: { whatsapp: { actions: { reactions: false } } },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
     await expect(
       handleWhatsAppAction(
         {

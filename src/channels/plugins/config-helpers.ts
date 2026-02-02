@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import { DEFAULT_ACCOUNT_ID } from "../../routing/session-key.js";
 
 type ChannelSection = {
@@ -7,12 +7,12 @@ type ChannelSection = {
 };
 
 export function setAccountEnabledInConfigSection(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   sectionKey: string;
   accountId: string;
   enabled: boolean;
   allowTopLevel?: boolean;
-}): openlocalbotConfig {
+}): OpenLocalBotConfig {
   const accountKey = params.accountId || DEFAULT_ACCOUNT_ID;
   const channels = params.cfg.channels as Record<string, unknown> | undefined;
   const base = channels?.[params.sectionKey] as ChannelSection | undefined;
@@ -27,7 +27,7 @@ export function setAccountEnabledInConfigSection(params: {
           enabled: params.enabled,
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
   }
 
   const baseAccounts = base?.accounts ?? {};
@@ -47,15 +47,15 @@ export function setAccountEnabledInConfigSection(params: {
         },
       },
     },
-  } as openlocalbotConfig;
+  } as OpenLocalBotConfig;
 }
 
 export function deleteAccountFromConfigSection(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   sectionKey: string;
   accountId: string;
   clearBaseFields?: string[];
-}): openlocalbotConfig {
+}): OpenLocalBotConfig {
   const accountKey = params.accountId || DEFAULT_ACCOUNT_ID;
   const channels = params.cfg.channels as Record<string, unknown> | undefined;
   const base = channels?.[params.sectionKey] as ChannelSection | undefined;
@@ -78,7 +78,7 @@ export function deleteAccountFromConfigSection(params: {
           accounts: Object.keys(accounts).length ? accounts : undefined,
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
   }
 
   if (baseAccounts && Object.keys(baseAccounts).length > 0) {
@@ -98,14 +98,14 @@ export function deleteAccountFromConfigSection(params: {
           accounts: Object.keys(baseAccounts).length ? baseAccounts : undefined,
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
   }
 
   const nextChannels = { ...params.cfg.channels } as Record<string, unknown>;
   delete nextChannels[params.sectionKey];
-  const nextCfg = { ...params.cfg } as openlocalbotConfig;
+  const nextCfg = { ...params.cfg } as OpenLocalBotConfig;
   if (Object.keys(nextChannels).length > 0) {
-    nextCfg.channels = nextChannels as openlocalbotConfig["channels"];
+    nextCfg.channels = nextChannels as OpenLocalBotConfig["channels"];
   } else {
     delete nextCfg.channels;
   }

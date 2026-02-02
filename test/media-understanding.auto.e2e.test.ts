@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { MsgContext } from "../src/auto-reply/templating.js";
-import type { openlocalbotConfig } from "../src/config/config.js";
+import type { OpenLocalBotConfig } from "../src/config/config.js";
 
 const makeTempDir = async (prefix: string) => await fs.mkdtemp(path.join(os.tmpdir(), prefix));
 
@@ -77,7 +77,7 @@ describe("media understanding auto-detect (e2e)", () => {
         MediaPath: filePath,
         MediaType: "audio/wav",
       };
-      const cfg: openlocalbotConfig = { tools: { media: { audio: {} } } };
+      const cfg: OpenLocalBotConfig = { tools: { media: { audio: {} } } };
 
       await applyMediaUnderstanding({ ctx, cfg });
 
@@ -122,7 +122,7 @@ describe("media understanding auto-detect (e2e)", () => {
         MediaPath: filePath,
         MediaType: "audio/wav",
       };
-      const cfg: openlocalbotConfig = { tools: { media: { audio: {} } } };
+      const cfg: OpenLocalBotConfig = { tools: { media: { audio: {} } } };
 
       await applyMediaUnderstanding({ ctx, cfg });
 
@@ -155,7 +155,7 @@ describe("media understanding auto-detect (e2e)", () => {
         MediaPath: filePath,
         MediaType: "image/png",
       };
-      const cfg: openlocalbotConfig = { tools: { media: { image: {} } } };
+      const cfg: OpenLocalBotConfig = { tools: { media: { image: {} } } };
 
       await applyMediaUnderstanding({ ctx, cfg });
 

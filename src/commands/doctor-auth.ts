@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { DoctorPrompter } from "./doctor-prompter.js";
 import {
   buildAuthHealthSummary,
@@ -18,9 +18,9 @@ import { formatCliCommand } from "../cli/command-format.js";
 import { note } from "../terminal/note.js";
 
 export async function maybeRepairAnthropicOAuthProfileId(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   prompter: DoctorPrompter,
-): Promise<openlocalbotConfig> {
+): Promise<OpenLocalBotConfig> {
   const store = ensureAuthProfileStore();
   const repair = repairOAuthProfileIdMismatch({
     cfg,
@@ -65,9 +65,9 @@ function pruneAuthOrder(
 }
 
 function pruneAuthProfiles(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   profileIds: Set<string>,
-): { next: openlocalbotConfig; changed: boolean } {
+): { next: OpenLocalBotConfig; changed: boolean } {
   const profiles = cfg.auth?.profiles;
   const order = cfg.auth?.order;
   const nextProfiles = profiles ? { ...profiles } : undefined;
@@ -110,9 +110,9 @@ function pruneAuthProfiles(
 }
 
 export async function maybeRemoveDeprecatedCliAuthProfiles(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   prompter: DoctorPrompter,
-): Promise<openlocalbotConfig> {
+): Promise<OpenLocalBotConfig> {
   const store = ensureAuthProfileStore(undefined, { allowKeychainPrompt: false });
   const deprecated = new Set<string>();
   if (store.profiles[CLAUDE_CLI_PROFILE_ID] || cfg.auth?.profiles?.[CLAUDE_CLI_PROFILE_ID]) {
@@ -228,7 +228,7 @@ function formatAuthIssueLine(issue: AuthIssue): string {
 }
 
 export async function noteAuthProfileHealth(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   prompter: DoctorPrompter;
   allowKeychainPrompt: boolean;
 }): Promise<void> {

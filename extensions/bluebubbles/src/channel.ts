@@ -1,4 +1,4 @@
-import type { ChannelAccountSnapshot, ChannelPlugin, openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { ChannelAccountSnapshot, ChannelPlugin, OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import {
   applyAccountNameToChannelSection,
   buildChannelConfigSchema,
@@ -262,7 +262,7 @@ export const bluebubblesPlugin: ChannelPlugin<ResolvedBlueBubblesAccount> = {
               ...(input.webhookPath ? { webhookPath: input.webhookPath } : {}),
             },
           },
-        } as openlocalbotConfig;
+        } as OpenLocalBotConfig;
       }
       return {
         ...next,
@@ -283,7 +283,7 @@ export const bluebubblesPlugin: ChannelPlugin<ResolvedBlueBubblesAccount> = {
             },
           },
         },
-      } as openlocalbotConfig;
+      } as OpenLocalBotConfig;
     },
   },
   pairing: {

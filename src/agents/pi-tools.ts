@@ -5,7 +5,7 @@ import {
   createWriteTool,
   readTool,
 } from "@mariozechner/pi-coding-agent";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { ModelAuthMode } from "./model-auth.js";
 import type { AnyAgentTool } from "./pi-tools.types.js";
 import type { SandboxContext } from "./sandbox.js";
@@ -84,7 +84,7 @@ function isApplyPatchAllowedForModel(params: {
   });
 }
 
-function resolveExecConfig(cfg: openlocalbotConfig | undefined) {
+function resolveExecConfig(cfg: OpenLocalBotConfig | undefined) {
   const globalExec = cfg?.tools?.exec;
   return {
     host: globalExec?.host,
@@ -120,7 +120,7 @@ export function createopenlocalbotCodingTools(options?: {
   sessionKey?: string;
   agentDir?: string;
   workspaceDir?: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   abortSignal?: AbortSignal;
   /**
    * Provider of the currently selected model (used for provider-specific tool quirks).

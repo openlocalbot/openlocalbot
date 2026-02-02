@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import { describe, expect, it } from "vitest";
 import { zaloPlugin } from "./channel.js";
 
@@ -10,7 +10,7 @@ describe("zalo directory", () => {
           allowFrom: ["zalo:123", "zl:234", "345"],
         },
       },
-    } as unknown as openlocalbotConfig;
+    } as unknown as OpenLocalBotConfig;
 
     expect(zaloPlugin.directory).toBeTruthy();
     expect(zaloPlugin.directory?.listPeers).toBeTruthy();

@@ -2,7 +2,7 @@ import type {
   ChannelAccountSnapshot,
   ChannelDock,
   ChannelPlugin,
-  openlocalbotConfig,
+  OpenLocalBotConfig,
 } from "openlocalbot/plugin-sdk";
 import {
   applyAccountNameToChannelSection,
@@ -236,7 +236,7 @@ export const zaloPlugin: ChannelPlugin<ResolvedZaloAccount> = {
                     : {}),
             },
           },
-        } as openlocalbotConfig;
+        } as OpenLocalBotConfig;
       }
       return {
         ...next,
@@ -259,7 +259,7 @@ export const zaloPlugin: ChannelPlugin<ResolvedZaloAccount> = {
             },
           },
         },
-      } as openlocalbotConfig;
+      } as OpenLocalBotConfig;
     },
   },
   pairing: {

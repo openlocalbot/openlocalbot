@@ -1,11 +1,11 @@
 import type { App } from "@slack/bolt";
 import { describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { RuntimeEnv } from "../../runtime.js";
 import { createSlackMonitorContext, normalizeSlackChannelType } from "./context.js";
 
 const baseParams = () => ({
-  cfg: {} as openlocalbotConfig,
+  cfg: {} as OpenLocalBotConfig,
   accountId: "default",
   botToken: "token",
   app: { client: {} } as App,

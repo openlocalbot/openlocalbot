@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { IMessageAccountConfig } from "../config/types.js";
 import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "../routing/session-key.js";
 
@@ -10,7 +10,7 @@ export type ResolvedIMessageAccount = {
   configured: boolean;
 };
 
-function listConfiguredAccountIds(cfg: openlocalbotConfig): string[] {
+function listConfiguredAccountIds(cfg: OpenLocalBotConfig): string[] {
   const accounts = cfg.channels?.imessage?.accounts;
   if (!accounts || typeof accounts !== "object") {
     return [];
@@ -18,7 +18,7 @@ function listConfiguredAccountIds(cfg: openlocalbotConfig): string[] {
   return Object.keys(accounts).filter(Boolean);
 }
 
-export function listIMessageAccountIds(cfg: openlocalbotConfig): string[] {
+export function listIMessageAccountIds(cfg: OpenLocalBotConfig): string[] {
   const ids = listConfiguredAccountIds(cfg);
   if (ids.length === 0) {
     return [DEFAULT_ACCOUNT_ID];
@@ -26,7 +26,7 @@ export function listIMessageAccountIds(cfg: openlocalbotConfig): string[] {
   return ids.toSorted((a, b) => a.localeCompare(b));
 }
 
-export function resolveDefaultIMessageAccountId(cfg: openlocalbotConfig): string {
+export function resolveDefaultIMessageAccountId(cfg: OpenLocalBotConfig): string {
   const ids = listIMessageAccountIds(cfg);
   if (ids.includes(DEFAULT_ACCOUNT_ID)) {
     return DEFAULT_ACCOUNT_ID;
@@ -35,7 +35,7 @@ export function resolveDefaultIMessageAccountId(cfg: openlocalbotConfig): string
 }
 
 function resolveAccountConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   accountId: string,
 ): IMessageAccountConfig | undefined {
   const accounts = cfg.channels?.imessage?.accounts;
@@ -45,7 +45,7 @@ function resolveAccountConfig(
   return accounts[accountId] as IMessageAccountConfig | undefined;
 }
 
-function mergeIMessageAccountConfig(cfg: openlocalbotConfig, accountId: string): IMessageAccountConfig {
+function mergeIMessageAccountConfig(cfg: OpenLocalBotConfig, accountId: string): IMessageAccountConfig {
   const { accounts: _ignored, ...base } = (cfg.channels?.imessage ??
     {}) as IMessageAccountConfig & { accounts?: unknown };
   const account = resolveAccountConfig(cfg, accountId) ?? {};
@@ -53,7 +53,7 @@ function mergeIMessageAccountConfig(cfg: openlocalbotConfig, accountId: string):
 }
 
 export function resolveIMessageAccount(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   accountId?: string | null;
 }): ResolvedIMessageAccount {
   const accountId = normalizeAccountId(params.accountId);
@@ -83,7 +83,7 @@ export function resolveIMessageAccount(params: {
   };
 }
 
-export function listEnabledIMessageAccounts(cfg: openlocalbotConfig): ResolvedIMessageAccount[] {
+export function listEnabledIMessageAccounts(cfg: OpenLocalBotConfig): ResolvedIMessageAccount[] {
   return listIMessageAccountIds(cfg)
     .map((accountId) => resolveIMessageAccount({ cfg, accountId }))
     .filter((account) => account.enabled);

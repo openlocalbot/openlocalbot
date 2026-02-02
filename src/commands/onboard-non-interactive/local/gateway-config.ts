@@ -1,15 +1,15 @@
-import type { openlocalbotConfig } from "../../../config/config.js";
+import type { OpenLocalBotConfig } from "../../../config/config.js";
 import type { RuntimeEnv } from "../../../runtime.js";
 import type { OnboardOptions } from "../../onboard-types.js";
 import { randomToken } from "../../onboard-helpers.js";
 
 export function applyNonInteractiveGatewayConfig(params: {
-  nextConfig: openlocalbotConfig;
+  nextConfig: OpenLocalBotConfig;
   opts: OnboardOptions;
   runtime: RuntimeEnv;
   defaultPort: number;
 }): {
-  nextConfig: openlocalbotConfig;
+  nextConfig: OpenLocalBotConfig;
   port: number;
   bind: string;
   authMode: string;

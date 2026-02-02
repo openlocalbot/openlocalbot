@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import { normalizeChatChannelId } from "../../channels/registry.js";
 import { loadSessionStore, resolveStorePath } from "../../config/sessions.js";
 import { normalizeE164 } from "../../utils.js";
@@ -6,7 +6,7 @@ import { normalizeE164 } from "../../utils.js";
 type HeartbeatRecipientsResult = { recipients: string[]; source: string };
 type HeartbeatRecipientsOpts = { to?: string; all?: boolean };
 
-function getSessionRecipients(cfg: openlocalbotConfig) {
+function getSessionRecipients(cfg: OpenLocalBotConfig) {
   const sessionCfg = cfg.session;
   const scope = sessionCfg?.scope ?? "per-sender";
   if (scope === "global") {
@@ -43,7 +43,7 @@ function getSessionRecipients(cfg: openlocalbotConfig) {
 }
 
 export function resolveWhatsAppHeartbeatRecipients(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   opts: HeartbeatRecipientsOpts = {},
 ): HeartbeatRecipientsResult {
   if (opts.to) {

@@ -76,7 +76,7 @@ enum GatewayEnvironment {
             let trimmed = raw.trimmingCharacters(in: .whitespacesAndNewlines)
             if let parsed = Int(trimmed), parsed > 0 { return parsed }
         }
-        if let configPort = openlocalbotConfigFile.gatewayPort(), configPort > 0 {
+        if let configPort = OpenLocalBotConfigFile.gatewayPort(), configPort > 0 {
             return configPort
         }
         let stored = UserDefaults.standard.integer(forKey: "gatewayPort")
@@ -217,7 +217,7 @@ enum GatewayEnvironment {
             }
         }
 
-        let root = openlocalbotConfigFile.loadDict()
+        let root = OpenLocalBotConfigFile.loadDict()
         if let gateway = root["gateway"] as? [String: Any],
            let bind = gateway["bind"] as? String
         {

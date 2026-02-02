@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { SkillsInstallPreferences } from "./skills/types.js";
 
 export {
@@ -33,7 +33,7 @@ export {
   syncSkillsToWorkspace,
 } from "./skills/workspace.js";
 
-export function resolveSkillsInstallPreferences(config?: openlocalbotConfig): SkillsInstallPreferences {
+export function resolveSkillsInstallPreferences(config?: OpenLocalBotConfig): SkillsInstallPreferences {
   const raw = config?.skills?.install;
   const preferBrew = raw?.preferBrew ?? true;
   const managerRaw = typeof raw?.nodeManager === "string" ? raw.nodeManager.trim() : "";

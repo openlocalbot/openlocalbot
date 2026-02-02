@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { startHeartbeatRunner } from "./heartbeat-runner.js";
 
 describe("startHeartbeatRunner", () => {
@@ -17,7 +17,7 @@ describe("startHeartbeatRunner", () => {
     const runner = startHeartbeatRunner({
       cfg: {
         agents: { defaults: { heartbeat: { every: "30m" } } },
-      } as openlocalbotConfig,
+      } as OpenLocalBotConfig,
       runOnce: runSpy,
     });
 
@@ -36,7 +36,7 @@ describe("startHeartbeatRunner", () => {
           { id: "ops", heartbeat: { every: "15m" } },
         ],
       },
-    } as openlocalbotConfig);
+    } as OpenLocalBotConfig);
 
     await vi.advanceTimersByTimeAsync(10 * 60_000 + 1_000);
 

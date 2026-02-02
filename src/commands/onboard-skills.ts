@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import type { WizardPrompter } from "../wizard/prompts.js";
 import { installSkill } from "../agents/skills-install.js";
@@ -30,10 +30,10 @@ function formatSkillHint(skill: {
 }
 
 function upsertSkillEntry(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   skillKey: string,
   patch: { apiKey?: string },
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   const entries = { ...cfg.skills?.entries };
   const existing = (entries[skillKey] as { apiKey?: string } | undefined) ?? {};
   entries[skillKey] = { ...existing, ...patch };
@@ -47,11 +47,11 @@ function upsertSkillEntry(
 }
 
 export async function setupSkills(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   workspaceDir: string,
   runtime: RuntimeEnv,
   prompter: WizardPrompter,
-): Promise<openlocalbotConfig> {
+): Promise<OpenLocalBotConfig> {
   const report = buildWorkspaceSkillStatus(workspaceDir, { config: cfg });
   const eligible = report.skills.filter((s) => s.eligible);
   const missing = report.skills.filter((s) => !s.eligible && !s.disabled && !s.blockedByAllowlist);
@@ -107,7 +107,7 @@ export async function setupSkills(
     options: resolveNodeManagerOptions(),
   })) as "npm" | "pnpm" | "bun";
 
-  let next: openlocalbotConfig = {
+  let next: OpenLocalBotConfig = {
     ...cfg,
     skills: {
       ...cfg.skills,

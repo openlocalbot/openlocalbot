@@ -1,5 +1,5 @@
 import type { ChannelOutboundTargetMode } from "../../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { SessionEntry } from "../../config/sessions.js";
 import type { OutboundTargetResolution } from "./targets.js";
 import { DEFAULT_CHAT_CHANNEL } from "../../channels/registry.js";
@@ -102,7 +102,7 @@ export function resolveAgentDeliveryPlan(params: {
 }
 
 export function resolveAgentOutboundTarget(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   plan: AgentDeliveryPlan;
   targetMode?: ChannelOutboundTargetMode;
   validateExplicitTarget?: boolean;

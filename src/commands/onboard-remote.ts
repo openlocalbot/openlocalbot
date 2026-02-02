@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { GatewayBonjourBeacon } from "../infra/bonjour-discovery.js";
 import type { WizardPrompter } from "../wizard/prompts.js";
 import { discoverGatewayBeacons } from "../infra/bonjour-discovery.js";
@@ -28,9 +28,9 @@ function ensureWsUrl(value: string): string {
 }
 
 export async function promptRemoteGatewayConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   prompter: WizardPrompter,
-): Promise<openlocalbotConfig> {
+): Promise<OpenLocalBotConfig> {
   let selectedBeacon: GatewayBonjourBeacon | null = null;
   let suggestedUrl = cfg.gateway?.remote?.url ?? DEFAULT_GATEWAY_URL;
 

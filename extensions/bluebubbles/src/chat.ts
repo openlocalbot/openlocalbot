@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import crypto from "node:crypto";
 import { resolveBlueBubblesAccount } from "./accounts.js";
 import { blueBubblesFetchWithTimeout, buildBlueBubblesApiUrl } from "./types.js";
@@ -8,7 +8,7 @@ export type BlueBubblesChatOpts = {
   password?: string;
   accountId?: string;
   timeoutMs?: number;
-  cfg?: openlocalbotConfig;
+  cfg?: OpenLocalBotConfig;
 };
 
 function resolveAccount(params: BlueBubblesChatOpts) {

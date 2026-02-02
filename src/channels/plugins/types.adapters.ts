@@ -1,5 +1,5 @@
 import type { ReplyPayload } from "../../auto-reply/types.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { GroupToolPolicyConfig } from "../../config/types.tools.js";
 import type { OutboundDeliveryResult, OutboundSendDeps } from "../../infra/outbound/deliver.js";
 import type { RuntimeEnv } from "../../runtime.js";
@@ -20,45 +20,45 @@ import type {
 } from "./types.core.js";
 
 export type ChannelSetupAdapter = {
-  resolveAccountId?: (params: { cfg: openlocalbotConfig; accountId?: string }) => string;
+  resolveAccountId?: (params: { cfg: OpenLocalBotConfig; accountId?: string }) => string;
   applyAccountName?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId: string;
     name?: string;
-  }) => openlocalbotConfig;
+  }) => OpenLocalBotConfig;
   applyAccountConfig: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId: string;
     input: ChannelSetupInput;
-  }) => openlocalbotConfig;
+  }) => OpenLocalBotConfig;
   validateInput?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId: string;
     input: ChannelSetupInput;
   }) => string | null;
 };
 
 export type ChannelConfigAdapter<ResolvedAccount> = {
-  listAccountIds: (cfg: openlocalbotConfig) => string[];
-  resolveAccount: (cfg: openlocalbotConfig, accountId?: string | null) => ResolvedAccount;
-  defaultAccountId?: (cfg: openlocalbotConfig) => string;
+  listAccountIds: (cfg: OpenLocalBotConfig) => string[];
+  resolveAccount: (cfg: OpenLocalBotConfig, accountId?: string | null) => ResolvedAccount;
+  defaultAccountId?: (cfg: OpenLocalBotConfig) => string;
   setAccountEnabled?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId: string;
     enabled: boolean;
-  }) => openlocalbotConfig;
-  deleteAccount?: (params: { cfg: openlocalbotConfig; accountId: string }) => openlocalbotConfig;
-  isEnabled?: (account: ResolvedAccount, cfg: openlocalbotConfig) => boolean;
-  disabledReason?: (account: ResolvedAccount, cfg: openlocalbotConfig) => string;
-  isConfigured?: (account: ResolvedAccount, cfg: openlocalbotConfig) => boolean | Promise<boolean>;
-  unconfiguredReason?: (account: ResolvedAccount, cfg: openlocalbotConfig) => string;
-  describeAccount?: (account: ResolvedAccount, cfg: openlocalbotConfig) => ChannelAccountSnapshot;
+  }) => OpenLocalBotConfig;
+  deleteAccount?: (params: { cfg: OpenLocalBotConfig; accountId: string }) => OpenLocalBotConfig;
+  isEnabled?: (account: ResolvedAccount, cfg: OpenLocalBotConfig) => boolean;
+  disabledReason?: (account: ResolvedAccount, cfg: OpenLocalBotConfig) => string;
+  isConfigured?: (account: ResolvedAccount, cfg: OpenLocalBotConfig) => boolean | Promise<boolean>;
+  unconfiguredReason?: (account: ResolvedAccount, cfg: OpenLocalBotConfig) => string;
+  describeAccount?: (account: ResolvedAccount, cfg: OpenLocalBotConfig) => ChannelAccountSnapshot;
   resolveAllowFrom?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId?: string | null;
   }) => string[] | undefined;
   formatAllowFrom?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId?: string | null;
     allowFrom: Array<string | number>;
   }) => string[];
@@ -71,7 +71,7 @@ export type ChannelGroupAdapter = {
 };
 
 export type ChannelOutboundContext = {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   to: string;
   text: string;
   mediaUrl?: string;
@@ -93,7 +93,7 @@ export type ChannelOutboundAdapter = {
   textChunkLimit?: number;
   pollMaxOptions?: number;
   resolveTarget?: (params: {
-    cfg?: openlocalbotConfig;
+    cfg?: OpenLocalBotConfig;
     to?: string;
     allowFrom?: string[];
     accountId?: string | null;
@@ -109,37 +109,37 @@ export type ChannelStatusAdapter<ResolvedAccount> = {
   defaultRuntime?: ChannelAccountSnapshot;
   buildChannelSummary?: (params: {
     account: ResolvedAccount;
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     defaultAccountId: string;
     snapshot: ChannelAccountSnapshot;
   }) => Record<string, unknown> | Promise<Record<string, unknown>>;
   probeAccount?: (params: {
     account: ResolvedAccount;
     timeoutMs: number;
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
   }) => Promise<unknown>;
   auditAccount?: (params: {
     account: ResolvedAccount;
     timeoutMs: number;
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     probe?: unknown;
   }) => Promise<unknown>;
   buildAccountSnapshot?: (params: {
     account: ResolvedAccount;
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     runtime?: ChannelAccountSnapshot;
     probe?: unknown;
     audit?: unknown;
   }) => ChannelAccountSnapshot | Promise<ChannelAccountSnapshot>;
   logSelfId?: (params: {
     account: ResolvedAccount;
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     runtime: RuntimeEnv;
     includeChannelPrefix?: boolean;
   }) => void;
   resolveAccountState?: (params: {
     account: ResolvedAccount;
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     configured: boolean;
     enabled: boolean;
   }) => ChannelAccountState;
@@ -147,7 +147,7 @@ export type ChannelStatusAdapter<ResolvedAccount> = {
 };
 
 export type ChannelGatewayContext<ResolvedAccount = unknown> = {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   accountId: string;
   account: ResolvedAccount;
   runtime: RuntimeEnv;
@@ -174,7 +174,7 @@ export type ChannelLoginWithQrWaitResult = {
 };
 
 export type ChannelLogoutContext<ResolvedAccount = unknown> = {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   accountId: string;
   account: ResolvedAccount;
   runtime: RuntimeEnv;
@@ -185,7 +185,7 @@ export type ChannelPairingAdapter = {
   idLabel: string;
   normalizeAllowEntry?: (entry: string) => string;
   notifyApproval?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     id: string;
     runtime?: RuntimeEnv;
   }) => Promise<void>;
@@ -209,7 +209,7 @@ export type ChannelGatewayAdapter<ResolvedAccount = unknown> = {
 
 export type ChannelAuthAdapter = {
   login?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId?: string | null;
     runtime: RuntimeEnv;
     verbose?: boolean;
@@ -219,11 +219,11 @@ export type ChannelAuthAdapter = {
 
 export type ChannelHeartbeatAdapter = {
   checkReady?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId?: string | null;
     deps?: ChannelHeartbeatDeps;
   }) => Promise<{ ok: boolean; reason: string }>;
-  resolveRecipients?: (params: { cfg: openlocalbotConfig; opts?: { to?: string; all?: boolean } }) => {
+  resolveRecipients?: (params: { cfg: OpenLocalBotConfig; opts?: { to?: string; all?: boolean } }) => {
     recipients: string[];
     source: string;
   };
@@ -231,40 +231,40 @@ export type ChannelHeartbeatAdapter = {
 
 export type ChannelDirectoryAdapter = {
   self?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId?: string | null;
     runtime: RuntimeEnv;
   }) => Promise<ChannelDirectoryEntry | null>;
   listPeers?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId?: string | null;
     query?: string | null;
     limit?: number | null;
     runtime: RuntimeEnv;
   }) => Promise<ChannelDirectoryEntry[]>;
   listPeersLive?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId?: string | null;
     query?: string | null;
     limit?: number | null;
     runtime: RuntimeEnv;
   }) => Promise<ChannelDirectoryEntry[]>;
   listGroups?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId?: string | null;
     query?: string | null;
     limit?: number | null;
     runtime: RuntimeEnv;
   }) => Promise<ChannelDirectoryEntry[]>;
   listGroupsLive?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId?: string | null;
     query?: string | null;
     limit?: number | null;
     runtime: RuntimeEnv;
   }) => Promise<ChannelDirectoryEntry[]>;
   listGroupMembers?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId?: string | null;
     groupId: string;
     limit?: number | null;
@@ -284,7 +284,7 @@ export type ChannelResolveResult = {
 
 export type ChannelResolverAdapter = {
   resolveTargets: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId?: string | null;
     inputs: string[];
     kind: ChannelResolveKind;
@@ -294,7 +294,7 @@ export type ChannelResolverAdapter = {
 
 export type ChannelElevatedAdapter = {
   allowFromFallback?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     accountId?: string | null;
   }) => Array<string | number> | undefined;
 };

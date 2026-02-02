@@ -9,7 +9,7 @@
  * - Abort signal handling
  */
 
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { twitchOutbound } from "./outbound.js";
 
@@ -49,7 +49,7 @@ describe("outbound", () => {
         },
       },
     },
-  } as unknown as openlocalbotConfig;
+  } as unknown as OpenLocalBotConfig;
 
   beforeEach(() => {
     vi.clearAllMocks();

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 
 const mocks = vi.hoisted(() => ({
   clackIntro: vi.fn(),
@@ -49,7 +49,7 @@ vi.mock("../terminal/note.js", () => ({
 
 vi.mock("./onboard-helpers.js", () => ({
   DEFAULT_WORKSPACE: "~/.openlocalbot/workspace",
-  applyWizardMetadata: (cfg: openlocalbotConfig) => cfg,
+  applyWizardMetadata: (cfg: OpenLocalBotConfig) => cfg,
   ensureWorkspaceAndSessions: vi.fn(),
   guardCancel: <T>(value: T) => value,
   printWizardHeader: mocks.printWizardHeader,

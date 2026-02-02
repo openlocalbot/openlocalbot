@@ -1,7 +1,7 @@
 import type {
   ChannelOnboardingAdapter,
   ChannelOnboardingDmPolicy,
-  openlocalbotConfig,
+  OpenLocalBotConfig,
   WizardPrompter,
 } from "openlocalbot/plugin-sdk";
 import {
@@ -23,9 +23,9 @@ import { runZca, runZcaInteractive, checkZcaInstalled, parseJsonOutput } from ".
 const channel = "zalouser" as const;
 
 function setZalouserDmPolicy(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   dmPolicy: "pairing" | "allowlist" | "open" | "disabled",
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   const allowFrom =
     dmPolicy === "open" ? addWildcardAllowFrom(cfg.channels?.zalouser?.allowFrom) : undefined;
   return {
@@ -38,7 +38,7 @@ function setZalouserDmPolicy(
         ...(allowFrom ? { allowFrom } : {}),
       },
     },
-  } as openlocalbotConfig;
+  } as OpenLocalBotConfig;
 }
 
 async function noteZalouserHelp(prompter: WizardPrompter): Promise<void> {
@@ -57,10 +57,10 @@ async function noteZalouserHelp(prompter: WizardPrompter): Promise<void> {
 }
 
 async function promptZalouserAllowFrom(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   prompter: WizardPrompter;
   accountId: string;
-}): Promise<openlocalbotConfig> {
+}): Promise<OpenLocalBotConfig> {
   const { cfg, prompter, accountId } = params;
   const resolved = resolveZalouserAccountSync({ cfg, accountId });
   const existingAllowFrom = resolved.config.allowFrom ?? [];
@@ -138,7 +138,7 @@ async function promptZalouserAllowFrom(params: {
             allowFrom: unique,
           },
         },
-      } as openlocalbotConfig;
+      } as OpenLocalBotConfig;
     }
 
     return {
@@ -159,15 +159,15 @@ async function promptZalouserAllowFrom(params: {
           },
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
   }
 }
 
 function setZalouserGroupPolicy(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   accountId: string,
   groupPolicy: "open" | "allowlist" | "disabled",
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   if (accountId === DEFAULT_ACCOUNT_ID) {
     return {
       ...cfg,
@@ -179,7 +179,7 @@ function setZalouserGroupPolicy(
           groupPolicy,
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
   }
   return {
     ...cfg,
@@ -198,14 +198,14 @@ function setZalouserGroupPolicy(
         },
       },
     },
-  } as openlocalbotConfig;
+  } as OpenLocalBotConfig;
 }
 
 function setZalouserGroupAllowlist(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   accountId: string,
   groupKeys: string[],
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   const groups = Object.fromEntries(groupKeys.map((key) => [key, { allow: true }]));
   if (accountId === DEFAULT_ACCOUNT_ID) {
     return {
@@ -218,7 +218,7 @@ function setZalouserGroupAllowlist(
           groups,
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
   }
   return {
     ...cfg,
@@ -237,11 +237,11 @@ function setZalouserGroupAllowlist(
         },
       },
     },
-  } as openlocalbotConfig;
+  } as OpenLocalBotConfig;
 }
 
 async function resolveZalouserGroups(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   accountId: string;
   entries: string[];
 }): Promise<Array<{ input: string; resolved: boolean; id?: string }>> {
@@ -417,7 +417,7 @@ export const zalouserOnboardingAdapter: ChannelOnboardingAdapter = {
             profile: account.profile !== "default" ? account.profile : undefined,
           },
         },
-      } as openlocalbotConfig;
+      } as OpenLocalBotConfig;
     } else {
       next = {
         ...next,
@@ -436,7 +436,7 @@ export const zalouserOnboardingAdapter: ChannelOnboardingAdapter = {
             },
           },
         },
-      } as openlocalbotConfig;
+      } as OpenLocalBotConfig;
     }
 
     if (forceAllowFrom) {

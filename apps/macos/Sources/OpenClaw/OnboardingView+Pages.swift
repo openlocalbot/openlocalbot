@@ -621,7 +621,7 @@ extension OnboardingView {
                         Text("Workspace folder")
                             .font(.headline)
                         TextField(
-                            AgentWorkspace.displayPath(for: openlocalbotConfigFile.defaultWorkspaceURL()),
+                            AgentWorkspace.displayPath(for: OpenLocalBotConfigFile.defaultWorkspaceURL()),
                             text: self.$workspacePath)
                             .textFieldStyle(.roundedBorder)
 

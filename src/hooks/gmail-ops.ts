@@ -1,7 +1,7 @@
 import { spawn } from "node:child_process";
 import { formatCliCommand } from "../cli/command-format.js";
 import {
-  type openlocalbotConfig,
+  type OpenLocalBotConfig,
   CONFIG_PATH,
   loadConfig,
   readConfigFileSnapshot,
@@ -209,7 +209,7 @@ export async function runGmailSetup(opts: GmailSetupOptions) {
     true,
   );
 
-  const nextConfig: openlocalbotConfig = {
+  const nextConfig: OpenLocalBotConfig = {
     ...baseConfig,
     hooks: {
       ...baseConfig.hooks,

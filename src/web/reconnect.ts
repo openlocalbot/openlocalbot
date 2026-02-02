@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { BackoffPolicy } from "../infra/backoff.js";
 import { computeBackoff, sleepWithAbort } from "../infra/backoff.js";
 
@@ -18,7 +18,7 @@ export const DEFAULT_RECONNECT_POLICY: ReconnectPolicy = {
 
 const clamp = (val: number, min: number, max: number) => Math.max(min, Math.min(max, val));
 
-export function resolveHeartbeatSeconds(cfg: openlocalbotConfig, overrideSeconds?: number): number {
+export function resolveHeartbeatSeconds(cfg: OpenLocalBotConfig, overrideSeconds?: number): number {
   const candidate = overrideSeconds ?? cfg.web?.heartbeatSeconds;
   if (typeof candidate === "number" && candidate > 0) {
     return candidate;
@@ -27,7 +27,7 @@ export function resolveHeartbeatSeconds(cfg: openlocalbotConfig, overrideSeconds
 }
 
 export function resolveReconnectPolicy(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   overrides?: Partial<ReconnectPolicy>,
 ): ReconnectPolicy {
   const reconnectOverrides = cfg.web?.reconnect ?? {};

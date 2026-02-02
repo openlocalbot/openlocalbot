@@ -3,7 +3,7 @@ import {
   createTypingCallbacks,
   logTypingFailure,
   resolveChannelMediaMaxBytes,
-  type openlocalbotConfig,
+  type OpenLocalBotConfig,
   type MSTeamsReplyStyle,
   type RuntimeEnv,
 } from "openlocalbot/plugin-sdk";
@@ -24,7 +24,7 @@ import {
 import { getMSTeamsRuntime } from "./runtime.js";
 
 export function createMSTeamsReplyDispatcher(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   agentId: string;
   runtime: RuntimeEnv;
   log: MSTeamsMonitorLogger;

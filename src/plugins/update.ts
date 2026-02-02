@@ -1,5 +1,5 @@
 import fs from "node:fs/promises";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { UpdateChannel } from "../infra/update-channels.js";
 import { resolveUserPath } from "../utils.js";
 import { discoveropenlocalbotPlugins } from "./discovery.js";
@@ -24,7 +24,7 @@ export type PluginUpdateOutcome = {
 };
 
 export type PluginUpdateSummary = {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   changed: boolean;
   outcomes: PluginUpdateOutcome[];
 };
@@ -37,7 +37,7 @@ export type PluginChannelSyncSummary = {
 };
 
 export type PluginChannelSyncResult = {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   changed: boolean;
   summary: PluginChannelSyncSummary;
 };
@@ -138,7 +138,7 @@ function buildLoadPathHelpers(existing: string[]) {
 }
 
 export async function updateNpmInstalledPlugins(params: {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   logger?: PluginUpdateLogger;
   pluginIds?: string[];
   skipIds?: Set<string>;
@@ -301,7 +301,7 @@ export async function updateNpmInstalledPlugins(params: {
 }
 
 export async function syncPluginsForUpdateChannel(params: {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   channel: UpdateChannel;
   workspaceDir?: string;
   logger?: PluginUpdateLogger;

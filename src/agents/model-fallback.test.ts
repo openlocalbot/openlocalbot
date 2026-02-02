@@ -3,13 +3,13 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { AuthProfileStore } from "./auth-profiles.js";
 import { saveAuthProfileStore } from "./auth-profiles.js";
 import { AUTH_STORE_VERSION } from "./auth-profiles/constants.js";
 import { runWithModelFallback } from "./model-fallback.js";
 
-function makeCfg(overrides: Partial<openlocalbotConfig> = {}): openlocalbotConfig {
+function makeCfg(overrides: Partial<OpenLocalBotConfig> = {}): OpenLocalBotConfig {
   return {
     agents: {
       defaults: {
@@ -20,7 +20,7 @@ function makeCfg(overrides: Partial<openlocalbotConfig> = {}): openlocalbotConfi
       },
     },
     ...overrides,
-  } as openlocalbotConfig;
+  } as OpenLocalBotConfig;
 }
 
 describe("runWithModelFallback", () => {
@@ -282,7 +282,7 @@ describe("runWithModelFallback", () => {
           },
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
 
     const calls: Array<{ provider: string; model: string }> = [];
 
@@ -319,7 +319,7 @@ describe("runWithModelFallback", () => {
           },
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
 
     const calls: Array<{ provider: string; model: string }> = [];
 

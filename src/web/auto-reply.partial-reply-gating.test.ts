@@ -13,7 +13,7 @@ vi.mock("../agents/pi-embedded.js", () => ({
   resolveEmbeddedSessionLane: (key: string) => `session:${key.trim() || "main"}`,
 }));
 
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { runEmbeddedPiAgent } from "../agents/pi-embedded.js";
 import { getReplyFromConfig } from "../auto-reply/reply.js";
 import { resetInboundDedupe } from "../auto-reply/reply/inbound-dedupe.js";
@@ -102,7 +102,7 @@ describe("partial reply gating", () => {
 
     const replyResolver = vi.fn().mockResolvedValue({ text: "final reply" });
 
-    const mockConfig: openlocalbotConfig = {
+    const mockConfig: OpenLocalBotConfig = {
       channels: { whatsapp: { allowFrom: ["*"] } },
     };
 
@@ -145,7 +145,7 @@ describe("partial reply gating", () => {
 
     const replyResolver = vi.fn().mockResolvedValue({ text: "final reply" });
 
-    const mockConfig: openlocalbotConfig = {
+    const mockConfig: OpenLocalBotConfig = {
       channels: {
         whatsapp: {
           allowFrom: ["*"],
@@ -195,7 +195,7 @@ describe("partial reply gating", () => {
 
     const replyResolver = vi.fn().mockResolvedValue(undefined);
 
-    const mockConfig: openlocalbotConfig = {
+    const mockConfig: OpenLocalBotConfig = {
       channels: { whatsapp: { allowFrom: ["*"] } },
       session: { store: store.storePath },
     };
@@ -253,7 +253,7 @@ describe("partial reply gating", () => {
 
     const replyResolver = vi.fn().mockResolvedValue(undefined);
 
-    const mockConfig: openlocalbotConfig = {
+    const mockConfig: OpenLocalBotConfig = {
       channels: { whatsapp: { allowFrom: ["*"] } },
       session: { store: store.storePath },
     };

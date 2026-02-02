@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { ModelCatalogEntry } from "../agents/model-catalog.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { resolveApiKeyForProvider } from "../agents/model-auth.js";
 import {
   findModelInCatalog,
@@ -146,7 +146,7 @@ const VISION_PROVIDERS = ["openai", "anthropic", "google", "minimax"] as const;
 
 export interface DescribeStickerParams {
   imagePath: string;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   agentDir?: string;
   agentId?: string;
 }

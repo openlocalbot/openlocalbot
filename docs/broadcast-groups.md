@@ -403,7 +403,7 @@ tail -f ~/.openlocalbot/logs/gateway.log | grep broadcast
 ### Config Schema
 
 ```typescript
-interface openlocalbotConfig {
+interface OpenLocalBotConfig {
   broadcast?: {
     strategy?: "parallel" | "sequential";
     [peerId: string]: string[];

@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { PluginRecord } from "./registry.js";
 import { defaultSlotIdForKey } from "./slots.js";
 
@@ -59,7 +59,7 @@ const normalizePluginEntries = (entries: unknown): NormalizedPluginsConfig["entr
 };
 
 export const normalizePluginsConfig = (
-  config?: openlocalbotConfig["plugins"],
+  config?: OpenLocalBotConfig["plugins"],
 ): NormalizedPluginsConfig => {
   const memorySlot = normalizeSlotValue(config?.slots?.memory);
   return {
@@ -74,13 +74,13 @@ export const normalizePluginsConfig = (
   };
 };
 
-const hasExplicitMemorySlot = (plugins?: openlocalbotConfig["plugins"]) =>
+const hasExplicitMemorySlot = (plugins?: OpenLocalBotConfig["plugins"]) =>
   Boolean(plugins?.slots && Object.prototype.hasOwnProperty.call(plugins.slots, "memory"));
 
-const hasExplicitMemoryEntry = (plugins?: openlocalbotConfig["plugins"]) =>
+const hasExplicitMemoryEntry = (plugins?: OpenLocalBotConfig["plugins"]) =>
   Boolean(plugins?.entries && Object.prototype.hasOwnProperty.call(plugins.entries, "memory-core"));
 
-const hasExplicitPluginConfig = (plugins?: openlocalbotConfig["plugins"]) => {
+const hasExplicitPluginConfig = (plugins?: OpenLocalBotConfig["plugins"]) => {
   if (!plugins) {
     return false;
   }
@@ -106,9 +106,9 @@ const hasExplicitPluginConfig = (plugins?: openlocalbotConfig["plugins"]) => {
 };
 
 export function applyTestPluginDefaults(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   env: NodeJS.ProcessEnv = process.env,
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   if (!env.VITEST) {
     return cfg;
   }
@@ -144,7 +144,7 @@ export function applyTestPluginDefaults(
 }
 
 export function isTestDefaultMemorySlotDisabled(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   env: NodeJS.ProcessEnv = process.env,
 ): boolean {
   if (!env.VITEST) {

@@ -2,7 +2,7 @@ import JSON5 from "json5";
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { SandboxToolPolicy } from "../agents/sandbox/types.js";
-import type { openlocalbotConfig, ConfigFileSnapshot } from "../config/config.js";
+import type { OpenLocalBotConfig, ConfigFileSnapshot } from "../config/config.js";
 import type { AgentToolsConfig } from "../config/types.tools.js";
 import type { ExecFn } from "./windows-acl.js";
 import { resolveDefaultAgentId } from "../agents/agent-scope.js";
@@ -54,7 +54,7 @@ function expandTilde(p: string, env: NodeJS.ProcessEnv): string | null {
   return null;
 }
 
-function summarizeGroupPolicy(cfg: openlocalbotConfig): {
+function summarizeGroupPolicy(cfg: OpenLocalBotConfig): {
   open: number;
   allowlist: number;
   other: number;
@@ -83,7 +83,7 @@ function summarizeGroupPolicy(cfg: openlocalbotConfig): {
   return { open, allowlist, other };
 }
 
-export function collectAttackSurfaceSummaryFindings(cfg: openlocalbotConfig): SecurityAuditFinding[] {
+export function collectAttackSurfaceSummaryFindings(cfg: OpenLocalBotConfig): SecurityAuditFinding[] {
   const group = summarizeGroupPolicy(cfg);
   const elevated = cfg.tools?.elevated?.enabled !== false;
   const hooksEnabled = cfg.hooks?.enabled === true;
@@ -141,7 +141,7 @@ function looksLikeEnvRef(value: string): boolean {
   return v.startsWith("${") && v.endsWith("}");
 }
 
-export function collectSecretsInConfigFindings(cfg: openlocalbotConfig): SecurityAuditFinding[] {
+export function collectSecretsInConfigFindings(cfg: OpenLocalBotConfig): SecurityAuditFinding[] {
   const findings: SecurityAuditFinding[] = [];
   const password =
     typeof cfg.gateway?.auth?.password === "string" ? cfg.gateway.auth.password.trim() : "";
@@ -171,7 +171,7 @@ export function collectSecretsInConfigFindings(cfg: openlocalbotConfig): Securit
   return findings;
 }
 
-export function collectHooksHardeningFindings(cfg: openlocalbotConfig): SecurityAuditFinding[] {
+export function collectHooksHardeningFindings(cfg: OpenLocalBotConfig): SecurityAuditFinding[] {
   const findings: SecurityAuditFinding[] = [];
   if (cfg.hooks?.enabled !== true) {
     return findings;
@@ -235,7 +235,7 @@ function addModel(models: ModelRef[], raw: unknown, source: string) {
   models.push({ id, source });
 }
 
-function collectModels(cfg: openlocalbotConfig): ModelRef[] {
+function collectModels(cfg: OpenLocalBotConfig): ModelRef[] {
   const out: ModelRef[] = [];
   addModel(out, cfg.agents?.defaults?.model?.primary, "agents.defaults.model.primary");
   for (const f of cfg.agents?.defaults?.model?.fallbacks ?? []) {
@@ -318,7 +318,7 @@ function isClaude45OrHigher(id: string): boolean {
   return /\bclaude-[^\s/]*?(?:-4-?5\b|4\.5\b)/i.test(id);
 }
 
-export function collectModelHygieneFindings(cfg: openlocalbotConfig): SecurityAuditFinding[] {
+export function collectModelHygieneFindings(cfg: OpenLocalBotConfig): SecurityAuditFinding[] {
   const findings: SecurityAuditFinding[] = [];
   const models = collectModels(cfg);
   if (models.length === 0) {
@@ -421,7 +421,7 @@ function pickToolPolicy(config?: { allow?: string[]; deny?: string[] }): Sandbox
 }
 
 function resolveToolPolicies(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   agentTools?: AgentToolsConfig;
   sandboxMode?: "off" | "non-main" | "all";
   agentId?: string | null;
@@ -451,7 +451,7 @@ function resolveToolPolicies(params: {
   return policies;
 }
 
-function hasWebSearchKey(cfg: openlocalbotConfig, env: NodeJS.ProcessEnv): boolean {
+function hasWebSearchKey(cfg: OpenLocalBotConfig, env: NodeJS.ProcessEnv): boolean {
   const search = cfg.tools?.web?.search;
   return Boolean(
     search?.apiKey ||
@@ -462,7 +462,7 @@ function hasWebSearchKey(cfg: openlocalbotConfig, env: NodeJS.ProcessEnv): boole
   );
 }
 
-function isWebSearchEnabled(cfg: openlocalbotConfig, env: NodeJS.ProcessEnv): boolean {
+function isWebSearchEnabled(cfg: OpenLocalBotConfig, env: NodeJS.ProcessEnv): boolean {
   const enabled = cfg.tools?.web?.search?.enabled;
   if (enabled === false) {
     return false;
@@ -473,7 +473,7 @@ function isWebSearchEnabled(cfg: openlocalbotConfig, env: NodeJS.ProcessEnv): bo
   return hasWebSearchKey(cfg, env);
 }
 
-function isWebFetchEnabled(cfg: openlocalbotConfig): boolean {
+function isWebFetchEnabled(cfg: OpenLocalBotConfig): boolean {
   const enabled = cfg.tools?.web?.fetch?.enabled;
   if (enabled === false) {
     return false;
@@ -481,7 +481,7 @@ function isWebFetchEnabled(cfg: openlocalbotConfig): boolean {
   return true;
 }
 
-function isBrowserEnabled(cfg: openlocalbotConfig): boolean {
+function isBrowserEnabled(cfg: OpenLocalBotConfig): boolean {
   try {
     return resolveBrowserConfig(cfg.browser, cfg).enabled;
   } catch {
@@ -490,7 +490,7 @@ function isBrowserEnabled(cfg: openlocalbotConfig): boolean {
 }
 
 export function collectSmallModelRiskFindings(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   env: NodeJS.ProcessEnv;
 }): SecurityAuditFinding[] {
   const findings: SecurityAuditFinding[] = [];
@@ -585,7 +585,7 @@ export function collectSmallModelRiskFindings(params: {
 }
 
 export async function collectPluginsTrustFindings(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   stateDir: string;
 }): Promise<SecurityAuditFinding[]> {
   const findings: SecurityAuditFinding[] = [];
@@ -845,7 +845,7 @@ export async function collectIncludeFilePermFindings(params: {
 }
 
 export async function collectStateDeepFilesystemFindings(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   env: NodeJS.ProcessEnv;
   stateDir: string;
   platform?: NodeJS.Platform;
@@ -1000,7 +1000,7 @@ export async function collectStateDeepFilesystemFindings(params: {
   return findings;
 }
 
-function listGroupPolicyOpen(cfg: openlocalbotConfig): string[] {
+function listGroupPolicyOpen(cfg: OpenLocalBotConfig): string[] {
   const out: string[] = [];
   const channels = cfg.channels as Record<string, unknown> | undefined;
   if (!channels || typeof channels !== "object") {
@@ -1030,7 +1030,7 @@ function listGroupPolicyOpen(cfg: openlocalbotConfig): string[] {
   return out;
 }
 
-export function collectExposureMatrixFindings(cfg: openlocalbotConfig): SecurityAuditFinding[] {
+export function collectExposureMatrixFindings(cfg: OpenLocalBotConfig): SecurityAuditFinding[] {
   const findings: SecurityAuditFinding[] = [];
   const openGroups = listGroupPolicyOpen(cfg);
   if (openGroups.length === 0) {

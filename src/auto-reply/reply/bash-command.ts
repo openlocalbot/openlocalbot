@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { MsgContext } from "../templating.js";
 import type { ReplyPayload } from "../types.js";
 import { resolveSessionAgentId } from "../../agents/agent-scope.js";
@@ -33,7 +33,7 @@ type ActiveBashJob =
 
 let activeJob: ActiveBashJob | null = null;
 
-function resolveForegroundMs(cfg: openlocalbotConfig): number {
+function resolveForegroundMs(cfg: OpenLocalBotConfig): number {
   const raw = cfg.commands?.bashForegroundMs;
   if (typeof raw !== "number" || Number.isNaN(raw)) {
     return DEFAULT_FOREGROUND_MS;
@@ -97,7 +97,7 @@ function parseBashRequest(raw: string): BashRequest | null {
 
 function resolveRawCommandBody(params: {
   ctx: MsgContext;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   agentId?: string;
   isGroup: boolean;
 }) {
@@ -205,7 +205,7 @@ function formatElevatedUnavailableMessage(params: {
 
 export async function handleBashChatCommand(params: {
   ctx: MsgContext;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   agentId?: string;
   sessionKey: string;
   isGroup: boolean;

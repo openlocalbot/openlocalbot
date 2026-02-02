@@ -3,7 +3,7 @@ import { resolveStateDir } from "../config/paths.js";
 import { DEFAULT_AGENT_ID } from "../routing/session-key.js";
 import { resolveUserPath } from "../utils.js";
 
-export function resolveopenlocalbotAgentDir(): string {
+export function resolveOpenLocalBotAgentDir(): string {
   const override =
     process.env.openlocalbot_AGENT_DIR?.trim() || process.env.PI_CODING_AGENT_DIR?.trim();
   if (override) {
@@ -14,7 +14,7 @@ export function resolveopenlocalbotAgentDir(): string {
 }
 
 export function ensureopenlocalbotAgentEnv(): string {
-  const dir = resolveopenlocalbotAgentDir();
+  const dir = resolveOpenLocalBotAgentDir();
   if (!process.env.openlocalbot_AGENT_DIR) {
     process.env.openlocalbot_AGENT_DIR = dir;
   }

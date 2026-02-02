@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { ChannelOutboundAdapter, ChannelPlugin } from "../../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { PluginRegistry } from "../../plugins/registry.js";
 import { discordOutbound } from "../../channels/plugins/outbound/discord.js";
 import { imessageOutbound } from "../../channels/plugins/outbound/imessage.js";
@@ -172,7 +172,7 @@ describe("routeReply", () => {
     mocks.sendMessageSlack.mockClear();
     const cfg = {
       messages: { responsePrefix: "[openlocalbot]" },
-    } as unknown as openlocalbotConfig;
+    } as unknown as OpenLocalBotConfig;
     await routeReply({
       payload: { text: "hi" },
       channel: "slack",
@@ -198,7 +198,7 @@ describe("routeReply", () => {
         ],
       },
       messages: {},
-    } as unknown as openlocalbotConfig;
+    } as unknown as OpenLocalBotConfig;
     await routeReply({
       payload: { text: "hi" },
       channel: "slack",
@@ -345,7 +345,7 @@ describe("routeReply", () => {
           enabled: true,
         },
       },
-    } as unknown as openlocalbotConfig;
+    } as unknown as OpenLocalBotConfig;
     await routeReply({
       payload: { text: "hi" },
       channel: "msteams",

@@ -1,7 +1,7 @@
 import openlocalbotProtocol
 import Foundation
 
-enum openlocalbotConfigFile {
+enum OpenLocalBotConfigFile {
     private static let logger = Logger(subsystem: "ai.openlocalbot", category: "config")
 
     static func url() -> URL {

@@ -9,7 +9,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { openlocalbotConfig } from "../../../config/config.js";
+import type { OpenLocalBotConfig } from "../../../config/config.js";
 import type { HookHandler } from "../../hooks.js";
 import { resolveAgentWorkspaceDir } from "../../../agents/agent-scope.js";
 import { resolveAgentIdFromSessionKey } from "../../../routing/session-key.js";
@@ -71,7 +71,7 @@ const saveSessionToMemory: HookHandler = async (event) => {
     console.log("[session-memory] Hook triggered for /new command");
 
     const context = event.context || {};
-    const cfg = context.cfg as openlocalbotConfig | undefined;
+    const cfg = context.cfg as OpenLocalBotConfig | undefined;
     const agentId = resolveAgentIdFromSessionKey(event.sessionKey);
     const workspaceDir = cfg
       ? resolveAgentWorkspaceDir(cfg, agentId)

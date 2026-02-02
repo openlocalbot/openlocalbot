@@ -1,9 +1,9 @@
 import type { AgentToolResult } from "@mariozechner/pi-agent-core";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { ChannelMessageActionContext, ChannelMessageActionName } from "./types.js";
 import { getChannelPlugin, listChannelPlugins } from "./index.js";
 
-export function listChannelMessageActions(cfg: openlocalbotConfig): ChannelMessageActionName[] {
+export function listChannelMessageActions(cfg: OpenLocalBotConfig): ChannelMessageActionName[] {
   const actions = new Set<ChannelMessageActionName>(["send", "broadcast"]);
   for (const plugin of listChannelPlugins()) {
     const list = plugin.actions?.listActions?.({ cfg });
@@ -17,7 +17,7 @@ export function listChannelMessageActions(cfg: openlocalbotConfig): ChannelMessa
   return Array.from(actions);
 }
 
-export function supportsChannelMessageButtons(cfg: openlocalbotConfig): boolean {
+export function supportsChannelMessageButtons(cfg: OpenLocalBotConfig): boolean {
   for (const plugin of listChannelPlugins()) {
     if (plugin.actions?.supportsButtons?.({ cfg })) {
       return true;
@@ -26,7 +26,7 @@ export function supportsChannelMessageButtons(cfg: openlocalbotConfig): boolean 
   return false;
 }
 
-export function supportsChannelMessageCards(cfg: openlocalbotConfig): boolean {
+export function supportsChannelMessageCards(cfg: OpenLocalBotConfig): boolean {
   for (const plugin of listChannelPlugins()) {
     if (plugin.actions?.supportsCards?.({ cfg })) {
       return true;

@@ -15,7 +15,7 @@ import {
   type ChannelDock,
   type ChannelMessageActionAdapter,
   type ChannelPlugin,
-  type openlocalbotConfig,
+  type OpenLocalBotConfig,
 } from "openlocalbot/plugin-sdk";
 import { GoogleChatConfigSchema } from "openlocalbot/plugin-sdk";
 import {
@@ -347,7 +347,7 @@ export const googlechatPlugin: ChannelPlugin<ResolvedGoogleChatAccount> = {
               ...configPatch,
             },
           },
-        } as openlocalbotConfig;
+        } as OpenLocalBotConfig;
       }
       return {
         ...next,
@@ -366,7 +366,7 @@ export const googlechatPlugin: ChannelPlugin<ResolvedGoogleChatAccount> = {
             },
           },
         },
-      } as openlocalbotConfig;
+      } as OpenLocalBotConfig;
     },
   },
   outbound: {

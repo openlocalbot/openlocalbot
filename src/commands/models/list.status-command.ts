@@ -1,6 +1,6 @@
 import path from "node:path";
 import type { RuntimeEnv } from "../../runtime.js";
-import { resolveopenlocalbotAgentDir } from "../../agents/agent-paths.js";
+import { resolveOpenLocalBotAgentDir } from "../../agents/agent-paths.js";
 import {
   resolveAgentDir,
   resolveAgentModelFallbacksOverride,
@@ -74,7 +74,7 @@ export async function modelsStatusCommand(
   }
   const cfg = loadConfig();
   const agentId = resolveKnownAgentId({ cfg, rawAgentId: opts.agent });
-  const agentDir = agentId ? resolveAgentDir(cfg, agentId) : resolveopenlocalbotAgentDir();
+  const agentDir = agentId ? resolveAgentDir(cfg, agentId) : resolveOpenLocalBotAgentDir();
   const agentModelPrimary = agentId ? resolveAgentModelPrimary(cfg, agentId) : undefined;
   const agentFallbacksOverride = agentId
     ? resolveAgentModelFallbacksOverride(cfg, agentId)

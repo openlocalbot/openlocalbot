@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import {
   addChannelAllowFromStoreEntry,
   approveChannelPairingCode,
@@ -97,7 +97,7 @@ export async function approveTelegramPairingCode(params: {
 }
 
 export async function resolveTelegramEffectiveAllowFrom(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   env?: NodeJS.ProcessEnv;
 }): Promise<{ dm: string[]; group: string[] }> {
   const env = params.env ?? process.env;

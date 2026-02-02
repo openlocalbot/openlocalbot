@@ -1,4 +1,4 @@
-import type { ChannelOnboardingAdapter, openlocalbotConfig, WizardPrompter } from "openlocalbot/plugin-sdk";
+import type { ChannelOnboardingAdapter, OpenLocalBotConfig, WizardPrompter } from "openlocalbot/plugin-sdk";
 import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "openlocalbot/plugin-sdk";
 import {
   listMattermostAccountIds,
@@ -176,7 +176,7 @@ export const mattermostOnboardingAdapter: ChannelOnboardingAdapter = {
 
     return { cfg: next, accountId };
   },
-  disable: (cfg: openlocalbotConfig) => ({
+  disable: (cfg: OpenLocalBotConfig) => ({
     ...cfg,
     channels: {
       ...cfg.channels,

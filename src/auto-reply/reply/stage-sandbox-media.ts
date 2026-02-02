@@ -2,7 +2,7 @@ import { spawn } from "node:child_process";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { MsgContext, TemplateContext } from "../templating.js";
 import { assertSandboxPath } from "../../agents/sandbox-paths.js";
 import { ensureSandboxWorkspaceForSession } from "../../agents/sandbox.js";
@@ -13,7 +13,7 @@ import { CONFIG_DIR } from "../../utils.js";
 export async function stageSandboxMedia(params: {
   ctx: MsgContext;
   sessionCtx: TemplateContext;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   sessionKey?: string;
   workspaceDir: string;
 }) {

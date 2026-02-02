@@ -1,14 +1,14 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { withTempHome as withTempHomeBase } from "../../test/helpers/temp-home.js";
 
 async function withTempHome<T>(fn: (home: string) => Promise<T>): Promise<T> {
   return withTempHomeBase(fn, { prefix: "openlocalbot-models-" });
 }
 
-const _MODELS_CONFIG: openlocalbotConfig = {
+const _MODELS_CONFIG: OpenLocalBotConfig = {
   models: {
     providers: {
       "custom-proxy": {
@@ -137,7 +137,7 @@ describe("models-config", () => {
         }));
 
         const { ensureopenlocalbotModelsJson } = await import("./models-config.js");
-        const { resolveopenlocalbotAgentDir } = await import("./agent-paths.js");
+        const { resolveOpenLocalBotAgentDir } = await import("./agent-paths.js");
 
         await ensureopenlocalbotModelsJson({
           models: {
@@ -151,7 +151,7 @@ describe("models-config", () => {
           },
         });
 
-        const agentDir = resolveopenlocalbotAgentDir();
+        const agentDir = resolveOpenLocalBotAgentDir();
         const raw = await fs.readFile(path.join(agentDir, "models.json"), "utf8");
         const parsed = JSON.parse(raw) as {
           providers: Record<string, { baseUrl?: string }>;

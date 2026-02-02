@@ -86,7 +86,7 @@ describe("state + config path candidates", () => {
     const previousUserProfile = process.env.USERPROFILE;
     const previousHomeDrive = process.env.HOMEDRIVE;
     const previousHomePath = process.env.HOMEPATH;
-    const previousopenlocalbotConfig = process.env.openlocalbot_CONFIG_PATH;
+    const previousOpenLocalBotConfig = process.env.openlocalbot_CONFIG_PATH;
     const previousopenlocalbotState = process.env.openlocalbot_STATE_DIR;
     try {
       const legacyDir = path.join(root, ".openlocalbot");
@@ -128,15 +128,15 @@ describe("state + config path candidates", () => {
       } else {
         process.env.HOMEPATH = previousHomePath;
       }
-      if (previousopenlocalbotConfig === undefined) {
+      if (previousOpenLocalBotConfig === undefined) {
         delete process.env.openlocalbot_CONFIG_PATH;
       } else {
-        process.env.openlocalbot_CONFIG_PATH = previousopenlocalbotConfig;
+        process.env.openlocalbot_CONFIG_PATH = previousOpenLocalBotConfig;
       }
-      if (previousopenlocalbotConfig === undefined) {
+      if (previousOpenLocalBotConfig === undefined) {
         delete process.env.openlocalbot_CONFIG_PATH;
       } else {
-        process.env.openlocalbot_CONFIG_PATH = previousopenlocalbotConfig;
+        process.env.openlocalbot_CONFIG_PATH = previousOpenLocalBotConfig;
       }
       if (previousopenlocalbotState === undefined) {
         delete process.env.openlocalbot_STATE_DIR;

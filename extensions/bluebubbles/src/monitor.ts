@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import {
   logAckFailure,
   logInboundDrop,
@@ -29,7 +29,7 @@ export type BlueBubblesRuntimeEnv = {
 
 export type BlueBubblesMonitorOptions = {
   account: ResolvedBlueBubblesAccount;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   runtime: BlueBubblesRuntimeEnv;
   abortSignal: AbortSignal;
   statusSink?: (patch: { lastInboundAt?: number; lastOutboundAt?: number }) => void;
@@ -269,7 +269,7 @@ function logGroupAllowlistHint(params: {
 
 type WebhookTarget = {
   account: ResolvedBlueBubblesAccount;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   runtime: BlueBubblesRuntimeEnv;
   core: BlueBubblesCoreRuntime;
   path: string;
@@ -370,7 +370,7 @@ const targetDebouncers = new Map<
 >();
 
 function resolveBlueBubblesDebounceMs(
-  config: openlocalbotConfig,
+  config: OpenLocalBotConfig,
   core: BlueBubblesCoreRuntime,
 ): number {
   const inbound = config.messages?.inbound;
@@ -1079,7 +1079,7 @@ function maskSecret(value: string): string {
 }
 
 function resolveBlueBubblesAckReaction(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   agentId: string;
   core: BlueBubblesCoreRuntime;
   runtime: BlueBubblesRuntimeEnv;

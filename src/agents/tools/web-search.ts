@@ -1,5 +1,5 @@
 import { Type } from "@sinclair/typebox";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { AnyAgentTool } from "./common.js";
 import { formatCliCommand } from "../../cli/command-format.js";
 import { jsonResult, readNumberParam, readStringParam } from "./common.js";
@@ -64,7 +64,7 @@ const WebSearchSchema = Type.Object({
   ),
 });
 
-type WebSearchConfig = NonNullable<openlocalbotConfig["tools"]>["web"] extends infer Web
+type WebSearchConfig = NonNullable<OpenLocalBotConfig["tools"]>["web"] extends infer Web
   ? Web extends { search?: infer Search }
     ? Search
     : undefined
@@ -102,7 +102,7 @@ type PerplexitySearchResponse = {
 
 type PerplexityBaseUrlHint = "direct" | "openrouter";
 
-function resolveSearchConfig(cfg?: openlocalbotConfig): WebSearchConfig {
+function resolveSearchConfig(cfg?: OpenLocalBotConfig): WebSearchConfig {
   const search = cfg?.tools?.web?.search;
   if (!search || typeof search !== "object") {
     return undefined;
@@ -452,7 +452,7 @@ async function runWebSearch(params: {
 }
 
 export function createWebSearchTool(options?: {
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   sandboxed?: boolean;
 }): AnyAgentTool | null {
   const search = resolveSearchConfig(options?.config);

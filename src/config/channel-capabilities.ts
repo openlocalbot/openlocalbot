@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "./config.js";
+import type { OpenLocalBotConfig } from "./config.js";
 import type { TelegramCapabilitiesConfig } from "./types.telegram.js";
 import { normalizeChannelId } from "../channels/plugins/index.js";
 import { normalizeAccountId } from "../routing/session-key.js";
@@ -49,7 +49,7 @@ function resolveAccountCapabilities(params: {
 }
 
 export function resolveChannelCapabilities(params: {
-  cfg?: Partial<openlocalbotConfig>;
+  cfg?: Partial<OpenLocalBotConfig>;
   channel?: string | null;
   accountId?: string | null;
 }): string[] | undefined {

@@ -1,7 +1,7 @@
 import type {
   ChannelOnboardingAdapter,
   ChannelOnboardingDmPolicy,
-  openlocalbotConfig,
+  OpenLocalBotConfig,
   DmPolicy,
   WizardPrompter,
 } from "openlocalbot/plugin-sdk";
@@ -22,7 +22,7 @@ import { normalizeBlueBubblesServerUrl } from "./types.js";
 
 const channel = "bluebubbles" as const;
 
-function setBlueBubblesDmPolicy(cfg: openlocalbotConfig, dmPolicy: DmPolicy): openlocalbotConfig {
+function setBlueBubblesDmPolicy(cfg: OpenLocalBotConfig, dmPolicy: DmPolicy): OpenLocalBotConfig {
   const allowFrom =
     dmPolicy === "open" ? addWildcardAllowFrom(cfg.channels?.bluebubbles?.allowFrom) : undefined;
   return {
@@ -39,10 +39,10 @@ function setBlueBubblesDmPolicy(cfg: openlocalbotConfig, dmPolicy: DmPolicy): op
 }
 
 function setBlueBubblesAllowFrom(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   accountId: string,
   allowFrom: string[],
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   if (accountId === DEFAULT_ACCOUNT_ID) {
     return {
       ...cfg,
@@ -81,10 +81,10 @@ function parseBlueBubblesAllowFromInput(raw: string): string[] {
 }
 
 async function promptBlueBubblesAllowFrom(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   prompter: WizardPrompter;
   accountId?: string;
-}): Promise<openlocalbotConfig> {
+}): Promise<OpenLocalBotConfig> {
   const accountId =
     params.accountId && normalizeAccountId(params.accountId)
       ? (normalizeAccountId(params.accountId) ?? DEFAULT_ACCOUNT_ID)

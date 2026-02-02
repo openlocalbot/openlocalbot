@@ -1,6 +1,6 @@
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "../../../config/config.js";
+import type { OpenLocalBotConfig } from "../../../config/config.js";
 import type { AgentBootstrapHookContext } from "../../hooks.js";
 import { makeTempWorkspace, writeWorkspaceFile } from "../../../test-helpers/workspace.js";
 import { createHookEvent } from "../../hooks.js";
@@ -15,7 +15,7 @@ describe("soul-evil hook", () => {
       content: "chaotic",
     });
 
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       hooks: {
         internal: {
           entries: {

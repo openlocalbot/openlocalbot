@@ -1,4 +1,4 @@
-import type { openlocalbotConfig, ConfigFileSnapshot } from "../../config/types.js";
+import type { OpenLocalBotConfig, ConfigFileSnapshot } from "../../config/types.js";
 import type { GatewayProbeResult } from "../../gateway/probe.js";
 import { resolveGatewayPort } from "../../config/config.js";
 import { pickPrimaryTailnetIPv4 } from "../../infra/tailnet.js";
@@ -87,7 +87,7 @@ function normalizeWsUrl(value: string): string | null {
   return trimmed;
 }
 
-export function resolveTargets(cfg: openlocalbotConfig, explicitUrl?: string): GatewayStatusTarget[] {
+export function resolveTargets(cfg: OpenLocalBotConfig, explicitUrl?: string): GatewayStatusTarget[] {
   const targets: GatewayStatusTarget[] = [];
   const add = (t: GatewayStatusTarget) => {
     if (!targets.some((x) => x.url === t.url)) {
@@ -144,7 +144,7 @@ export function sanitizeSshTarget(value: unknown): string | null {
 }
 
 export function resolveAuthForTarget(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   target: GatewayStatusTarget,
   overrides: { token?: string; password?: string },
 ): { token?: string; password?: string } {
@@ -263,7 +263,7 @@ export function extractConfigSummary(snapshotUnknown: unknown): GatewayConfigSum
   };
 }
 
-export function buildNetworkHints(cfg: openlocalbotConfig) {
+export function buildNetworkHints(cfg: OpenLocalBotConfig) {
   const tailnetIPv4 = pickPrimaryTailnetIPv4();
   const port = resolveGatewayPort(cfg);
   return {

@@ -2,9 +2,9 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { resolveopenlocalbotAgentDir } from "./agent-paths.js";
+import { resolveOpenLocalBotAgentDir } from "./agent-paths.js";
 
-describe("resolveopenlocalbotAgentDir", () => {
+describe("resolveOpenLocalBotAgentDir", () => {
   const previousStateDir = process.env.openlocalbot_STATE_DIR;
   const previousAgentDir = process.env.openlocalbot_AGENT_DIR;
   const previousPiAgentDir = process.env.PI_CODING_AGENT_DIR;
@@ -38,7 +38,7 @@ describe("resolveopenlocalbotAgentDir", () => {
     delete process.env.openlocalbot_AGENT_DIR;
     delete process.env.PI_CODING_AGENT_DIR;
 
-    const resolved = resolveopenlocalbotAgentDir();
+    const resolved = resolveOpenLocalBotAgentDir();
 
     expect(resolved).toBe(path.join(tempStateDir, "agents", "main", "agent"));
   });
@@ -49,7 +49,7 @@ describe("resolveopenlocalbotAgentDir", () => {
     process.env.openlocalbot_AGENT_DIR = override;
     delete process.env.PI_CODING_AGENT_DIR;
 
-    const resolved = resolveopenlocalbotAgentDir();
+    const resolved = resolveOpenLocalBotAgentDir();
 
     expect(resolved).toBe(path.resolve(override));
   });

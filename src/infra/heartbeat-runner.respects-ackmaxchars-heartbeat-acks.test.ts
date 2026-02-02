@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { telegramPlugin } from "../../extensions/telegram/src/channel.js";
 import { setTelegramRuntime } from "../../extensions/telegram/src/runtime.js";
 import { whatsappPlugin } from "../../extensions/whatsapp/src/channel.js";
@@ -35,7 +35,7 @@ describe("resolveHeartbeatIntervalMs", () => {
     const storePath = path.join(tmpDir, "sessions.json");
     const replySpy = vi.spyOn(replyModule, "getReplyFromConfig");
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         agents: {
           defaults: {
             workspace: tmpDir,
@@ -97,7 +97,7 @@ describe("resolveHeartbeatIntervalMs", () => {
     const storePath = path.join(tmpDir, "sessions.json");
     const replySpy = vi.spyOn(replyModule, "getReplyFromConfig");
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         agents: {
           defaults: {
             workspace: tmpDir,
@@ -159,7 +159,7 @@ describe("resolveHeartbeatIntervalMs", () => {
     const storePath = path.join(tmpDir, "sessions.json");
     const replySpy = vi.spyOn(replyModule, "getReplyFromConfig");
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         agents: {
           defaults: {
             workspace: tmpDir,
@@ -226,7 +226,7 @@ describe("resolveHeartbeatIntervalMs", () => {
     const storePath = path.join(tmpDir, "sessions.json");
     const replySpy = vi.spyOn(replyModule, "getReplyFromConfig");
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         agents: {
           defaults: {
             workspace: tmpDir,
@@ -289,7 +289,7 @@ describe("resolveHeartbeatIntervalMs", () => {
     try {
       const originalUpdatedAt = 1000;
       const bumpedUpdatedAt = 2000;
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         agents: {
           defaults: {
             workspace: tmpDir,
@@ -360,7 +360,7 @@ describe("resolveHeartbeatIntervalMs", () => {
     const storePath = path.join(tmpDir, "sessions.json");
     const replySpy = vi.spyOn(replyModule, "getReplyFromConfig");
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         agents: {
           defaults: {
             workspace: tmpDir,
@@ -422,7 +422,7 @@ describe("resolveHeartbeatIntervalMs", () => {
     const prevTelegramToken = process.env.TELEGRAM_BOT_TOKEN;
     process.env.TELEGRAM_BOT_TOKEN = "";
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         agents: {
           defaults: {
             workspace: tmpDir,
@@ -490,7 +490,7 @@ describe("resolveHeartbeatIntervalMs", () => {
     const prevTelegramToken = process.env.TELEGRAM_BOT_TOKEN;
     process.env.TELEGRAM_BOT_TOKEN = "";
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         agents: {
           defaults: {
             workspace: tmpDir,

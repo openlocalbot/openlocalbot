@@ -1,7 +1,7 @@
 import type {
   ChannelOnboardingAdapter,
   ChannelOnboardingDmPolicy,
-  openlocalbotConfig,
+  OpenLocalBotConfig,
   WizardPrompter,
 } from "openlocalbot/plugin-sdk";
 import {
@@ -17,7 +17,7 @@ const channel = "zalo" as const;
 type UpdateMode = "polling" | "webhook";
 
 function setZaloDmPolicy(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   dmPolicy: "pairing" | "allowlist" | "open" | "disabled",
 ) {
   const allowFrom =
@@ -32,17 +32,17 @@ function setZaloDmPolicy(
         ...(allowFrom ? { allowFrom } : {}),
       },
     },
-  } as openlocalbotConfig;
+  } as OpenLocalBotConfig;
 }
 
 function setZaloUpdateMode(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   accountId: string,
   mode: UpdateMode,
   webhookUrl?: string,
   webhookSecret?: string,
   webhookPath?: string,
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   const isDefault = accountId === DEFAULT_ACCOUNT_ID;
   if (mode === "polling") {
     if (isDefault) {
@@ -58,7 +58,7 @@ function setZaloUpdateMode(
           ...cfg.channels,
           zalo: rest,
         },
-      } as openlocalbotConfig;
+      } as OpenLocalBotConfig;
     }
     const accounts = { ...cfg.channels?.zalo?.accounts } as Record<string, Record<string, unknown>>;
     const existing = accounts[accountId] ?? {};
@@ -73,7 +73,7 @@ function setZaloUpdateMode(
           accounts,
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
   }
 
   if (isDefault) {
@@ -88,7 +88,7 @@ function setZaloUpdateMode(
           webhookPath,
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
   }
 
   const accounts = { ...cfg.channels?.zalo?.accounts } as Record<string, Record<string, unknown>>;
@@ -107,7 +107,7 @@ function setZaloUpdateMode(
         accounts,
       },
     },
-  } as openlocalbotConfig;
+  } as OpenLocalBotConfig;
 }
 
 async function noteZaloTokenHelp(prompter: WizardPrompter): Promise<void> {
@@ -124,10 +124,10 @@ async function noteZaloTokenHelp(prompter: WizardPrompter): Promise<void> {
 }
 
 async function promptZaloAllowFrom(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   prompter: WizardPrompter;
   accountId: string;
-}): Promise<openlocalbotConfig> {
+}): Promise<OpenLocalBotConfig> {
   const { cfg, prompter, accountId } = params;
   const resolved = resolveZaloAccount({ cfg, accountId });
   const existingAllowFrom = resolved.config.allowFrom ?? [];
@@ -165,7 +165,7 @@ async function promptZaloAllowFrom(params: {
           allowFrom: unique,
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
   }
 
   return {
@@ -186,7 +186,7 @@ async function promptZaloAllowFrom(params: {
         },
       },
     },
-  } as openlocalbotConfig;
+  } as OpenLocalBotConfig;
 }
 
 const dmPolicy: ChannelOnboardingDmPolicy = {
@@ -273,7 +273,7 @@ export const zaloOnboardingAdapter: ChannelOnboardingAdapter = {
               enabled: true,
             },
           },
-        } as openlocalbotConfig;
+        } as OpenLocalBotConfig;
       } else {
         token = String(
           await prompter.text({
@@ -316,7 +316,7 @@ export const zaloOnboardingAdapter: ChannelOnboardingAdapter = {
               botToken: token,
             },
           },
-        } as openlocalbotConfig;
+        } as OpenLocalBotConfig;
       } else {
         next = {
           ...next,
@@ -335,7 +335,7 @@ export const zaloOnboardingAdapter: ChannelOnboardingAdapter = {
               },
             },
           },
-        } as openlocalbotConfig;
+        } as OpenLocalBotConfig;
       }
     }
 

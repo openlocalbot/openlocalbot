@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import type { MsgContext } from "../auto-reply/templating.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import {
   buildProviderRegistry,
   createMediaAttachmentCache,
@@ -78,7 +78,7 @@ describe("runCapability deepgram provider options", () => {
           },
         },
       },
-    } as unknown as openlocalbotConfig;
+    } as unknown as OpenLocalBotConfig;
 
     try {
       const result = await runCapability({

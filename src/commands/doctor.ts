@@ -1,6 +1,6 @@
 import { intro as clackIntro, outro as clackOutro } from "@clack/prompts";
 import fs from "node:fs";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import { resolveAgentWorkspaceDir, resolveDefaultAgentId } from "../agents/agent-scope.js";
 import { DEFAULT_MODEL, DEFAULT_PROVIDER } from "../agents/defaults.js";
@@ -57,7 +57,7 @@ import { ensureSystemdUserLingerInteractive } from "./systemd-linger.js";
 const intro = (message: string) => clackIntro(stylePromptTitle(message) ?? message);
 const outro = (message: string) => clackOutro(stylePromptTitle(message) ?? message);
 
-function resolveMode(cfg: openlocalbotConfig): "local" | "remote" {
+function resolveMode(cfg: OpenLocalBotConfig): "local" | "remote" {
   return cfg.gateway?.mode === "remote" ? "remote" : "local";
 }
 
@@ -94,7 +94,7 @@ export async function doctorCommand(
     options,
     confirm: (p) => prompter.confirm(p),
   });
-  let cfg: openlocalbotConfig = configResult.cfg;
+  let cfg: OpenLocalBotConfig = configResult.cfg;
 
   const configPath = configResult.path ?? CONFIG_PATH;
   if (!cfg.gateway?.mode) {

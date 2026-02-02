@@ -5,7 +5,7 @@
  * This is the primary entry point for the Twitch channel integration.
  */
 
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import { buildChannelConfigSchema } from "openlocalbot/plugin-sdk";
 import type {
   ChannelAccountSnapshot,
@@ -75,10 +75,10 @@ export const twitchPlugin: ChannelPlugin<TwitchAccountConfig> = {
   /** Account configuration management */
   config: {
     /** List all configured account IDs */
-    listAccountIds: (cfg: openlocalbotConfig): string[] => listAccountIds(cfg),
+    listAccountIds: (cfg: OpenLocalBotConfig): string[] => listAccountIds(cfg),
 
     /** Resolve an account config by ID */
-    resolveAccount: (cfg: openlocalbotConfig, accountId?: string | null): TwitchAccountConfig => {
+    resolveAccount: (cfg: OpenLocalBotConfig, accountId?: string | null): TwitchAccountConfig => {
       const account = getAccountConfig(cfg, accountId ?? DEFAULT_ACCOUNT_ID);
       if (!account) {
         // Return a default/empty account if not configured
@@ -96,7 +96,7 @@ export const twitchPlugin: ChannelPlugin<TwitchAccountConfig> = {
     defaultAccountId: (): string => DEFAULT_ACCOUNT_ID,
 
     /** Check if an account is configured */
-    isConfigured: (_account: unknown, cfg: openlocalbotConfig): boolean => {
+    isConfigured: (_account: unknown, cfg: OpenLocalBotConfig): boolean => {
       const account = getAccountConfig(cfg, DEFAULT_ACCOUNT_ID);
       const tokenResolution = resolveTwitchToken(cfg, { accountId: DEFAULT_ACCOUNT_ID });
       return account ? isAccountConfigured(account, tokenResolution.token) : false;
@@ -130,7 +130,7 @@ export const twitchPlugin: ChannelPlugin<TwitchAccountConfig> = {
       kind,
       runtime,
     }: {
-      cfg: openlocalbotConfig;
+      cfg: OpenLocalBotConfig;
       accountId?: string | null;
       inputs: string[];
       kind: ChannelResolveKind;
@@ -198,7 +198,7 @@ export const twitchPlugin: ChannelPlugin<TwitchAccountConfig> = {
       probe,
     }: {
       account: TwitchAccountConfig;
-      cfg: openlocalbotConfig;
+      cfg: OpenLocalBotConfig;
       runtime?: ChannelAccountSnapshot;
       probe?: unknown;
     }): ChannelAccountSnapshot => {

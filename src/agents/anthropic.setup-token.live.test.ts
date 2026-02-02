@@ -10,7 +10,7 @@ import {
 } from "../commands/auth-token.js";
 import { loadConfig } from "../config/config.js";
 import { isTruthyEnvValue } from "../infra/env.js";
-import { resolveopenlocalbotAgentDir } from "./agent-paths.js";
+import { resolveOpenLocalBotAgentDir } from "./agent-paths.js";
 import {
   type AuthProfileCredential,
   ensureAuthProfileStore,
@@ -95,7 +95,7 @@ async function resolveTokenSource(): Promise<TokenSource> {
     };
   }
 
-  const agentDir = resolveopenlocalbotAgentDir();
+  const agentDir = resolveOpenLocalBotAgentDir();
   const store = ensureAuthProfileStore(agentDir, {
     allowKeychainPrompt: false,
   });

@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { GatewayMessageChannel } from "../utils/message-channel.js";
 import type { AnyAgentTool } from "./tools/common.js";
 import { resolvePluginTools } from "../plugins/tools.js";
@@ -39,7 +39,7 @@ export function createopenlocalbotTools(options?: {
   sandboxRoot?: string;
   workspaceDir?: string;
   sandboxed?: boolean;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   pluginToolAllowlist?: string[];
   /** Current channel ID for auto-threading (Slack). */
   currentChannelId?: string;

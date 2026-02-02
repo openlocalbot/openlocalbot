@@ -1,5 +1,5 @@
 import type { Bot } from "grammy";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { DmPolicy, TelegramGroupConfig, TelegramTopicConfig } from "../config/types.js";
 import type { TelegramContext } from "./bot/types.js";
 import { resolveAckReaction } from "../agents/identity.js";
@@ -95,7 +95,7 @@ type BuildTelegramMessageContextParams = {
   storeAllowFrom: string[];
   options?: TelegramMessageContextOptions;
   bot: Bot;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   account: { accountId: string };
   historyLimit: number;
   groupHistories: Map<string, HistoryEntry[]>;
@@ -110,7 +110,7 @@ type BuildTelegramMessageContextParams = {
 };
 
 async function resolveStickerVisionSupport(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   agentId?: string;
 }): Promise<boolean> {
   try {

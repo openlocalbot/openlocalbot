@@ -1,6 +1,6 @@
 import type { AgentToolResult } from "@mariozechner/pi-agent-core";
 import type { ChannelId, ChannelThreadingToolContext } from "../../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { GatewayClientMode, GatewayClientName } from "../../utils/message-channel.js";
 import type { OutboundSendDeps } from "./deliver.js";
 import type { MessagePollResult, MessageSendResult } from "./message.js";
@@ -18,7 +18,7 @@ export type OutboundGatewayContext = {
 };
 
 export type OutboundSendContext = {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   channel: ChannelId;
   params: Record<string, unknown>;
   accountId?: string | null;

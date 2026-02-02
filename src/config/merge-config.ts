@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "./config.js";
+import type { OpenLocalBotConfig } from "./config.js";
 import type { WhatsAppConfig } from "./types.js";
 
 export type MergeSectionOptions<T> = {
@@ -24,10 +24,10 @@ export function mergeConfigSection<T extends Record<string, unknown>>(
 }
 
 export function mergeWhatsAppConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   patch: Partial<WhatsAppConfig>,
   options?: MergeSectionOptions<WhatsAppConfig>,
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   return {
     ...cfg,
     channels: {

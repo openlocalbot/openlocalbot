@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import type WebSocket from "ws";
 import { Buffer } from "node:buffer";
 
@@ -128,9 +128,9 @@ function normalizeAgentId(value: string | undefined | null): string {
   );
 }
 
-type AgentEntry = NonNullable<NonNullable<openlocalbotConfig["agents"]>["list"]>[number];
+type AgentEntry = NonNullable<NonNullable<OpenLocalBotConfig["agents"]>["list"]>[number];
 
-function listAgents(cfg: openlocalbotConfig): AgentEntry[] {
+function listAgents(cfg: OpenLocalBotConfig): AgentEntry[] {
   const list = cfg.agents?.list;
   if (!Array.isArray(list)) {
     return [];
@@ -138,12 +138,12 @@ function listAgents(cfg: openlocalbotConfig): AgentEntry[] {
   return list.filter((entry): entry is AgentEntry => Boolean(entry && typeof entry === "object"));
 }
 
-function resolveAgentEntry(cfg: openlocalbotConfig, agentId: string): AgentEntry | undefined {
+function resolveAgentEntry(cfg: OpenLocalBotConfig, agentId: string): AgentEntry | undefined {
   const id = normalizeAgentId(agentId);
   return listAgents(cfg).find((entry) => normalizeAgentId(entry.id) === id);
 }
 
-export function resolveIdentityName(cfg: openlocalbotConfig, agentId: string): string | undefined {
+export function resolveIdentityName(cfg: OpenLocalBotConfig, agentId: string): string | undefined {
   const entry = resolveAgentEntry(cfg, agentId);
   return entry?.identity?.name?.trim() || undefined;
 }

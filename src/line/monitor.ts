@@ -1,6 +1,6 @@
 import type { WebhookRequestBody } from "@line/bot-sdk";
 import type { IncomingMessage, ServerResponse } from "node:http";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import type { LineChannelData, ResolvedLineAccount } from "./types.js";
 import { resolveEffectiveMessagesConfig } from "../agents/identity.js";
@@ -33,7 +33,7 @@ export interface MonitorLineProviderOptions {
   channelAccessToken: string;
   channelSecret: string;
   accountId?: string;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   runtime: RuntimeEnv;
   abortSignal?: AbortSignal;
   webhookUrl?: string;

@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import { type ModelRef, normalizeProviderId } from "../../agents/model-selection.js";
 
 export type ModelPickerCatalogEntry = {
@@ -80,7 +80,7 @@ export function buildModelPickerItems(catalog: ModelPickerCatalogEntry[]): Model
 
 export function resolveProviderEndpointLabel(
   provider: string,
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
 ): { endpoint?: string; api?: string } {
   const normalized = normalizeProviderId(provider);
   const providers = (cfg.models?.providers ?? {}) as Record<

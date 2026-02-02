@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import { describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { ensureopenlocalbotModelsJson } from "./models-config.js";
 import { getDmHistoryLimitFromSessionKey } from "./pi-embedded-runner.js";
 
@@ -67,9 +67,9 @@ const _makeOpenAiConfig = (modelIds: string[]) =>
         },
       },
     },
-  }) satisfies openlocalbotConfig;
+  }) satisfies OpenLocalBotConfig;
 
-const _ensureModels = (cfg: openlocalbotConfig, agentDir: string) =>
+const _ensureModels = (cfg: OpenLocalBotConfig, agentDir: string) =>
   ensureopenlocalbotModelsJson(cfg, agentDir) as unknown;
 
 const _textFromContent = (content: unknown) => {
@@ -108,25 +108,25 @@ describe("getDmHistoryLimitFromSessionKey", () => {
   it("returns dmHistoryLimit for telegram provider", () => {
     const config = {
       channels: { telegram: { dmHistoryLimit: 15 } },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
     expect(getDmHistoryLimitFromSessionKey("telegram:dm:123", config)).toBe(15);
   });
   it("returns dmHistoryLimit for whatsapp provider", () => {
     const config = {
       channels: { whatsapp: { dmHistoryLimit: 20 } },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
     expect(getDmHistoryLimitFromSessionKey("whatsapp:dm:123", config)).toBe(20);
   });
   it("returns dmHistoryLimit for agent-prefixed session keys", () => {
     const config = {
       channels: { telegram: { dmHistoryLimit: 10 } },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
     expect(getDmHistoryLimitFromSessionKey("agent:main:telegram:dm:123", config)).toBe(10);
   });
   it("strips thread suffix from dm session keys", () => {
     const config = {
       channels: { telegram: { dmHistoryLimit: 10, dms: { "123": { historyLimit: 7 } } } },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
     expect(getDmHistoryLimitFromSessionKey("agent:main:telegram:dm:123:thread:999", config)).toBe(
       7,
     );
@@ -138,7 +138,7 @@ describe("getDmHistoryLimitFromSessionKey", () => {
       channels: {
         telegram: { dms: { "user:thread:abc": { historyLimit: 9 } } },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
     expect(getDmHistoryLimitFromSessionKey("agent:main:telegram:dm:user:thread:abc", config)).toBe(
       9,
     );
@@ -149,18 +149,18 @@ describe("getDmHistoryLimitFromSessionKey", () => {
         telegram: { dmHistoryLimit: 15 },
         slack: { dmHistoryLimit: 10 },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
     expect(getDmHistoryLimitFromSessionKey("agent:beta:slack:channel:c1", config)).toBeUndefined();
     expect(getDmHistoryLimitFromSessionKey("telegram:slash:123", config)).toBeUndefined();
   });
   it("returns undefined for unknown provider", () => {
     const config = {
       channels: { telegram: { dmHistoryLimit: 15 } },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
     expect(getDmHistoryLimitFromSessionKey("unknown:dm:123", config)).toBeUndefined();
   });
   it("returns undefined when provider config has no dmHistoryLimit", () => {
-    const config = { channels: { telegram: {} } } as openlocalbotConfig;
+    const config = { channels: { telegram: {} } } as OpenLocalBotConfig;
     expect(getDmHistoryLimitFromSessionKey("telegram:dm:123", config)).toBeUndefined();
   });
   it("handles all supported providers", () => {
@@ -178,7 +178,7 @@ describe("getDmHistoryLimitFromSessionKey", () => {
     for (const provider of providers) {
       const config = {
         channels: { [provider]: { dmHistoryLimit: 5 } },
-      } as openlocalbotConfig;
+      } as OpenLocalBotConfig;
       expect(getDmHistoryLimitFromSessionKey(`${provider}:dm:123`, config)).toBe(5);
     }
   });
@@ -203,7 +203,7 @@ describe("getDmHistoryLimitFromSessionKey", () => {
             dms: { user123: { historyLimit: 7 } },
           },
         },
-      } as openlocalbotConfig;
+      } as OpenLocalBotConfig;
       expect(getDmHistoryLimitFromSessionKey(`${provider}:dm:user123`, configWithOverride)).toBe(7);
 
       // Test fallback to provider default when user not in dms
@@ -225,7 +225,7 @@ describe("getDmHistoryLimitFromSessionKey", () => {
           dms: { "123": { historyLimit: 5 } },
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
     expect(getDmHistoryLimitFromSessionKey("telegram:dm:123", config)).toBe(5);
   });
 });

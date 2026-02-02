@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { ChannelPluginCatalogEntry } from "../../channels/plugins/catalog.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { RuntimeEnv } from "../../runtime.js";
 import type { WizardPrompter } from "../../wizard/prompts.js";
 import { resolveAgentWorkspaceDir, resolveDefaultAgentId } from "../../agents/agent-scope.js";
@@ -14,7 +14,7 @@ import { loadopenlocalbotPlugins } from "../../plugins/loader.js";
 type InstallChoice = "npm" | "local" | "skip";
 
 type InstallResult = {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   installed: boolean;
 };
 
@@ -57,7 +57,7 @@ function resolveLocalPath(
   return null;
 }
 
-function addPluginLoadPath(cfg: openlocalbotConfig, pluginPath: string): openlocalbotConfig {
+function addPluginLoadPath(cfg: OpenLocalBotConfig, pluginPath: string): OpenLocalBotConfig {
   const existing = cfg.plugins?.load?.paths ?? [];
   const merged = Array.from(new Set([...existing, pluginPath]));
   return {
@@ -103,7 +103,7 @@ async function promptInstallChoice(params: {
 }
 
 function resolveInstallDefaultChoice(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   entry: ChannelPluginCatalogEntry;
   localPath?: string | null;
 }): InstallChoice {
@@ -126,7 +126,7 @@ function resolveInstallDefaultChoice(params: {
 }
 
 export async function ensureOnboardingPluginInstalled(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   entry: ChannelPluginCatalogEntry;
   prompter: WizardPrompter;
   runtime: RuntimeEnv;
@@ -200,7 +200,7 @@ export async function ensureOnboardingPluginInstalled(params: {
 }
 
 export function reloadOnboardingPluginRegistry(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   runtime: RuntimeEnv;
   workspaceDir?: string;
 }): void {

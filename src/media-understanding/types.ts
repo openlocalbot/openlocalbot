@@ -97,7 +97,7 @@ export type ImageDescriptionRequest = {
   profile?: string;
   preferredProfile?: string;
   agentDir: string;
-  cfg: import("../config/config.js").openlocalbotConfig;
+  cfg: import("../config/config.js").OpenLocalBotConfig;
 };
 
 export type ImageDescriptionResult = {

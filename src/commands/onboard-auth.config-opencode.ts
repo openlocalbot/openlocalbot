@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import {
   getOpencodeZenStaticFallbackModels,
   OPENCODE_ZEN_API_BASE_URL,
@@ -9,7 +9,7 @@ import {
  * Apply OpenCode Zen provider configuration without changing the default model.
  * Registers OpenCode Zen models and sets up the provider, but preserves existing model selection.
  */
-export function applyOpencodeZenProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyOpencodeZenProviderConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const models = { ...cfg.agents?.defaults?.models };
   models[OPENCODE_ZEN_DEFAULT_MODEL_REF] = {
     ...models[OPENCODE_ZEN_DEFAULT_MODEL_REF],
@@ -64,7 +64,7 @@ export function applyOpencodeZenProviderConfig(cfg: OpenClawConfig): OpenClawCon
  * Apply OpenCode Zen provider configuration AND set OpenCode Zen as the default model.
  * Use this when OpenCode Zen is the primary provider choice during onboarding.
  */
-export function applyOpencodeZenConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyOpencodeZenConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const next = applyOpencodeZenProviderConfig(cfg);
   const existingModel = next.agents?.defaults?.model;
   return {

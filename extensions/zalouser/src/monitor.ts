@@ -1,5 +1,5 @@
 import type { ChildProcess } from "node:child_process";
-import type { openlocalbotConfig, MarkdownTableMode, RuntimeEnv } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig, MarkdownTableMode, RuntimeEnv } from "openlocalbot/plugin-sdk";
 import { mergeAllowlist, summarizeMapping } from "openlocalbot/plugin-sdk";
 import type { ResolvedZalouserAccount, ZcaFriend, ZcaGroup, ZcaMessage } from "./types.js";
 import { getZalouserRuntime } from "./runtime.js";
@@ -8,7 +8,7 @@ import { parseJsonOutput, runZca, runZcaStreaming } from "./zca.js";
 
 export type ZalouserMonitorOptions = {
   account: ResolvedZalouserAccount;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   runtime: RuntimeEnv;
   abortSignal: AbortSignal;
   statusSink?: (patch: { lastInboundAt?: number; lastOutboundAt?: number }) => void;
@@ -156,7 +156,7 @@ function startZcaListener(
 async function processMessage(
   message: ZcaMessage,
   account: ResolvedZalouserAccount,
-  config: openlocalbotConfig,
+  config: OpenLocalBotConfig,
   core: ZalouserCoreRuntime,
   runtime: RuntimeEnv,
   statusSink?: (patch: { lastInboundAt?: number; lastOutboundAt?: number }) => void,
@@ -370,7 +370,7 @@ async function deliverZalouserReply(params: {
   isGroup: boolean;
   runtime: RuntimeEnv;
   core: ZalouserCoreRuntime;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   accountId?: string;
   statusSink?: (patch: { lastInboundAt?: number; lastOutboundAt?: number }) => void;
   tableMode?: MarkdownTableMode;

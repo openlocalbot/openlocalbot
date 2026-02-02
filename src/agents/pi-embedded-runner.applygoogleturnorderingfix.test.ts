@@ -2,7 +2,7 @@ import type { AgentMessage } from "@mariozechner/pi-agent-core";
 import { SessionManager } from "@mariozechner/pi-coding-agent";
 import fs from "node:fs/promises";
 import { describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { ensureopenlocalbotModelsJson } from "./models-config.js";
 import { applyGoogleTurnOrderingFix } from "./pi-embedded-runner.js";
 
@@ -69,9 +69,9 @@ const _makeOpenAiConfig = (modelIds: string[]) =>
         },
       },
     },
-  }) satisfies openlocalbotConfig;
+  }) satisfies OpenLocalBotConfig;
 
-const _ensureModels = (cfg: openlocalbotConfig, agentDir: string) =>
+const _ensureModels = (cfg: OpenLocalBotConfig, agentDir: string) =>
   ensureopenlocalbotModelsJson(cfg, agentDir) as unknown;
 
 const _textFromContent = (content: unknown) => {

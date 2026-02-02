@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { AgentBootstrapHookContext } from "../hooks/internal-hooks.js";
 import type { WorkspaceBootstrapFile } from "./workspace.js";
 import { createInternalHookEvent, triggerInternalHook } from "../hooks/internal-hooks.js";
@@ -7,7 +7,7 @@ import { resolveAgentIdFromSessionKey } from "../routing/session-key.js";
 export async function applyBootstrapHookOverrides(params: {
   files: WorkspaceBootstrapFile[];
   workspaceDir: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   sessionKey?: string;
   sessionId?: string;
   agentId?: string;

@@ -1,7 +1,7 @@
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import {
   applyAgentBindings,
   applyAgentConfig,
@@ -11,7 +11,7 @@ import {
 
 describe("agents helpers", () => {
   it("buildAgentSummaries includes default + configured agents", () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: {
         defaults: {
           workspace: "/main-ws",
@@ -57,7 +57,7 @@ describe("agents helpers", () => {
   });
 
   it("applyAgentConfig merges updates", () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: {
         list: [{ id: "work", workspace: "/old-ws", model: "anthropic/claude" }],
       },
@@ -78,7 +78,7 @@ describe("agents helpers", () => {
   });
 
   it("applyAgentBindings skips duplicates and reports conflicts", () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       bindings: [
         {
           agentId: "main",
@@ -109,7 +109,7 @@ describe("agents helpers", () => {
   });
 
   it("pruneAgentConfig removes agent, bindings, and allowlist entries", () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: {
         list: [
           { id: "work", default: true, workspace: "/work-ws" },

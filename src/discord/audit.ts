@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { DiscordGuildChannelConfig, DiscordGuildEntry } from "../config/types.js";
 import { resolveDiscordAccount } from "./accounts.js";
 import { fetchChannelPermissionsDiscord } from "./send.js";
@@ -69,7 +69,7 @@ function listConfiguredGuildChannelKeys(
 }
 
 export function collectDiscordAuditChannelIds(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   accountId?: string | null;
 }) {
   const account = resolveDiscordAccount({

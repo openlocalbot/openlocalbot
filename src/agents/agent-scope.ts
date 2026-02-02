@@ -1,6 +1,6 @@
 import os from "node:os";
 import path from "node:path";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { resolveStateDir } from "../config/paths.js";
 import {
   DEFAULT_AGENT_ID,
@@ -12,7 +12,7 @@ import { DEFAULT_AGENT_WORKSPACE_DIR } from "./workspace.js";
 
 export { resolveAgentIdFromSessionKey } from "../routing/session-key.js";
 
-type AgentEntry = NonNullable<NonNullable<openlocalbotConfig["agents"]>["list"]>[number];
+type AgentEntry = NonNullable<NonNullable<OpenLocalBotConfig["agents"]>["list"]>[number];
 
 type ResolvedAgentConfig = {
   name?: string;
@@ -31,7 +31,7 @@ type ResolvedAgentConfig = {
 
 let defaultAgentWarned = false;
 
-function listAgents(cfg: openlocalbotConfig): AgentEntry[] {
+function listAgents(cfg: OpenLocalBotConfig): AgentEntry[] {
   const list = cfg.agents?.list;
   if (!Array.isArray(list)) {
     return [];
@@ -39,7 +39,7 @@ function listAgents(cfg: openlocalbotConfig): AgentEntry[] {
   return list.filter((entry): entry is AgentEntry => Boolean(entry && typeof entry === "object"));
 }
 
-export function listAgentIds(cfg: openlocalbotConfig): string[] {
+export function listAgentIds(cfg: OpenLocalBotConfig): string[] {
   const agents = listAgents(cfg);
   if (agents.length === 0) {
     return [DEFAULT_AGENT_ID];
@@ -57,7 +57,7 @@ export function listAgentIds(cfg: openlocalbotConfig): string[] {
   return ids.length > 0 ? ids : [DEFAULT_AGENT_ID];
 }
 
-export function resolveDefaultAgentId(cfg: openlocalbotConfig): string {
+export function resolveDefaultAgentId(cfg: OpenLocalBotConfig): string {
   const agents = listAgents(cfg);
   if (agents.length === 0) {
     return DEFAULT_AGENT_ID;
@@ -71,7 +71,7 @@ export function resolveDefaultAgentId(cfg: openlocalbotConfig): string {
   return normalizeAgentId(chosen || DEFAULT_AGENT_ID);
 }
 
-export function resolveSessionAgentIds(params: { sessionKey?: string; config?: openlocalbotConfig }): {
+export function resolveSessionAgentIds(params: { sessionKey?: string; config?: OpenLocalBotConfig }): {
   defaultAgentId: string;
   sessionAgentId: string;
 } {
@@ -85,18 +85,18 @@ export function resolveSessionAgentIds(params: { sessionKey?: string; config?: o
 
 export function resolveSessionAgentId(params: {
   sessionKey?: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
 }): string {
   return resolveSessionAgentIds(params).sessionAgentId;
 }
 
-function resolveAgentEntry(cfg: openlocalbotConfig, agentId: string): AgentEntry | undefined {
+function resolveAgentEntry(cfg: OpenLocalBotConfig, agentId: string): AgentEntry | undefined {
   const id = normalizeAgentId(agentId);
   return listAgents(cfg).find((entry) => normalizeAgentId(entry.id) === id);
 }
 
 export function resolveAgentConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   agentId: string,
 ): ResolvedAgentConfig | undefined {
   const id = normalizeAgentId(agentId);
@@ -123,7 +123,7 @@ export function resolveAgentConfig(
   };
 }
 
-export function resolveAgentModelPrimary(cfg: openlocalbotConfig, agentId: string): string | undefined {
+export function resolveAgentModelPrimary(cfg: OpenLocalBotConfig, agentId: string): string | undefined {
   const raw = resolveAgentConfig(cfg, agentId)?.model;
   if (!raw) {
     return undefined;
@@ -136,7 +136,7 @@ export function resolveAgentModelPrimary(cfg: openlocalbotConfig, agentId: strin
 }
 
 export function resolveAgentModelFallbacksOverride(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   agentId: string,
 ): string[] | undefined {
   const raw = resolveAgentConfig(cfg, agentId)?.model;
@@ -150,7 +150,7 @@ export function resolveAgentModelFallbacksOverride(
   return Array.isArray(raw.fallbacks) ? raw.fallbacks : undefined;
 }
 
-export function resolveAgentWorkspaceDir(cfg: openlocalbotConfig, agentId: string) {
+export function resolveAgentWorkspaceDir(cfg: OpenLocalBotConfig, agentId: string) {
   const id = normalizeAgentId(agentId);
   const configured = resolveAgentConfig(cfg, id)?.workspace?.trim();
   if (configured) {
@@ -167,7 +167,7 @@ export function resolveAgentWorkspaceDir(cfg: openlocalbotConfig, agentId: strin
   return path.join(os.homedir(), ".openlocalbot", `workspace-${id}`);
 }
 
-export function resolveAgentDir(cfg: openlocalbotConfig, agentId: string) {
+export function resolveAgentDir(cfg: OpenLocalBotConfig, agentId: string) {
   const id = normalizeAgentId(agentId);
   const configured = resolveAgentConfig(cfg, id)?.agentDir?.trim();
   if (configured) {

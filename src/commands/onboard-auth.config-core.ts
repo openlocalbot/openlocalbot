@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { buildXiaomiProvider, XIAOMI_DEFAULT_MODEL_ID } from "../agents/models-config.providers.js";
 import {
   buildSyntheticModelDefinition,
@@ -26,7 +26,7 @@ import {
   MOONSHOT_DEFAULT_MODEL_REF,
 } from "./onboard-auth.models.js";
 
-export function applyZaiConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyZaiConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const models = { ...cfg.agents?.defaults?.models };
   models[ZAI_DEFAULT_MODEL_REF] = {
     ...models[ZAI_DEFAULT_MODEL_REF],
@@ -54,7 +54,7 @@ export function applyZaiConfig(cfg: openlocalbotConfig): openlocalbotConfig {
   };
 }
 
-export function applyOpenrouterProviderConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyOpenrouterProviderConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const models = { ...cfg.agents?.defaults?.models };
   models[OPENROUTER_DEFAULT_MODEL_REF] = {
     ...models[OPENROUTER_DEFAULT_MODEL_REF],
@@ -73,7 +73,7 @@ export function applyOpenrouterProviderConfig(cfg: openlocalbotConfig): openloca
   };
 }
 
-export function applyVercelAiGatewayProviderConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyVercelAiGatewayProviderConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const models = { ...cfg.agents?.defaults?.models };
   models[VERCEL_AI_GATEWAY_DEFAULT_MODEL_REF] = {
     ...models[VERCEL_AI_GATEWAY_DEFAULT_MODEL_REF],
@@ -92,7 +92,7 @@ export function applyVercelAiGatewayProviderConfig(cfg: openlocalbotConfig): ope
   };
 }
 
-export function applyVercelAiGatewayConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyVercelAiGatewayConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const next = applyVercelAiGatewayProviderConfig(cfg);
   const existingModel = next.agents?.defaults?.model;
   return {
@@ -114,7 +114,7 @@ export function applyVercelAiGatewayConfig(cfg: openlocalbotConfig): openlocalbo
   };
 }
 
-export function applyOpenrouterConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyOpenrouterConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const next = applyOpenrouterProviderConfig(cfg);
   const existingModel = next.agents?.defaults?.model;
   return {
@@ -136,7 +136,7 @@ export function applyOpenrouterConfig(cfg: openlocalbotConfig): openlocalbotConf
   };
 }
 
-export function applyMoonshotProviderConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyMoonshotProviderConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const models = { ...cfg.agents?.defaults?.models };
   models[MOONSHOT_DEFAULT_MODEL_REF] = {
     ...models[MOONSHOT_DEFAULT_MODEL_REF],
@@ -179,7 +179,7 @@ export function applyMoonshotProviderConfig(cfg: openlocalbotConfig): openlocalb
   };
 }
 
-export function applyMoonshotConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyMoonshotConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const next = applyMoonshotProviderConfig(cfg);
   const existingModel = next.agents?.defaults?.model;
   return {
@@ -201,7 +201,7 @@ export function applyMoonshotConfig(cfg: openlocalbotConfig): openlocalbotConfig
   };
 }
 
-export function applyKimiCodeProviderConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyKimiCodeProviderConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const models = { ...cfg.agents?.defaults?.models };
   models[KIMI_CODING_MODEL_REF] = {
     ...models[KIMI_CODING_MODEL_REF],
@@ -220,7 +220,7 @@ export function applyKimiCodeProviderConfig(cfg: openlocalbotConfig): openlocalb
   };
 }
 
-export function applyKimiCodeConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyKimiCodeConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const next = applyKimiCodeProviderConfig(cfg);
   const existingModel = next.agents?.defaults?.model;
   return {
@@ -242,7 +242,7 @@ export function applyKimiCodeConfig(cfg: openlocalbotConfig): openlocalbotConfig
   };
 }
 
-export function applySyntheticProviderConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applySyntheticProviderConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const models = { ...cfg.agents?.defaults?.models };
   models[SYNTHETIC_DEFAULT_MODEL_REF] = {
     ...models[SYNTHETIC_DEFAULT_MODEL_REF],
@@ -289,7 +289,7 @@ export function applySyntheticProviderConfig(cfg: openlocalbotConfig): openlocal
   };
 }
 
-export function applySyntheticConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applySyntheticConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const next = applySyntheticProviderConfig(cfg);
   const existingModel = next.agents?.defaults?.model;
   return {
@@ -311,7 +311,7 @@ export function applySyntheticConfig(cfg: openlocalbotConfig): openlocalbotConfi
   };
 }
 
-export function applyXiaomiProviderConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyXiaomiProviderConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const models = { ...cfg.agents?.defaults?.models };
   models[XIAOMI_DEFAULT_MODEL_REF] = {
     ...models[XIAOMI_DEFAULT_MODEL_REF],
@@ -360,7 +360,7 @@ export function applyXiaomiProviderConfig(cfg: openlocalbotConfig): openlocalbot
   };
 }
 
-export function applyXiaomiConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyXiaomiConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const next = applyXiaomiProviderConfig(cfg);
   const existingModel = next.agents?.defaults?.model;
   return {
@@ -386,7 +386,7 @@ export function applyXiaomiConfig(cfg: openlocalbotConfig): openlocalbotConfig {
  * Apply Venice provider configuration without changing the default model.
  * Registers Venice models and sets up the provider, but preserves existing model selection.
  */
-export function applyVeniceProviderConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyVeniceProviderConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const models = { ...cfg.agents?.defaults?.models };
   models[VENICE_DEFAULT_MODEL_REF] = {
     ...models[VENICE_DEFAULT_MODEL_REF],
@@ -435,7 +435,7 @@ export function applyVeniceProviderConfig(cfg: openlocalbotConfig): openlocalbot
  * Apply Venice provider configuration AND set Venice as the default model.
  * Use this when Venice is the primary provider choice during onboarding.
  */
-export function applyVeniceConfig(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyVeniceConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const next = applyVeniceProviderConfig(cfg);
   const existingModel = next.agents?.defaults?.model;
   return {
@@ -458,7 +458,7 @@ export function applyVeniceConfig(cfg: openlocalbotConfig): openlocalbotConfig {
 }
 
 export function applyAuthProfileConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   params: {
     profileId: string;
     provider: string;
@@ -466,7 +466,7 @@ export function applyAuthProfileConfig(
     email?: string;
     preferProfileFirst?: boolean;
   },
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   const profiles = {
     ...cfg.auth?.profiles,
     [params.profileId]: {

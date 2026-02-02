@@ -3,7 +3,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { EmbeddedRunAttemptResult } from "./pi-embedded-runner/run/types.js";
 
 const runEmbeddedAttemptMock = vi.fn<Promise<EmbeddedRunAttemptResult>, [unknown]>();
@@ -61,7 +61,7 @@ const makeAttempt = (overrides: Partial<EmbeddedRunAttemptResult>): EmbeddedRunA
   ...overrides,
 });
 
-const makeConfig = (opts?: { fallbacks?: string[]; apiKey?: string }): openlocalbotConfig =>
+const makeConfig = (opts?: { fallbacks?: string[]; apiKey?: string }): OpenLocalBotConfig =>
   ({
     agents: {
       defaults: {
@@ -90,7 +90,7 @@ const makeConfig = (opts?: { fallbacks?: string[]; apiKey?: string }): openlocal
         },
       },
     },
-  }) satisfies openlocalbotConfig;
+  }) satisfies OpenLocalBotConfig;
 
 const writeAuthStore = async (
   agentDir: string,

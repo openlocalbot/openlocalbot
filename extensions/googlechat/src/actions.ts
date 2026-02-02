@@ -1,7 +1,7 @@
 import type {
   ChannelMessageActionAdapter,
   ChannelMessageActionName,
-  openlocalbotConfig,
+  OpenLocalBotConfig,
 } from "openlocalbot/plugin-sdk";
 import {
   createActionGate,
@@ -23,13 +23,13 @@ import { resolveGoogleChatOutboundSpace } from "./targets.js";
 
 const providerId = "googlechat";
 
-function listEnabledAccounts(cfg: openlocalbotConfig) {
+function listEnabledAccounts(cfg: OpenLocalBotConfig) {
   return listEnabledGoogleChatAccounts(cfg).filter(
     (account) => account.enabled && account.credentialSource !== "none",
   );
 }
 
-function isReactionsEnabled(accounts: ReturnType<typeof listEnabledAccounts>, cfg: openlocalbotConfig) {
+function isReactionsEnabled(accounts: ReturnType<typeof listEnabledAccounts>, cfg: OpenLocalBotConfig) {
   for (const account of accounts) {
     const gate = createActionGate(
       (account.config.actions ??

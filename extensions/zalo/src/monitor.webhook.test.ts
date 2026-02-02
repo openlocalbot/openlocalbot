@@ -1,5 +1,5 @@
 import type { AddressInfo } from "node:net";
-import type { openlocalbotConfig, PluginRuntime } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig, PluginRuntime } from "openlocalbot/plugin-sdk";
 import { createServer } from "node:http";
 import { describe, expect, it } from "vitest";
 import type { ResolvedZaloAccount } from "./types.js";
@@ -37,7 +37,7 @@ describe("handleZaloWebhookRequest", () => {
     const unregister = registerZaloWebhookTarget({
       token: "tok",
       account,
-      config: {} as openlocalbotConfig,
+      config: {} as OpenLocalBotConfig,
       runtime: {},
       core,
       secret: "secret",

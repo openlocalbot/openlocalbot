@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import {
   getNvidiaStaticFallbackModels,
   NVIDIA_API_BASE_URL,
@@ -11,7 +11,7 @@ export { NVIDIA_DEFAULT_MODEL_REF };
  * Apply NVIDIA NIM provider configuration without changing the default model.
  * Registers NVIDIA NIM models and sets up the provider, but preserves existing model selection.
  */
-export function applyNvidiaProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyNvidiaProviderConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const models = { ...cfg.agents?.defaults?.models };
   models[NVIDIA_DEFAULT_MODEL_REF] = {
     ...models[NVIDIA_DEFAULT_MODEL_REF],
@@ -64,7 +64,7 @@ export function applyNvidiaProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
  * Apply NVIDIA NIM provider configuration AND set NVIDIA as the default model.
  * Use this when NVIDIA NIM is the primary provider choice during onboarding.
  */
-export function applyNvidiaConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyNvidiaConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const next = applyNvidiaProviderConfig(cfg);
   const existingModel = next.agents?.defaults?.model;
   return {

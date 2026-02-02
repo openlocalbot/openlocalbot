@@ -10,7 +10,7 @@
  * - Registry integration
  */
 
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { sendMessageTwitchInternal } from "./send.js";
 
@@ -57,7 +57,7 @@ describe("send", () => {
         },
       },
     },
-  } as unknown as openlocalbotConfig;
+  } as unknown as OpenLocalBotConfig;
 
   beforeEach(() => {
     vi.clearAllMocks();

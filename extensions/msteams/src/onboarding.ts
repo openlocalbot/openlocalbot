@@ -1,7 +1,7 @@
 import type {
   ChannelOnboardingAdapter,
   ChannelOnboardingDmPolicy,
-  openlocalbotConfig,
+  OpenLocalBotConfig,
   DmPolicy,
   WizardPrompter,
 } from "openlocalbot/plugin-sdk";
@@ -20,7 +20,7 @@ import { resolveMSTeamsCredentials } from "./token.js";
 
 const channel = "msteams" as const;
 
-function setMSTeamsDmPolicy(cfg: openlocalbotConfig, dmPolicy: DmPolicy) {
+function setMSTeamsDmPolicy(cfg: OpenLocalBotConfig, dmPolicy: DmPolicy) {
   const allowFrom =
     dmPolicy === "open"
       ? addWildcardAllowFrom(cfg.channels?.msteams?.allowFrom)?.map((entry) => String(entry))
@@ -38,7 +38,7 @@ function setMSTeamsDmPolicy(cfg: openlocalbotConfig, dmPolicy: DmPolicy) {
   };
 }
 
-function setMSTeamsAllowFrom(cfg: openlocalbotConfig, allowFrom: string[]): openlocalbotConfig {
+function setMSTeamsAllowFrom(cfg: OpenLocalBotConfig, allowFrom: string[]): OpenLocalBotConfig {
   return {
     ...cfg,
     channels: {
@@ -63,9 +63,9 @@ function looksLikeGuid(value: string): boolean {
 }
 
 async function promptMSTeamsAllowFrom(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   prompter: WizardPrompter;
-}): Promise<openlocalbotConfig> {
+}): Promise<OpenLocalBotConfig> {
   const existing = params.cfg.channels?.msteams?.allowFrom ?? [];
   await params.prompter.note(
     [
@@ -141,9 +141,9 @@ async function noteMSTeamsCredentialHelp(prompter: WizardPrompter): Promise<void
 }
 
 function setMSTeamsGroupPolicy(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   groupPolicy: "open" | "allowlist" | "disabled",
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   return {
     ...cfg,
     channels: {
@@ -158,9 +158,9 @@ function setMSTeamsGroupPolicy(
 }
 
 function setMSTeamsTeamsAllowlist(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   entries: Array<{ teamKey: string; channelKey?: string }>,
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   const baseTeams = cfg.channels?.msteams?.teams ?? {};
   const teams: Record<string, { channels?: Record<string, unknown> }> = { ...baseTeams };
   for (const entry of entries) {

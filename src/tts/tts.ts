@@ -14,7 +14,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import type { ReplyPayload } from "../auto-reply/types.js";
 import type { ChannelId } from "../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type {
   TtsConfig,
   TtsAutoMode,
@@ -245,7 +245,7 @@ function resolveModelOverridePolicy(
   };
 }
 
-export function resolveTtsConfig(cfg: openlocalbotConfig): ResolvedTtsConfig {
+export function resolveTtsConfig(cfg: OpenLocalBotConfig): ResolvedTtsConfig {
   const raw: TtsConfig = cfg.messages?.tts ?? {};
   const providerSource = raw.provider ? "config" : "default";
   const edgeOutputFormat = raw.edge?.outputFormat?.trim();
@@ -340,7 +340,7 @@ export function resolveTtsAutoMode(params: {
   return params.config.auto;
 }
 
-export function buildTtsSystemPromptHint(cfg: openlocalbotConfig): string | undefined {
+export function buildTtsSystemPromptHint(cfg: OpenLocalBotConfig): string | undefined {
   const config = resolveTtsConfig(cfg);
   const prefsPath = resolveTtsPrefsPath(config);
   const autoMode = resolveTtsAutoMode({ config, prefsPath });
@@ -881,7 +881,7 @@ type SummaryModelSelection = {
 };
 
 function resolveSummaryModelRef(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   config: ResolvedTtsConfig,
 ): SummaryModelSelection {
   const defaultRef = resolveDefaultModelForAgent({ cfg });
@@ -909,7 +909,7 @@ function isTextContentBlock(block: { type: string }): block is TextContent {
 async function summarizeText(params: {
   text: string;
   targetLength: number;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   config: ResolvedTtsConfig;
   timeoutMs: number;
 }): Promise<SummarizeResult> {
@@ -1160,7 +1160,7 @@ async function edgeTTS(params: {
 
 export async function textToSpeech(params: {
   text: string;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   prefsPath?: string;
   channel?: string;
   overrides?: TtsDirectiveOverrides;
@@ -1331,7 +1331,7 @@ export async function textToSpeech(params: {
 
 export async function textToSpeechTelephony(params: {
   text: string;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   prefsPath?: string;
 }): Promise<TtsTelephonyResult> {
   const config = resolveTtsConfig(params.cfg);
@@ -1425,7 +1425,7 @@ export async function textToSpeechTelephony(params: {
 
 export async function maybeApplyTtsToPayload(params: {
   payload: ReplyPayload;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   channel?: string;
   kind?: "tool" | "block" | "final";
   inboundAudio?: boolean;

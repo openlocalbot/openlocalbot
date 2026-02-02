@@ -29,7 +29,7 @@ const mocks = vi.hoisted(() => {
 
   return {
     store,
-    resolveopenlocalbotAgentDir: vi.fn().mockReturnValue("/tmp/openlocalbot-agent"),
+    resolveOpenLocalBotAgentDir: vi.fn().mockReturnValue("/tmp/openlocalbot-agent"),
     resolveAgentDir: vi.fn().mockReturnValue("/tmp/openlocalbot-agent"),
     resolveAgentModelPrimary: vi.fn().mockReturnValue(undefined),
     resolveAgentModelFallbacksOverride: vi.fn().mockReturnValue(undefined),
@@ -76,7 +76,7 @@ const mocks = vi.hoisted(() => {
 });
 
 vi.mock("../../agents/agent-paths.js", () => ({
-  resolveopenlocalbotAgentDir: mocks.resolveopenlocalbotAgentDir,
+  resolveOpenLocalBotAgentDir: mocks.resolveOpenLocalBotAgentDir,
 }));
 
 vi.mock("../../agents/agent-scope.js", () => ({
@@ -128,7 +128,7 @@ describe("modelsStatusCommand auth overview", () => {
     await modelsStatusCommand({ json: true }, runtime as never);
     const payload = JSON.parse(String((runtime.log as vi.Mock).mock.calls[0][0]));
 
-    expect(mocks.resolveopenlocalbotAgentDir).toHaveBeenCalled();
+    expect(mocks.resolveOpenLocalBotAgentDir).toHaveBeenCalled();
     expect(payload.defaultModel).toBe("anthropic/claude-opus-4-5");
     expect(payload.auth.storePath).toBe("/tmp/openlocalbot-agent/auth-profiles.json");
     expect(payload.auth.shellEnvFallback.enabled).toBe(true);

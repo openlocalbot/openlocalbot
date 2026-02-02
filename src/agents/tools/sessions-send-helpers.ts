@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import {
   getChannelPlugin,
   normalizeChannelId as normalizeAnyChannelId,
@@ -155,7 +155,7 @@ export function isReplySkip(text?: string) {
   return (text ?? "").trim() === REPLY_SKIP_TOKEN;
 }
 
-export function resolvePingPongTurns(cfg?: openlocalbotConfig) {
+export function resolvePingPongTurns(cfg?: OpenLocalBotConfig) {
   const raw = cfg?.session?.agentToAgent?.maxPingPongTurns;
   const fallback = DEFAULT_PING_PONG_TURNS;
   if (typeof raw !== "number" || !Number.isFinite(raw)) {

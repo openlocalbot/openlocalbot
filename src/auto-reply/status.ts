@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import type { SkillCommandSpec } from "../agents/skills.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { MediaUnderstandingDecision } from "../media-understanding/types.js";
 import type { CommandCategory } from "./commands-registry.types.js";
 import type { ElevatedLevel, ReasoningLevel, ThinkLevel, VerboseLevel } from "./thinking.js";
@@ -39,7 +39,7 @@ import {
   type ChatCommandDefinition,
 } from "./commands-registry.js";
 
-type AgentConfig = Partial<NonNullable<NonNullable<openlocalbotConfig["agents"]>["defaults"]>>;
+type AgentConfig = Partial<NonNullable<NonNullable<OpenLocalBotConfig["agents"]>["defaults"]>>;
 
 export const formatTokenCount = formatTokenCountShared;
 
@@ -53,7 +53,7 @@ type QueueStatus = {
 };
 
 type StatusArgs = {
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   agent: AgentConfig;
   sessionEntry?: SessionEntry;
   sessionKey?: string;
@@ -302,7 +302,7 @@ const formatMediaUnderstandingLine = (decisions?: MediaUnderstandingDecision[]) 
 };
 
 const formatVoiceModeLine = (
-  config?: openlocalbotConfig,
+  config?: OpenLocalBotConfig,
   sessionEntry?: SessionEntry,
 ): string | null => {
   if (!config) {
@@ -332,7 +332,7 @@ export function buildStatusMessage(args: StatusArgs): string {
       agents: {
         defaults: args.agent ?? {},
       },
-    } as openlocalbotConfig,
+    } as OpenLocalBotConfig,
     defaultProvider: DEFAULT_PROVIDER,
     defaultModel: DEFAULT_MODEL,
   });
@@ -521,7 +521,7 @@ function groupCommandsByCategory(
   return grouped;
 }
 
-export function buildHelpMessage(cfg?: openlocalbotConfig): string {
+export function buildHelpMessage(cfg?: OpenLocalBotConfig): string {
   const lines = ["ℹ️ Help", ""];
 
   lines.push("Session");
@@ -642,7 +642,7 @@ function formatCommandList(items: CommandsListItem[]): string {
 }
 
 export function buildCommandsMessage(
-  cfg?: openlocalbotConfig,
+  cfg?: OpenLocalBotConfig,
   skillCommands?: SkillCommandSpec[],
   options?: CommandsMessageOptions,
 ): string {
@@ -651,7 +651,7 @@ export function buildCommandsMessage(
 }
 
 export function buildCommandsMessagePaginated(
-  cfg?: openlocalbotConfig,
+  cfg?: OpenLocalBotConfig,
   skillCommands?: SkillCommandSpec[],
   options?: CommandsMessageOptions,
 ): CommandsMessageResult {

@@ -1,14 +1,14 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { withTempHome as withTempHomeBase } from "../../test/helpers/temp-home.js";
 
 async function withTempHome<T>(fn: (home: string) => Promise<T>): Promise<T> {
   return withTempHomeBase(fn, { prefix: "openlocalbot-models-" });
 }
 
-const MODELS_CONFIG: openlocalbotConfig = {
+const MODELS_CONFIG: OpenLocalBotConfig = {
   models: {
     providers: {
       "custom-proxy": {
@@ -50,9 +50,9 @@ describe("models-config", () => {
       process.env.MINIMAX_API_KEY = "sk-minimax-test";
       try {
         const { ensureopenlocalbotModelsJson } = await import("./models-config.js");
-        const { resolveopenlocalbotAgentDir } = await import("./agent-paths.js");
+        const { resolveOpenLocalBotAgentDir } = await import("./agent-paths.js");
 
-        const cfg: openlocalbotConfig = {
+        const cfg: OpenLocalBotConfig = {
           models: {
             providers: {
               minimax: {
@@ -76,7 +76,7 @@ describe("models-config", () => {
 
         await ensureopenlocalbotModelsJson(cfg);
 
-        const modelPath = path.join(resolveopenlocalbotAgentDir(), "models.json");
+        const modelPath = path.join(resolveOpenLocalBotAgentDir(), "models.json");
         const raw = await fs.readFile(modelPath, "utf8");
         const parsed = JSON.parse(raw) as {
           providers: Record<string, { apiKey?: string; models?: Array<{ id: string }> }>;
@@ -97,9 +97,9 @@ describe("models-config", () => {
     await withTempHome(async () => {
       vi.resetModules();
       const { ensureopenlocalbotModelsJson } = await import("./models-config.js");
-      const { resolveopenlocalbotAgentDir } = await import("./agent-paths.js");
+      const { resolveOpenLocalBotAgentDir } = await import("./agent-paths.js");
 
-      const agentDir = resolveopenlocalbotAgentDir();
+      const agentDir = resolveOpenLocalBotAgentDir();
       await fs.mkdir(agentDir, { recursive: true });
       await fs.writeFile(
         path.join(agentDir, "models.json"),

@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/types.js";
+import type { OpenLocalBotConfig } from "../../config/types.js";
 import { resolveUserTimezone } from "../../agents/date-time.js";
 import { formatZonedTimestamp } from "../../auto-reply/envelope.js";
 
@@ -71,9 +71,9 @@ export function injectTimestamp(message: string, opts?: TimestampInjectionOption
 }
 
 /**
- * Build TimestampInjectionOptions from an openlocalbotConfig.
+ * Build TimestampInjectionOptions from an OpenLocalBotConfig.
  */
-export function timestampOptsFromConfig(cfg: openlocalbotConfig): TimestampInjectionOptions {
+export function timestampOptsFromConfig(cfg: OpenLocalBotConfig): TimestampInjectionOptions {
   return {
     timezone: resolveUserTimezone(cfg.agents?.defaults?.userTimezone),
   };

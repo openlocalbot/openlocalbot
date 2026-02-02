@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import "./test-helpers/fast-coding-tools.js";
 import { createopenlocalbotCodingTools } from "./pi-tools.js";
 
@@ -57,7 +57,7 @@ describe("createopenlocalbotCodingTools", () => {
     expect(defaultTools.some((tool) => tool.name === "apply_patch")).toBe(false);
   });
   it("gates apply_patch behind tools.exec.applyPatch for OpenAI models", () => {
-    const config: openlocalbotConfig = {
+    const config: OpenLocalBotConfig = {
       tools: {
         exec: {
           applyPatch: { enabled: true },
@@ -79,7 +79,7 @@ describe("createopenlocalbotCodingTools", () => {
     expect(anthropicTools.some((tool) => tool.name === "apply_patch")).toBe(false);
   });
   it("respects apply_patch allowModels", () => {
-    const config: openlocalbotConfig = {
+    const config: OpenLocalBotConfig = {
       tools: {
         exec: {
           applyPatch: { enabled: true, allowModels: ["gpt-5.2"] },

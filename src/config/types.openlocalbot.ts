@@ -24,7 +24,7 @@ import type { PluginsConfig } from "./types.plugins.js";
 import type { SkillsConfig } from "./types.skills.js";
 import type { ToolsConfig } from "./types.tools.js";
 
-export type openlocalbotConfig = {
+export type OpenLocalBotConfig = {
   meta?: {
     /** Last openlocalbot version that wrote this config. */
     lastTouchedVersion?: string;
@@ -113,7 +113,7 @@ export type ConfigFileSnapshot = {
   raw: string | null;
   parsed: unknown;
   valid: boolean;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   hash?: string;
   issues: ConfigValidationIssue[];
   warnings: ConfigValidationIssue[];

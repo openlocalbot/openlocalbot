@@ -1,5 +1,5 @@
 import type { GatewayAuthChoice } from "../commands/onboard-types.js";
-import type { GatewayBindMode, GatewayTailscaleMode, openlocalbotConfig } from "../config/config.js";
+import type { GatewayBindMode, GatewayTailscaleMode, OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import type {
   GatewayWizardSettings,
@@ -12,8 +12,8 @@ import { findTailscaleBinary } from "../infra/tailscale.js";
 
 type ConfigureGatewayOptions = {
   flow: WizardFlow;
-  baseConfig: openlocalbotConfig;
-  nextConfig: openlocalbotConfig;
+  baseConfig: OpenLocalBotConfig;
+  nextConfig: OpenLocalBotConfig;
   localPort: number;
   quickstartGateway: QuickstartGatewayDefaults;
   prompter: WizardPrompter;
@@ -21,7 +21,7 @@ type ConfigureGatewayOptions = {
 };
 
 type ConfigureGatewayResult = {
-  nextConfig: openlocalbotConfig;
+  nextConfig: OpenLocalBotConfig;
   settings: GatewayWizardSettings;
 };
 

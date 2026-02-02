@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { ConfiguredEntry } from "./list.types.js";
 import {
   buildModelAliasIndex,
@@ -8,7 +8,7 @@ import {
 } from "../../agents/model-selection.js";
 import { DEFAULT_MODEL, DEFAULT_PROVIDER, modelKey } from "./shared.js";
 
-export function resolveConfiguredEntries(cfg: openlocalbotConfig) {
+export function resolveConfiguredEntries(cfg: OpenLocalBotConfig) {
   const resolvedDefault = resolveConfiguredModelRef({
     cfg,
     defaultProvider: DEFAULT_PROVIDER,

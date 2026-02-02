@@ -2,7 +2,7 @@ import { createJiti } from "jiti";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { GatewayRequestHandler } from "../gateway/server-methods/types.js";
 import type {
   openlocalbotPluginDefinition,
@@ -30,7 +30,7 @@ import { validateJsonSchemaValue } from "./schema-validator.js";
 export type PluginLoadResult = PluginRegistry;
 
 export type PluginLoadOptions = {
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   workspaceDir?: string;
   logger?: PluginLogger;
   coreGatewayHandlers?: Record<string, GatewayRequestHandler>;

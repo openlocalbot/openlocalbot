@@ -1,5 +1,5 @@
 import type { ChannelDirectoryEntryKind, ChannelId } from "../../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 
 type CacheEntry<T> = {
   value: T;
@@ -21,11 +21,11 @@ export function buildDirectoryCacheKey(key: DirectoryCacheKey): string {
 
 export class DirectoryCache<T> {
   private readonly cache = new Map<string, CacheEntry<T>>();
-  private lastConfigRef: openlocalbotConfig | null = null;
+  private lastConfigRef: OpenLocalBotConfig | null = null;
 
   constructor(private readonly ttlMs: number) {}
 
-  get(key: string, cfg: openlocalbotConfig): T | undefined {
+  get(key: string, cfg: OpenLocalBotConfig): T | undefined {
     this.resetIfConfigChanged(cfg);
     const entry = this.cache.get(key);
     if (!entry) {
@@ -38,7 +38,7 @@ export class DirectoryCache<T> {
     return entry.value;
   }
 
-  set(key: string, value: T, cfg: openlocalbotConfig): void {
+  set(key: string, value: T, cfg: OpenLocalBotConfig): void {
     this.resetIfConfigChanged(cfg);
     this.cache.set(key, { value, fetchedAt: Date.now() });
   }
@@ -51,14 +51,14 @@ export class DirectoryCache<T> {
     }
   }
 
-  clear(cfg?: openlocalbotConfig): void {
+  clear(cfg?: OpenLocalBotConfig): void {
     this.cache.clear();
     if (cfg) {
       this.lastConfigRef = cfg;
     }
   }
 
-  private resetIfConfigChanged(cfg: openlocalbotConfig): void {
+  private resetIfConfigChanged(cfg: OpenLocalBotConfig): void {
     if (this.lastConfigRef && this.lastConfigRef !== cfg) {
       this.cache.clear();
     }

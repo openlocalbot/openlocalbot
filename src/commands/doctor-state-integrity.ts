@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { resolveDefaultAgentId } from "../agents/agent-scope.js";
 import { resolveOAuthDir, resolveStateDir } from "../config/paths.js";
 import {
@@ -132,7 +132,7 @@ function findOtherStateDirs(stateDir: string): string[] {
 }
 
 export async function noteStateIntegrity(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   prompter: DoctorPrompterLike,
   configPath?: string,
 ) {

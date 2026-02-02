@@ -1,5 +1,5 @@
 import type { ChannelAccountSnapshot, ChannelPlugin } from "../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { resolveChannelDefaultAccountId } from "../channels/plugins/helpers.js";
 import { listChannelPlugins } from "../channels/plugins/index.js";
 
@@ -12,7 +12,7 @@ export type LinkChannelContext = {
 };
 
 export async function resolveLinkChannelContext(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
 ): Promise<LinkChannelContext | null> {
   for (const plugin of listChannelPlugins()) {
     const accountIds = plugin.config.listAccountIds(cfg);

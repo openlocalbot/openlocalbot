@@ -14,7 +14,7 @@ export type DiscordMessageEvent = import("./listeners.js").DiscordMessageEvent;
 export type DiscordMessagePreflightContext = {
   cfg: LoadedConfig;
   discordConfig: NonNullable<
-    import("../../config/config.js").openlocalbotConfig["channels"]
+    import("../../config/config.js").OpenLocalBotConfig["channels"]
   >["discord"];
   accountId: string;
   token: string;

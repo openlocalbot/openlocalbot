@@ -279,7 +279,7 @@ final class AppState {
             UserDefaults.standard.set(IconOverrideSelection.system.rawValue, forKey: iconOverrideKey)
         }
 
-        let configRoot = openlocalbotConfigFile.loadDict()
+        let configRoot = OpenLocalBotConfigFile.loadDict()
         let configRemoteUrl = GatewayRemoteConfig.resolveUrlString(root: configRoot)
         let configRemoteTransport = GatewayRemoteConfig.resolveTransport(root: configRoot)
         let resolvedConnectionMode = ConnectionModeResolver.resolve(root: configRoot).mode
@@ -357,7 +357,7 @@ final class AppState {
     }
 
     private func startConfigWatcher() {
-        let configUrl = openlocalbotConfigFile.url()
+        let configUrl = OpenLocalBotConfigFile.url()
         self.configWatcher = ConfigFileWatcher(url: configUrl) { [weak self] in
             Task { @MainActor in
                 self?.applyConfigFromDisk()
@@ -367,7 +367,7 @@ final class AppState {
     }
 
     private func applyConfigFromDisk() {
-        let root = openlocalbotConfigFile.loadDict()
+        let root = OpenLocalBotConfigFile.loadDict()
         self.applyConfigOverrides(root)
     }
 
@@ -455,7 +455,7 @@ final class AppState {
 
         Task { @MainActor in
             // Keep app-only connection settings local to avoid overwriting remote gateway config.
-            var root = openlocalbotConfigFile.loadDict()
+            var root = OpenLocalBotConfigFile.loadDict()
             var gateway = root["gateway"] as? [String: Any] ?? [:]
             var changed = false
 
@@ -545,7 +545,7 @@ final class AppState {
             } else {
                 root["gateway"] = gateway
             }
-            openlocalbotConfigFile.saveDict(root)
+            OpenLocalBotConfigFile.saveDict(root)
         }
     }
 

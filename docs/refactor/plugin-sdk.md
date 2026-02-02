@@ -49,8 +49,8 @@ export type PluginRuntime = {
   channel: {
     text: {
       chunkMarkdownText(text: string, limit: number): string[];
-      resolveTextChunkLimit(cfg: openlocalbotConfig, channel: string, accountId?: string): number;
-      hasControlCommand(text: string, cfg: openlocalbotConfig): boolean;
+      resolveTextChunkLimit(cfg: OpenLocalBotConfig, channel: string, accountId?: string): number;
+      hasControlCommand(text: string, cfg: OpenLocalBotConfig): boolean;
     };
     reply: {
       dispatchReplyWithBufferedBlockDispatcher(params: {
@@ -94,12 +94,12 @@ export type PluginRuntime = {
       ): Promise<{ path: string; contentType?: string }>;
     };
     mentions: {
-      buildMentionRegexes(cfg: openlocalbotConfig, agentId?: string): RegExp[];
+      buildMentionRegexes(cfg: OpenLocalBotConfig, agentId?: string): RegExp[];
       matchesMentionPatterns(text: string, regexes: RegExp[]): boolean;
     };
     groups: {
       resolveGroupPolicy(
-        cfg: openlocalbotConfig,
+        cfg: OpenLocalBotConfig,
         channel: string,
         accountId: string,
         groupId: string,
@@ -110,7 +110,7 @@ export type PluginRuntime = {
         defaultConfig?: unknown;
       };
       resolveRequireMention(
-        cfg: openlocalbotConfig,
+        cfg: OpenLocalBotConfig,
         channel: string,
         accountId: string,
         groupId: string,
@@ -125,7 +125,7 @@ export type PluginRuntime = {
         onFlush: (entries: T[]) => Promise<void>;
         onError?: (err: unknown) => void;
       }): { push: (v: T) => void; flush: () => Promise<void> };
-      resolveInboundDebounceMs(cfg: openlocalbotConfig, channel: string): number;
+      resolveInboundDebounceMs(cfg: OpenLocalBotConfig, channel: string): number;
     };
     commands: {
       resolveCommandAuthorizedFromAuthorizers(params: {
@@ -139,7 +139,7 @@ export type PluginRuntime = {
     getChildLogger(name: string): PluginLogger;
   };
   state: {
-    resolveStateDir(cfg: openlocalbotConfig): string;
+    resolveStateDir(cfg: OpenLocalBotConfig): string;
   };
 };
 ```

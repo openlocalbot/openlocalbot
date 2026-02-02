@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import type { ChannelPlugin } from "../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { discordPlugin } from "../../extensions/discord/src/channel.js";
 import { slackPlugin } from "../../extensions/slack/src/channel.js";
 import { telegramPlugin } from "../../extensions/telegram/src/channel.js";
@@ -13,7 +13,7 @@ const isWindows = process.platform === "win32";
 
 describe("security audit", () => {
   it("includes an attack surface summary (info)", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       channels: { whatsapp: { groupPolicy: "open" }, telegram: { groupPolicy: "allowlist" } },
       tools: { elevated: { enabled: true, allowFrom: { whatsapp: ["+1"] } } },
       hooks: { enabled: true },
@@ -34,7 +34,7 @@ describe("security audit", () => {
   });
 
   it("flags non-loopback bind without auth as critical", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       gateway: {
         bind: "lan",
         auth: {},
@@ -54,7 +54,7 @@ describe("security audit", () => {
   });
 
   it("warns when loopback control UI lacks trusted proxies", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       gateway: {
         bind: "loopback",
         controlUi: { enabled: true },
@@ -78,7 +78,7 @@ describe("security audit", () => {
   });
 
   it("flags loopback control UI without auth as critical", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       gateway: {
         bind: "loopback",
         controlUi: { enabled: true },
@@ -104,7 +104,7 @@ describe("security audit", () => {
   });
 
   it("flags logging.redactSensitive=off", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       logging: { redactSensitive: "off" },
     };
 
@@ -199,7 +199,7 @@ describe("security audit", () => {
   });
 
   it("warns when small models are paired with web/browser tools", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: { defaults: { model: { primary: "ollama/mistral-8b" } } },
       tools: {
         web: {
@@ -225,7 +225,7 @@ describe("security audit", () => {
   });
 
   it("treats small models as safe when sandbox is on and web tools are disabled", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: { defaults: { model: { primary: "ollama/mistral-8b" }, sandbox: { mode: "all" } } },
       tools: {
         web: {
@@ -249,7 +249,7 @@ describe("security audit", () => {
   });
 
   it("flags tools.elevated allowFrom wildcard as critical", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: {
         elevated: {
           allowFrom: { whatsapp: ["*"] },
@@ -274,7 +274,7 @@ describe("security audit", () => {
   });
 
   it("warns when remote CDP uses HTTP", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       browser: {
         profiles: {
           remote: { cdpUrl: "http://example.com:9222", color: "#0066CC" },
@@ -296,7 +296,7 @@ describe("security audit", () => {
   });
 
   it("warns when control UI allows insecure auth", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       gateway: {
         controlUi: { allowInsecureAuth: true },
       },
@@ -319,7 +319,7 @@ describe("security audit", () => {
   });
 
   it("warns when control UI device auth is disabled", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       gateway: {
         controlUi: { dangerouslyDisableDeviceAuth: true },
       },
@@ -342,7 +342,7 @@ describe("security audit", () => {
   });
 
   it("warns when multiple DM senders share the main session", async () => {
-    const cfg: openlocalbotConfig = { session: { dmScope: "main" } };
+    const cfg: OpenLocalBotConfig = { session: { dmScope: "main" } };
     const plugins: ChannelPlugin[] = [
       {
         id: "whatsapp",
@@ -395,7 +395,7 @@ describe("security audit", () => {
     process.env.openlocalbot_STATE_DIR = tmp;
     await fs.mkdir(path.join(tmp, "credentials"), { recursive: true, mode: 0o700 });
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         channels: {
           discord: {
             enabled: true,
@@ -444,7 +444,7 @@ describe("security audit", () => {
     process.env.openlocalbot_STATE_DIR = tmp;
     await fs.mkdir(path.join(tmp, "credentials"), { recursive: true, mode: 0o700 });
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         channels: {
           discord: {
             enabled: true,
@@ -491,7 +491,7 @@ describe("security audit", () => {
     process.env.openlocalbot_STATE_DIR = tmp;
     await fs.mkdir(path.join(tmp, "credentials"), { recursive: true, mode: 0o700 });
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         commands: { useAccessGroups: false },
         channels: {
           discord: {
@@ -539,7 +539,7 @@ describe("security audit", () => {
     process.env.openlocalbot_STATE_DIR = tmp;
     await fs.mkdir(path.join(tmp, "credentials"), { recursive: true, mode: 0o700 });
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         channels: {
           slack: {
             enabled: true,
@@ -581,7 +581,7 @@ describe("security audit", () => {
     process.env.openlocalbot_STATE_DIR = tmp;
     await fs.mkdir(path.join(tmp, "credentials"), { recursive: true, mode: 0o700 });
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         commands: { useAccessGroups: false },
         channels: {
           slack: {
@@ -624,7 +624,7 @@ describe("security audit", () => {
     process.env.openlocalbot_STATE_DIR = tmp;
     await fs.mkdir(path.join(tmp, "credentials"), { recursive: true, mode: 0o700 });
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         channels: {
           telegram: {
             enabled: true,
@@ -660,7 +660,7 @@ describe("security audit", () => {
   });
 
   it("adds a warning when deep probe fails", async () => {
-    const cfg: openlocalbotConfig = { gateway: { mode: "local" } };
+    const cfg: OpenLocalBotConfig = { gateway: { mode: "local" } };
 
     const res = await runSecurityAudit({
       config: cfg,
@@ -689,7 +689,7 @@ describe("security audit", () => {
   });
 
   it("adds a warning when deep probe throws", async () => {
-    const cfg: openlocalbotConfig = { gateway: { mode: "local" } };
+    const cfg: OpenLocalBotConfig = { gateway: { mode: "local" } };
 
     const res = await runSecurityAudit({
       config: cfg,
@@ -712,7 +712,7 @@ describe("security audit", () => {
   });
 
   it("warns on legacy model configuration", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: { defaults: { model: { primary: "openai/gpt-3.5-turbo" } } },
     };
 
@@ -730,7 +730,7 @@ describe("security audit", () => {
   });
 
   it("warns on weak model tiers", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: { defaults: { model: { primary: "anthropic/claude-haiku-4-5" } } },
     };
 
@@ -749,7 +749,7 @@ describe("security audit", () => {
 
   it("does not warn on Venice-style opus-45 model names", async () => {
     // Venice uses "claude-opus-45" format (no dash between 4 and 5)
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: { defaults: { model: { primary: "venice/claude-opus-45" } } },
     };
 
@@ -765,7 +765,7 @@ describe("security audit", () => {
   });
 
   it("warns when hooks token looks short", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       hooks: { enabled: true, token: "short" },
     };
 
@@ -785,7 +785,7 @@ describe("security audit", () => {
   it("warns when hooks token reuses the gateway env token", async () => {
     const prevToken = process.env.openlocalbot_GATEWAY_TOKEN;
     process.env.openlocalbot_GATEWAY_TOKEN = "shared-gateway-token-1234567890";
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       hooks: { enabled: true, token: "shared-gateway-token-1234567890" },
     };
 
@@ -811,7 +811,7 @@ describe("security audit", () => {
   });
 
   it("warns when state/config look like a synced folder", async () => {
-    const cfg: openlocalbotConfig = {};
+    const cfg: OpenLocalBotConfig = {};
 
     const res = await runSecurityAudit({
       config: cfg,
@@ -848,7 +848,7 @@ describe("security audit", () => {
     await fs.chmod(configPath, 0o600);
 
     try {
-      const cfg: openlocalbotConfig = { logging: { redactSensitive: "off" } };
+      const cfg: OpenLocalBotConfig = { logging: { redactSensitive: "off" } };
       const user = "DESKTOP-TEST\\Tester";
       const execIcacls = isWindows
         ? async (_cmd: string, args: string[]) => {
@@ -910,7 +910,7 @@ describe("security audit", () => {
     });
 
     try {
-      const cfg: openlocalbotConfig = {};
+      const cfg: OpenLocalBotConfig = {};
       const res = await runSecurityAudit({
         config: cfg,
         includeFilesystem: true,
@@ -959,7 +959,7 @@ describe("security audit", () => {
     });
 
     try {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         channels: {
           discord: { enabled: true, token: "t" },
         },
@@ -990,7 +990,7 @@ describe("security audit", () => {
   });
 
   it("flags open groupPolicy when tools.elevated is enabled", async () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       tools: { elevated: { enabled: true, allowFrom: { whatsapp: ["+1"] } } },
       channels: { whatsapp: { groupPolicy: "open" } },
     };
@@ -1035,7 +1035,7 @@ describe("security audit", () => {
 
     it("uses local auth when gateway.mode is local", async () => {
       let capturedAuth: { token?: string; password?: string } | undefined;
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         gateway: {
           mode: "local",
           auth: { token: "local-token-abc123" },
@@ -1070,7 +1070,7 @@ describe("security audit", () => {
     it("prefers env token over local config token", async () => {
       process.env.openlocalbot_GATEWAY_TOKEN = "env-token";
       let capturedAuth: { token?: string; password?: string } | undefined;
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         gateway: {
           mode: "local",
           auth: { token: "local-token" },
@@ -1104,7 +1104,7 @@ describe("security audit", () => {
 
     it("uses local auth when gateway.mode is undefined (default)", async () => {
       let capturedAuth: { token?: string; password?: string } | undefined;
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         gateway: {
           auth: { token: "default-local-token" },
         },
@@ -1137,7 +1137,7 @@ describe("security audit", () => {
 
     it("uses remote auth when gateway.mode is remote with URL", async () => {
       let capturedAuth: { token?: string; password?: string } | undefined;
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         gateway: {
           mode: "remote",
           auth: { token: "local-token-should-not-use" },
@@ -1176,7 +1176,7 @@ describe("security audit", () => {
     it("ignores env token when gateway.mode is remote", async () => {
       process.env.openlocalbot_GATEWAY_TOKEN = "env-token";
       let capturedAuth: { token?: string; password?: string } | undefined;
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         gateway: {
           mode: "remote",
           auth: { token: "local-token-should-not-use" },
@@ -1214,7 +1214,7 @@ describe("security audit", () => {
 
     it("uses remote password when env is unset", async () => {
       let capturedAuth: { token?: string; password?: string } | undefined;
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         gateway: {
           mode: "remote",
           remote: {
@@ -1252,7 +1252,7 @@ describe("security audit", () => {
     it("prefers env password over remote password", async () => {
       process.env.openlocalbot_GATEWAY_PASSWORD = "env-pass";
       let capturedAuth: { token?: string; password?: string } | undefined;
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         gateway: {
           mode: "remote",
           remote: {
@@ -1289,7 +1289,7 @@ describe("security audit", () => {
 
     it("falls back to local auth when gateway.mode is remote but URL is missing", async () => {
       let capturedAuth: { token?: string; password?: string } | undefined;
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         gateway: {
           mode: "remote",
           auth: { token: "fallback-local-token" },

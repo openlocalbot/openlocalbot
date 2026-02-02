@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import {
   __setModelCatalogImportForTest,
   loadModelCatalog,
@@ -13,7 +13,7 @@ vi.mock("./models-config.js", () => ({
 }));
 
 vi.mock("./agent-paths.js", () => ({
-  resolveopenlocalbotAgentDir: () => "/tmp/openlocalbot",
+  resolveOpenLocalBotAgentDir: () => "/tmp/openlocalbot",
 }));
 
 describe("loadModelCatalog", () => {
@@ -46,7 +46,7 @@ describe("loadModelCatalog", () => {
       } as unknown as PiSdkModule;
     });
 
-    const cfg = {} as openlocalbotConfig;
+    const cfg = {} as OpenLocalBotConfig;
     const first = await loadModelCatalog({ config: cfg });
     expect(first).toEqual([]);
 
@@ -80,7 +80,7 @@ describe("loadModelCatalog", () => {
         }) as unknown as PiSdkModule,
     );
 
-    const result = await loadModelCatalog({ config: {} as openlocalbotConfig });
+    const result = await loadModelCatalog({ config: {} as OpenLocalBotConfig });
     expect(result).toEqual([{ id: "gpt-4.1", name: "GPT-4.1", provider: "openai" }]);
     expect(warnSpy).toHaveBeenCalledTimes(1);
   });

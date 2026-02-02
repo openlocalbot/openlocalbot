@@ -7,7 +7,7 @@ import type { ReplyPayload } from "../auto-reply/types.js";
 import type { ChannelDock } from "../channels/dock.js";
 import type { ChannelPlugin } from "../channels/plugins/types.js";
 import type { createVpsAwareOAuthHandlers } from "../commands/oauth-flow.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { ModelProviderConfig } from "../config/types.js";
 import type { GatewayRequestHandler } from "../gateway/server-methods/types.js";
 import type { InternalHookHandler } from "../hooks/internal-hooks.js";
@@ -54,7 +54,7 @@ export type openlocalbotPluginConfigSchema = {
 };
 
 export type openlocalbotPluginToolContext = {
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   workspaceDir?: string;
   agentDir?: string;
   agentId?: string;
@@ -85,13 +85,13 @@ export type ProviderAuthKind = "oauth" | "api_key" | "token" | "device_code" | "
 
 export type ProviderAuthResult = {
   profiles: Array<{ profileId: string; credential: AuthProfileCredential }>;
-  configPatch?: Partial<openlocalbotConfig>;
+  configPatch?: Partial<OpenLocalBotConfig>;
   defaultModel?: string;
   notes?: string[];
 };
 
 export type ProviderAuthContext = {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   agentDir?: string;
   workspaceDir?: string;
   prompter: WizardPrompter;
@@ -147,7 +147,7 @@ export type PluginCommandContext = {
   /** The full normalized command body */
   commandBody: string;
   /** Current openlocalbot configuration */
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
 };
 
 /**
@@ -190,7 +190,7 @@ export type openlocalbotPluginHttpRouteHandler = (
 
 export type openlocalbotPluginCliContext = {
   program: Command;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   workspaceDir?: string;
   logger: PluginLogger;
 };
@@ -198,7 +198,7 @@ export type openlocalbotPluginCliContext = {
 export type openlocalbotPluginCliRegistrar = (ctx: openlocalbotPluginCliContext) => void | Promise<void>;
 
 export type openlocalbotPluginServiceContext = {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   workspaceDir?: string;
   stateDir: string;
   logger: PluginLogger;
@@ -236,7 +236,7 @@ export type openlocalbotPluginApi = {
   version?: string;
   description?: string;
   source: string;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   pluginConfig?: Record<string, unknown>;
   runtime: PluginRuntime;
   logger: PluginLogger;

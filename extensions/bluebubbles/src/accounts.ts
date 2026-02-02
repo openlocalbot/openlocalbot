@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "openlocalbot/plugin-sdk";
 import { normalizeBlueBubblesServerUrl, type BlueBubblesAccountConfig } from "./types.js";
 
@@ -11,7 +11,7 @@ export type ResolvedBlueBubblesAccount = {
   baseUrl?: string;
 };
 
-function listConfiguredAccountIds(cfg: openlocalbotConfig): string[] {
+function listConfiguredAccountIds(cfg: OpenLocalBotConfig): string[] {
   const accounts = cfg.channels?.bluebubbles?.accounts;
   if (!accounts || typeof accounts !== "object") {
     return [];
@@ -19,7 +19,7 @@ function listConfiguredAccountIds(cfg: openlocalbotConfig): string[] {
   return Object.keys(accounts).filter(Boolean);
 }
 
-export function listBlueBubblesAccountIds(cfg: openlocalbotConfig): string[] {
+export function listBlueBubblesAccountIds(cfg: OpenLocalBotConfig): string[] {
   const ids = listConfiguredAccountIds(cfg);
   if (ids.length === 0) {
     return [DEFAULT_ACCOUNT_ID];
@@ -27,7 +27,7 @@ export function listBlueBubblesAccountIds(cfg: openlocalbotConfig): string[] {
   return ids.toSorted((a, b) => a.localeCompare(b));
 }
 
-export function resolveDefaultBlueBubblesAccountId(cfg: openlocalbotConfig): string {
+export function resolveDefaultBlueBubblesAccountId(cfg: OpenLocalBotConfig): string {
   const ids = listBlueBubblesAccountIds(cfg);
   if (ids.includes(DEFAULT_ACCOUNT_ID)) {
     return DEFAULT_ACCOUNT_ID;
@@ -36,7 +36,7 @@ export function resolveDefaultBlueBubblesAccountId(cfg: openlocalbotConfig): str
 }
 
 function resolveAccountConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   accountId: string,
 ): BlueBubblesAccountConfig | undefined {
   const accounts = cfg.channels?.bluebubbles?.accounts;
@@ -47,7 +47,7 @@ function resolveAccountConfig(
 }
 
 function mergeBlueBubblesAccountConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   accountId: string,
 ): BlueBubblesAccountConfig {
   const base = (cfg.channels?.bluebubbles ?? {}) as BlueBubblesAccountConfig & {
@@ -60,7 +60,7 @@ function mergeBlueBubblesAccountConfig(
 }
 
 export function resolveBlueBubblesAccount(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   accountId?: string | null;
 }): ResolvedBlueBubblesAccount {
   const accountId = normalizeAccountId(params.accountId);
@@ -81,7 +81,7 @@ export function resolveBlueBubblesAccount(params: {
   };
 }
 
-export function listEnabledBlueBubblesAccounts(cfg: openlocalbotConfig): ResolvedBlueBubblesAccount[] {
+export function listEnabledBlueBubblesAccounts(cfg: OpenLocalBotConfig): ResolvedBlueBubblesAccount[] {
   return listBlueBubblesAccountIds(cfg)
     .map((accountId) => resolveBlueBubblesAccount({ cfg, accountId }))
     .filter((account) => account.enabled);

@@ -1,7 +1,7 @@
 import type { Api, Model } from "@mariozechner/pi-ai";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { ModelDefinitionConfig } from "../../config/types.js";
-import { resolveopenlocalbotAgentDir } from "../agent-paths.js";
+import { resolveOpenLocalBotAgentDir } from "../agent-paths.js";
 import { DEFAULT_CONTEXT_TOKENS } from "../defaults.js";
 import { normalizeModelCompat } from "../model-compat.js";
 import { normalizeProviderId } from "../model-selection.js";
@@ -36,7 +36,7 @@ export function buildInlineProviderModels(
   });
 }
 
-export function buildModelAliasLines(cfg?: openlocalbotConfig) {
+export function buildModelAliasLines(cfg?: OpenLocalBotConfig) {
   const models = cfg?.agents?.defaults?.models ?? {};
   const entries: Array<{ alias: string; model: string }> = [];
   for (const [keyRaw, entryRaw] of Object.entries(models)) {
@@ -59,14 +59,14 @@ export function resolveModel(
   provider: string,
   modelId: string,
   agentDir?: string,
-  cfg?: openlocalbotConfig,
+  cfg?: OpenLocalBotConfig,
 ): {
   model?: Model<Api>;
   error?: string;
   authStorage: AuthStorage;
   modelRegistry: ModelRegistry;
 } {
-  const resolvedAgentDir = agentDir ?? resolveopenlocalbotAgentDir();
+  const resolvedAgentDir = agentDir ?? resolveOpenLocalBotAgentDir();
   const authStorage = discoverAuthStorage(resolvedAgentDir);
   const modelRegistry = discoverModels(authStorage, resolvedAgentDir);
   const model = modelRegistry.find(provider, modelId) as Model<Api> | null;

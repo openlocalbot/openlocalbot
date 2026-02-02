@@ -1,10 +1,10 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { ChannelAccountSnapshot, ChannelPlugin } from "./types.js";
 
 // Channel docking: status snapshots flow through plugin.status hooks here.
 export async function buildChannelAccountSnapshot<ResolvedAccount>(params: {
   plugin: ChannelPlugin<ResolvedAccount>;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   accountId: string;
   runtime?: ChannelAccountSnapshot;
   probe?: unknown;

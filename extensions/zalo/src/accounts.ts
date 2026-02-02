@@ -1,9 +1,9 @@
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "openlocalbot/plugin-sdk";
 import type { ResolvedZaloAccount, ZaloAccountConfig, ZaloConfig } from "./types.js";
 import { resolveZaloToken } from "./token.js";
 
-function listConfiguredAccountIds(cfg: openlocalbotConfig): string[] {
+function listConfiguredAccountIds(cfg: OpenLocalBotConfig): string[] {
   const accounts = (cfg.channels?.zalo as ZaloConfig | undefined)?.accounts;
   if (!accounts || typeof accounts !== "object") {
     return [];
@@ -11,7 +11,7 @@ function listConfiguredAccountIds(cfg: openlocalbotConfig): string[] {
   return Object.keys(accounts).filter(Boolean);
 }
 
-export function listZaloAccountIds(cfg: openlocalbotConfig): string[] {
+export function listZaloAccountIds(cfg: OpenLocalBotConfig): string[] {
   const ids = listConfiguredAccountIds(cfg);
   if (ids.length === 0) {
     return [DEFAULT_ACCOUNT_ID];
@@ -19,7 +19,7 @@ export function listZaloAccountIds(cfg: openlocalbotConfig): string[] {
   return ids.toSorted((a, b) => a.localeCompare(b));
 }
 
-export function resolveDefaultZaloAccountId(cfg: openlocalbotConfig): string {
+export function resolveDefaultZaloAccountId(cfg: OpenLocalBotConfig): string {
   const zaloConfig = cfg.channels?.zalo as ZaloConfig | undefined;
   if (zaloConfig?.defaultAccount?.trim()) {
     return zaloConfig.defaultAccount.trim();
@@ -32,7 +32,7 @@ export function resolveDefaultZaloAccountId(cfg: openlocalbotConfig): string {
 }
 
 function resolveAccountConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   accountId: string,
 ): ZaloAccountConfig | undefined {
   const accounts = (cfg.channels?.zalo as ZaloConfig | undefined)?.accounts;
@@ -42,7 +42,7 @@ function resolveAccountConfig(
   return accounts[accountId] as ZaloAccountConfig | undefined;
 }
 
-function mergeZaloAccountConfig(cfg: openlocalbotConfig, accountId: string): ZaloAccountConfig {
+function mergeZaloAccountConfig(cfg: OpenLocalBotConfig, accountId: string): ZaloAccountConfig {
   const raw = (cfg.channels?.zalo ?? {}) as ZaloConfig;
   const { accounts: _ignored, defaultAccount: _ignored2, ...base } = raw;
   const account = resolveAccountConfig(cfg, accountId) ?? {};
@@ -50,7 +50,7 @@ function mergeZaloAccountConfig(cfg: openlocalbotConfig, accountId: string): Zal
 }
 
 export function resolveZaloAccount(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   accountId?: string | null;
 }): ResolvedZaloAccount {
   const accountId = normalizeAccountId(params.accountId);
@@ -73,7 +73,7 @@ export function resolveZaloAccount(params: {
   };
 }
 
-export function listEnabledZaloAccounts(cfg: openlocalbotConfig): ResolvedZaloAccount[] {
+export function listEnabledZaloAccounts(cfg: OpenLocalBotConfig): ResolvedZaloAccount[] {
   return listZaloAccountIds(cfg)
     .map((accountId) => resolveZaloAccount({ cfg, accountId }))
     .filter((account) => account.enabled);

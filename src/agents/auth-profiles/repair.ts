@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { AuthProfileConfig } from "../../config/types.js";
 import type { AuthProfileIdRepairResult, AuthProfileStore } from "./types.js";
 import { normalizeProviderId } from "../model-selection.js";
@@ -21,7 +21,7 @@ function isEmailLike(value: string): boolean {
 }
 
 export function suggestOAuthProfileIdForLegacyDefault(params: {
-  cfg?: openlocalbotConfig;
+  cfg?: OpenLocalBotConfig;
   store: AuthProfileStore;
   provider: string;
   legacyProfileId: string;
@@ -82,7 +82,7 @@ export function suggestOAuthProfileIdForLegacyDefault(params: {
 }
 
 export function repairOAuthProfileIdMismatch(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   store: AuthProfileStore;
   provider: string;
   legacyProfileId?: string;
@@ -148,7 +148,7 @@ export function repairOAuthProfileIdMismatch(params: {
     return { ...order, [resolvedKey]: deduped };
   })();
 
-  const nextCfg: openlocalbotConfig = {
+  const nextCfg: OpenLocalBotConfig = {
     ...params.cfg,
     auth: {
       ...params.cfg.auth,

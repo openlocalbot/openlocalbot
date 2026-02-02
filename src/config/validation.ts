@@ -1,5 +1,5 @@
 import path from "node:path";
-import type { openlocalbotConfig, ConfigValidationIssue } from "./types.js";
+import type { OpenLocalBotConfig, ConfigValidationIssue } from "./types.js";
 import { resolveAgentWorkspaceDir, resolveDefaultAgentId } from "../agents/agent-scope.js";
 import { CHANNEL_IDS, normalizeChatChannelId } from "../channels/registry.js";
 import {
@@ -32,7 +32,7 @@ function isWorkspaceAvatarPath(value: string, workspaceDir: string): boolean {
   return !path.isAbsolute(relative);
 }
 
-function validateIdentityAvatar(config: openlocalbotConfig): ConfigValidationIssue[] {
+function validateIdentityAvatar(config: OpenLocalBotConfig): ConfigValidationIssue[] {
   const agents = config.agents?.list;
   if (!Array.isArray(agents) || agents.length === 0) {
     return [];
@@ -84,7 +84,7 @@ function validateIdentityAvatar(config: openlocalbotConfig): ConfigValidationIss
 
 export function validateConfigObject(
   raw: unknown,
-): { ok: true; config: openlocalbotConfig } | { ok: false; issues: ConfigValidationIssue[] } {
+): { ok: true; config: OpenLocalBotConfig } | { ok: false; issues: ConfigValidationIssue[] } {
   const legacyIssues = findLegacyConfigIssues(raw);
   if (legacyIssues.length > 0) {
     return {
@@ -105,7 +105,7 @@ export function validateConfigObject(
       })),
     };
   }
-  const duplicates = findDuplicateAgentDirs(validated.data as openlocalbotConfig);
+  const duplicates = findDuplicateAgentDirs(validated.data as OpenLocalBotConfig);
   if (duplicates.length > 0) {
     return {
       ok: false,
@@ -117,14 +117,14 @@ export function validateConfigObject(
       ],
     };
   }
-  const avatarIssues = validateIdentityAvatar(validated.data as openlocalbotConfig);
+  const avatarIssues = validateIdentityAvatar(validated.data as OpenLocalBotConfig);
   if (avatarIssues.length > 0) {
     return { ok: false, issues: avatarIssues };
   }
   return {
     ok: true,
     config: applyModelDefaults(
-      applyAgentDefaults(applySessionDefaults(validated.data as openlocalbotConfig)),
+      applyAgentDefaults(applySessionDefaults(validated.data as OpenLocalBotConfig)),
     ),
   };
 }
@@ -136,7 +136,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 export function validateConfigObjectWithPlugins(raw: unknown):
   | {
       ok: true;
-      config: openlocalbotConfig;
+      config: OpenLocalBotConfig;
       warnings: ConfigValidationIssue[];
     }
   | {

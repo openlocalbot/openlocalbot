@@ -1,5 +1,5 @@
 import type { Command } from "commander";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import { isTruthyEnvValue } from "../../infra/env.js";
 import { buildParseArgv, getPrimaryCommand, hasHelpOrVersion } from "../argv.js";
 import { resolveActionArgs } from "./helpers.js";
@@ -26,7 +26,7 @@ const shouldEagerRegisterSubcommands = (_argv: string[]) => {
   return isTruthyEnvValue(process.env.openlocalbot_DISABLE_LAZY_SUBCOMMANDS);
 };
 
-const loadConfig = async (): Promise<openlocalbotConfig> => {
+const loadConfig = async (): Promise<OpenLocalBotConfig> => {
   const mod = await import("../../config/config.js");
   return mod.loadConfig();
 };

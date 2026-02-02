@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { RuntimeEnv } from "../../runtime.js";
 import type { OnboardOptions } from "../onboard-types.js";
 import { formatCliCommand } from "../../cli/command-format.js";
@@ -9,7 +9,7 @@ import { applyWizardMetadata } from "../onboard-helpers.js";
 export async function runNonInteractiveOnboardingRemote(params: {
   opts: OnboardOptions;
   runtime: RuntimeEnv;
-  baseConfig: openlocalbotConfig;
+  baseConfig: OpenLocalBotConfig;
 }) {
   const { opts, runtime, baseConfig } = params;
   const mode = "remote" as const;
@@ -21,7 +21,7 @@ export async function runNonInteractiveOnboardingRemote(params: {
     return;
   }
 
-  let nextConfig: openlocalbotConfig = {
+  let nextConfig: OpenLocalBotConfig = {
     ...baseConfig,
     gateway: {
       ...baseConfig.gateway,

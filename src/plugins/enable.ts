@@ -1,12 +1,12 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 
 export type PluginEnableResult = {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   enabled: boolean;
   reason?: string;
 };
 
-function ensureAllowlisted(cfg: openlocalbotConfig, pluginId: string): openlocalbotConfig {
+function ensureAllowlisted(cfg: OpenLocalBotConfig, pluginId: string): OpenLocalBotConfig {
   const allow = cfg.plugins?.allow;
   if (!Array.isArray(allow) || allow.includes(pluginId)) {
     return cfg;
@@ -20,7 +20,7 @@ function ensureAllowlisted(cfg: openlocalbotConfig, pluginId: string): openlocal
   };
 }
 
-export function enablePluginInConfig(cfg: openlocalbotConfig, pluginId: string): PluginEnableResult {
+export function enablePluginInConfig(cfg: OpenLocalBotConfig, pluginId: string): PluginEnableResult {
   if (cfg.plugins?.enabled === false) {
     return { config: cfg, enabled: false, reason: "plugins disabled" };
   }
@@ -35,7 +35,7 @@ export function enablePluginInConfig(cfg: openlocalbotConfig, pluginId: string):
       enabled: true,
     },
   };
-  let next: openlocalbotConfig = {
+  let next: OpenLocalBotConfig = {
     ...cfg,
     plugins: {
       ...cfg.plugins,

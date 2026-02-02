@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 
 describe("resolveSandboxContext", () => {
   it("does not sandbox the agent main session in non-main mode", async () => {
@@ -15,7 +15,7 @@ describe("resolveSandboxContext", () => {
 
     const { resolveSandboxContext } = await import("./sandbox.js");
 
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: {
         defaults: {
           sandbox: { mode: "non-main", scope: "session" },
@@ -49,7 +49,7 @@ describe("resolveSandboxContext", () => {
 
     const { ensureSandboxWorkspaceForSession } = await import("./sandbox.js");
 
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: {
         defaults: {
           sandbox: { mode: "non-main", scope: "session" },
@@ -84,7 +84,7 @@ describe("resolveSandboxContext", () => {
     const { ensureSandboxWorkspaceForSession, resolveSandboxContext } =
       await import("./sandbox.js");
 
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       session: { mainKey: "work" },
       agents: {
         defaults: {

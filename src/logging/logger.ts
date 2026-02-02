@@ -2,7 +2,7 @@ import fs from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
 import { Logger as TsLogger } from "tslog";
-import type { openlocalbotConfig } from "../config/types.js";
+import type { OpenLocalBotConfig } from "../config/types.js";
 import type { ConsoleStyle } from "./console.js";
 import { readLoggingConfig } from "./config.js";
 import { type LogLevel, levelToMinLevel, normalizeLogLevel } from "./levels.js";
@@ -52,12 +52,12 @@ function attachExternalTransport(logger: TsLogger<LogObj>, transport: LogTranspo
 }
 
 function resolveSettings(): ResolvedSettings {
-  let cfg: openlocalbotConfig["logging"] | undefined =
+  let cfg: OpenLocalBotConfig["logging"] | undefined =
     (loggingState.overrideSettings as LoggerSettings | null) ?? readLoggingConfig();
   if (!cfg) {
     try {
       const loaded = requireConfig("../config/config.js") as {
-        loadConfig?: () => openlocalbotConfig;
+        loadConfig?: () => OpenLocalBotConfig;
       };
       cfg = loaded.loadConfig?.().logging;
     } catch {

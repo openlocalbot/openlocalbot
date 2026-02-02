@@ -6,7 +6,7 @@
  */
 
 import { type ChildProcess, spawn } from "node:child_process";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { hasBinary } from "../agents/skills.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import { runCommandWithTimeout } from "../process/exec.js";
@@ -129,7 +129,7 @@ export type GmailWatcherStartResult = {
  * Start the Gmail watcher service.
  * Called automatically by the gateway if hooks.gmail is configured.
  */
-export async function startGmailWatcher(cfg: openlocalbotConfig): Promise<GmailWatcherStartResult> {
+export async function startGmailWatcher(cfg: OpenLocalBotConfig): Promise<GmailWatcherStartResult> {
   // Check if gmail hooks are configured
   if (!cfg.hooks?.enabled) {
     return { started: false, reason: "hooks not enabled" };

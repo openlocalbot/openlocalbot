@@ -1,7 +1,7 @@
 import type { Command } from "commander";
 import fs from "node:fs";
 import path from "node:path";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { PluginRecord } from "../plugins/registry.js";
 import { loadConfig, writeConfigFile } from "../config/config.js";
 import { resolveArchiveKind } from "../infra/archive.js";
@@ -70,9 +70,9 @@ function formatPluginLine(plugin: PluginRecord, verbose = false): string {
 }
 
 function applySlotSelectionForPlugin(
-  config: openlocalbotConfig,
+  config: OpenLocalBotConfig,
   pluginId: string,
-): { config: openlocalbotConfig; warnings: string[] } {
+): { config: OpenLocalBotConfig; warnings: string[] } {
   const report = buildPluginStatusReport({ config });
   const plugin = report.plugins.find((entry) => entry.id === pluginId);
   if (!plugin) {
@@ -264,7 +264,7 @@ export function registerPluginsCli(program: Command) {
     .argument("<id>", "Plugin id")
     .action(async (id: string) => {
       const cfg = loadConfig();
-      let next: openlocalbotConfig = {
+      let next: OpenLocalBotConfig = {
         ...cfg,
         plugins: {
           ...cfg.plugins,
@@ -326,7 +326,7 @@ export function registerPluginsCli(program: Command) {
             process.exit(1);
           }
 
-          let next: openlocalbotConfig = {
+          let next: OpenLocalBotConfig = {
             ...cfg,
             plugins: {
               ...cfg.plugins,
@@ -371,7 +371,7 @@ export function registerPluginsCli(program: Command) {
           process.exit(1);
         }
 
-        let next: openlocalbotConfig = {
+        let next: OpenLocalBotConfig = {
           ...cfg,
           plugins: {
             ...cfg.plugins,
@@ -435,7 +435,7 @@ export function registerPluginsCli(program: Command) {
         process.exit(1);
       }
 
-      let next: openlocalbotConfig = {
+      let next: OpenLocalBotConfig = {
         ...cfg,
         plugins: {
           ...cfg.plugins,

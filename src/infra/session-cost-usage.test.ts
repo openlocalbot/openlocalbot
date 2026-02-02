@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { loadCostUsageSummary, loadSessionCostSummary } from "./session-cost-usage.js";
 
 describe("session cost usage", () => {
@@ -90,7 +90,7 @@ describe("session cost usage", () => {
           },
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
 
     const originalState = process.env.openlocalbot_STATE_DIR;
     process.env.openlocalbot_STATE_DIR = root;

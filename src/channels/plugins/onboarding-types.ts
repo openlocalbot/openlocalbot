@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { DmPolicy } from "../../config/types.js";
 import type { RuntimeEnv } from "../../runtime.js";
 import type { WizardPrompter } from "../../wizard/prompts.js";
@@ -23,11 +23,11 @@ export type SetupChannelsOptions = {
 };
 
 export type PromptAccountIdParams = {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   prompter: WizardPrompter;
   label: string;
   currentId?: string;
-  listAccountIds: (cfg: openlocalbotConfig) => string[];
+  listAccountIds: (cfg: OpenLocalBotConfig) => string[];
   defaultAccountId: string;
 };
 
@@ -42,13 +42,13 @@ export type ChannelOnboardingStatus = {
 };
 
 export type ChannelOnboardingStatusContext = {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   options?: SetupChannelsOptions;
   accountOverrides: Partial<Record<ChannelId, string>>;
 };
 
 export type ChannelOnboardingConfigureContext = {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   runtime: RuntimeEnv;
   prompter: WizardPrompter;
   options?: SetupChannelsOptions;
@@ -58,7 +58,7 @@ export type ChannelOnboardingConfigureContext = {
 };
 
 export type ChannelOnboardingResult = {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   accountId?: string;
 };
 
@@ -67,13 +67,13 @@ export type ChannelOnboardingDmPolicy = {
   channel: ChannelId;
   policyKey: string;
   allowFromKey: string;
-  getCurrent: (cfg: openlocalbotConfig) => DmPolicy;
-  setPolicy: (cfg: openlocalbotConfig, policy: DmPolicy) => openlocalbotConfig;
+  getCurrent: (cfg: OpenLocalBotConfig) => DmPolicy;
+  setPolicy: (cfg: OpenLocalBotConfig, policy: DmPolicy) => OpenLocalBotConfig;
   promptAllowFrom?: (params: {
-    cfg: openlocalbotConfig;
+    cfg: OpenLocalBotConfig;
     prompter: WizardPrompter;
     accountId?: string;
-  }) => Promise<openlocalbotConfig>;
+  }) => Promise<OpenLocalBotConfig>;
 };
 
 export type ChannelOnboardingAdapter = {
@@ -82,5 +82,5 @@ export type ChannelOnboardingAdapter = {
   configure: (ctx: ChannelOnboardingConfigureContext) => Promise<ChannelOnboardingResult>;
   dmPolicy?: ChannelOnboardingDmPolicy;
   onAccountRecorded?: (accountId: string, options?: SetupChannelsOptions) => void;
-  disable?: (cfg: openlocalbotConfig) => openlocalbotConfig;
+  disable?: (cfg: OpenLocalBotConfig) => OpenLocalBotConfig;
 };

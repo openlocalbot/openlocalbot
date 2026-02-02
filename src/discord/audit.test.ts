@@ -27,7 +27,7 @@ describe("discord audit", () => {
           },
         },
       },
-    } as unknown as import("../config/config.js").openlocalbotConfig;
+    } as unknown as import("../config/config.js").OpenLocalBotConfig;
 
     const collected = collectDiscordAuditChannelIds({
       cfg,

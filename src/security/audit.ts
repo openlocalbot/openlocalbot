@@ -1,5 +1,5 @@
 import type { ChannelId } from "../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { ExecFn } from "./windows-acl.js";
 import { resolveBrowserConfig, resolveProfile } from "../browser/config.js";
 import { resolveChannelDefaultAccountId } from "../channels/plugins/helpers.js";
@@ -62,7 +62,7 @@ export type SecurityAuditReport = {
 };
 
 export type SecurityAuditOptions = {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   env?: NodeJS.ProcessEnv;
   platform?: NodeJS.Platform;
   deep?: boolean;
@@ -254,7 +254,7 @@ async function collectFilesystemFindings(params: {
 }
 
 function collectGatewayConfigFindings(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   env: NodeJS.ProcessEnv,
 ): SecurityAuditFinding[] {
   const findings: SecurityAuditFinding[] = [];
@@ -362,7 +362,7 @@ function collectGatewayConfigFindings(
   return findings;
 }
 
-function collectBrowserControlFindings(cfg: openlocalbotConfig): SecurityAuditFinding[] {
+function collectBrowserControlFindings(cfg: OpenLocalBotConfig): SecurityAuditFinding[] {
   const findings: SecurityAuditFinding[] = [];
 
   let resolved: ReturnType<typeof resolveBrowserConfig>;
@@ -408,7 +408,7 @@ function collectBrowserControlFindings(cfg: openlocalbotConfig): SecurityAuditFi
   return findings;
 }
 
-function collectLoggingFindings(cfg: openlocalbotConfig): SecurityAuditFinding[] {
+function collectLoggingFindings(cfg: OpenLocalBotConfig): SecurityAuditFinding[] {
   const redact = cfg.logging?.redactSensitive;
   if (redact !== "off") {
     return [];
@@ -424,7 +424,7 @@ function collectLoggingFindings(cfg: openlocalbotConfig): SecurityAuditFinding[]
   ];
 }
 
-function collectElevatedFindings(cfg: openlocalbotConfig): SecurityAuditFinding[] {
+function collectElevatedFindings(cfg: OpenLocalBotConfig): SecurityAuditFinding[] {
   const findings: SecurityAuditFinding[] = [];
   const enabled = cfg.tools?.elevated?.enabled;
   const allowFrom = cfg.tools?.elevated?.allowFrom ?? {};
@@ -460,7 +460,7 @@ function collectElevatedFindings(cfg: openlocalbotConfig): SecurityAuditFinding[
 }
 
 async function collectChannelSecurityFindings(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   plugins: ReturnType<typeof listChannelPlugins>;
 }): Promise<SecurityAuditFinding[]> {
   const findings: SecurityAuditFinding[] = [];
@@ -850,7 +850,7 @@ async function collectChannelSecurityFindings(params: {
 }
 
 async function maybeProbeGateway(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   timeoutMs: number;
   probe: typeof probeGateway;
 }): Promise<SecurityAuditReport["deep"]> {

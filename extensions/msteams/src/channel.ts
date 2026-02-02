@@ -1,4 +1,4 @@
-import type { ChannelMessageActionName, ChannelPlugin, openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { ChannelMessageActionName, ChannelPlugin, OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import {
   buildChannelConfigSchema,
   DEFAULT_ACCOUNT_ID,
@@ -98,7 +98,7 @@ export const msteamsPlugin: ChannelPlugin<ResolvedMSTeamsAccount> = {
       },
     }),
     deleteAccount: ({ cfg }) => {
-      const next = { ...cfg } as openlocalbotConfig;
+      const next = { ...cfg } as OpenLocalBotConfig;
       const nextChannels = { ...cfg.channels };
       delete nextChannels.msteams;
       if (Object.keys(nextChannels).length > 0) {

@@ -66,7 +66,7 @@ vi.mock("../../utils/message-channel.js", () => ({
 }));
 
 vi.mock("../agent-paths.js", () => ({
-  resolveopenlocalbotAgentDir: vi.fn(() => "/tmp/agent-dir"),
+  resolveOpenLocalBotAgentDir: vi.fn(() => "/tmp/agent-dir"),
 }));
 
 vi.mock("../auth-profiles.js", () => ({

@@ -2,7 +2,7 @@ import type { IncomingMessage, ServerResponse } from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { DEFAULT_ASSISTANT_IDENTITY, resolveAssistantIdentity } from "./assistant-identity.js";
 import {
   buildControlUiAvatarUrl,
@@ -15,7 +15,7 @@ const ROOT_PREFIX = "/";
 
 export type ControlUiRequestOptions = {
   basePath?: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   agentId?: string;
 };
 
@@ -204,7 +204,7 @@ function injectControlUiConfig(html: string, opts: ControlUiInjectionOpts): stri
 
 interface ServeIndexHtmlOpts {
   basePath: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   agentId?: string;
 }
 

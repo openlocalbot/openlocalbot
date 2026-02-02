@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { AgentModelListConfig } from "../config/types.js";
 
 export const GOOGLE_GEMINI_DEFAULT_MODEL = "google/gemini-3-pro-preview";
@@ -13,8 +13,8 @@ function resolvePrimaryModel(model?: AgentModelListConfig | string): string | un
   return undefined;
 }
 
-export function applyGoogleGeminiModelDefault(cfg: openlocalbotConfig): {
-  next: openlocalbotConfig;
+export function applyGoogleGeminiModelDefault(cfg: OpenLocalBotConfig): {
+  next: OpenLocalBotConfig;
   changed: boolean;
 } {
   const current = resolvePrimaryModel(cfg.agents?.defaults?.model)?.trim();

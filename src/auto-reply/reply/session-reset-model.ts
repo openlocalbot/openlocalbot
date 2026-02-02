@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { SessionEntry } from "../../config/sessions.js";
 import type { MsgContext, TemplateContext } from "../templating.js";
 import { loadModelCatalog } from "../../agents/model-catalog.js";
@@ -87,7 +87,7 @@ function applySelectionToSession(params: {
 }
 
 export async function applyResetModelOverride(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   resetTriggered: boolean;
   bodyStripped?: string;
   sessionCtx: TemplateContext;

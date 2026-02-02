@@ -5,7 +5,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import type { ThinkLevel } from "../../auto-reply/thinking.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { CliBackendConfig } from "../../config/types.js";
 import type { EmbeddedContextFile } from "../pi-embedded-helpers.js";
 import { runExec } from "../../process/exec.js";
@@ -177,7 +177,7 @@ export type CliOutput = {
   usage?: CliUsage;
 };
 
-function buildModelAliasLines(cfg?: openlocalbotConfig) {
+function buildModelAliasLines(cfg?: OpenLocalBotConfig) {
   const models = cfg?.agents?.defaults?.models ?? {};
   const entries: Array<{ alias: string; model: string }> = [];
   for (const [keyRaw, entryRaw] of Object.entries(models)) {
@@ -198,7 +198,7 @@ function buildModelAliasLines(cfg?: openlocalbotConfig) {
 
 export function buildSystemPrompt(params: {
   workspaceDir: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   defaultThinkLevel?: ThinkLevel;
   extraSystemPrompt?: string;
   ownerNumbers?: string[];

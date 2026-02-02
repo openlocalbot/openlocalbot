@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { normalizeDiscordMessagingTarget } from "../channels/plugins/normalize/discord.js";
 import { listDiscordDirectoryPeersLive } from "./directory-live.js";
 import { parseDiscordTarget, resolveDiscordChannelId, resolveDiscordTarget } from "./targets.js";
@@ -74,7 +74,7 @@ describe("resolveDiscordChannelId", () => {
 });
 
 describe("resolveDiscordTarget", () => {
-  const cfg = { channels: { discord: {} } } as openlocalbotConfig;
+  const cfg = { channels: { discord: {} } } as OpenLocalBotConfig;
   const listPeers = vi.mocked(listDiscordDirectoryPeersLive);
 
   beforeEach(() => {

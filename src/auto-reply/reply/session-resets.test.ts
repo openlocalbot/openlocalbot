@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import { buildModelAliasIndex } from "../../agents/model-selection.js";
 import { enqueueSystemEvent, resetSystemEventsForTest } from "../../infra/system-events.js";
 import { applyResetModelOverride } from "./session-reset-model.js";
@@ -36,7 +36,7 @@ describe("initSessionState reset triggers in WhatsApp groups", () => {
     });
   }
 
-  function makeCfg(params: { storePath: string; allowFrom: string[] }): openlocalbotConfig {
+  function makeCfg(params: { storePath: string; allowFrom: string[] }): OpenLocalBotConfig {
     return {
       session: { store: params.storePath, idleMinutes: 999 },
       channels: {
@@ -45,7 +45,7 @@ describe("initSessionState reset triggers in WhatsApp groups", () => {
           groupPolicy: "open",
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
   }
 
   it("Reset trigger /new works for authorized sender in WhatsApp group", async () => {
@@ -257,7 +257,7 @@ describe("initSessionState reset triggers in WhatsApp groups", () => {
 
 describe("applyResetModelOverride", () => {
   it("selects a model hint and strips it from the body", async () => {
-    const cfg = {} as openlocalbotConfig;
+    const cfg = {} as OpenLocalBotConfig;
     const aliasIndex = buildModelAliasIndex({ cfg, defaultProvider: "openai" });
     const sessionEntry = {
       sessionId: "s1",
@@ -287,7 +287,7 @@ describe("applyResetModelOverride", () => {
   });
 
   it("clears auth profile overrides when reset applies a model", async () => {
-    const cfg = {} as openlocalbotConfig;
+    const cfg = {} as OpenLocalBotConfig;
     const aliasIndex = buildModelAliasIndex({ cfg, defaultProvider: "openai" });
     const sessionEntry = {
       sessionId: "s1",
@@ -320,7 +320,7 @@ describe("applyResetModelOverride", () => {
   });
 
   it("skips when resetTriggered is false", async () => {
-    const cfg = {} as openlocalbotConfig;
+    const cfg = {} as OpenLocalBotConfig;
     const aliasIndex = buildModelAliasIndex({ cfg, defaultProvider: "openai" });
     const sessionEntry = {
       sessionId: "s1",
@@ -361,7 +361,7 @@ describe("prependSystemEvents", () => {
     enqueueSystemEvent("Model switched.", { sessionKey: "agent:main:main" });
 
     const result = await prependSystemEvents({
-      cfg: {} as openlocalbotConfig,
+      cfg: {} as OpenLocalBotConfig,
       sessionKey: "agent:main:main",
       isMainSession: false,
       isNewSession: false,

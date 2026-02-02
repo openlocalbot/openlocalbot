@@ -1,6 +1,6 @@
 import type { App } from "@slack/bolt";
 import { describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "../../../config/config.js";
+import type { OpenLocalBotConfig } from "../../../config/config.js";
 import type { RuntimeEnv } from "../../../runtime.js";
 import type { ResolvedSlackAccount } from "../../accounts.js";
 import type { SlackMessageEvent } from "../../types.js";
@@ -13,7 +13,7 @@ describe("slack prepareSlackMessage inbound contract", () => {
     const slackCtx = createSlackMonitorContext({
       cfg: {
         channels: { slack: { enabled: true } },
-      } as openlocalbotConfig,
+      } as OpenLocalBotConfig,
       accountId: "default",
       botToken: "token",
       app: { client: {} } as App,
@@ -81,7 +81,7 @@ describe("slack prepareSlackMessage inbound contract", () => {
     const slackCtx = createSlackMonitorContext({
       cfg: {
         channels: { slack: { enabled: true, replyToMode: "all" } },
-      } as openlocalbotConfig,
+      } as OpenLocalBotConfig,
       accountId: "default",
       botToken: "token",
       app: { client: {} } as App,

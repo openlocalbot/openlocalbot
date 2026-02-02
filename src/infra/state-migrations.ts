@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { SessionEntry } from "../config/sessions.js";
 import type { SessionScope } from "../config/sessions/types.js";
 import { resolveDefaultAgentId } from "../agents/agent-scope.js";
@@ -505,7 +505,7 @@ export async function autoMigrateLegacyStateDir(params: {
 }
 
 export async function detectLegacyStateMigrations(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   env?: NodeJS.ProcessEnv;
   homedir?: () => string;
 }): Promise<LegacyStateDetection> {
@@ -820,7 +820,7 @@ export async function runLegacyStateMigrations(params: {
 }
 
 export async function autoMigrateLegacyAgentDir(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   env?: NodeJS.ProcessEnv;
   homedir?: () => string;
   log?: MigrationLogger;
@@ -835,7 +835,7 @@ export async function autoMigrateLegacyAgentDir(params: {
 }
 
 export async function autoMigrateLegacyState(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   env?: NodeJS.ProcessEnv;
   homedir?: () => string;
   log?: MigrationLogger;

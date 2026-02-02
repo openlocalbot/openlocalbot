@@ -1,7 +1,7 @@
 import type {
   ChannelMessageActionAdapter,
   ChannelMessageActionName,
-  openlocalbotConfig,
+  OpenLocalBotConfig,
 } from "openlocalbot/plugin-sdk";
 import { jsonResult, readStringParam } from "openlocalbot/plugin-sdk";
 import { listEnabledZaloAccounts } from "./accounts.js";
@@ -9,7 +9,7 @@ import { sendMessageZalo } from "./send.js";
 
 const providerId = "zalo";
 
-function listEnabledAccounts(cfg: openlocalbotConfig) {
+function listEnabledAccounts(cfg: OpenLocalBotConfig) {
   return listEnabledZaloAccounts(cfg).filter(
     (account) => account.enabled && account.tokenSource !== "none",
   );

@@ -4,7 +4,7 @@ import type {
   OnboardOptions,
   ResetScope,
 } from "../commands/onboard-types.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import type { QuickstartGatewayDefaults, WizardFlow } from "./onboarding.types.js";
 import { ensureAuthProfileStore } from "../agents/auth-profiles.js";
@@ -97,7 +97,7 @@ export async function runOnboardingWizard(
   await requireRiskAcknowledgement({ opts, prompter });
 
   const snapshot = await readConfigFileSnapshot();
-  let baseConfig: openlocalbotConfig = snapshot.valid ? snapshot.config : {};
+  let baseConfig: OpenLocalBotConfig = snapshot.valid ? snapshot.config : {};
 
   if (snapshot.exists && !snapshot.valid) {
     await prompter.note(summarizeExistingConfig(baseConfig), "Invalid config");
@@ -352,7 +352,7 @@ export async function runOnboardingWizard(
 
   const workspaceDir = resolveUserPath(workspaceInput.trim() || DEFAULT_WORKSPACE);
 
-  let nextConfig: openlocalbotConfig = {
+  let nextConfig: OpenLocalBotConfig = {
     ...baseConfig,
     agents: {
       ...baseConfig.agents,

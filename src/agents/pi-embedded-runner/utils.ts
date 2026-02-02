@@ -1,6 +1,6 @@
 import type { ThinkingLevel } from "@mariozechner/pi-agent-core";
 import type { ReasoningLevel, ThinkLevel } from "../../auto-reply/thinking.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { ExecToolDefaults } from "../bash-tools.js";
 
 export function mapThinkingLevel(level?: ThinkLevel): ThinkingLevel {
@@ -11,7 +11,7 @@ export function mapThinkingLevel(level?: ThinkLevel): ThinkingLevel {
   return level;
 }
 
-export function resolveExecToolDefaults(config?: openlocalbotConfig): ExecToolDefaults | undefined {
+export function resolveExecToolDefaults(config?: OpenLocalBotConfig): ExecToolDefaults | undefined {
   const tools = config?.tools;
   if (!tools?.exec) {
     return undefined;

@@ -1,4 +1,4 @@
-import type { BrowserConfig, BrowserProfileConfig, openlocalbotConfig } from "../config/config.js";
+import type { BrowserConfig, BrowserProfileConfig, OpenLocalBotConfig } from "../config/config.js";
 import { resolveGatewayPort } from "../config/paths.js";
 import {
   deriveDefaultBrowserCdpPortRange,
@@ -149,7 +149,7 @@ function ensureDefaultChromeExtensionProfile(
 }
 export function resolveBrowserConfig(
   cfg: BrowserConfig | undefined,
-  rootConfig?: openlocalbotConfig,
+  rootConfig?: OpenLocalBotConfig,
 ): ResolvedBrowserConfig {
   const enabled = cfg?.enabled ?? DEFAULT_openlocalbot_BROWSER_ENABLED;
   const evaluateEnabled = cfg?.evaluateEnabled ?? DEFAULT_BROWSER_EVALUATE_ENABLED;

@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type {
   SandboxBrowserConfig,
   SandboxConfig,
@@ -124,7 +124,7 @@ export function resolveSandboxPruneConfig(params: {
 }
 
 export function resolveSandboxConfigForAgent(
-  cfg?: openlocalbotConfig,
+  cfg?: OpenLocalBotConfig,
   agentId?: string,
 ): SandboxConfig {
   const agent = cfg?.agents?.defaults?.sandbox;

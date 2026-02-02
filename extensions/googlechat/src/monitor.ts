@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import type { openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import { resolveMentionGatingWithBypass } from "openlocalbot/plugin-sdk";
 import type {
   GoogleChatAnnotation,
@@ -26,7 +26,7 @@ export type GoogleChatRuntimeEnv = {
 
 export type GoogleChatMonitorOptions = {
   account: ResolvedGoogleChatAccount;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   runtime: GoogleChatRuntimeEnv;
   abortSignal: AbortSignal;
   webhookPath?: string;
@@ -38,7 +38,7 @@ type GoogleChatCoreRuntime = ReturnType<typeof getGoogleChatRuntime>;
 
 type WebhookTarget = {
   account: ResolvedGoogleChatAccount;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   runtime: GoogleChatRuntimeEnv;
   core: GoogleChatCoreRuntime;
   path: string;
@@ -401,7 +401,7 @@ function extractMentionInfo(annotations: GoogleChatAnnotation[], botUser?: strin
 function resolveBotDisplayName(params: {
   accountName?: string;
   agentId: string;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
 }): string {
   const { accountName, agentId, config } = params;
   if (accountName?.trim()) {
@@ -417,7 +417,7 @@ function resolveBotDisplayName(params: {
 async function processMessageWithPipeline(params: {
   event: GoogleChatEvent;
   account: ResolvedGoogleChatAccount;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   runtime: GoogleChatRuntimeEnv;
   core: GoogleChatCoreRuntime;
   statusSink?: (patch: { lastInboundAt?: number; lastOutboundAt?: number }) => void;
@@ -780,7 +780,7 @@ async function deliverGoogleChatReply(params: {
   spaceId: string;
   runtime: GoogleChatRuntimeEnv;
   core: GoogleChatCoreRuntime;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   statusSink?: (patch: { lastInboundAt?: number; lastOutboundAt?: number }) => void;
   typingMessageName?: string;
 }): Promise<void> {

@@ -1,6 +1,6 @@
 import type { ImageContent } from "@mariozechner/pi-ai";
 import type { ThinkLevel } from "../auto-reply/thinking.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { EmbeddedPiRunResult } from "./pi-embedded-runner.js";
 import { resolveHeartbeatPrompt } from "../auto-reply/heartbeat.js";
 import { shouldLogVerbose } from "../globals.js";
@@ -37,7 +37,7 @@ export async function runCliAgent(params: {
   sessionKey?: string;
   sessionFile: string;
   workspaceDir: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   prompt: string;
   provider: string;
   model?: string;
@@ -313,7 +313,7 @@ export async function runClaudeCliAgent(params: {
   sessionKey?: string;
   sessionFile: string;
   workspaceDir: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   prompt: string;
   provider?: string;
   model?: string;

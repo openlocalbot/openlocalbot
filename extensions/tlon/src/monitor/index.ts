@@ -1,4 +1,4 @@
-import type { RuntimeEnv, ReplyPayload, openlocalbotConfig } from "openlocalbot/plugin-sdk";
+import type { RuntimeEnv, ReplyPayload, OpenLocalBotConfig } from "openlocalbot/plugin-sdk";
 import { format } from "node:util";
 import { getTlonRuntime } from "../runtime.js";
 import { normalizeShip, parseChannelNest } from "../targets.js";
@@ -29,7 +29,7 @@ type ChannelAuthorization = {
 };
 
 function resolveChannelAuthorization(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   channelNest: string,
 ): { mode: "restricted" | "open"; allowedShips: string[] } {
   const tlonConfig = cfg.channels?.tlon as

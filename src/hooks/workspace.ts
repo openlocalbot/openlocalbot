@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type {
   Hook,
   HookEligibilityContext,
@@ -25,7 +25,7 @@ type HookPackageManifest = {
 
 function filterHookEntries(
   entries: HookEntry[],
-  config?: openlocalbotConfig,
+  config?: OpenLocalBotConfig,
   eligibility?: HookEligibilityContext,
 ): HookEntry[] {
   return entries.filter((entry) => shouldIncludeHook({ entry, config, eligibility }));
@@ -192,7 +192,7 @@ export function loadHookEntriesFromDir(params: {
 function loadHookEntries(
   workspaceDir: string,
   opts?: {
-    config?: openlocalbotConfig;
+    config?: OpenLocalBotConfig;
     managedHooksDir?: string;
     bundledHooksDir?: string;
   },
@@ -262,7 +262,7 @@ function loadHookEntries(
 export function buildWorkspaceHookSnapshot(
   workspaceDir: string,
   opts?: {
-    config?: openlocalbotConfig;
+    config?: OpenLocalBotConfig;
     managedHooksDir?: string;
     bundledHooksDir?: string;
     entries?: HookEntry[];
@@ -286,7 +286,7 @@ export function buildWorkspaceHookSnapshot(
 export function loadWorkspaceHookEntries(
   workspaceDir: string,
   opts?: {
-    config?: openlocalbotConfig;
+    config?: OpenLocalBotConfig;
     managedHooksDir?: string;
     bundledHooksDir?: string;
   },

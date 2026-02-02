@@ -1,4 +1,4 @@
-import type { openlocalbotConfig, GatewayAuthConfig } from "../config/config.js";
+import type { OpenLocalBotConfig, GatewayAuthConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import type { WizardPrompter } from "../wizard/prompts.js";
 import { ensureAuthProfileStore } from "../agents/auth-profiles.js";
@@ -39,10 +39,10 @@ export function buildGatewayAuthConfig(params: {
 }
 
 export async function promptAuthConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   runtime: RuntimeEnv,
   prompter: WizardPrompter,
-): Promise<openlocalbotConfig> {
+): Promise<OpenLocalBotConfig> {
   const authChoice = await promptAuthChoiceGrouped({
     prompter,
     store: ensureAuthProfileStore(undefined, {

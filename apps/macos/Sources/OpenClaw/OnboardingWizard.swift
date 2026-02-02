@@ -187,7 +187,7 @@ final class OnboardingWizardModel {
     }
 
     private func shouldSkipWizard() -> Bool {
-        let root = openlocalbotConfigFile.loadDict()
+        let root = OpenLocalBotConfigFile.loadDict()
         if let wizard = root["wizard"] as? [String: Any], !wizard.isEmpty {
             return true
         }

@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import { getChannelPlugin, listChannelPlugins } from "../channels/plugins/index.js";
 import { formatCliCommand } from "../cli/command-format.js";
@@ -9,9 +9,9 @@ import { confirm, select } from "./configure.shared.js";
 import { guardCancel } from "./onboard-helpers.js";
 
 export async function removeChannelConfigWizard(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   runtime: RuntimeEnv,
-): Promise<openlocalbotConfig> {
+): Promise<OpenLocalBotConfig> {
   let next = { ...cfg };
 
   const listConfiguredChannels = () =>
@@ -68,7 +68,7 @@ export async function removeChannelConfigWizard(
     next = {
       ...next,
       channels: Object.keys(nextChannels).length
-        ? (nextChannels as openlocalbotConfig["channels"])
+        ? (nextChannels as OpenLocalBotConfig["channels"])
         : undefined,
     };
 

@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { DmPolicy, GroupPolicy, WhatsAppAccountConfig } from "../config/types.js";
 import { resolveOAuthDir } from "../config/paths.js";
 import { DEFAULT_ACCOUNT_ID } from "../routing/session-key.js";
@@ -29,7 +29,7 @@ export type ResolvedWhatsAppAccount = {
   debounceMs?: number;
 };
 
-function listConfiguredAccountIds(cfg: openlocalbotConfig): string[] {
+function listConfiguredAccountIds(cfg: OpenLocalBotConfig): string[] {
   const accounts = cfg.channels?.whatsapp?.accounts;
   if (!accounts || typeof accounts !== "object") {
     return [];
@@ -37,7 +37,7 @@ function listConfiguredAccountIds(cfg: openlocalbotConfig): string[] {
   return Object.keys(accounts).filter(Boolean);
 }
 
-export function listWhatsAppAuthDirs(cfg: openlocalbotConfig): string[] {
+export function listWhatsAppAuthDirs(cfg: OpenLocalBotConfig): string[] {
   const oauthDir = resolveOAuthDir();
   const whatsappDir = path.join(oauthDir, "whatsapp");
   const authDirs = new Set<string>([oauthDir, path.join(whatsappDir, DEFAULT_ACCOUNT_ID)]);
@@ -62,11 +62,11 @@ export function listWhatsAppAuthDirs(cfg: openlocalbotConfig): string[] {
   return Array.from(authDirs);
 }
 
-export function hasAnyWhatsAppAuth(cfg: openlocalbotConfig): boolean {
+export function hasAnyWhatsAppAuth(cfg: OpenLocalBotConfig): boolean {
   return listWhatsAppAuthDirs(cfg).some((authDir) => hasWebCredsSync(authDir));
 }
 
-export function listWhatsAppAccountIds(cfg: openlocalbotConfig): string[] {
+export function listWhatsAppAccountIds(cfg: OpenLocalBotConfig): string[] {
   const ids = listConfiguredAccountIds(cfg);
   if (ids.length === 0) {
     return [DEFAULT_ACCOUNT_ID];
@@ -74,7 +74,7 @@ export function listWhatsAppAccountIds(cfg: openlocalbotConfig): string[] {
   return ids.toSorted((a, b) => a.localeCompare(b));
 }
 
-export function resolveDefaultWhatsAppAccountId(cfg: openlocalbotConfig): string {
+export function resolveDefaultWhatsAppAccountId(cfg: OpenLocalBotConfig): string {
   const ids = listWhatsAppAccountIds(cfg);
   if (ids.includes(DEFAULT_ACCOUNT_ID)) {
     return DEFAULT_ACCOUNT_ID;
@@ -83,7 +83,7 @@ export function resolveDefaultWhatsAppAccountId(cfg: openlocalbotConfig): string
 }
 
 function resolveAccountConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   accountId: string,
 ): WhatsAppAccountConfig | undefined {
   const accounts = cfg.channels?.whatsapp?.accounts;
@@ -111,7 +111,7 @@ function legacyAuthExists(authDir: string): boolean {
   }
 }
 
-export function resolveWhatsAppAuthDir(params: { cfg: openlocalbotConfig; accountId: string }): {
+export function resolveWhatsAppAuthDir(params: { cfg: OpenLocalBotConfig; accountId: string }): {
   authDir: string;
   isLegacy: boolean;
 } {
@@ -134,7 +134,7 @@ export function resolveWhatsAppAuthDir(params: { cfg: openlocalbotConfig; accoun
 }
 
 export function resolveWhatsAppAccount(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   accountId?: string | null;
 }): ResolvedWhatsAppAccount {
   const rootCfg = params.cfg.channels?.whatsapp;
@@ -169,7 +169,7 @@ export function resolveWhatsAppAccount(params: {
   };
 }
 
-export function listEnabledWhatsAppAccounts(cfg: openlocalbotConfig): ResolvedWhatsAppAccount[] {
+export function listEnabledWhatsAppAccounts(cfg: OpenLocalBotConfig): ResolvedWhatsAppAccount[] {
   return listWhatsAppAccountIds(cfg)
     .map((accountId) => resolveWhatsAppAccount({ cfg, accountId }))
     .filter((account) => account.enabled);

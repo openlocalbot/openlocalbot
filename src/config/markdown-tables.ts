@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "./config.js";
+import type { OpenLocalBotConfig } from "./config.js";
 import type { MarkdownTableMode } from "./types.base.js";
 import { normalizeChannelId } from "../channels/plugins/index.js";
 import { normalizeAccountId } from "../routing/session-key.js";
@@ -50,7 +50,7 @@ function resolveMarkdownModeFromSection(
 }
 
 export function resolveMarkdownTableMode(params: {
-  cfg?: Partial<openlocalbotConfig>;
+  cfg?: Partial<OpenLocalBotConfig>;
   channel?: string | null;
   accountId?: string | null;
 }): MarkdownTableMode {

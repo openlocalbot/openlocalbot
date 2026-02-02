@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { GroupKeyResolution } from "../config/sessions.js";
 import { createInboundDebouncer } from "./inbound-debounce.js";
 import { resolveGroupRequireMention } from "./reply/groups.js";
@@ -260,7 +260,7 @@ describe("initSessionState sender meta", () => {
   it("injects sender meta into BodyStripped for group chats", async () => {
     const root = await fs.mkdtemp(path.join(os.tmpdir(), "openlocalbot-sender-meta-"));
     const storePath = path.join(root, "sessions.json");
-    const cfg = { session: { store: storePath } } as openlocalbotConfig;
+    const cfg = { session: { store: storePath } } as OpenLocalBotConfig;
 
     const result = await initSessionState({
       ctx: {
@@ -281,7 +281,7 @@ describe("initSessionState sender meta", () => {
   it("does not inject sender meta for direct chats", async () => {
     const root = await fs.mkdtemp(path.join(os.tmpdir(), "openlocalbot-sender-meta-direct-"));
     const storePath = path.join(root, "sessions.json");
-    const cfg = { session: { store: storePath } } as openlocalbotConfig;
+    const cfg = { session: { store: storePath } } as OpenLocalBotConfig;
 
     const result = await initSessionState({
       ctx: {
@@ -345,7 +345,7 @@ describe("mention helpers", () => {
 
 describe("resolveGroupRequireMention", () => {
   it("respects Discord guild/channel requireMention settings", () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       channels: {
         discord: {
           guilds: {
@@ -375,7 +375,7 @@ describe("resolveGroupRequireMention", () => {
   });
 
   it("respects Slack channel requireMention settings", () => {
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       channels: {
         slack: {
           channels: {

@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../../config/config.js";
+import type { OpenLocalBotConfig } from "../../../config/config.js";
 import type { RuntimeEnv } from "../../../runtime.js";
 import type { AuthChoice, OnboardOptions } from "../../onboard-types.js";
 import { upsertAuthProfile } from "../../../agents/auth-profiles.js";
@@ -37,12 +37,12 @@ import {
 import { resolveNonInteractiveApiKey } from "../api-keys.js";
 
 export async function applyNonInteractiveAuthChoice(params: {
-  nextConfig: openlocalbotConfig;
+  nextConfig: OpenLocalBotConfig;
   authChoice: AuthChoice;
   opts: OnboardOptions;
   runtime: RuntimeEnv;
-  baseConfig: openlocalbotConfig;
-}): Promise<openlocalbotConfig | null> {
+  baseConfig: OpenLocalBotConfig;
+}): Promise<OpenLocalBotConfig | null> {
   const { authChoice, opts, runtime, baseConfig } = params;
   let nextConfig = params.nextConfig;
 

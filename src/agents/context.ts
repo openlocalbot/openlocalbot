@@ -2,7 +2,7 @@
 // the agent reports a model id. This includes custom models.json entries.
 
 import { loadConfig } from "../config/config.js";
-import { resolveopenlocalbotAgentDir } from "./agent-paths.js";
+import { resolveOpenLocalBotAgentDir } from "./agent-paths.js";
 import { ensureopenlocalbotModelsJson } from "./models-config.js";
 
 type ModelEntry = { id: string; contextWindow?: number };
@@ -13,7 +13,7 @@ const loadPromise = (async () => {
     const { discoverAuthStorage, discoverModels } = await import("./pi-model-discovery.js");
     const cfg = loadConfig();
     await ensureopenlocalbotModelsJson(cfg);
-    const agentDir = resolveopenlocalbotAgentDir();
+    const agentDir = resolveOpenLocalBotAgentDir();
     const authStorage = discoverAuthStorage(agentDir);
     const modelRegistry = discoverModels(authStorage, agentDir);
     const models = modelRegistry.getAll() as ModelEntry[];

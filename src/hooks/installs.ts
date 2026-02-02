@@ -1,9 +1,9 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { HookInstallRecord } from "../config/types.hooks.js";
 
 export type HookInstallUpdate = HookInstallRecord & { hookId: string };
 
-export function recordHookInstall(cfg: openlocalbotConfig, update: HookInstallUpdate): openlocalbotConfig {
+export function recordHookInstall(cfg: OpenLocalBotConfig, update: HookInstallUpdate): OpenLocalBotConfig {
   const { hookId, ...record } = update;
   const installs = {
     ...cfg.hooks?.internal?.installs,

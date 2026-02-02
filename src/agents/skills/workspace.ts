@@ -5,7 +5,7 @@ import {
 } from "@mariozechner/pi-coding-agent";
 import fs from "node:fs";
 import path from "node:path";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type {
   ParsedSkillFrontmatter,
   SkillEligibilityContext,
@@ -43,7 +43,7 @@ function debugSkillCommandOnce(
 
 function filterSkillEntries(
   entries: SkillEntry[],
-  config?: openlocalbotConfig,
+  config?: OpenLocalBotConfig,
   skillFilter?: string[],
   eligibility?: SkillEligibilityContext,
 ): SkillEntry[] {
@@ -99,7 +99,7 @@ function resolveUniqueSkillCommandName(base: string, used: Set<string>): string 
 function loadSkillEntries(
   workspaceDir: string,
   opts?: {
-    config?: openlocalbotConfig;
+    config?: OpenLocalBotConfig;
     managedSkillsDir?: string;
     bundledSkillsDir?: string;
   },
@@ -191,7 +191,7 @@ function loadSkillEntries(
 export function buildWorkspaceSkillSnapshot(
   workspaceDir: string,
   opts?: {
-    config?: openlocalbotConfig;
+    config?: OpenLocalBotConfig;
     managedSkillsDir?: string;
     bundledSkillsDir?: string;
     entries?: SkillEntry[];
@@ -228,7 +228,7 @@ export function buildWorkspaceSkillSnapshot(
 export function buildWorkspaceSkillsPrompt(
   workspaceDir: string,
   opts?: {
-    config?: openlocalbotConfig;
+    config?: OpenLocalBotConfig;
     managedSkillsDir?: string;
     bundledSkillsDir?: string;
     entries?: SkillEntry[];
@@ -256,7 +256,7 @@ export function buildWorkspaceSkillsPrompt(
 export function resolveSkillsPromptForRun(params: {
   skillsSnapshot?: SkillSnapshot;
   entries?: SkillEntry[];
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   workspaceDir: string;
 }): string {
   const snapshotPrompt = params.skillsSnapshot?.prompt?.trim();
@@ -276,7 +276,7 @@ export function resolveSkillsPromptForRun(params: {
 export function loadWorkspaceSkillEntries(
   workspaceDir: string,
   opts?: {
-    config?: openlocalbotConfig;
+    config?: OpenLocalBotConfig;
     managedSkillsDir?: string;
     bundledSkillsDir?: string;
   },
@@ -287,7 +287,7 @@ export function loadWorkspaceSkillEntries(
 export async function syncSkillsToWorkspace(params: {
   sourceWorkspaceDir: string;
   targetWorkspaceDir: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   managedSkillsDir?: string;
   bundledSkillsDir?: string;
 }) {
@@ -326,7 +326,7 @@ export async function syncSkillsToWorkspace(params: {
 
 export function filterWorkspaceSkillEntries(
   entries: SkillEntry[],
-  config?: openlocalbotConfig,
+  config?: OpenLocalBotConfig,
 ): SkillEntry[] {
   return filterSkillEntries(entries, config);
 }
@@ -334,7 +334,7 @@ export function filterWorkspaceSkillEntries(
 export function buildWorkspaceSkillCommandSpecs(
   workspaceDir: string,
   opts?: {
-    config?: openlocalbotConfig;
+    config?: OpenLocalBotConfig;
     managedSkillsDir?: string;
     bundledSkillsDir?: string;
     entries?: SkillEntry[];

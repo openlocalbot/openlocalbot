@@ -1,16 +1,16 @@
-import type { openlocalbotConfig, HumanDelayConfig, IdentityConfig } from "../config/config.js";
+import type { OpenLocalBotConfig, HumanDelayConfig, IdentityConfig } from "../config/config.js";
 import { resolveAgentConfig } from "./agent-scope.js";
 
 const DEFAULT_ACK_REACTION = "👀";
 
 export function resolveAgentIdentity(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   agentId: string,
 ): IdentityConfig | undefined {
   return resolveAgentConfig(cfg, agentId)?.identity;
 }
 
-export function resolveAckReaction(cfg: openlocalbotConfig, agentId: string): string {
+export function resolveAckReaction(cfg: OpenLocalBotConfig, agentId: string): string {
   const configured = cfg.messages?.ackReaction;
   if (configured !== undefined) {
     return configured.trim();
@@ -20,7 +20,7 @@ export function resolveAckReaction(cfg: openlocalbotConfig, agentId: string): st
 }
 
 export function resolveIdentityNamePrefix(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   agentId: string,
 ): string | undefined {
   const name = resolveAgentIdentity(cfg, agentId)?.name?.trim();
@@ -31,12 +31,12 @@ export function resolveIdentityNamePrefix(
 }
 
 /** Returns just the identity name (without brackets) for template context. */
-export function resolveIdentityName(cfg: openlocalbotConfig, agentId: string): string | undefined {
+export function resolveIdentityName(cfg: OpenLocalBotConfig, agentId: string): string | undefined {
   return resolveAgentIdentity(cfg, agentId)?.name?.trim() || undefined;
 }
 
 export function resolveMessagePrefix(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   agentId: string,
   opts?: { configured?: string; hasAllowFrom?: boolean; fallback?: string },
 ): string {
@@ -53,7 +53,7 @@ export function resolveMessagePrefix(
   return resolveIdentityNamePrefix(cfg, agentId) ?? opts?.fallback ?? "[openlocalbot]";
 }
 
-export function resolveResponsePrefix(cfg: openlocalbotConfig, agentId: string): string | undefined {
+export function resolveResponsePrefix(cfg: OpenLocalBotConfig, agentId: string): string | undefined {
   const configured = cfg.messages?.responsePrefix;
   if (configured !== undefined) {
     if (configured === "auto") {
@@ -65,7 +65,7 @@ export function resolveResponsePrefix(cfg: openlocalbotConfig, agentId: string):
 }
 
 export function resolveEffectiveMessagesConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   agentId: string,
   opts?: { hasAllowFrom?: boolean; fallbackMessagePrefix?: string },
 ): { messagePrefix: string; responsePrefix?: string } {
@@ -79,7 +79,7 @@ export function resolveEffectiveMessagesConfig(
 }
 
 export function resolveHumanDelayConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   agentId: string,
 ): HumanDelayConfig | undefined {
   const defaults = cfg.agents?.defaults?.humanDelay;

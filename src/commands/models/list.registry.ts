@@ -1,8 +1,8 @@
 import type { Api, Model } from "@mariozechner/pi-ai";
 import type { AuthProfileStore } from "../../agents/auth-profiles.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { ModelRow } from "./list.types.js";
-import { resolveopenlocalbotAgentDir } from "../../agents/agent-paths.js";
+import { resolveOpenLocalBotAgentDir } from "../../agents/agent-paths.js";
 import { listProfilesForProvider } from "../../agents/auth-profiles.js";
 import {
   getCustomProviderApiKey,
@@ -29,7 +29,7 @@ const isLocalBaseUrl = (baseUrl: string) => {
   }
 };
 
-const hasAuthForProvider = (provider: string, cfg: openlocalbotConfig, authStore: AuthProfileStore) => {
+const hasAuthForProvider = (provider: string, cfg: OpenLocalBotConfig, authStore: AuthProfileStore) => {
   if (listProfilesForProvider(authStore, provider).length > 0) {
     return true;
   }
@@ -45,9 +45,9 @@ const hasAuthForProvider = (provider: string, cfg: openlocalbotConfig, authStore
   return false;
 };
 
-export async function loadModelRegistry(cfg: openlocalbotConfig) {
+export async function loadModelRegistry(cfg: OpenLocalBotConfig) {
   await ensureopenlocalbotModelsJson(cfg);
-  const agentDir = resolveopenlocalbotAgentDir();
+  const agentDir = resolveOpenLocalBotAgentDir();
   const authStorage = discoverAuthStorage(agentDir);
   const registry = discoverModels(authStorage, agentDir);
   const models = registry.getAll();
@@ -62,7 +62,7 @@ export function toModelRow(params: {
   tags: string[];
   aliases?: string[];
   availableKeys?: Set<string>;
-  cfg?: openlocalbotConfig;
+  cfg?: OpenLocalBotConfig;
   authStore?: AuthProfileStore;
 }): ModelRow {
   const { model, key, tags, aliases = [], availableKeys, cfg, authStore } = params;

@@ -9,7 +9,7 @@
  * 2. Environment variable: openlocalbot_TWITCH_ACCESS_TOKEN (default account only)
  */
 
-import type { openlocalbotConfig } from "../../../src/config/config.js";
+import type { OpenLocalBotConfig } from "../../../src/config/config.js";
 import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "../../../src/routing/session-key.js";
 
 export type TwitchTokenSource = "env" | "config" | "none";
@@ -49,7 +49,7 @@ function normalizeTwitchToken(raw?: string | null): string | undefined {
  * @returns Token resolution with source
  */
 export function resolveTwitchToken(
-  cfg?: openlocalbotConfig,
+  cfg?: OpenLocalBotConfig,
   opts: { accountId?: string | null; envToken?: string | null } = {},
 ): TwitchTokenResolution {
   const accountId = normalizeAccountId(opts.accountId);

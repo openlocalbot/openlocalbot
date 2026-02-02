@@ -1,6 +1,6 @@
 import { webhookCallback } from "grammy";
 import { createServer } from "node:http";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import { isDiagnosticsEnabled } from "../infra/diagnostic-events.js";
 import { formatErrorMessage } from "../infra/errors.js";
@@ -19,7 +19,7 @@ import { createTelegramBot } from "./bot.js";
 export async function startTelegramWebhook(opts: {
   token: string;
   accountId?: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   path?: string;
   port?: number;
   host?: string;

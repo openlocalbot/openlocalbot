@@ -1,5 +1,5 @@
-import { type openlocalbotConfig, loadConfig } from "../config/config.js";
-import { resolveopenlocalbotAgentDir } from "./agent-paths.js";
+import { type OpenLocalBotConfig, loadConfig } from "../config/config.js";
+import { resolveOpenLocalBotAgentDir } from "./agent-paths.js";
 import { ensureopenlocalbotModelsJson } from "./models-config.js";
 
 export type ModelCatalogEntry = {
@@ -39,7 +39,7 @@ export function __setModelCatalogImportForTest(loader?: () => Promise<PiSdkModul
 }
 
 export async function loadModelCatalog(params?: {
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   useCache?: boolean;
 }): Promise<ModelCatalogEntry[]> {
   if (params?.useCache === false) {
@@ -67,7 +67,7 @@ export async function loadModelCatalog(params?: {
       // we must not poison the cache with a rejected promise (otherwise all channel handlers
       // will keep failing until restart).
       const piSdk = await importPiSdk();
-      const agentDir = resolveopenlocalbotAgentDir();
+      const agentDir = resolveOpenLocalBotAgentDir();
       const { join } = await import("node:path");
       const authStorage = new piSdk.AuthStorage(join(agentDir, "auth.json"));
       const registry = new piSdk.ModelRegistry(authStorage, join(agentDir, "models.json")) as

@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import { describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { resolveSessionAgentIds } from "./agent-scope.js";
 import { ensureopenlocalbotModelsJson } from "./models-config.js";
 
@@ -67,9 +67,9 @@ const _makeOpenAiConfig = (modelIds: string[]) =>
         },
       },
     },
-  }) satisfies openlocalbotConfig;
+  }) satisfies OpenLocalBotConfig;
 
-const _ensureModels = (cfg: openlocalbotConfig, agentDir: string) =>
+const _ensureModels = (cfg: OpenLocalBotConfig, agentDir: string) =>
   ensureopenlocalbotModelsJson(cfg, agentDir) as unknown;
 
 const _textFromContent = (content: unknown) => {
@@ -103,7 +103,7 @@ describe("resolveSessionAgentIds", () => {
     agents: {
       list: [{ id: "main" }, { id: "beta", default: true }],
     },
-  } as openlocalbotConfig;
+  } as OpenLocalBotConfig;
 
   it("falls back to the configured default when sessionKey is missing", () => {
     const { defaultAgentId, sessionAgentId } = resolveSessionAgentIds({

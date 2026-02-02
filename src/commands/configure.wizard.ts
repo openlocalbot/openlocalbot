@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import type {
   ChannelsWizardMode,
@@ -89,9 +89,9 @@ async function promptChannelMode(runtime: RuntimeEnv): Promise<ChannelsWizardMod
 }
 
 async function promptWebToolsConfig(
-  nextConfig: openlocalbotConfig,
+  nextConfig: OpenLocalBotConfig,
   runtime: RuntimeEnv,
-): Promise<openlocalbotConfig> {
+): Promise<OpenLocalBotConfig> {
   const existingSearch = nextConfig.tools?.web?.search;
   const existingFetch = nextConfig.tools?.web?.fetch;
   const hasSearchKey = Boolean(existingSearch?.apiKey);
@@ -179,7 +179,7 @@ export async function runConfigureWizard(
     const prompter = createClackPrompter();
 
     const snapshot = await readConfigFileSnapshot();
-    const baseConfig: openlocalbotConfig = snapshot.valid ? snapshot.config : {};
+    const baseConfig: OpenLocalBotConfig = snapshot.valid ? snapshot.config : {};
 
     if (snapshot.exists) {
       const title = snapshot.valid ? "Existing config detected" : "Invalid config";

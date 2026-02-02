@@ -1,10 +1,10 @@
-import type { openlocalbotConfig } from "../config/config.js";
-export function normalizeLegacyConfigValues(cfg: openlocalbotConfig): {
-  config: openlocalbotConfig;
+import type { OpenLocalBotConfig } from "../config/config.js";
+export function normalizeLegacyConfigValues(cfg: OpenLocalBotConfig): {
+  config: OpenLocalBotConfig;
   changes: string[];
 } {
   const changes: string[] = [];
-  let next: openlocalbotConfig = cfg;
+  let next: OpenLocalBotConfig = cfg;
 
   const legacyAckReaction = cfg.messages?.ackReaction?.trim();
   const hasWhatsAppConfig = cfg.channels?.whatsapp !== undefined;

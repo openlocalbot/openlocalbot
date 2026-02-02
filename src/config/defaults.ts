@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "./types.js";
+import type { OpenLocalBotConfig } from "./types.js";
 import type { ModelDefinitionConfig } from "./types.models.js";
 import { DEFAULT_CONTEXT_TOKENS } from "../agents/defaults.js";
 import { parseModelRef } from "../agents/model-selection.js";
@@ -53,7 +53,7 @@ function resolveModelCost(
   };
 }
 
-function resolveAnthropicDefaultAuthMode(cfg: openlocalbotConfig): AnthropicAuthDefaultsMode | null {
+function resolveAnthropicDefaultAuthMode(cfg: OpenLocalBotConfig): AnthropicAuthDefaultsMode | null {
   const profiles = cfg.auth?.profiles ?? {};
   const anthropicProfiles = Object.entries(profiles).filter(
     ([, profile]) => profile?.provider === "anthropic",
@@ -110,7 +110,7 @@ export type SessionDefaultsOptions = {
   warnState?: WarnState;
 };
 
-export function applyMessageDefaults(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyMessageDefaults(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const messages = cfg.messages;
   const hasAckScope = messages?.ackReactionScope !== undefined;
   if (hasAckScope) {
@@ -126,9 +126,9 @@ export function applyMessageDefaults(cfg: openlocalbotConfig): openlocalbotConfi
 }
 
 export function applySessionDefaults(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   options: SessionDefaultsOptions = {},
-): openlocalbotConfig {
+): OpenLocalBotConfig {
   const session = cfg.session;
   if (!session || session.mainKey === undefined) {
     return cfg;
@@ -138,7 +138,7 @@ export function applySessionDefaults(
   const warn = options.warn ?? console.warn;
   const warnState = options.warnState ?? defaultWarnState;
 
-  const next: openlocalbotConfig = {
+  const next: OpenLocalBotConfig = {
     ...cfg,
     session: { ...session, mainKey: "main" },
   };
@@ -151,7 +151,7 @@ export function applySessionDefaults(
   return next;
 }
 
-export function applyTalkApiKey(config: openlocalbotConfig): openlocalbotConfig {
+export function applyTalkApiKey(config: OpenLocalBotConfig): OpenLocalBotConfig {
   const resolved = resolveTalkApiKey();
   if (!resolved) {
     return config;
@@ -169,7 +169,7 @@ export function applyTalkApiKey(config: openlocalbotConfig): openlocalbotConfig 
   };
 }
 
-export function applyModelDefaults(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyModelDefaults(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   let mutated = false;
   let nextCfg = cfg;
 
@@ -290,7 +290,7 @@ export function applyModelDefaults(cfg: openlocalbotConfig): openlocalbotConfig 
   };
 }
 
-export function applyAgentDefaults(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyAgentDefaults(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const agents = cfg.agents;
   const defaults = agents?.defaults;
   const hasMax =
@@ -331,7 +331,7 @@ export function applyAgentDefaults(cfg: openlocalbotConfig): openlocalbotConfig 
   };
 }
 
-export function applyLoggingDefaults(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyLoggingDefaults(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const logging = cfg.logging;
   if (!logging) {
     return cfg;
@@ -348,7 +348,7 @@ export function applyLoggingDefaults(cfg: openlocalbotConfig): openlocalbotConfi
   };
 }
 
-export function applyContextPruningDefaults(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyContextPruningDefaults(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const defaults = cfg.agents?.defaults;
   if (!defaults) {
     return cfg;
@@ -439,7 +439,7 @@ export function applyContextPruningDefaults(cfg: openlocalbotConfig): openlocalb
   };
 }
 
-export function applyCompactionDefaults(cfg: openlocalbotConfig): openlocalbotConfig {
+export function applyCompactionDefaults(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const defaults = cfg.agents?.defaults;
   if (!defaults) {
     return cfg;

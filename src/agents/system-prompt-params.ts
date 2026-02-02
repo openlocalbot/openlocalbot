@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import {
   formatUserTime,
   resolveUserTimeFormat,
@@ -31,7 +31,7 @@ export type SystemPromptRuntimeParams = {
 };
 
 export function buildSystemPromptParams(params: {
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   agentId?: string;
   runtime: Omit<RuntimeInfoInput, "agentId">;
   workspaceDir?: string;
@@ -58,7 +58,7 @@ export function buildSystemPromptParams(params: {
 }
 
 function resolveRepoRoot(params: {
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   workspaceDir?: string;
   cwd?: string;
 }): string | undefined {

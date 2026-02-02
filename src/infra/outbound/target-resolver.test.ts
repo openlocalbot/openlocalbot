@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { ChannelDirectoryEntry } from "../../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import { resetDirectoryCache, resolveMessagingTarget } from "./target-resolver.js";
 
 const mocks = vi.hoisted(() => ({
@@ -15,7 +15,7 @@ vi.mock("../../channels/plugins/index.js", () => ({
 }));
 
 describe("resolveMessagingTarget (directory fallback)", () => {
-  const cfg = {} as openlocalbotConfig;
+  const cfg = {} as OpenLocalBotConfig;
 
   beforeEach(() => {
     mocks.listGroups.mockReset();

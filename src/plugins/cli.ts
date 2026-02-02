@@ -1,5 +1,5 @@
 import type { Command } from "commander";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { PluginLogger } from "./types.js";
 import { resolveAgentWorkspaceDir, resolveDefaultAgentId } from "../agents/agent-scope.js";
 import { loadConfig } from "../config/config.js";
@@ -8,7 +8,7 @@ import { loadopenlocalbotPlugins } from "./loader.js";
 
 const log = createSubsystemLogger("plugins");
 
-export function registerPluginCliCommands(program: Command, cfg?: openlocalbotConfig) {
+export function registerPluginCliCommands(program: Command, cfg?: OpenLocalBotConfig) {
   const config = cfg ?? loadConfig();
   const workspaceDir = resolveAgentWorkspaceDir(config, resolveDefaultAgentId(config));
   const logger: PluginLogger = {

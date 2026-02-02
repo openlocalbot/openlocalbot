@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "./types.js";
+import type { OpenLocalBotConfig } from "./types.js";
 import {
   applyConfigOverrides,
   getConfigOverrides,
@@ -16,7 +16,7 @@ describe("runtime overrides", () => {
   it("sets and applies nested overrides", () => {
     const cfg = {
       messages: { responsePrefix: "[openlocalbot]" },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
     setConfigOverride("messages.responsePrefix", "[debug]");
     const next = applyConfigOverrides(cfg);
     expect(next.messages?.responsePrefix).toBe("[debug]");
@@ -25,7 +25,7 @@ describe("runtime overrides", () => {
   it("merges object overrides without clobbering siblings", () => {
     const cfg = {
       channels: { whatsapp: { dmPolicy: "pairing", allowFrom: ["+1"] } },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
     setConfigOverride("channels.whatsapp.dmPolicy", "open");
     const next = applyConfigOverrides(cfg);
     expect(next.channels?.whatsapp?.dmPolicy).toBe("open");

@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 import {
   mergeAllowlist,
   summarizeMapping,
-  type openlocalbotConfig,
+  type OpenLocalBotConfig,
   type RuntimeEnv,
 } from "openlocalbot/plugin-sdk";
 import type { MSTeamsConversationStore } from "./conversation-store.js";
@@ -20,7 +20,7 @@ import { createMSTeamsAdapter, loadMSTeamsSdkWithAuth } from "./sdk.js";
 import { resolveMSTeamsCredentials } from "./token.js";
 
 export type MonitorMSTeamsOpts = {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   runtime?: RuntimeEnv;
   abortSignal?: AbortSignal;
   conversationStore?: MSTeamsConversationStore;

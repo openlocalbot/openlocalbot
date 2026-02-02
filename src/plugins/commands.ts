@@ -5,7 +5,7 @@
  * These commands are processed before built-in commands and before agent invocation.
  */
 
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type {
   openlocalbotPluginCommandDefinition,
   PluginCommandContext,
@@ -231,7 +231,7 @@ export async function executePluginCommand(params: {
   channel: string;
   isAuthorizedSender: boolean;
   commandBody: string;
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
 }): Promise<PluginCommandResult> {
   const { command, args, senderId, channel, isAuthorizedSender, commandBody, config } = params;
 

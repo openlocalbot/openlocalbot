@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { RuntimeEnv } from "../../runtime.js";
 import type { OnboardOptions } from "../onboard-types.js";
 import { formatCliCommand } from "../../cli/command-format.js";
@@ -23,7 +23,7 @@ import { resolveNonInteractiveWorkspaceDir } from "./local/workspace.js";
 export async function runNonInteractiveOnboardingLocal(params: {
   opts: OnboardOptions;
   runtime: RuntimeEnv;
-  baseConfig: openlocalbotConfig;
+  baseConfig: OpenLocalBotConfig;
 }) {
   const { opts, runtime, baseConfig } = params;
   const mode = "local" as const;
@@ -34,7 +34,7 @@ export async function runNonInteractiveOnboardingLocal(params: {
     defaultWorkspaceDir: DEFAULT_WORKSPACE,
   });
 
-  let nextConfig: openlocalbotConfig = {
+  let nextConfig: OpenLocalBotConfig = {
     ...baseConfig,
     agents: {
       ...baseConfig.agents,

@@ -1,5 +1,5 @@
 import type { OAuthCredentials } from "@mariozechner/pi-ai";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 
 export type ApiKeyCredential = {
   type: "api_key";
@@ -64,7 +64,7 @@ export type AuthProfileStore = {
 };
 
 export type AuthProfileIdRepairResult = {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   changes: string[];
   migrated: boolean;
   fromProfileId?: string;

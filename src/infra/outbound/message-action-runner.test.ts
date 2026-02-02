@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { ChannelPlugin } from "../../channels/plugins/types.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import { slackPlugin } from "../../../extensions/slack/src/channel.js";
 import { telegramPlugin } from "../../../extensions/telegram/src/channel.js";
 import { whatsappPlugin } from "../../../extensions/whatsapp/src/channel.js";
@@ -25,7 +25,7 @@ const slackConfig = {
       appToken: "xapp-test",
     },
   },
-} as openlocalbotConfig;
+} as OpenLocalBotConfig;
 
 const whatsappConfig = {
   channels: {
@@ -33,7 +33,7 @@ const whatsappConfig = {
       allowFrom: ["*"],
     },
   },
-} as openlocalbotConfig;
+} as OpenLocalBotConfig;
 
 describe("runMessageAction context isolation", () => {
   beforeEach(async () => {
@@ -262,7 +262,7 @@ describe("runMessageAction context isolation", () => {
           token: "tg-test",
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
 
     const result = await runMessageAction({
       cfg: multiConfig,
@@ -304,7 +304,7 @@ describe("runMessageAction context isolation", () => {
           },
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
 
     await expect(
       runMessageAction({
@@ -422,7 +422,7 @@ describe("runMessageAction sendAttachment hydration", () => {
           password: "test-password",
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
 
     const result = await runMessageAction({
       cfg,
@@ -490,7 +490,7 @@ describe("runMessageAction accountId defaults", () => {
 
   it("propagates defaultAccountId into params", async () => {
     await runMessageAction({
-      cfg: {} as openlocalbotConfig,
+      cfg: {} as OpenLocalBotConfig,
       action: "send",
       params: {
         channel: "discord",

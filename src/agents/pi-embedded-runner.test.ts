@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import "./test-helpers/fast-coding-tools.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { ensureopenlocalbotModelsJson } from "./models-config.js";
 
 vi.mock("@mariozechner/pi-ai", async () => {
@@ -134,9 +134,9 @@ const makeOpenAiConfig = (modelIds: string[]) =>
         },
       },
     },
-  }) satisfies openlocalbotConfig;
+  }) satisfies OpenLocalBotConfig;
 
-const ensureModels = (cfg: openlocalbotConfig) => ensureopenlocalbotModelsJson(cfg, agentDir) as unknown;
+const ensureModels = (cfg: OpenLocalBotConfig) => ensureopenlocalbotModelsJson(cfg, agentDir) as unknown;
 
 const nextSessionFile = () => {
   sessionCounter += 1;
@@ -198,7 +198,7 @@ describe("runEmbeddedPiAgent", () => {
           },
         },
       },
-    } satisfies openlocalbotConfig;
+    } satisfies OpenLocalBotConfig;
 
     await expect(
       runEmbeddedPiAgent({

@@ -1,6 +1,6 @@
 import { type ChannelId, getChannelPlugin } from "../../channels/plugins/index.js";
 import { formatCliCommand } from "../../cli/command-format.js";
-import { type openlocalbotConfig, readConfigFileSnapshot } from "../../config/config.js";
+import { type OpenLocalBotConfig, readConfigFileSnapshot } from "../../config/config.js";
 import { DEFAULT_ACCOUNT_ID } from "../../routing/session-key.js";
 import { defaultRuntime, type RuntimeEnv } from "../../runtime.js";
 
@@ -8,7 +8,7 @@ export type ChatChannel = ChannelId;
 
 export async function requireValidConfig(
   runtime: RuntimeEnv = defaultRuntime,
-): Promise<openlocalbotConfig | null> {
+): Promise<OpenLocalBotConfig | null> {
   const snapshot = await readConfigFileSnapshot();
   if (snapshot.exists && !snapshot.valid) {
     const issues =

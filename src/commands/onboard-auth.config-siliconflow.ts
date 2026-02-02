@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import {
   getSiliconFlowStaticFallbackModels,
   SILICONFLOW_API_BASE_URL,
@@ -11,7 +11,7 @@ export { SILICONFLOW_DEFAULT_MODEL_REF } from "../agents/siliconflow-models.js";
  * Apply SiliconFlow (硅基流动) provider configuration without changing the default model.
  * Registers SiliconFlow models and sets up the provider, but preserves existing model selection.
  */
-export function applySiliconFlowProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applySiliconFlowProviderConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const models = { ...cfg.agents?.defaults?.models };
   models[SILICONFLOW_DEFAULT_MODEL_REF] = {
     ...models[SILICONFLOW_DEFAULT_MODEL_REF],
@@ -67,7 +67,7 @@ export function applySiliconFlowProviderConfig(cfg: OpenClawConfig): OpenClawCon
  * Apply SiliconFlow provider configuration AND set SiliconFlow as the default model.
  * Use this when SiliconFlow is the primary provider choice during onboarding.
  */
-export function applySiliconFlowConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applySiliconFlowConfig(cfg: OpenLocalBotConfig): OpenLocalBotConfig {
   const next = applySiliconFlowProviderConfig(cfg);
   const existingModel = next.agents?.defaults?.model;
   return {

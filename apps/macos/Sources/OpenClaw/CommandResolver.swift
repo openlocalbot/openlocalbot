@@ -413,7 +413,7 @@ enum CommandResolver {
         defaults: UserDefaults = .standard,
         configRoot: [String: Any]? = nil) -> RemoteSettings
     {
-        let root = configRoot ?? openlocalbotConfigFile.loadDict()
+        let root = configRoot ?? OpenLocalBotConfigFile.loadDict()
         let mode = ConnectionModeResolver.resolve(root: root, defaults: defaults).mode
         let target = defaults.string(forKey: remoteTargetKey) ?? ""
         let identity = defaults.string(forKey: remoteIdentityKey) ?? ""

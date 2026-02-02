@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 
 const note = vi.hoisted(() => vi.fn());
 
@@ -41,7 +41,7 @@ describe("noteSecurityWarnings gateway exposure", () => {
   const lastMessage = () => String(note.mock.calls.at(-1)?.[0] ?? "");
 
   it("warns when exposed without auth", async () => {
-    const cfg = { gateway: { bind: "lan" } } as openlocalbotConfig;
+    const cfg = { gateway: { bind: "lan" } } as OpenLocalBotConfig;
     await noteSecurityWarnings(cfg);
     const message = lastMessage();
     expect(message).toContain("CRITICAL");
@@ -50,7 +50,7 @@ describe("noteSecurityWarnings gateway exposure", () => {
 
   it("uses env token to avoid critical warning", async () => {
     process.env.openlocalbot_GATEWAY_TOKEN = "token-123";
-    const cfg = { gateway: { bind: "lan" } } as openlocalbotConfig;
+    const cfg = { gateway: { bind: "lan" } } as OpenLocalBotConfig;
     await noteSecurityWarnings(cfg);
     const message = lastMessage();
     expect(message).toContain("WARNING");
@@ -60,14 +60,14 @@ describe("noteSecurityWarnings gateway exposure", () => {
   it("treats whitespace token as missing", async () => {
     const cfg = {
       gateway: { bind: "lan", auth: { mode: "token", token: "   " } },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
     await noteSecurityWarnings(cfg);
     const message = lastMessage();
     expect(message).toContain("CRITICAL");
   });
 
   it("skips warning for loopback bind", async () => {
-    const cfg = { gateway: { bind: "loopback" } } as openlocalbotConfig;
+    const cfg = { gateway: { bind: "loopback" } } as OpenLocalBotConfig;
     await noteSecurityWarnings(cfg);
     const message = lastMessage();
     expect(message).toContain("No channel security warnings detected");

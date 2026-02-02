@@ -12,7 +12,7 @@ vi.mock("../agents/model-catalog.js", () => ({
   loadModelCatalog: vi.fn(),
 }));
 
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import { telegramPlugin } from "../../extensions/telegram/src/channel.js";
 import { setTelegramRuntime } from "../../extensions/telegram/src/runtime.js";
@@ -42,8 +42,8 @@ async function withTempHome<T>(fn: (home: string) => Promise<T>): Promise<T> {
 function mockConfig(
   home: string,
   storePath: string,
-  agentOverrides?: Partial<NonNullable<NonNullable<openlocalbotConfig["agents"]>["defaults"]>>,
-  telegramOverrides?: Partial<NonNullable<openlocalbotConfig["telegram"]>>,
+  agentOverrides?: Partial<NonNullable<NonNullable<OpenLocalBotConfig["agents"]>["defaults"]>>,
+  telegramOverrides?: Partial<NonNullable<OpenLocalBotConfig["telegram"]>>,
   agentsList?: Array<{ id: string; default?: boolean }>,
 ) {
   configSpy.mockReturnValue({

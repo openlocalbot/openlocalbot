@@ -1,6 +1,6 @@
 import type {
   ChannelAccountSnapshot,
-  openlocalbotConfig,
+  OpenLocalBotConfig,
   ReplyPayload,
   RuntimeEnv,
 } from "openlocalbot/plugin-sdk";
@@ -43,7 +43,7 @@ export type MonitorMattermostOpts = {
   botToken?: string;
   baseUrl?: string;
   accountId?: string;
-  config?: openlocalbotConfig;
+  config?: OpenLocalBotConfig;
   runtime?: RuntimeEnv;
   abortSignal?: AbortSignal;
   statusSink?: (patch: Partial<ChannelAccountSnapshot>) => void;

@@ -1,16 +1,16 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { WizardPrompter } from "../wizard/prompts.js";
 
 export async function applyDefaultModelChoice(params: {
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   setDefaultModel: boolean;
   defaultModel: string;
-  applyDefaultConfig: (config: openlocalbotConfig) => openlocalbotConfig;
-  applyProviderConfig: (config: openlocalbotConfig) => openlocalbotConfig;
+  applyDefaultConfig: (config: OpenLocalBotConfig) => OpenLocalBotConfig;
+  applyProviderConfig: (config: OpenLocalBotConfig) => OpenLocalBotConfig;
   noteDefault?: string;
   noteAgentModel: (model: string) => Promise<void>;
   prompter: WizardPrompter;
-}): Promise<{ config: openlocalbotConfig; agentModelOverride?: string }> {
+}): Promise<{ config: OpenLocalBotConfig; agentModelOverride?: string }> {
   if (params.setDefaultModel) {
     const next = params.applyDefaultConfig(params.config);
     if (params.noteDefault) {

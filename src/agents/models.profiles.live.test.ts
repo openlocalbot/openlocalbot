@@ -3,7 +3,7 @@ import { Type } from "@sinclair/typebox";
 import { describe, expect, it } from "vitest";
 import { loadConfig } from "../config/config.js";
 import { isTruthyEnvValue } from "../infra/env.js";
-import { resolveopenlocalbotAgentDir } from "./agent-paths.js";
+import { resolveOpenLocalBotAgentDir } from "./agent-paths.js";
 import {
   collectAnthropicApiKeys,
   isAnthropicBillingError,
@@ -192,7 +192,7 @@ describeLive("live models (profile keys)", () => {
         logProgress(`[live-models] anthropic keys loaded: ${anthropicKeys.length}`);
       }
 
-      const agentDir = resolveopenlocalbotAgentDir();
+      const agentDir = resolveOpenLocalBotAgentDir();
       const authStorage = discoverAuthStorage(agentDir);
       const modelRegistry = discoverModels(authStorage, agentDir);
       const models = modelRegistry.getAll();

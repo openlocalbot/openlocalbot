@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { CliDeps } from "../cli/deps.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { CronJob } from "./types.js";
 import { discordPlugin } from "../../extensions/discord/src/channel.js";
 import { setDiscordRuntime } from "../../extensions/discord/src/runtime.js";
@@ -58,9 +58,9 @@ async function writeSessionStore(home: string) {
 function makeCfg(
   home: string,
   storePath: string,
-  overrides: Partial<openlocalbotConfig> = {},
-): openlocalbotConfig {
-  const base: openlocalbotConfig = {
+  overrides: Partial<OpenLocalBotConfig> = {},
+): OpenLocalBotConfig {
+  const base: OpenLocalBotConfig = {
     agents: {
       defaults: {
         model: "anthropic/claude-opus-4-5",
@@ -68,7 +68,7 @@ function makeCfg(
       },
     },
     session: { store: storePath, mainKey: "main" },
-  } as openlocalbotConfig;
+  } as OpenLocalBotConfig;
   return { ...base, ...overrides };
 }
 

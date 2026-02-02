@@ -13,7 +13,7 @@ vi.mock("../agents/pi-embedded.js", () => ({
   resolveEmbeddedSessionLane: (key: string) => `session:${key.trim() || "main"}`,
 }));
 
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { resetInboundDedupe } from "../auto-reply/reply/inbound-dedupe.js";
 import { monitorWebChannel } from "./auto-reply.js";
 import { resetLoadConfigMock, setLoadConfigMock } from "./test-helpers.js";
@@ -104,7 +104,7 @@ describe("broadcast groups", () => {
         strategy: "sequential",
         "+1000": ["alfred", "baerbel"],
       },
-    } satisfies openlocalbotConfig);
+    } satisfies OpenLocalBotConfig);
 
     const sendMedia = vi.fn();
     const reply = vi.fn().mockResolvedValue(undefined);
@@ -158,7 +158,7 @@ describe("broadcast groups", () => {
         strategy: "sequential",
         "123@g.us": ["alfred", "baerbel"],
       },
-    } satisfies openlocalbotConfig);
+    } satisfies OpenLocalBotConfig);
 
     const sendMedia = vi.fn();
     const reply = vi.fn().mockResolvedValue(undefined);
@@ -269,7 +269,7 @@ describe("broadcast groups", () => {
         strategy: "parallel",
         "+1000": ["alfred", "baerbel"],
       },
-    } satisfies openlocalbotConfig);
+    } satisfies OpenLocalBotConfig);
 
     const sendMedia = vi.fn();
     const reply = vi.fn().mockResolvedValue(undefined);

@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { SandboxConfig, SandboxToolPolicyResolved } from "./types.js";
 import { formatCliCommand } from "../../cli/command-format.js";
 import { canonicalizeMainSessionAlias, resolveAgentMainSessionKey } from "../../config/sessions.js";
@@ -18,7 +18,7 @@ function shouldSandboxSession(cfg: SandboxConfig, sessionKey: string, mainSessio
 }
 
 function resolveMainSessionKeyForSandbox(params: {
-  cfg?: openlocalbotConfig;
+  cfg?: OpenLocalBotConfig;
   agentId: string;
 }): string {
   if (params.cfg?.session?.scope === "global") {
@@ -31,7 +31,7 @@ function resolveMainSessionKeyForSandbox(params: {
 }
 
 function resolveComparableSessionKeyForSandbox(params: {
-  cfg?: openlocalbotConfig;
+  cfg?: OpenLocalBotConfig;
   agentId: string;
   sessionKey: string;
 }): string {
@@ -43,7 +43,7 @@ function resolveComparableSessionKeyForSandbox(params: {
 }
 
 export function resolveSandboxRuntimeStatus(params: {
-  cfg?: openlocalbotConfig;
+  cfg?: OpenLocalBotConfig;
   sessionKey?: string;
 }): {
   agentId: string;
@@ -79,7 +79,7 @@ export function resolveSandboxRuntimeStatus(params: {
 }
 
 export function formatSandboxToolPolicyBlockedMessage(params: {
-  cfg?: openlocalbotConfig;
+  cfg?: OpenLocalBotConfig;
   sessionKey?: string;
   toolName: string;
 }): string | undefined {

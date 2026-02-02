@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 
 const loadConfig = vi.fn();
 const ensureopenlocalbotModelsJson = vi.fn().mockResolvedValue(undefined);
-const resolveopenlocalbotAgentDir = vi.fn().mockReturnValue("/tmp/openlocalbot-agent");
+const resolveOpenLocalBotAgentDir = vi.fn().mockReturnValue("/tmp/openlocalbot-agent");
 const ensureAuthProfileStore = vi.fn().mockReturnValue({ version: 1, profiles: {} });
 const listProfilesForProvider = vi.fn().mockReturnValue([]);
 const resolveAuthProfileDisplayLabel = vi.fn(({ profileId }: { profileId: string }) => profileId);
@@ -29,7 +29,7 @@ vi.mock("../agents/models-config.js", () => ({
 }));
 
 vi.mock("../agents/agent-paths.js", () => ({
-  resolveopenlocalbotAgentDir,
+  resolveOpenLocalBotAgentDir,
 }));
 
 vi.mock("../agents/auth-profiles.js", () => ({

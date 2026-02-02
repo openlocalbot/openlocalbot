@@ -1,6 +1,6 @@
-import type { openlocalbotConfig } from "./types.js";
+import type { OpenLocalBotConfig } from "./types.js";
 
-export function collectConfigEnvVars(cfg?: openlocalbotConfig): Record<string, string> {
+export function collectConfigEnvVars(cfg?: OpenLocalBotConfig): Record<string, string> {
   const envConfig = cfg?.env;
   if (!envConfig) {
     return {};

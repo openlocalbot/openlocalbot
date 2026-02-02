@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import type { GroupKeyResolution, SessionEntry } from "../../config/sessions.js";
 import type { TemplateContext } from "../templating.js";
 import { getChannelDock } from "../../channels/dock.js";
@@ -29,7 +29,7 @@ function extractGroupId(raw: string | undefined | null): string | undefined {
 }
 
 export function resolveGroupRequireMention(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   ctx: TemplateContext;
   groupResolution?: GroupKeyResolution;
 }): boolean {
@@ -60,7 +60,7 @@ export function defaultGroupActivation(requireMention: boolean): "always" | "men
 }
 
 export function buildGroupIntro(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   sessionCtx: TemplateContext;
   sessionEntry?: SessionEntry;
   defaultActivation: "always" | "mention";

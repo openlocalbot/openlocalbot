@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import { resolveGatewayPort } from "../config/config.js";
 import { findTailscaleBinary } from "../infra/tailscale.js";
@@ -10,10 +10,10 @@ import { guardCancel, normalizeGatewayTokenInput, randomToken } from "./onboard-
 type GatewayAuthChoice = "token" | "password";
 
 export async function promptGatewayConfig(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   runtime: RuntimeEnv,
 ): Promise<{
-  config: openlocalbotConfig;
+  config: OpenLocalBotConfig;
   port: number;
   token?: string;
 }> {

@@ -5,7 +5,7 @@
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import {
   resolveDefaultAgentId,
   resolveAgentWorkspaceDir,
@@ -18,7 +18,7 @@ import { runEmbeddedPiAgent } from "../agents/pi-embedded.js";
  */
 export async function generateSlugViaLLM(params: {
   sessionContent: string;
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
 }): Promise<string | null> {
   let tempSessionFile: string | null = null;
 

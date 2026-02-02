@@ -1,11 +1,11 @@
 import type { CliDeps } from "../../../cli/deps.js";
-import type { openlocalbotConfig } from "../../../config/config.js";
+import type { OpenLocalBotConfig } from "../../../config/config.js";
 import type { HookHandler } from "../../hooks.js";
 import { createDefaultDeps } from "../../../cli/deps.js";
 import { runBootOnce } from "../../../gateway/boot.js";
 
 type BootHookContext = {
-  cfg?: openlocalbotConfig;
+  cfg?: OpenLocalBotConfig;
   workspaceDir?: string;
   deps?: CliDeps;
 };

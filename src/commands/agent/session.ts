@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import type { MsgContext } from "../../auto-reply/templating.js";
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import {
   normalizeThinkLevel,
   normalizeVerboseLevel,
@@ -39,7 +39,7 @@ type SessionKeyResolution = {
 };
 
 export function resolveSessionKeyForRequest(opts: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   to?: string;
   sessionId?: string;
   sessionKey?: string;
@@ -82,7 +82,7 @@ export function resolveSessionKeyForRequest(opts: {
 }
 
 export function resolveSession(opts: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   to?: string;
   sessionId?: string;
   sessionKey?: string;

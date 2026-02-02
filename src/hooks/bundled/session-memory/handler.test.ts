@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import type { openlocalbotConfig } from "../../../config/config.js";
+import type { OpenLocalBotConfig } from "../../../config/config.js";
 import { makeTempWorkspace, writeWorkspaceFile } from "../../../test-helpers/workspace.js";
 import { createHookEvent } from "../../hooks.js";
 import handler from "./handler.js";
@@ -76,7 +76,7 @@ describe("session-memory hook", () => {
       content: sessionContent,
     });
 
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: { defaults: { workspace: tempDir } },
     };
 
@@ -122,7 +122,7 @@ describe("session-memory hook", () => {
       content: sessionContent,
     });
 
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: { defaults: { workspace: tempDir } },
     };
 
@@ -167,7 +167,7 @@ describe("session-memory hook", () => {
       content: sessionContent,
     });
 
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: { defaults: { workspace: tempDir } },
     };
 
@@ -211,7 +211,7 @@ describe("session-memory hook", () => {
     });
 
     // Configure to only include last 3 messages
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: { defaults: { workspace: tempDir } },
       hooks: {
         internal: {
@@ -272,7 +272,7 @@ describe("session-memory hook", () => {
 
     // Request 3 messages - if we sliced first, we'd only get 1-2 messages
     // because the last 3 lines include tool entries
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: { defaults: { workspace: tempDir } },
       hooks: {
         internal: {
@@ -315,7 +315,7 @@ describe("session-memory hook", () => {
       content: "",
     });
 
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: { defaults: { workspace: tempDir } },
     };
 
@@ -352,7 +352,7 @@ describe("session-memory hook", () => {
       content: sessionContent,
     });
 
-    const cfg: openlocalbotConfig = {
+    const cfg: OpenLocalBotConfig = {
       agents: { defaults: { workspace: tempDir } },
     };
 

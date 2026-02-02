@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type {
   ChannelCapabilities,
   ChannelCommandAdapter,
@@ -48,11 +48,11 @@ export type ChannelDock = {
   elevated?: ChannelElevatedAdapter;
   config?: {
     resolveAllowFrom?: (params: {
-      cfg: openlocalbotConfig;
+      cfg: OpenLocalBotConfig;
       accountId?: string | null;
     }) => Array<string | number> | undefined;
     formatAllowFrom?: (params: {
-      cfg: openlocalbotConfig;
+      cfg: OpenLocalBotConfig;
       accountId?: string | null;
       allowFrom: Array<string | number>;
     }) => string[];

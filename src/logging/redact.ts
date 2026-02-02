@@ -1,5 +1,5 @@
 import { createRequire } from "node:module";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 
 const requireConfig = createRequire(import.meta.url);
 
@@ -106,10 +106,10 @@ function redactText(text: string, patterns: RegExp[]): string {
 }
 
 function resolveConfigRedaction(): RedactOptions {
-  let cfg: openlocalbotConfig["logging"] | undefined;
+  let cfg: OpenLocalBotConfig["logging"] | undefined;
   try {
     const loaded = requireConfig("../config/config.js") as {
-      loadConfig?: () => openlocalbotConfig;
+      loadConfig?: () => OpenLocalBotConfig;
     };
     cfg = loaded.loadConfig?.().logging;
   } catch {

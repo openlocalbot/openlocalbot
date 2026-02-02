@@ -34,7 +34,7 @@ enum AgentWorkspace {
 
     static func resolveWorkspaceURL(from userInput: String?) -> URL {
         let trimmed = userInput?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        if trimmed.isEmpty { return openlocalbotConfigFile.defaultWorkspaceURL() }
+        if trimmed.isEmpty { return OpenLocalBotConfigFile.defaultWorkspaceURL() }
         let expanded = (trimmed as NSString).expandingTildeInPath
         return URL(fileURLWithPath: expanded, isDirectory: true)
     }

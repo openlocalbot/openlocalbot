@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import {
   clearInternalHooks,
   getRegisteredEventKeys,
@@ -44,7 +44,7 @@ describe("loader", () => {
 
   describe("loadInternalHooks", () => {
     it("should return 0 when hooks are not enabled", async () => {
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         hooks: {
           internal: {
             enabled: false,
@@ -57,7 +57,7 @@ describe("loader", () => {
     });
 
     it("should return 0 when hooks config is missing", async () => {
-      const cfg: openlocalbotConfig = {};
+      const cfg: OpenLocalBotConfig = {};
       const count = await loadInternalHooks(cfg, tmpDir);
       expect(count).toBe(0);
     });
@@ -72,7 +72,7 @@ describe("loader", () => {
       `;
       await fs.writeFile(handlerPath, handlerCode, "utf-8");
 
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         hooks: {
           internal: {
             enabled: true,
@@ -101,7 +101,7 @@ describe("loader", () => {
       await fs.writeFile(handler1Path, "export default async function() {}", "utf-8");
       await fs.writeFile(handler2Path, "export default async function() {}", "utf-8");
 
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         hooks: {
           internal: {
             enabled: true,
@@ -131,7 +131,7 @@ describe("loader", () => {
       `;
       await fs.writeFile(handlerPath, handlerCode, "utf-8");
 
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         hooks: {
           internal: {
             enabled: true,
@@ -153,7 +153,7 @@ describe("loader", () => {
     it("should handle module loading errors gracefully", async () => {
       const consoleError = vi.spyOn(console, "error").mockImplementation(() => {});
 
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         hooks: {
           internal: {
             enabled: true,
@@ -184,7 +184,7 @@ describe("loader", () => {
       const handlerPath = path.join(tmpDir, "bad-export.js");
       await fs.writeFile(handlerPath, 'export default "not a function";', "utf-8");
 
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         hooks: {
           internal: {
             enabled: true,
@@ -213,7 +213,7 @@ describe("loader", () => {
       // Get relative path from cwd
       const relativePath = path.relative(process.cwd(), handlerPath);
 
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         hooks: {
           internal: {
             enabled: true,
@@ -245,7 +245,7 @@ describe("loader", () => {
       `;
       await fs.writeFile(handlerPath, handlerCode, "utf-8");
 
-      const cfg: openlocalbotConfig = {
+      const cfg: OpenLocalBotConfig = {
         hooks: {
           internal: {
             enabled: true,

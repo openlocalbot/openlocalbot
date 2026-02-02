@@ -1,9 +1,9 @@
 import json5 from "json5";
 import fs from "node:fs";
-import type { openlocalbotConfig } from "../config/types.js";
+import type { OpenLocalBotConfig } from "../config/types.js";
 import { resolveConfigPath } from "../config/paths.js";
 
-type LoggingConfig = openlocalbotConfig["logging"];
+type LoggingConfig = OpenLocalBotConfig["logging"];
 
 export function readLoggingConfig(): LoggingConfig | undefined {
   const configPath = resolveConfigPath();

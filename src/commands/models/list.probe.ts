@@ -1,7 +1,7 @@
 import crypto from "node:crypto";
 import fs from "node:fs/promises";
-import type { openlocalbotConfig } from "../../config/config.js";
-import { resolveopenlocalbotAgentDir } from "../../agents/agent-paths.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
+import { resolveOpenLocalBotAgentDir } from "../../agents/agent-paths.js";
 import { resolveAgentWorkspaceDir, resolveDefaultAgentId } from "../../agents/agent-scope.js";
 import {
   ensureAuthProfileStore,
@@ -134,7 +134,7 @@ function selectProbeModel(params: {
 }
 
 function buildProbeTargets(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   providers: string[];
   modelCandidates: string[];
   options: AuthProbeOptions;
@@ -287,7 +287,7 @@ function buildProbeTargets(params: {
 }
 
 async function probeTarget(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   agentId: string;
   agentDir: string;
   workspaceDir: string;
@@ -362,7 +362,7 @@ async function probeTarget(params: {
 }
 
 async function runTargetsWithConcurrency(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   targets: AuthProbeTarget[];
   timeoutMs: number;
   maxTokens: number;
@@ -373,7 +373,7 @@ async function runTargetsWithConcurrency(params: {
   const concurrency = Math.max(1, Math.min(targets.length || 1, params.concurrency));
 
   const agentId = resolveDefaultAgentId(cfg);
-  const agentDir = resolveopenlocalbotAgentDir();
+  const agentDir = resolveOpenLocalBotAgentDir();
   const workspaceDir = resolveAgentWorkspaceDir(cfg, agentId) ?? resolveDefaultAgentWorkspaceDir();
   const sessionDir = resolveSessionTranscriptsDirForAgent(agentId);
 
@@ -418,7 +418,7 @@ async function runTargetsWithConcurrency(params: {
 }
 
 export async function runAuthProbes(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   providers: string[];
   modelCandidates: string[];
   options: AuthProbeOptions;

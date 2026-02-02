@@ -2,7 +2,7 @@ import type { Command } from "commander";
 import fs from "node:fs";
 import fsp from "node:fs/promises";
 import path from "node:path";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { HookEntry } from "../hooks/types.js";
 import { resolveAgentWorkspaceDir, resolveDefaultAgentId } from "../agents/agent-scope.js";
 import { loadConfig, writeConfigFile } from "../config/io.js";
@@ -57,7 +57,7 @@ function mergeHookEntries(pluginEntries: HookEntry[], workspaceEntries: HookEntr
   return Array.from(merged.values());
 }
 
-function buildHooksReport(config: openlocalbotConfig): HookStatusReport {
+function buildHooksReport(config: OpenLocalBotConfig): HookStatusReport {
   const workspaceDir = resolveAgentWorkspaceDir(config, resolveDefaultAgentId(config));
   const workspaceEntries = loadWorkspaceHookEntries(workspaceDir, { config });
   const pluginReport = buildPluginStatusReport({ config, workspaceDir });
@@ -550,7 +550,7 @@ export function registerHooksCli(program: Command): void {
             process.exit(1);
           }
 
-          let next: openlocalbotConfig = {
+          let next: OpenLocalBotConfig = {
             ...cfg,
             hooks: {
               ...cfg.hooks,
@@ -611,7 +611,7 @@ export function registerHooksCli(program: Command): void {
           process.exit(1);
         }
 
-        let next: openlocalbotConfig = {
+        let next: OpenLocalBotConfig = {
           ...cfg,
           hooks: {
             ...cfg.hooks,
@@ -691,7 +691,7 @@ export function registerHooksCli(program: Command): void {
         process.exit(1);
       }
 
-      let next: openlocalbotConfig = {
+      let next: OpenLocalBotConfig = {
         ...cfg,
         hooks: {
           ...cfg.hooks,

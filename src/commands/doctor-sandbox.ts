@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import type { RuntimeEnv } from "../runtime.js";
 import type { DoctorPrompter } from "./doctor-prompter.js";
 import {
@@ -86,17 +86,17 @@ async function dockerImageExists(image: string): Promise<boolean> {
   }
 }
 
-function resolveSandboxDockerImage(cfg: openlocalbotConfig): string {
+function resolveSandboxDockerImage(cfg: OpenLocalBotConfig): string {
   const image = cfg.agents?.defaults?.sandbox?.docker?.image?.trim();
   return image ? image : DEFAULT_SANDBOX_IMAGE;
 }
 
-function resolveSandboxBrowserImage(cfg: openlocalbotConfig): string {
+function resolveSandboxBrowserImage(cfg: OpenLocalBotConfig): string {
   const image = cfg.agents?.defaults?.sandbox?.browser?.image?.trim();
   return image ? image : DEFAULT_SANDBOX_BROWSER_IMAGE;
 }
 
-function updateSandboxDockerImage(cfg: openlocalbotConfig, image: string): openlocalbotConfig {
+function updateSandboxDockerImage(cfg: OpenLocalBotConfig, image: string): OpenLocalBotConfig {
   return {
     ...cfg,
     agents: {
@@ -115,7 +115,7 @@ function updateSandboxDockerImage(cfg: openlocalbotConfig, image: string): openl
   };
 }
 
-function updateSandboxBrowserImage(cfg: openlocalbotConfig, image: string): openlocalbotConfig {
+function updateSandboxBrowserImage(cfg: OpenLocalBotConfig, image: string): OpenLocalBotConfig {
   return {
     ...cfg,
     agents: {
@@ -173,10 +173,10 @@ async function handleMissingSandboxImage(
 }
 
 export async function maybeRepairSandboxImages(
-  cfg: openlocalbotConfig,
+  cfg: OpenLocalBotConfig,
   runtime: RuntimeEnv,
   prompter: DoctorPrompter,
-): Promise<openlocalbotConfig> {
+): Promise<OpenLocalBotConfig> {
   const sandbox = cfg.agents?.defaults?.sandbox;
   const mode = sandbox?.mode ?? "off";
   if (!sandbox || mode === "off") {
@@ -235,7 +235,7 @@ export async function maybeRepairSandboxImages(
   return next;
 }
 
-export function noteSandboxScopeWarnings(cfg: openlocalbotConfig) {
+export function noteSandboxScopeWarnings(cfg: OpenLocalBotConfig) {
   const globalSandbox = cfg.agents?.defaults?.sandbox;
   const agents = Array.isArray(cfg.agents?.list) ? cfg.agents.list : [];
   const warnings: string[] = [];

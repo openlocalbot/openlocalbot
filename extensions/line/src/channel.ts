@@ -5,7 +5,7 @@ import {
   processLineMessage,
   type ChannelPlugin,
   type ChannelStatusIssue,
-  type openlocalbotConfig,
+  type OpenLocalBotConfig,
   type LineConfig,
   type LineChannelData,
   type ResolvedLineAccount,
@@ -647,7 +647,7 @@ export const linePlugin: ChannelPlugin<ResolvedLineAccount> = {
     },
     logoutAccount: async ({ accountId, cfg }) => {
       const envToken = process.env.LINE_CHANNEL_ACCESS_TOKEN?.trim() ?? "";
-      const nextCfg = { ...cfg } as openlocalbotConfig;
+      const nextCfg = { ...cfg } as OpenLocalBotConfig;
       const lineConfig = (cfg.channels?.line ?? {}) as LineConfig;
       const nextLine = { ...lineConfig };
       let cleared = false;

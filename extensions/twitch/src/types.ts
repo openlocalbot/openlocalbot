@@ -22,7 +22,7 @@ import type {
   ChannelMeta,
 } from "../../../src/channels/plugins/types.core.js";
 import type { ChannelPlugin } from "../../../src/channels/plugins/types.plugin.js";
-import type { openlocalbotConfig } from "../../../src/config/config.js";
+import type { OpenLocalBotConfig } from "../../../src/config/config.js";
 import type { OutboundDeliveryResult } from "../../../src/infra/outbound/deliver.js";
 import type { RuntimeEnv } from "../../../src/runtime.js";
 
@@ -137,5 +137,5 @@ import type { z } from "zod";
 import type { TwitchConfigSchema } from "./config-schema.js";
 export type TwitchConfig = z.infer<typeof TwitchConfigSchema>;
 
-export type { openlocalbotConfig };
+export type { OpenLocalBotConfig };
 export type { RuntimeEnv };

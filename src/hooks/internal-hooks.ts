@@ -6,14 +6,14 @@
  */
 
 import type { WorkspaceBootstrapFile } from "../agents/workspace.js";
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 
 export type InternalHookEventType = "command" | "session" | "agent" | "gateway";
 
 export type AgentBootstrapHookContext = {
   workspaceDir: string;
   bootstrapFiles: WorkspaceBootstrapFile[];
-  cfg?: openlocalbotConfig;
+  cfg?: OpenLocalBotConfig;
   sessionKey?: string;
   sessionId?: string;
   agentId?: string;

@@ -23,7 +23,7 @@ import {
   TelegramConfigSchema,
   type ChannelMessageActionAdapter,
   type ChannelPlugin,
-  type openlocalbotConfig,
+  type OpenLocalBotConfig,
   type ResolvedTelegramAccount,
 } from "openlocalbot/plugin-sdk";
 import { getTelegramRuntime } from "./runtime.js";
@@ -421,7 +421,7 @@ export const telegramPlugin: ChannelPlugin<ResolvedTelegramAccount> = {
     },
     logoutAccount: async ({ accountId, cfg }) => {
       const envToken = process.env.TELEGRAM_BOT_TOKEN?.trim() ?? "";
-      const nextCfg = { ...cfg } as openlocalbotConfig;
+      const nextCfg = { ...cfg } as OpenLocalBotConfig;
       const nextTelegram = cfg.channels?.telegram ? { ...cfg.channels.telegram } : undefined;
       let cleared = false;
       let changed = false;

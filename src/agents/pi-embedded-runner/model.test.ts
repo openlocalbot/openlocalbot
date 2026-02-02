@@ -5,7 +5,7 @@ vi.mock("../pi-model-discovery.js", () => ({
   discoverModels: vi.fn(() => ({ find: vi.fn(() => null) })),
 }));
 
-import type { openlocalbotConfig } from "../../config/config.js";
+import type { OpenLocalBotConfig } from "../../config/config.js";
 import { buildInlineProviderModels, resolveModel } from "./model.js";
 
 const makeModel = (id: string) => ({
@@ -119,7 +119,7 @@ describe("resolveModel", () => {
           },
         },
       },
-    } as openlocalbotConfig;
+    } as OpenLocalBotConfig;
 
     const result = resolveModel("custom", "missing-model", "/tmp/agent", cfg);
 

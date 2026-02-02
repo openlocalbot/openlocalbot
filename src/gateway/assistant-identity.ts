@@ -1,4 +1,4 @@
-import type { openlocalbotConfig } from "../config/config.js";
+import type { OpenLocalBotConfig } from "../config/config.js";
 import { resolveAgentWorkspaceDir, resolveDefaultAgentId } from "../agents/agent-scope.js";
 import { resolveAgentIdentity } from "../agents/identity.js";
 import { loadAgentIdentity } from "../commands/agents.config.js";
@@ -65,7 +65,7 @@ function normalizeAvatarValue(value: string | undefined): string | undefined {
 }
 
 export function resolveAssistantIdentity(params: {
-  cfg: openlocalbotConfig;
+  cfg: OpenLocalBotConfig;
   agentId?: string | null;
   workspaceDir?: string | null;
 }): AssistantIdentity {
