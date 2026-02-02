@@ -1,18 +1,11 @@
-# 🤖 OpenLocalBot — 个人 AI 助手
+<p align="center">
+  <img src="docs/assets/openlocalbot-logo-text.png" alt="OpenLocalBot" width="400">
+</p>
+
+<h1 align="center">OpenLocalBot — 个人 AI 助手</h1>
 
 <p align="center">
   <a href="README.md">🇺🇸 English</a> · <a href="README_zh-TW.md">🇹🇼 繁體中文</a> · <a href="README_ja.md">🇯🇵 日本語</a>
-</p>
-
-<p align="center">
-    <picture>
-        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/openlocalbot/openlocalbot/main/docs/assets/openlocalbot-logo-text-dark.png">
-        <img src="https://raw.githubusercontent.com/openlocalbot/openlocalbot/main/docs/assets/openlocalbot-logo-text.png" alt="OpenLocalBot" width="500">
-    </picture>
-</p>
-
-<p align="center">
-  <strong>EXFOLIATE! EXFOLIATE!</strong>
 </p>
 
 <p align="center">

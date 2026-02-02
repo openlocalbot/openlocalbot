@@ -1,4 +1,8 @@
-# 🤖 OpenLocalBot — Personal AI Assistant
+<p align="center">
+  <img src="docs/assets/openlocalbot-logo-text.png" alt="OpenLocalBot" width="400">
+</p>
+
+<h1 align="center">OpenLocalBot — Personal AI Assistant</h1>
 
 <p align="center">
   <a href="README_zh.md">🇨🇳 简体中文</a> · <a href="README_zh-TW.md">🇹🇼 繁體中文</a> · <a href="README_ja.md">🇯🇵 日本語</a>
