@@ -6,8 +6,8 @@
 
 <p align="center">
     <picture>
-        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-logo-text-dark.png">
-        <img src="https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-logo-text.png" alt="OpenClaw" width="500">
+        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/openlocalbot/openlocalbot/main/docs/assets/openlocalbot-logo-text-dark.png">
+        <img src="https://raw.githubusercontent.com/openlocalbot/openlocalbot/main/docs/assets/openlocalbot-logo-text.png" alt="OpenLocalBot" width="500">
     </picture>
 </p>
 
@@ -16,25 +16,25 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/openclaw/openclaw/actions/workflows/ci.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/openclaw/openclaw/ci.yml?branch=main&style=for-the-badge" alt="CI 狀態"></a>
-  <a href="https://github.com/openclaw/openclaw/releases"><img src="https://img.shields.io/github/v/release/openclaw/openclaw?include_prereleases&style=for-the-badge" alt="GitHub 版本"></a>
+  <a href="https://github.com/openlocalbot/openlocalbot/actions/workflows/ci.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/openlocalbot/openlocalbot/ci.yml?branch=main&style=for-the-badge" alt="CI 狀態"></a>
+  <a href="https://github.com/openlocalbot/openlocalbot/releases"><img src="https://img.shields.io/github/v/release/openlocalbot/openlocalbot?include_prereleases&style=for-the-badge" alt="GitHub 版本"></a>
   <a href="https://discord.gg/clawd"><img src="https://img.shields.io/discord/1456350064065904867?label=Discord&logo=discord&logoColor=white&color=5865F2&style=for-the-badge" alt="Discord"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT 授權"></a>
 </p>
 
-**OpenClaw** 是一個運行在您自己裝置上的*個人 AI 助手*。
+**OpenLocalBot** 是一個運行在您自己裝置上的*個人 AI 助手*。
 它可以在您常用的訊息頻道（WhatsApp、Telegram、Slack、Discord、Google Chat、Signal、iMessage、Microsoft Teams、WebChat）上回覆您，還支援擴充頻道如 BlueBubbles、Matrix、Zalo 和 Zalo Personal。它可以在 macOS/iOS/Android 上進行語音互動，並可以渲染您可控制的即時 Canvas。Gateway 只是控制平面——產品本身是助手。
 
 如果您想要一個感覺本地化、快速且始終在線的個人單用戶助手，這就是它。
 
-[官網](https://openclaw.ai) · [文件](https://docs.openclaw.ai) · [DeepWiki](https://deepwiki.com/openclaw/openclaw) · [快速開始](https://docs.openclaw.ai/start/getting-started) · [更新指南](https://docs.openclaw.ai/install/updating) · [展示](https://docs.openclaw.ai/start/showcase) · [常見問題](https://docs.openclaw.ai/start/faq) · [設定精靈](https://docs.openclaw.ai/start/wizard) · [Nix](https://github.com/openclaw/nix-clawdbot) · [Docker](https://docs.openclaw.ai/install/docker) · [Discord](https://discord.gg/clawd)
+[官網](https://openlocalbot.ai) · [文件](https://docs.openlocalbot.ai) · [DeepWiki](https://deepwiki.com/openlocalbot/openlocalbot) · [快速開始](https://docs.openlocalbot.ai/start/getting-started) · [更新指南](https://docs.openlocalbot.ai/install/updating) · [展示](https://docs.openlocalbot.ai/start/showcase) · [常見問題](https://docs.openlocalbot.ai/start/faq) · [設定精靈](https://docs.openlocalbot.ai/start/wizard) · [Nix](https://github.com/openlocalbot/nix-clawdbot) · [Docker](https://docs.openlocalbot.ai/install/docker) · [Discord](https://discord.gg/clawd)
 
-建議設定方式：執行設定精靈（`openclaw onboard`）。它會引導您完成閘道器、工作區、頻道和技能的設定。CLI 精靈是建議路徑，支援 **macOS、Linux 和 Windows（透過 WSL2；強烈建議）**。
+建議設定方式：執行設定精靈（`openlocalbot onboard`）。它會引導您完成閘道器、工作區、頻道和技能的設定。CLI 精靈是建議路徑，支援 **macOS、Linux 和 Windows（透過 WSL2；強烈建議）**。
 
-**新功能：Web 設定介面** - 如需圖形化設定體驗，使用 `openclaw onboard --web`。這將啟動一個雙語（English/中文）Web 介面，預設埠號 9887。
+**新功能：Web 設定介面** - 如需圖形化設定體驗，使用 `openlocalbot onboard --web`。這將啟動一個雙語（English/中文）Web 介面，預設埠號 9887。
 
 支援 npm、pnpm 或 bun。
-新安裝？從這裡開始：[快速開始](https://docs.openclaw.ai/start/getting-started)
+新安裝？從這裡開始：[快速開始](https://docs.openlocalbot.ai/start/getting-started)
 
 **訂閱 (OAuth):**
 
@@ -49,22 +49,22 @@
 - **[矽基流動 SiliconFlow](https://cloud.siliconflow.cn/)** — DeepSeek、GLM、Qwen、Llama
 - **[NVIDIA NIM](https://build.nvidia.com/)** — Llama、DeepSeek、Qwen、Mistral
 
-模型說明：雖然支援任何模型，但我強烈建議 **Anthropic Pro/Max (100/200) + Opus 4.5**，因為它具有更強的長上下文能力和更好的提示注入防護。參見 [設定指南](https://docs.openclaw.ai/start/onboarding)。
+模型說明：雖然支援任何模型，但我強烈建議 **Anthropic Pro/Max (100/200) + Opus 4.5**，因為它具有更強的長上下文能力和更好的提示注入防護。參見 [設定指南](https://docs.openlocalbot.ai/start/onboarding)。
 
 ## 模型（選擇 + 認證）
 
-- 模型設定 + CLI：[模型](https://docs.openclaw.ai/concepts/models)
-- 認證設定輪換（OAuth vs API 金鑰）+ 故障轉移：[模型故障轉移](https://docs.openclaw.ai/concepts/model-failover)
+- 模型設定 + CLI：[模型](https://docs.openlocalbot.ai/concepts/models)
+- 認證設定輪換（OAuth vs API 金鑰）+ 故障轉移：[模型故障轉移](https://docs.openlocalbot.ai/concepts/model-failover)
 
 ## 安裝（建議方式）
 
 執行環境：**Node ≥22**
 
 ```bash
-npm install -g openclaw@latest
-# 或者: pnpm add -g openclaw@latest
+npm install -g openlocalbot@latest
+# 或者: pnpm add -g openlocalbot@latest
 
-openclaw onboard --install-daemon
+openlocalbot onboard --install-daemon
 ```
 
 精靈會安裝 Gateway 守護程式（launchd/systemd 使用者服務），使其保持運行。
@@ -74,9 +74,9 @@ openclaw onboard --install-daemon
 如需圖形化設定體驗，支援中英文雙語：
 
 ```bash
-openclaw onboard --web
+openlocalbot onboard --web
 # 或指定自訂埠號：
-openclaw onboard --web --web-port 9887
+openlocalbot onboard --web --web-port 9887
 ```
 
 這將在 `http://127.0.0.1:9887` 啟動一個現代化 Web 介面，引導您完成：
@@ -92,21 +92,21 @@ Web 介面會自動在瀏覽器中開啟。所有設定都儲存在本地。
 
 執行環境：**Node ≥22**
 
-完整新手指南（認證、配對、頻道）：[快速開始](https://docs.openclaw.ai/start/getting-started)
+完整新手指南（認證、配對、頻道）：[快速開始](https://docs.openlocalbot.ai/start/getting-started)
 
 ```bash
-openclaw onboard --install-daemon
+openlocalbot onboard --install-daemon
 
-openclaw gateway --port 18789 --verbose
+openlocalbot gateway --port 18789 --verbose
 
 # 發送訊息
-openclaw message send --to +1234567890 --message "來自 OpenClaw 的問候"
+openlocalbot message send --to +1234567890 --message "來自 OpenLocalBot 的問候"
 
 # 與助手對話（可選擇將回覆發送到任何已連線的頻道：WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/BlueBubbles/Microsoft Teams/Matrix/Zalo/Zalo Personal/WebChat）
-openclaw agent --message "待辦事項清單" --thinking high
+openlocalbot agent --message "待辦事項清單" --thinking high
 ```
 
-升級？[更新指南](https://docs.openclaw.ai/install/updating)（並執行 `openclaw doctor`）。
+升級？[更新指南](https://docs.openlocalbot.ai/install/updating)（並執行 `openlocalbot doctor`）。
 
 ## 開發頻道
 
@@ -114,101 +114,101 @@ openclaw agent --message "待辦事項清單" --thinking high
 - **beta**：預發布標籤（`vYYYY.M.D-beta.N`），npm dist-tag `beta`（macOS 應用可能缺失）。
 - **dev**：`main` 分支的移動頭，npm dist-tag `dev`（發布時）。
 
-切換頻道（git + npm）：`openclaw update --channel stable|beta|dev`。
-詳情：[開發頻道](https://docs.openclaw.ai/install/development-channels)。
+切換頻道（git + npm）：`openlocalbot update --channel stable|beta|dev`。
+詳情：[開發頻道](https://docs.openlocalbot.ai/install/development-channels)。
 
 ## 從原始碼建置（開發）
 
 從原始碼建置建議使用 `pnpm`。Bun 是可選的，用於直接執行 TypeScript。
 
 ```bash
-git clone https://github.com/openclaw/openclaw.git
-cd openclaw
+git clone https://github.com/openlocalbot/openlocalbot.git
+cd openlocalbot
 
 pnpm install
 pnpm ui:build # 首次執行時自動安裝 UI 依賴
 pnpm build
 
-pnpm openclaw onboard --install-daemon
+pnpm openlocalbot onboard --install-daemon
 
 # 開發迴圈（TypeScript 變更時自動重載）
 pnpm gateway:watch
 ```
 
-注意：`pnpm openclaw ...` 直接執行 TypeScript（透過 `tsx`）。`pnpm build` 產生 `dist/` 用於透過 Node / 打包的 `openclaw` 二進位檔執行。
+注意：`pnpm openlocalbot ...` 直接執行 TypeScript（透過 `tsx`）。`pnpm build` 產生 `dist/` 用於透過 Node / 打包的 `openlocalbot` 二進位檔執行。
 
 ## 安全預設值（私訊存取）
 
-OpenClaw 連線到真實的訊息平台。將入站私訊視為**不受信任的輸入**。
+OpenLocalBot 連線到真實的訊息平台。將入站私訊視為**不受信任的輸入**。
 
-完整安全指南：[安全](https://docs.openclaw.ai/gateway/security)
+完整安全指南：[安全](https://docs.openlocalbot.ai/gateway/security)
 
 在 Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack 上的預設行為：
 
 - **私訊配對**（`dmPolicy="pairing"` / `channels.discord.dm.policy="pairing"` / `channels.slack.dm.policy="pairing"`）：未知發送者會收到一個簡短的配對碼，機器人不會處理他們的訊息。
-- 核准命令：`openclaw pairing approve <channel> <code>`（然後發送者會被加入到本地白名單儲存中）。
+- 核准命令：`openlocalbot pairing approve <channel> <code>`（然後發送者會被加入到本地白名單儲存中）。
 - 公開入站私訊需要明確的選擇加入：設定 `dmPolicy="open"` 並在頻道白名單中包含 `"*"`（`allowFrom` / `channels.discord.dm.allowFrom` / `channels.slack.dm.allowFrom`）。
 
-執行 `openclaw doctor` 以顯示風險/設定錯誤的私訊策略。
+執行 `openlocalbot doctor` 以顯示風險/設定錯誤的私訊策略。
 
 ## 主要特性
 
-- **[本地優先閘道器](https://docs.openclaw.ai/gateway)** — 用於工作階段、頻道、工具和事件的單一控制平面。
-- **[多頻道收件匣](https://docs.openclaw.ai/channels)** — WhatsApp、Telegram、Slack、Discord、Google Chat、Signal、iMessage、BlueBubbles、Microsoft Teams、Matrix、Zalo、Zalo Personal、WebChat、macOS、iOS/Android。
-- **[多代理路由](https://docs.openclaw.ai/gateway/configuration)** — 將入站頻道/帳戶/對等方路由到隔離的代理（工作區 + 每個代理的工作階段）。
-- **[語音喚醒](https://docs.openclaw.ai/nodes/voicewake) + [對話模式](https://docs.openclaw.ai/nodes/talk)** — macOS/iOS/Android 上的始終在線語音，使用 ElevenLabs。
-- **[即時 Canvas](https://docs.openclaw.ai/platforms/mac/canvas)** — 代理驅動的視覺化工作區，帶有 [A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui)。
-- **[一流的工具](https://docs.openclaw.ai/tools)** — 瀏覽器、canvas、節點、定時任務、工作階段和 Discord/Slack 操作。
-- **[夥伴應用](https://docs.openclaw.ai/platforms/macos)** — macOS 選單列應用 + iOS/Android [節點](https://docs.openclaw.ai/nodes)。
-- **[設定精靈](https://docs.openclaw.ai/start/wizard) + [技能](https://docs.openclaw.ai/tools/skills)** — 精靈驅動的設定，帶有內建/託管/工作區技能。
+- **[本地優先閘道器](https://docs.openlocalbot.ai/gateway)** — 用於工作階段、頻道、工具和事件的單一控制平面。
+- **[多頻道收件匣](https://docs.openlocalbot.ai/channels)** — WhatsApp、Telegram、Slack、Discord、Google Chat、Signal、iMessage、BlueBubbles、Microsoft Teams、Matrix、Zalo、Zalo Personal、WebChat、macOS、iOS/Android。
+- **[多代理路由](https://docs.openlocalbot.ai/gateway/configuration)** — 將入站頻道/帳戶/對等方路由到隔離的代理（工作區 + 每個代理的工作階段）。
+- **[語音喚醒](https://docs.openlocalbot.ai/nodes/voicewake) + [對話模式](https://docs.openlocalbot.ai/nodes/talk)** — macOS/iOS/Android 上的始終在線語音，使用 ElevenLabs。
+- **[即時 Canvas](https://docs.openlocalbot.ai/platforms/mac/canvas)** — 代理驅動的視覺化工作區，帶有 [A2UI](https://docs.openlocalbot.ai/platforms/mac/canvas#canvas-a2ui)。
+- **[一流的工具](https://docs.openlocalbot.ai/tools)** — 瀏覽器、canvas、節點、定時任務、工作階段和 Discord/Slack 操作。
+- **[夥伴應用](https://docs.openlocalbot.ai/platforms/macos)** — macOS 選單列應用 + iOS/Android [節點](https://docs.openlocalbot.ai/nodes)。
+- **[設定精靈](https://docs.openlocalbot.ai/start/wizard) + [技能](https://docs.openlocalbot.ai/tools/skills)** — 精靈驅動的設定，帶有內建/託管/工作區技能。
 
 ## Star 歷史
 
-[![Star History Chart](https://api.star-history.com/svg?repos=openclaw/openclaw&type=date&legend=top-left)](https://www.star-history.com/#openclaw/openclaw&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/svg?repos=openlocalbot/openlocalbot&type=date&legend=top-left)](https://www.star-history.com/#openlocalbot/openlocalbot&type=date&legend=top-left)
 
 ## 我們建置的全部功能
 
 ### 核心平台
 
-- [Gateway WS 控制平面](https://docs.openclaw.ai/gateway) 包含工作階段、在線狀態、設定、定時任務、webhooks、[控制介面](https://docs.openclaw.ai/web) 和 [Canvas 主機](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui)。
-- [CLI 介面](https://docs.openclaw.ai/tools/agent-send)：gateway、agent、send、[精靈](https://docs.openclaw.ai/start/wizard) 和 [doctor](https://docs.openclaw.ai/gateway/doctor)。
-- [Pi 代理執行時](https://docs.openclaw.ai/concepts/agent) 支援 RPC 模式，帶有工具串流和區塊串流。
-- [工作階段模型](https://docs.openclaw.ai/concepts/session)：`main` 用於直接聊天，群組隔離，啟用模式，佇列模式，回覆返回。群組規則：[群組](https://docs.openclaw.ai/concepts/groups)。
-- [媒體管道](https://docs.openclaw.ai/nodes/images)：圖片/音訊/影片，轉錄鉤子，大小限制，暫存檔生命週期。音訊詳情：[音訊](https://docs.openclaw.ai/nodes/audio)。
+- [Gateway WS 控制平面](https://docs.openlocalbot.ai/gateway) 包含工作階段、在線狀態、設定、定時任務、webhooks、[控制介面](https://docs.openlocalbot.ai/web) 和 [Canvas 主機](https://docs.openlocalbot.ai/platforms/mac/canvas#canvas-a2ui)。
+- [CLI 介面](https://docs.openlocalbot.ai/tools/agent-send)：gateway、agent、send、[精靈](https://docs.openlocalbot.ai/start/wizard) 和 [doctor](https://docs.openlocalbot.ai/gateway/doctor)。
+- [Pi 代理執行時](https://docs.openlocalbot.ai/concepts/agent) 支援 RPC 模式，帶有工具串流和區塊串流。
+- [工作階段模型](https://docs.openlocalbot.ai/concepts/session)：`main` 用於直接聊天，群組隔離，啟用模式，佇列模式，回覆返回。群組規則：[群組](https://docs.openlocalbot.ai/concepts/groups)。
+- [媒體管道](https://docs.openlocalbot.ai/nodes/images)：圖片/音訊/影片，轉錄鉤子，大小限制，暫存檔生命週期。音訊詳情：[音訊](https://docs.openlocalbot.ai/nodes/audio)。
 
 ### 頻道
 
-- [頻道](https://docs.openclaw.ai/channels)：[WhatsApp](https://docs.openclaw.ai/channels/whatsapp) (Baileys)、[Telegram](https://docs.openclaw.ai/channels/telegram) (grammY)、[Slack](https://docs.openclaw.ai/channels/slack) (Bolt)、[Discord](https://docs.openclaw.ai/channels/discord) (discord.js)、[Google Chat](https://docs.openclaw.ai/channels/googlechat) (Chat API)、[Signal](https://docs.openclaw.ai/channels/signal) (signal-cli)、[iMessage](https://docs.openclaw.ai/channels/imessage) (imsg)、[BlueBubbles](https://docs.openclaw.ai/channels/bluebubbles) (擴充)、[Microsoft Teams](https://docs.openclaw.ai/channels/msteams) (擴充)、[Matrix](https://docs.openclaw.ai/channels/matrix) (擴充)、[Zalo](https://docs.openclaw.ai/channels/zalo) (擴充)、[Zalo Personal](https://docs.openclaw.ai/channels/zalouser) (擴充)、[WebChat](https://docs.openclaw.ai/web/webchat)。
-- [群組路由](https://docs.openclaw.ai/concepts/group-messages)：提及門控，回覆標籤，每個頻道的分塊和路由。頻道規則：[頻道](https://docs.openclaw.ai/channels)。
+- [頻道](https://docs.openlocalbot.ai/channels)：[WhatsApp](https://docs.openlocalbot.ai/channels/whatsapp) (Baileys)、[Telegram](https://docs.openlocalbot.ai/channels/telegram) (grammY)、[Slack](https://docs.openlocalbot.ai/channels/slack) (Bolt)、[Discord](https://docs.openlocalbot.ai/channels/discord) (discord.js)、[Google Chat](https://docs.openlocalbot.ai/channels/googlechat) (Chat API)、[Signal](https://docs.openlocalbot.ai/channels/signal) (signal-cli)、[iMessage](https://docs.openlocalbot.ai/channels/imessage) (imsg)、[BlueBubbles](https://docs.openlocalbot.ai/channels/bluebubbles) (擴充)、[Microsoft Teams](https://docs.openlocalbot.ai/channels/msteams) (擴充)、[Matrix](https://docs.openlocalbot.ai/channels/matrix) (擴充)、[Zalo](https://docs.openlocalbot.ai/channels/zalo) (擴充)、[Zalo Personal](https://docs.openlocalbot.ai/channels/zalouser) (擴充)、[WebChat](https://docs.openlocalbot.ai/web/webchat)。
+- [群組路由](https://docs.openlocalbot.ai/concepts/group-messages)：提及門控，回覆標籤，每個頻道的分塊和路由。頻道規則：[頻道](https://docs.openlocalbot.ai/channels)。
 
 ### 應用 + 節點
 
-- [macOS 應用](https://docs.openclaw.ai/platforms/macos)：選單列控制平面，[語音喚醒](https://docs.openclaw.ai/nodes/voicewake)/PTT，[對話模式](https://docs.openclaw.ai/nodes/talk) 覆蓋層，[WebChat](https://docs.openclaw.ai/web/webchat)，除錯工具，[遠端閘道器](https://docs.openclaw.ai/gateway/remote) 控制。
-- [iOS 節點](https://docs.openclaw.ai/platforms/ios)：[Canvas](https://docs.openclaw.ai/platforms/mac/canvas)，[語音喚醒](https://docs.openclaw.ai/nodes/voicewake)，[對話模式](https://docs.openclaw.ai/nodes/talk)，相機，螢幕錄製，Bonjour 配對。
-- [Android 節點](https://docs.openclaw.ai/platforms/android)：[Canvas](https://docs.openclaw.ai/platforms/mac/canvas)，[對話模式](https://docs.openclaw.ai/nodes/talk)，相機，螢幕錄製，可選簡訊。
-- [macOS 節點模式](https://docs.openclaw.ai/nodes)：system.run/notify + canvas/camera 暴露。
+- [macOS 應用](https://docs.openlocalbot.ai/platforms/macos)：選單列控制平面，[語音喚醒](https://docs.openlocalbot.ai/nodes/voicewake)/PTT，[對話模式](https://docs.openlocalbot.ai/nodes/talk) 覆蓋層，[WebChat](https://docs.openlocalbot.ai/web/webchat)，除錯工具，[遠端閘道器](https://docs.openlocalbot.ai/gateway/remote) 控制。
+- [iOS 節點](https://docs.openlocalbot.ai/platforms/ios)：[Canvas](https://docs.openlocalbot.ai/platforms/mac/canvas)，[語音喚醒](https://docs.openlocalbot.ai/nodes/voicewake)，[對話模式](https://docs.openlocalbot.ai/nodes/talk)，相機，螢幕錄製，Bonjour 配對。
+- [Android 節點](https://docs.openlocalbot.ai/platforms/android)：[Canvas](https://docs.openlocalbot.ai/platforms/mac/canvas)，[對話模式](https://docs.openlocalbot.ai/nodes/talk)，相機，螢幕錄製，可選簡訊。
+- [macOS 節點模式](https://docs.openlocalbot.ai/nodes)：system.run/notify + canvas/camera 暴露。
 
 ### 工具 + 自動化
 
-- [瀏覽器控制](https://docs.openclaw.ai/tools/browser)：專用 openclaw Chrome/Chromium，快照，操作，上傳，設定檔。
-- [Canvas](https://docs.openclaw.ai/platforms/mac/canvas)：[A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui) 推送/重設，eval，快照。
-- [節點](https://docs.openclaw.ai/nodes)：相機拍照/錄影，螢幕錄製，[location.get](https://docs.openclaw.ai/nodes/location-command)，通知。
-- [定時任務 + 喚醒](https://docs.openclaw.ai/automation/cron-jobs)；[webhooks](https://docs.openclaw.ai/automation/webhook)；[Gmail Pub/Sub](https://docs.openclaw.ai/automation/gmail-pubsub)。
-- [技能平台](https://docs.openclaw.ai/tools/skills)：內建、託管和工作區技能，帶有安裝門控 + UI。
+- [瀏覽器控制](https://docs.openlocalbot.ai/tools/browser)：專用 openlocalbot Chrome/Chromium，快照，操作，上傳，設定檔。
+- [Canvas](https://docs.openlocalbot.ai/platforms/mac/canvas)：[A2UI](https://docs.openlocalbot.ai/platforms/mac/canvas#canvas-a2ui) 推送/重設，eval，快照。
+- [節點](https://docs.openlocalbot.ai/nodes)：相機拍照/錄影，螢幕錄製，[location.get](https://docs.openlocalbot.ai/nodes/location-command)，通知。
+- [定時任務 + 喚醒](https://docs.openlocalbot.ai/automation/cron-jobs)；[webhooks](https://docs.openlocalbot.ai/automation/webhook)；[Gmail Pub/Sub](https://docs.openlocalbot.ai/automation/gmail-pubsub)。
+- [技能平台](https://docs.openlocalbot.ai/tools/skills)：內建、託管和工作區技能，帶有安裝門控 + UI。
 
 ### 執行時 + 安全
 
-- [頻道路由](https://docs.openclaw.ai/concepts/channel-routing)，[重試策略](https://docs.openclaw.ai/concepts/retry) 和 [串流/分塊](https://docs.openclaw.ai/concepts/streaming)。
-- [在線狀態](https://docs.openclaw.ai/concepts/presence)，[輸入指示器](https://docs.openclaw.ai/concepts/typing-indicators) 和 [使用量追蹤](https://docs.openclaw.ai/concepts/usage-tracking)。
-- [模型](https://docs.openclaw.ai/concepts/models)，[模型故障轉移](https://docs.openclaw.ai/concepts/model-failover) 和 [工作階段修剪](https://docs.openclaw.ai/concepts/session-pruning)。
-- [安全](https://docs.openclaw.ai/gateway/security) 和 [疑難排解](https://docs.openclaw.ai/channels/troubleshooting)。
+- [頻道路由](https://docs.openlocalbot.ai/concepts/channel-routing)，[重試策略](https://docs.openlocalbot.ai/concepts/retry) 和 [串流/分塊](https://docs.openlocalbot.ai/concepts/streaming)。
+- [在線狀態](https://docs.openlocalbot.ai/concepts/presence)，[輸入指示器](https://docs.openlocalbot.ai/concepts/typing-indicators) 和 [使用量追蹤](https://docs.openlocalbot.ai/concepts/usage-tracking)。
+- [模型](https://docs.openlocalbot.ai/concepts/models)，[模型故障轉移](https://docs.openlocalbot.ai/concepts/model-failover) 和 [工作階段修剪](https://docs.openlocalbot.ai/concepts/session-pruning)。
+- [安全](https://docs.openlocalbot.ai/gateway/security) 和 [疑難排解](https://docs.openlocalbot.ai/channels/troubleshooting)。
 
 ### 維運 + 打包
 
-- [控制介面](https://docs.openclaw.ai/web) + [WebChat](https://docs.openclaw.ai/web/webchat) 直接從 Gateway 提供。
-- [Tailscale Serve/Funnel](https://docs.openclaw.ai/gateway/tailscale) 或 [SSH 通道](https://docs.openclaw.ai/gateway/remote) 帶有權杖/密碼認證。
-- [Nix 模式](https://docs.openclaw.ai/install/nix) 用於宣告式設定；[Docker](https://docs.openclaw.ai/install/docker) 安裝。
-- [Doctor](https://docs.openclaw.ai/gateway/doctor) 遷移，[日誌](https://docs.openclaw.ai/logging)。
+- [控制介面](https://docs.openlocalbot.ai/web) + [WebChat](https://docs.openlocalbot.ai/web/webchat) 直接從 Gateway 提供。
+- [Tailscale Serve/Funnel](https://docs.openlocalbot.ai/gateway/tailscale) 或 [SSH 通道](https://docs.openlocalbot.ai/gateway/remote) 帶有權杖/密碼認證。
+- [Nix 模式](https://docs.openlocalbot.ai/install/nix) 用於宣告式設定；[Docker](https://docs.openlocalbot.ai/install/docker) 安裝。
+- [Doctor](https://docs.openlocalbot.ai/gateway/doctor) 遷移，[日誌](https://docs.openlocalbot.ai/logging)。
 
 ## 工作原理（簡述）
 
@@ -223,7 +223,7 @@ WhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBu
 └──────────────┬────────────────┘
                │
                ├─ Pi 代理 (RPC)
-               ├─ CLI (openclaw …)
+               ├─ CLI (openlocalbot …)
                ├─ WebChat 介面
                ├─ macOS 應用
                └─ iOS / Android 節點
@@ -231,16 +231,16 @@ WhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBu
 
 ## 關鍵子系統
 
-- **[Gateway WebSocket 網路](https://docs.openclaw.ai/concepts/architecture)** — 用於客戶端、工具和事件的單一 WS 控制平面（維運：[Gateway 操作手冊](https://docs.openclaw.ai/gateway)）。
-- **[Tailscale 暴露](https://docs.openclaw.ai/gateway/tailscale)** — Gateway 儀表板 + WS 的 Serve/Funnel（遠端存取：[遠端](https://docs.openclaw.ai/gateway/remote)）。
-- **[瀏覽器控制](https://docs.openclaw.ai/tools/browser)** — openclaw 託管的 Chrome/Chromium，帶有 CDP 控制。
-- **[Canvas + A2UI](https://docs.openclaw.ai/platforms/mac/canvas)** — 代理驅動的視覺化工作區（A2UI 主機：[Canvas/A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui)）。
-- **[語音喚醒](https://docs.openclaw.ai/nodes/voicewake) + [對話模式](https://docs.openclaw.ai/nodes/talk)** — 始終在線的語音和連續對話。
-- **[節點](https://docs.openclaw.ai/nodes)** — Canvas、相機拍照/錄影、螢幕錄製、`location.get`、通知，以及僅 macOS 的 `system.run`/`system.notify`。
+- **[Gateway WebSocket 網路](https://docs.openlocalbot.ai/concepts/architecture)** — 用於客戶端、工具和事件的單一 WS 控制平面（維運：[Gateway 操作手冊](https://docs.openlocalbot.ai/gateway)）。
+- **[Tailscale 暴露](https://docs.openlocalbot.ai/gateway/tailscale)** — Gateway 儀表板 + WS 的 Serve/Funnel（遠端存取：[遠端](https://docs.openlocalbot.ai/gateway/remote)）。
+- **[瀏覽器控制](https://docs.openlocalbot.ai/tools/browser)** — openlocalbot 託管的 Chrome/Chromium，帶有 CDP 控制。
+- **[Canvas + A2UI](https://docs.openlocalbot.ai/platforms/mac/canvas)** — 代理驅動的視覺化工作區（A2UI 主機：[Canvas/A2UI](https://docs.openlocalbot.ai/platforms/mac/canvas#canvas-a2ui)）。
+- **[語音喚醒](https://docs.openlocalbot.ai/nodes/voicewake) + [對話模式](https://docs.openlocalbot.ai/nodes/talk)** — 始終在線的語音和連續對話。
+- **[節點](https://docs.openlocalbot.ai/nodes)** — Canvas、相機拍照/錄影、螢幕錄製、`location.get`、通知，以及僅 macOS 的 `system.run`/`system.notify`。
 
 ## Tailscale 存取（Gateway 儀表板）
 
-OpenClaw 可以自動設定 Tailscale **Serve**（僅限 tailnet）或 **Funnel**（公開），同時 Gateway 保持繫結到回環位址。設定 `gateway.tailscale.mode`：
+OpenLocalBot 可以自動設定 Tailscale **Serve**（僅限 tailnet）或 **Funnel**（公開），同時 Gateway 保持繫結到回環位址。設定 `gateway.tailscale.mode`：
 
 - `off`：無 Tailscale 自動化（預設）。
 - `serve`：透過 `tailscale serve` 的僅限 tailnet 的 HTTPS（預設使用 Tailscale 身分標頭）。
@@ -248,12 +248,12 @@ OpenClaw 可以自動設定 Tailscale **Serve**（僅限 tailnet）或 **Funnel*
 
 注意：
 
-- 啟用 Serve/Funnel 時 `gateway.bind` 必須保持 `loopback`（OpenClaw 強制執行）。
+- 啟用 Serve/Funnel 時 `gateway.bind` 必須保持 `loopback`（OpenLocalBot 強制執行）。
 - Serve 可以透過設定 `gateway.auth.mode: "password"` 或 `gateway.auth.allowTailscale: false` 強制要求密碼。
 - 除非設定 `gateway.auth.mode: "password"`，否則 Funnel 拒絕啟動。
 - 可選：`gateway.tailscale.resetOnExit` 在關閉時撤銷 Serve/Funnel。
 
-詳情：[Tailscale 指南](https://docs.openclaw.ai/gateway/tailscale) · [Web 介面](https://docs.openclaw.ai/web)
+詳情：[Tailscale 指南](https://docs.openlocalbot.ai/gateway/tailscale) · [Web 介面](https://docs.openlocalbot.ai/web)
 
 ## 遠端 Gateway（Linux 很棒）
 
@@ -263,7 +263,7 @@ OpenClaw 可以自動設定 Tailscale **Serve**（僅限 tailnet）或 **Funnel*
 - **裝置節點** 透過 `node.invoke` 執行裝置本地操作（`system.run`、相機、螢幕錄製、通知）。
   簡而言之：exec 在 Gateway 所在位置執行；裝置操作在裝置所在位置執行。
 
-詳情：[遠端存取](https://docs.openclaw.ai/gateway/remote) · [節點](https://docs.openclaw.ai/nodes) · [安全](https://docs.openclaw.ai/gateway/security)
+詳情：[遠端存取](https://docs.openlocalbot.ai/gateway/remote) · [節點](https://docs.openlocalbot.ai/nodes) · [安全](https://docs.openlocalbot.ai/gateway/security)
 
 ## 透過 Gateway 協定的 macOS 權限
 
@@ -278,7 +278,7 @@ macOS 應用可以在 **節點模式** 下執行，並透過 Gateway WebSocket �
 - 使用 `/elevated on|off` 在啟用 + 白名單時切換每個工作階段的提升存取權限。
 - Gateway 透過 `sessions.patch`（WS 方法）持久化每個工作階段的切換，與 `thinkingLevel`、`verboseLevel`、`model`、`sendPolicy` 和 `groupActivation` 一起。
 
-詳情：[節點](https://docs.openclaw.ai/nodes) · [macOS 應用](https://docs.openclaw.ai/platforms/macos) · [Gateway 協定](https://docs.openclaw.ai/concepts/architecture)
+詳情：[節點](https://docs.openlocalbot.ai/nodes) · [macOS 應用](https://docs.openlocalbot.ai/platforms/macos) · [Gateway 協定](https://docs.openlocalbot.ai/concepts/architecture)
 
 ## 代理到代理（sessions\_\* 工具）
 
@@ -287,7 +287,7 @@ macOS 應用可以在 **節點模式** 下執行，並透過 Gateway WebSocket �
 - `sessions_history` — 取得工作階段的記錄日誌。
 - `sessions_send` — 向另一個工作階段發送訊息；可選的回覆返回乒乓 + 公告步驟（`REPLY_SKIP`、`ANNOUNCE_SKIP`）。
 
-詳情：[工作階段工具](https://docs.openclaw.ai/concepts/session-tool)
+詳情：[工作階段工具](https://docs.openlocalbot.ai/concepts/session-tool)
 
 ## 技能註冊表（ClawHub）
 
@@ -314,7 +314,7 @@ Gateway 本身就能提供很好的體驗。所有應用都是可選的，只是
 
 如果您計劃建置/執行夥伴應用，請遵循以下平台操作手冊。
 
-### macOS (OpenClaw.app)（可選）
+### macOS (OpenLocalBot.app)（可選）
 
 - Gateway 和健康狀態的選單列控制。
 - 語音喚醒 + 按鍵通話覆蓋層。
@@ -327,25 +327,25 @@ Gateway 本身就能提供很好的體驗。所有應用都是可選的，只是
 
 - 透過 Bridge 作為節點配對。
 - 語音觸發轉發 + Canvas 介面。
-- 透過 `openclaw nodes …` 控制。
+- 透過 `openlocalbot nodes …` 控制。
 
-操作手冊：[iOS 連線](https://docs.openclaw.ai/platforms/ios)。
+操作手冊：[iOS 連線](https://docs.openlocalbot.ai/platforms/ios)。
 
 ### Android 節點（可選）
 
 - 透過與 iOS 相同的 Bridge + 配對流程配對。
 - 暴露 Canvas、相機和螢幕擷取命令。
-- 操作手冊：[Android 連線](https://docs.openclaw.ai/platforms/android)。
+- 操作手冊：[Android 連線](https://docs.openlocalbot.ai/platforms/android)。
 
 ## 代理工作區 + 技能
 
-- 工作區根目錄：`~/.openclaw/workspace`（可透過 `agents.defaults.workspace` 設定）。
+- 工作區根目錄：`~/.openlocalbot/workspace`（可透過 `agents.defaults.workspace` 設定）。
 - 注入的提示檔：`AGENTS.md`、`SOUL.md`、`TOOLS.md`。
-- 技能：`~/.openclaw/workspace/skills/<skill>/SKILL.md`。
+- 技能：`~/.openlocalbot/workspace/skills/<skill>/SKILL.md`。
 
 ## 設定
 
-最小設定 `~/.openclaw/openclaw.json`（模型 + 預設值）：
+最小設定 `~/.openlocalbot/openlocalbot.json`（模型 + 預設值）：
 
 ```json5
 {
@@ -355,7 +355,7 @@ Gateway 本身就能提供很好的體驗。所有應用都是可選的，只是
 }
 ```
 
-[完整設定參考（所有鍵 + 範例）](https://docs.openclaw.ai/gateway/configuration)
+[完整設定參考（所有鍵 + 範例）](https://docs.openlocalbot.ai/gateway/configuration)
 
 ## 安全模型（重要）
 
@@ -363,15 +363,15 @@ Gateway 本身就能提供很好的體驗。所有應用都是可選的，只是
 - **群組/頻道安全：**設定 `agents.defaults.sandbox.mode: "non-main"` 以在每個工作階段的 Docker 沙箱中執行 **非 main 工作階段**（群組/頻道）；然後 bash 會在 Docker 中為這些工作階段執行。
 - **沙箱預設值：**白名單 `bash`、`process`、`read`、`write`、`edit`、`sessions_list`、`sessions_history`、`sessions_send`、`sessions_spawn`；黑名單 `browser`、`canvas`、`nodes`、`cron`、`discord`、`gateway`。
 
-詳情：[安全指南](https://docs.openclaw.ai/gateway/security) · [Docker + 沙箱](https://docs.openclaw.ai/install/docker) · [沙箱設定](https://docs.openclaw.ai/gateway/configuration)
+詳情：[安全指南](https://docs.openlocalbot.ai/gateway/security) · [Docker + 沙箱](https://docs.openlocalbot.ai/install/docker) · [沙箱設定](https://docs.openlocalbot.ai/gateway/configuration)
 
-### [WhatsApp](https://docs.openclaw.ai/channels/whatsapp)
+### [WhatsApp](https://docs.openlocalbot.ai/channels/whatsapp)
 
-- 連結裝置：`pnpm openclaw channels login`（憑證儲存在 `~/.openclaw/credentials`）。
+- 連結裝置：`pnpm openlocalbot channels login`（憑證儲存在 `~/.openlocalbot/credentials`）。
 - 透過 `channels.whatsapp.allowFrom` 設定誰可以與助手交談的白名單。
 - 如果設定了 `channels.whatsapp.groups`，它就變成群組白名單；包含 `"*"` 以允許所有。
 
-### [Telegram](https://docs.openclaw.ai/channels/telegram)
+### [Telegram](https://docs.openlocalbot.ai/channels/telegram)
 
 - 設定 `TELEGRAM_BOT_TOKEN` 或 `channels.telegram.botToken`（環境變數優先）。
 - 可選：設定 `channels.telegram.groups`（帶有 `channels.telegram.groups."*".requireMention`）；設定後，它是群組白名單（包含 `"*"` 以允許所有）。也設定 `channels.telegram.allowFrom` 或 `channels.telegram.webhookUrl`。
@@ -386,11 +386,11 @@ Gateway 本身就能提供很好的體驗。所有應用都是可選的，只是
 }
 ```
 
-### [Slack](https://docs.openclaw.ai/channels/slack)
+### [Slack](https://docs.openlocalbot.ai/channels/slack)
 
 - 設定 `SLACK_BOT_TOKEN` + `SLACK_APP_TOKEN`（或 `channels.slack.botToken` + `channels.slack.appToken`）。
 
-### [Discord](https://docs.openclaw.ai/channels/discord)
+### [Discord](https://docs.openlocalbot.ai/channels/discord)
 
 - 設定 `DISCORD_BOT_TOKEN` 或 `channels.discord.token`（環境變數優先）。
 - 可選：設定 `commands.native`、`commands.text` 或 `commands.useAccessGroups`，以及 `channels.discord.dm.allowFrom`、`channels.discord.guilds` 或 `channels.discord.mediaMaxMb`。
@@ -405,21 +405,21 @@ Gateway 本身就能提供很好的體驗。所有應用都是可選的，只是
 }
 ```
 
-### [Signal](https://docs.openclaw.ai/channels/signal)
+### [Signal](https://docs.openlocalbot.ai/channels/signal)
 
 - 需要 `signal-cli` 和 `channels.signal` 設定部分。
 
-### [iMessage](https://docs.openclaw.ai/channels/imessage)
+### [iMessage](https://docs.openlocalbot.ai/channels/imessage)
 
 - 僅限 macOS；Messages 必須已登入。
 - 如果設定了 `channels.imessage.groups`，它就變成群組白名單；包含 `"*"` 以允許所有。
 
-### [Microsoft Teams](https://docs.openclaw.ai/channels/msteams)
+### [Microsoft Teams](https://docs.openlocalbot.ai/channels/msteams)
 
 - 設定 Teams 應用 + Bot Framework，然後新增 `msteams` 設定部分。
 - 透過 `msteams.allowFrom` 設定誰可以交談的白名單；群組存取透過 `msteams.groupAllowFrom` 或 `msteams.groupPolicy: "open"`。
 
-### [WebChat](https://docs.openclaw.ai/web/webchat)
+### [WebChat](https://docs.openlocalbot.ai/web/webchat)
 
 - 使用 Gateway WebSocket；無需單獨的 WebChat 埠號/設定。
 
@@ -438,79 +438,79 @@ Gateway 本身就能提供很好的體驗。所有應用都是可選的，只是
 
 當您完成設定流程並需要更深入的參考時使用這些：
 
-- [從文件索引開始導覽和「什麼在哪裡」](https://docs.openclaw.ai)
-- [閱讀架構概述了解閘道器 + 協定模型](https://docs.openclaw.ai/concepts/architecture)
-- [當您需要每個鍵和範例時使用完整設定參考](https://docs.openclaw.ai/gateway/configuration)
-- [按手冊執行閘道器與操作手冊](https://docs.openclaw.ai/gateway)
-- [了解控制 UI/Web 介面如何工作以及如何安全地暴露它們](https://docs.openclaw.ai/web)
-- [了解透過 SSH 通道或 tailnet 的遠端存取](https://docs.openclaw.ai/gateway/remote)
-- [跟隨設定精靈流程進行引導式設定](https://docs.openclaw.ai/start/wizard)
-- [透過 webhook 介面連線外部觸發器](https://docs.openclaw.ai/automation/webhook)
-- [設定 Gmail Pub/Sub 觸發器](https://docs.openclaw.ai/automation/gmail-pubsub)
-- [了解 macOS 選單列夥伴詳情](https://docs.openclaw.ai/platforms/mac/menu-bar)
-- [平台指南：Windows (WSL2)](https://docs.openclaw.ai/platforms/windows)、[Linux](https://docs.openclaw.ai/platforms/linux)、[macOS](https://docs.openclaw.ai/platforms/macos)、[iOS](https://docs.openclaw.ai/platforms/ios)、[Android](https://docs.openclaw.ai/platforms/android)
-- [使用疑難排解指南除錯常見問題](https://docs.openclaw.ai/channels/troubleshooting)
-- [在暴露任何內容之前查看安全指南](https://docs.openclaw.ai/gateway/security)
+- [從文件索引開始導覽和「什麼在哪裡」](https://docs.openlocalbot.ai)
+- [閱讀架構概述了解閘道器 + 協定模型](https://docs.openlocalbot.ai/concepts/architecture)
+- [當您需要每個鍵和範例時使用完整設定參考](https://docs.openlocalbot.ai/gateway/configuration)
+- [按手冊執行閘道器與操作手冊](https://docs.openlocalbot.ai/gateway)
+- [了解控制 UI/Web 介面如何工作以及如何安全地暴露它們](https://docs.openlocalbot.ai/web)
+- [了解透過 SSH 通道或 tailnet 的遠端存取](https://docs.openlocalbot.ai/gateway/remote)
+- [跟隨設定精靈流程進行引導式設定](https://docs.openlocalbot.ai/start/wizard)
+- [透過 webhook 介面連線外部觸發器](https://docs.openlocalbot.ai/automation/webhook)
+- [設定 Gmail Pub/Sub 觸發器](https://docs.openlocalbot.ai/automation/gmail-pubsub)
+- [了解 macOS 選單列夥伴詳情](https://docs.openlocalbot.ai/platforms/mac/menu-bar)
+- [平台指南：Windows (WSL2)](https://docs.openlocalbot.ai/platforms/windows)、[Linux](https://docs.openlocalbot.ai/platforms/linux)、[macOS](https://docs.openlocalbot.ai/platforms/macos)、[iOS](https://docs.openlocalbot.ai/platforms/ios)、[Android](https://docs.openlocalbot.ai/platforms/android)
+- [使用疑難排解指南除錯常見問題](https://docs.openlocalbot.ai/channels/troubleshooting)
+- [在暴露任何內容之前查看安全指南](https://docs.openlocalbot.ai/gateway/security)
 
 ## 進階文件（發現 + 控制）
 
-- [發現 + 傳輸](https://docs.openclaw.ai/gateway/discovery)
-- [Bonjour/mDNS](https://docs.openclaw.ai/gateway/bonjour)
-- [Gateway 配對](https://docs.openclaw.ai/gateway/pairing)
-- [遠端 gateway README](https://docs.openclaw.ai/gateway/remote-gateway-readme)
-- [控制介面](https://docs.openclaw.ai/web/control-ui)
-- [儀表板](https://docs.openclaw.ai/web/dashboard)
+- [發現 + 傳輸](https://docs.openlocalbot.ai/gateway/discovery)
+- [Bonjour/mDNS](https://docs.openlocalbot.ai/gateway/bonjour)
+- [Gateway 配對](https://docs.openlocalbot.ai/gateway/pairing)
+- [遠端 gateway README](https://docs.openlocalbot.ai/gateway/remote-gateway-readme)
+- [控制介面](https://docs.openlocalbot.ai/web/control-ui)
+- [儀表板](https://docs.openlocalbot.ai/web/dashboard)
 
 ## 維運與疑難排解
 
-- [健康檢查](https://docs.openclaw.ai/gateway/health)
-- [Gateway 鎖](https://docs.openclaw.ai/gateway/gateway-lock)
-- [背景程序](https://docs.openclaw.ai/gateway/background-process)
-- [瀏覽器疑難排解 (Linux)](https://docs.openclaw.ai/tools/browser-linux-troubleshooting)
-- [日誌](https://docs.openclaw.ai/logging)
+- [健康檢查](https://docs.openlocalbot.ai/gateway/health)
+- [Gateway 鎖](https://docs.openlocalbot.ai/gateway/gateway-lock)
+- [背景程序](https://docs.openlocalbot.ai/gateway/background-process)
+- [瀏覽器疑難排解 (Linux)](https://docs.openlocalbot.ai/tools/browser-linux-troubleshooting)
+- [日誌](https://docs.openlocalbot.ai/logging)
 
 ## 深入探討
 
-- [代理迴圈](https://docs.openclaw.ai/concepts/agent-loop)
-- [在線狀態](https://docs.openclaw.ai/concepts/presence)
-- [TypeBox 結構描述](https://docs.openclaw.ai/concepts/typebox)
-- [RPC 配接器](https://docs.openclaw.ai/reference/rpc)
-- [佇列](https://docs.openclaw.ai/concepts/queue)
+- [代理迴圈](https://docs.openlocalbot.ai/concepts/agent-loop)
+- [在線狀態](https://docs.openlocalbot.ai/concepts/presence)
+- [TypeBox 結構描述](https://docs.openlocalbot.ai/concepts/typebox)
+- [RPC 配接器](https://docs.openlocalbot.ai/reference/rpc)
+- [佇列](https://docs.openlocalbot.ai/concepts/queue)
 
 ## 工作區與技能
 
-- [技能設定](https://docs.openclaw.ai/tools/skills-config)
-- [預設 AGENTS](https://docs.openclaw.ai/reference/AGENTS.default)
-- [範本：AGENTS](https://docs.openclaw.ai/reference/templates/AGENTS)
-- [範本：BOOTSTRAP](https://docs.openclaw.ai/reference/templates/BOOTSTRAP)
-- [範本：IDENTITY](https://docs.openclaw.ai/reference/templates/IDENTITY)
-- [範本：SOUL](https://docs.openclaw.ai/reference/templates/SOUL)
-- [範本：TOOLS](https://docs.openclaw.ai/reference/templates/TOOLS)
-- [範本：USER](https://docs.openclaw.ai/reference/templates/USER)
+- [技能設定](https://docs.openlocalbot.ai/tools/skills-config)
+- [預設 AGENTS](https://docs.openlocalbot.ai/reference/AGENTS.default)
+- [範本：AGENTS](https://docs.openlocalbot.ai/reference/templates/AGENTS)
+- [範本：BOOTSTRAP](https://docs.openlocalbot.ai/reference/templates/BOOTSTRAP)
+- [範本：IDENTITY](https://docs.openlocalbot.ai/reference/templates/IDENTITY)
+- [範本：SOUL](https://docs.openlocalbot.ai/reference/templates/SOUL)
+- [範本：TOOLS](https://docs.openlocalbot.ai/reference/templates/TOOLS)
+- [範本：USER](https://docs.openlocalbot.ai/reference/templates/USER)
 
 ## 平台內部細節
 
-- [macOS 開發設定](https://docs.openclaw.ai/platforms/mac/dev-setup)
-- [macOS 選單列](https://docs.openclaw.ai/platforms/mac/menu-bar)
-- [macOS 語音喚醒](https://docs.openclaw.ai/platforms/mac/voicewake)
-- [iOS 節點](https://docs.openclaw.ai/platforms/ios)
-- [Android 節點](https://docs.openclaw.ai/platforms/android)
-- [Windows (WSL2)](https://docs.openclaw.ai/platforms/windows)
-- [Linux 應用](https://docs.openclaw.ai/platforms/linux)
+- [macOS 開發設定](https://docs.openlocalbot.ai/platforms/mac/dev-setup)
+- [macOS 選單列](https://docs.openlocalbot.ai/platforms/mac/menu-bar)
+- [macOS 語音喚醒](https://docs.openlocalbot.ai/platforms/mac/voicewake)
+- [iOS 節點](https://docs.openlocalbot.ai/platforms/ios)
+- [Android 節點](https://docs.openlocalbot.ai/platforms/android)
+- [Windows (WSL2)](https://docs.openlocalbot.ai/platforms/windows)
+- [Linux 應用](https://docs.openlocalbot.ai/platforms/linux)
 
 ## 電子郵件鉤子 (Gmail)
 
-- [docs.openclaw.ai/gmail-pubsub](https://docs.openclaw.ai/automation/gmail-pubsub)
+- [docs.openlocalbot.ai/gmail-pubsub](https://docs.openlocalbot.ai/automation/gmail-pubsub)
 
 ## Molty
 
-OpenClaw 是為 **Molty** 建置的，一個太空龍蝦 AI 助手。🦞
+OpenLocalBot 是為 **Molty** 建置的，一個太空龍蝦 AI 助手。🦞
 由 Peter Steinberger 和社群開發。
 
-- [openclaw.ai](https://openclaw.ai)
+- [openlocalbot.ai](https://openlocalbot.ai)
 - [soul.md](https://soul.md)
 - [steipete.me](https://steipete.me)
-- [@openclaw](https://x.com/openclaw)
+- [@openlocalbot](https://x.com/openlocalbot)
 
 ## 社群
 
